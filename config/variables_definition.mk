@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/06 02:53:07 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/06 11:21:48 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIBFT = $(LIBFT_DIR)/$(LIBFT_NAME)
 LIBFT_INC_DIR = $(LIBFT_DIR)/includes
 
 # library flags
-LIBFLAGS = -lft -L./$(LIBFT_DIR) 
+LIBFLAGS = -lft -L./$(LIBFT_DIR) -lreadline
 
 # directory files
 SRC_DIR = src

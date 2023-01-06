@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 08:35:23 by hyeyukim          #+#    #+#              #
-#    Updated: 2022/12/27 01:41:24 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/06 11:09:16 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,13 +76,14 @@ BONUS_FILE = ft_lstadd_back \
 			ft_lstsize \
 			ft_lstlast \
 			ft_lstmap
-
+ADT_FILE = int_vector
 # directory files
 OBJ_DIR = objcs
 LIBFT_DIR = libft_mandatory
 BONUS_DIR = libft_bonus
 PRINTF_DIR = ft_printf
 GNL_DIR = get_next_line
+ADT_DIR = adt
 
 # header
 INC_DIR = includes
@@ -92,7 +93,8 @@ LIBFT_OBJ = $(addprefix $(OBJ_DIR)/$(LIBFT_DIR)/, $(addsuffix .o, $(LIBFT_FILE))
 BONUS_OBJ = $(addprefix $(OBJ_DIR)/$(BONUS_DIR)/, $(addsuffix .o, $(BONUS_FILE)))
 PRINTF_OBJ = $(addprefix $(OBJ_DIR)/$(PRINTF_DIR)/, $(addsuffix .o, $(PRINTF_FILE)))
 GNL_OBJ = $(addprefix $(OBJ_DIR)/$(GNL_DIR)/, $(addsuffix .o, $(GNL_FILE)))
-OBJ = $(LIBFT_OBJ) $(B_OBJ) $(P_OBJ) $(G_OBJ)
+ADT_OBJ = $(addprefix $(OBJ_DIR)/$(ADT_DIR)/, $(addsuffix .o, $(ADT_FILE)))
+OBJ = $(LIBFT_OBJ) $(B_OBJ) $(P_OBJ) $(G_OBJ) $(A_OBJ)
 
 # variables
 ifdef WITH_BONUS
@@ -105,4 +107,8 @@ endif
 
 ifdef WITH_GNL
 	G_OBJ = $(GNL_OBJ)
+endif
+
+ifdef WITH_ADT
+	A_OBJ = $(ADT_OBJ)
 endif

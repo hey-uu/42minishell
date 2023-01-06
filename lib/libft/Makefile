@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 11:46:51 by hyeyukim          #+#    #+#              #
-#    Updated: 2022/11/16 01:52:55 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/06 09:43:22 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,9 @@ gnl :
 printf_gnl :
 	# libft with printf and get_next_line
 	make WITH_PRINTF=1 WITH_GNL=1 all
+adt :
+	# libft with adt
+	make WITH_ADT=1 all
 
 # basic rules
 .PHONY : clean fclean re

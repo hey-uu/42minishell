@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/06 02:53:38 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/06 11:09:34 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ include config/variables_definition.mk
 all : $(NAME)
 $(NAME) : $(INCS) $(OBJ)
 	$(RM) $(RMFLAGS) $(RM_OBJ)
-	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR) adt
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFLAGS) -o $@
 
 .PHONY : bonus

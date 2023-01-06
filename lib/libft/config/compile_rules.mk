@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 08:37:47 by hyeyukim          #+#    #+#              #
-#    Updated: 2022/11/16 01:52:55 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/06 09:44:59 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,4 +30,9 @@ $(OBJ_DIR)/$(PRINTF_DIR)/%.o : $(PRINTF_DIR)/%.c $(INC_DIR)/ft_printf.h
 $(OBJ_DIR)/$(GNL_DIR)/%.o : $(GNL_DIR)/%.c $(INC_DIR)/get_next_line.h
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(GNL_DIR)
+	@$(CC) -c $(CFLAGS) $< -I$(INC_DIR) -o $@
+
+$(OBJ_DIR)/$(ADT_DIR)/%.o : $(ADT_DIR)/%.c $(INC_DIR)/get_next_line.h
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(ADT_DIR)
 	@$(CC) -c $(CFLAGS) $< -I$(INC_DIR) -o $@
