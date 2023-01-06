@@ -1,9 +1,21 @@
 # minishell
 
+## manual
+- POSIX SHELL
+  https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 ### readline
+- brew install readline
+- 컴파일할 때 옵션 설정해줄 것 : -lreadline
 
 ### lexical analyzer
-
+- token type
+  - WORD
+  - OPERATOR
+    - BRACE_LEFT((), BRACE_RIGHT()), LOGICAL_AND(&&), LOGICAL_OR(||), 
+      PIPELINE(|), RDIR_IN(<), RDIR_OUT(>), RDIR_HEREDOC(<<), RDIR_APPEND(>>)
+- split 기준
+  - 공백문자: space, tab, newline
+  - metacharacter : "(", ")", "|", "||", "&&", "<", ">", "<<", ">>"
 ### syntax analyzere
 
 ### executor
