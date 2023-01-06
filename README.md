@@ -3,6 +3,8 @@
 ## manual
 - POSIX SHELL
   https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
+- BASH MANUAL
+  
 ### readline
 - brew install readline
 - 컴파일할 때 옵션 설정해줄 것 : -lreadline
