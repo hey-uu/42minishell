@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_vector.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyun <hyeyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 09:33:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 18:41:02 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/07 23:10:21 by hyeyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,12 @@ void	ivec_remove(t_ivector vector)
 
 void	ivec_remove_at(t_ivector vector, int idx)
 {
-	int	i;
 
 	if (idx >= vector->used_size)
 	{
 		write(2, "ivec_add_at: out of index", 25);
 		exit(1);
 	}
-	i = idx;
 	while (idx < vector->used_size - 1)
 	{
 		vector->array[idx] = vector->array[idx + 1];

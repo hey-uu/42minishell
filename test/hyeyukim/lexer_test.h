@@ -7,5 +7,6 @@
 #include <stdio.h>
 #include <assert.h>
 
+# define TOKEN_ERROR -1
 
 #endif

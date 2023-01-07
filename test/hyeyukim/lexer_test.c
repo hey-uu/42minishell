@@ -38,14 +38,14 @@ char	*test_cases[TEST_NUM] = {\
 	"\'\"hihihihihihi\"\' \"a&&dfa\"",\
 //16
 	"\'\'\"\'\'\'\"",\
-//17(syntax error)
-	"\'\"\"ADFADF",\
+//17
+	"\'a\' \'b\' \"c\'\" &|&||",\
 //18
 	"\"\'\"",\
 //19
 	"\'abc\'  && \"adfa$&&||\"",\
-//20
-	"\'a\' \'b\' \"c\'\" &|&||"\
+//20(syntax error)
+	"\'\"\"ADFADF"
 };
 
 int	counts[TEST_NUM] = {\
@@ -72,7 +72,7 @@ int	counts[TEST_NUM] = {\
 // 11
 	19, \
 // 12
-	1, \
+	0, \
 // 13
 	1, \
 // 14
@@ -80,15 +80,15 @@ int	counts[TEST_NUM] = {\
 // 15
 	2, \
 // 16
-	0, \
+	1, \
 // 17
-	0, \
+	7, \
 // 18
-	0, \
+	1, \
 // 19
 	3, \
 // 20
-	7
+	0
 };
 
 int	tokens[TEST_NUM][100] = {\
@@ -132,15 +132,15 @@ int	tokens[TEST_NUM][100] = {\
 //15
 	{TOKEN_WORD, TOKEN_WORD, TOKEN_NONE},\
 //16
-	{TOKEN_NONE},\
+	{TOKEN_WORD, TOKEN_NONE},\
 //17
-	{TOKEN_NONE},\
+	{TOKEN_WORD, TOKEN_WORD, TOKEN_WORD, TOKEN_WORD, TOKEN_PIPE, TOKEN_WORD, TOKEN_OR_IF, TOKEN_NONE},\
 //18
-	{TOKEN_NONE},\
+	{TOKEN_WORD, TOKEN_NONE},\
 //19
-	{TOKEN_NONE},\
+	{TOKEN_WORD, TOKEN_AND_IF, TOKEN_WORD, TOKEN_NONE},\
 //20
-	{TOKEN_NONE}
+	{TOKEN_ERROR}
 };
 
 int	main(void)
@@ -153,12 +153,17 @@ int	main(void)
 	while (++i < TEST_NUM)
 	{
 		printf("\n====================\n");
-		printf("%dth test\n", i);
+		printf("%dth test\n", i + 1);
 		printf("	::test case : [%s]\n", test_cases[i]);
 		res_token_cnt = count_tokens(test_cases[i]);
 		printf("	::token counts : %d\n", res_token_cnt);
 		assert(counts[i] == res_token_cnt);
 		res_tokens = lexer(test_cases[i]);
+		if (!res_tokens)
+		{
+			assert(tokens[i][0] == TOKEN_ERROR);
+			continue ;
+		}
 		for (j = 0 ; j < counts[i] + 1 ; j++)
 		{
 			if (j != counts[i])
@@ -167,6 +172,7 @@ int	main(void)
 			res_tokens[j].type, tokens[i][j]);
 			assert(res_tokens[j].type == (t_token_type)tokens[i][j]);
 		}
+		free(res_tokens);
 		printf("--> ok\n");
 		printf("====================\n");
 	}
