@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 19:37:18 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/07 21:57:12 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "libft.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
+
+# define SYNTAX_ERROR -1
 
 // subshell 실행(parenthesis)은 지금 구현할 건 아니지만 까먹을까봐 일단 적어두기만 함
 typedef enum e_token_type
@@ -54,7 +56,7 @@ typedef struct s_token
 	char			*str;
 	// int				str_len;
 	// int				expansion_mask; 
-		// 와일드카드, 달러 여부 체크하여 마스크로 기록
+	// 와일드카드, 달러 여부 체크하여 마스크로 기록
 }	t_token;
 
 typedef enum e_node_type

@@ -3,35 +3,49 @@
 
 // tests
 
-#define TEST_NUM 13
+#define TEST_NUM 20
 
 char	*test_cases[TEST_NUM] = {\
 //1
-	"echo hello | xargs echo | ls -l \n", \
+	"echo hello | xargs echo | ls -l", \
 //2
-	"ls -al && echo a \n", \
+	"ls -al && echo a", \
 //3
-	"ls | ls | ls || ls\n", \
+	"ls | ls | ls || ls", \
 //4
-	"(sleep 3) && echo 3\n", \
+	"(sleep 3) && echo 3", \
 //5
-	"ls | &e && echo 3\n", \
+	"ls | &e && echo 3", \
 //6
-	"&&& && echo 3\n", \
+	"&&& && echo 3", \
 //7
-	"321 && echo 3\n", \
+	"321 && echo 3", \
 //8
-	"   echo aa&&    echo gg|cat&& echo   ss\n", \
+	"   echo aa&&    echo gg|cat&& echo   ss", \
 //9
-	"|||||\n", \
+	"|||||", \
 // 10
-	"ls -al -l -a -d -a -f (********() \n", \
+	"ls -al -l -a -d -a -f (********()", \
 //11
-	"cd .. && cat < file && echo hello >> output &&&a |cat<<here_&&doc \n", \
+	"cd .. && cat < file && echo hello >> output &&&a |cat<<here_&&doc", \
 //12
-	"\n", \
+	"", \
 //13
-	"\'       A\'ZCV" \
+	"\'       A\'ZCV", \
+//14
+	"\"        hihi  |  a\" | ",\
+//15
+	"\'\"hihihihihihi\"\' \"a&&dfa\"",\
+//16
+	"\'\'\"\'\'\'\"",\
+//17(syntax error)
+	"\'\"\"ADFADF",\
+//18
+	"\"\'\"",\
+//19
+	"\'abc\'  && \"adfa$&&||\"",\
+//20
+	"\'a\' \'b\' \"c\'\" &|&||"\
 };
 
 int	counts[TEST_NUM] = {\
@@ -58,9 +72,23 @@ int	counts[TEST_NUM] = {\
 // 11
 	19, \
 // 12
-	0, \
+	1, \
 // 13
-	1
+	1, \
+// 14
+	2, \
+// 15
+	2, \
+// 16
+	0, \
+// 17
+	0, \
+// 18
+	0, \
+// 19
+	3, \
+// 20
+	7
 };
 
 int	tokens[TEST_NUM][100] = {\
@@ -76,7 +104,7 @@ int	tokens[TEST_NUM][100] = {\
 	{TOKEN_LPAREN, TOKEN_WORD, TOKEN_WORD, TOKEN_RPAREN, TOKEN_AND_IF, TOKEN_WORD, \
 	TOKEN_WORD, TOKEN_NONE},\
 //5
-	{TOKEN_WORD, TOKEN_PIPE, TOKEN_PIPE, TOKEN_AND_IF, TOKEN_WORD, TOKEN_WORD, \
+	{TOKEN_WORD, TOKEN_PIPE, TOKEN_WORD, TOKEN_AND_IF, TOKEN_WORD, TOKEN_WORD, \
 	TOKEN_NONE}, \
 //6
 	{TOKEN_AND_IF, TOKEN_WORD, TOKEN_AND_IF, TOKEN_WORD, TOKEN_WORD, TOKEN_NONE}, \
@@ -96,9 +124,23 @@ int	tokens[TEST_NUM][100] = {\
 	TOKEN_WORD, TOKEN_PIPE, TOKEN_WORD, TOKEN_REDIR_IN_HERE, TOKEN_WORD, TOKEN_AND_IF,\
 	TOKEN_WORD, TOKEN_NONE},\
 //12
-	{TOKEN_NONE},
+	{TOKEN_NONE},\
 //13
-	{TOKEN_WORD, TOKEN_NONE}
+	{TOKEN_WORD, TOKEN_NONE},\
+//14
+	{TOKEN_WORD, TOKEN_PIPE, TOKEN_NONE},\
+//15
+	{TOKEN_WORD, TOKEN_WORD, TOKEN_NONE},\
+//16
+	{TOKEN_NONE},\
+//17
+	{TOKEN_NONE},\
+//18
+	{TOKEN_NONE},\
+//19
+	{TOKEN_NONE},\
+//20
+	{TOKEN_NONE}
 };
 
 int	main(void)
@@ -112,13 +154,15 @@ int	main(void)
 	{
 		printf("\n====================\n");
 		printf("%dth test\n", i);
+		printf("	::test case : [%s]\n", test_cases[i]);
 		res_token_cnt = count_tokens(test_cases[i]);
 		printf("	::token counts : %d\n", res_token_cnt);
 		assert(counts[i] == res_token_cnt);
 		res_tokens = lexer(test_cases[i]);
 		for (j = 0 ; j < counts[i] + 1 ; j++)
 		{
-			printf("		::token: %s\n", res_tokens[j].str);
+			if (j != counts[i])
+				printf("		::token: %s\n", res_tokens[j].str);
 			printf("		::token type : result(%d) answer(%d)\n", \
 			res_tokens[j].type, tokens[i][j]);
 			assert(res_tokens[j].type == (t_token_type)tokens[i][j]);

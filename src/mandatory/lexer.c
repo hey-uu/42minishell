@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 20:49:09 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/07 22:02:51 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@
 
 // token 리스트 처음부터 끝까지 출력하는 함수 (debug용)
 #include <stdio.h>
+
 void	print_token_list(t_token *list)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (list[i].type != TOKEN_NONE)
 	{
 		printf("%d: type %d %s\n", i, list[i].type, list[i].str);
@@ -71,9 +74,8 @@ int	operator_length(int token_type)
 }
 
 // 현재 가리키고 있는게 끝이 아니고, 
-// 따옴표가 아직 닫히지 않았거나 혹은 아직 워드일 경우 (blank가 아님 && 토큰 타입 워드
-
-// 따옴표 안 닫혔을 경우 syntax error 여기서 처리
+	// 따옴표가 아직 닫히지 않았거나 혹은
+	// (blank가 아님 && 토큰 타입 워드)인 경우 word의 부분인 것으로 판단
 int	word_length(char *input)
 {
 	int	len;
@@ -81,14 +83,19 @@ int	word_length(char *input)
 
 	len = 0;
 	quote = 0;
-	while ((input[len] && quote) || \
-	(!is_blank(input[len]) && get_token_type(&input[len]) == TOKEN_WORD))
+	while (input[len] && (quote || \
+	(!is_blank(input[len]) && get_token_type(&input[len]) == TOKEN_WORD)))
 	{
 		if (quote && input[len] == quote)
 			quote = 0;
-		if (input[len] == '\'' || input[len] == '\"')
+		else if (!quote && (input[len] == '\'' || input[len] == '\"'))
 			quote = input[len];
 		len++;
+	}
+	if (quote)
+	{
+		printf("syntax error: unclosed quote\n");
+		exit(1);
 	}
 	return (len);
 }
@@ -162,13 +169,14 @@ t_token	*lexer(char *input)
 	return (token_list);
 }
 
-#include <stdio.h>
-int main()
-{
-	// printf("%d\n", count_tokens("   ss"));
-	printf("%d\n", word_length("\"echo    \" "));
-	// printf("%d\n", count_tokens("   \"echo    \" aa&&    echo gg|cat&& echo   ss "));
-	// print_token_list(lexer("   \"<file < file   \" aa&&    echo gg|cat&& echo   ss "));
-	return 0;
-}
+// #include <stdio.h>
+// int main()
+// {
+// 	// printf("%d\n", count_tokens("   ss"));
+// 	// printf("%d\n", word_length("\'\"hi\"\' \"a&&dfa\""));
+// 	// printf("%d\n", count_tokens("   \"echo    \"aa&&    echo gg|cat&& echo   ss "));
+// 	// print_token_list(lexer("  \'\"hihihihihihi\"\'\' \"a&&dfa\""));
+// 	// print_token_list(lexer(" \" \' \" \""));
+// 	return 0;
+// }
 
