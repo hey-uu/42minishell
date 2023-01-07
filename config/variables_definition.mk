@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    variables_definition.mk                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyun <hyeyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/07 17:12:37 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/07 23:48:56 by hyeyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,3 +71,9 @@ else
 	INC = $(BON_INC)
 	INC_FLAG = $(BON_INC_FLAG)
 endif
+
+# tester
+TEST_FILE1 = lexer_test
+TEST_DIR = test
+TEST_HYE_DIR = $(TEST_DIR)/hyeyukim
+TEST_OBJ1 = $(addprefix $(OBJ_DIR)/$(TEST_HYE)/, $(addsuffix .o, $(TEST_FILE1)))

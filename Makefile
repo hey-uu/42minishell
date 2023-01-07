@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyun <hyeyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/07 19:51:01 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/07 23:56:59 by hyeyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,11 @@ re :
 	make fclean
 	make all
 
-lexer_test : obj/mandatory/lexer.o test/hyeyukim/lexer_test.o
+lexer_test : obj/mandatory/lexer.o $(OBJ_DIR)/$(TEST_HYE_DIR)/lexer_test.o
 	make -C $(LIBFT_DIR) adt
 	$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o lexer_test
+
+.PHONY : test_clean
+test_fclean :
+	$(RM) $(RMFLAGS) $(OBJ_DIR)/$(TEST_DIR)
+	$(RM) $(RMFLAGS) lexer_test

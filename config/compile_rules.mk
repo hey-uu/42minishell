@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    compile_rules.mk                                   :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyun <hyeyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/07 19:49:04 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/07 23:57:25 by hyeyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,5 +22,8 @@ $(OBJ_DIR)/$(BON_DIR)/%.o : $(SRC_DIR)/$(BON_DIR)/%.c $(BON_INC)
 	@mkdir -p $(OBJ_DIR)/$(BON_DIR)
 	@$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
-test/hyeyukim/lexer_test.o : test/hyeyukim/lexer_test.c test/hyeyukim/lexer_test.h
+$(OBJ_DIR)/$(TEST_HYE_DIR)/%.o : $(TEST_HYE_DIR)/%.c $(TEST_HYE_DIR)/test.h
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/test
+	@mkdir -p $(OBJ_DIR)/$(TEST_HYE_DIR)
 	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
