@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 21:57:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/08 02:22:16 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,7 @@ typedef struct s_goldsh
 }	t_goldsh;
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
+
 t_token	*lexer(char *input);
-
-//test
-int	count_tokens(char *input);
-
 
 #endif

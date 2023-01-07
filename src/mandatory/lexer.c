@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 22:02:51 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/08 02:32:29 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	print_token_list(t_token *list)
 	}
 }
 
-int	is_blank(char c)
+static int	is_blank(const char c)
 {
 	return (c == ' ' || c == '\t');
 }
 
-int	get_token_type(char *input)
+static int	get_token_type(const char *input)
 {
 	if (*input == '(')
 		return (TOKEN_LPAREN);
@@ -58,11 +58,13 @@ int	get_token_type(char *input)
 		return (TOKEN_REDIR_IN);
 	else if (*input == '>')
 		return (TOKEN_REDIR_OUT);
+	else if (*input == '\0')
+		return (TOKEN_NONE);
 	else
 		return (TOKEN_WORD);
 }
 
-int	operator_length(int token_type)
+static int	length_operator(const int token_type)
 {
 	if (token_type == TOKEN_AND_IF \
 		|| token_type == TOKEN_OR_IF \
@@ -73,10 +75,7 @@ int	operator_length(int token_type)
 		return (1);
 }
 
-// 현재 가리키고 있는게 끝이 아니고, 
-	// 따옴표가 아직 닫히지 않았거나 혹은
-	// (blank가 아님 && 토큰 타입 워드)인 경우 word의 부분인 것으로 판단
-int	word_length(char *input)
+static int	length_word(const char *input)
 {
 	int	len;
 	int	quote;
@@ -84,12 +83,12 @@ int	word_length(char *input)
 	len = 0;
 	quote = 0;
 	while (input[len] && (quote || \
-	(!is_blank(input[len]) && get_token_type(&input[len]) == TOKEN_WORD)))
+		(!is_blank(input[len]) && get_token_type(&input[len]) == TOKEN_WORD)))
 	{
-		if (quote && input[len] == quote)
-			quote = 0;
-		else if (!quote && (input[len] == '\'' || input[len] == '\"'))
+		if (!quote && (input[len] == '\'' || input[len] == '\"'))
 			quote = input[len];
+		else if (quote && input[len] == quote)
+			quote = 0;
 		len++;
 	}
 	if (quote)
@@ -100,55 +99,54 @@ int	word_length(char *input)
 	return (len);
 }
 
-int	count_tokens(char *input)
+static int	count_tokens(const char *input)
 {
 	int	cnt;
 	int	cur_token_type;
 
 	cnt = 0;
-	while (is_blank(*input))
-			input++;
 	while (*input)
 	{
-		cur_token_type = get_token_type(input);
-		if (cur_token_type == TOKEN_WORD)
-			input += word_length(input);
-		else
-			input += operator_length(cur_token_type);
 		while (is_blank(*input))
 			input++;
+		cur_token_type = get_token_type(input);
+		if (cur_token_type == TOKEN_NONE)
+			break ;
+		else if (cur_token_type == TOKEN_WORD)
+			input += length_word(input);
+		else
+			input += length_operator(cur_token_type);
 		cnt++;
 	}
 	return (cnt);
 }
 
-t_token	extract_word_token(char **input)
+static t_token	extract_word_token(char **input)
 {
-	t_token	token;
-	int		word_len;
+	t_token		token;
+	const int	word_len = length_word(*input);
 
-	word_len = word_length(*input);
-	token.str = ft_substr(*input, 0, word_len);
 	token.type = TOKEN_WORD;
+	token.str = ft_substr(*input, 0, word_len);
 	*input += word_len;
 	return (token);
 }
 
-t_token extract_operator_token(char **input, int token_type)
+static t_token extract_operator_token(char **input, const int token_type)
 {
 	t_token	token;
 
 	token.type = token_type;
 	token.str = NULL;
-	*input += operator_length(token_type);
+	*input += length_operator(token_type);
 	return (token);
 }
 
 t_token	*lexer(char *input)
 {
 	t_token	*token_list;
-	int		cur_token_type;
 	int		token_cnt;
+	int		cur_token_type;
 	int		i;
 
 	token_cnt = count_tokens(input);
@@ -173,10 +171,10 @@ t_token	*lexer(char *input)
 // int main()
 // {
 // 	// printf("%d\n", count_tokens("   ss"));
-// 	// printf("%d\n", word_length("\'\"hi\"\' \"a&&dfa\""));
+// 	// printf("%d\n", length_word("\'\"hi\"\' \"a&&dfa\""));
 // 	// printf("%d\n", count_tokens("   \"echo    \"aa&&    echo gg|cat&& echo   ss "));
-// 	// print_token_list(lexer("  \'\"hihihihihihi\"\'\' \"a&&dfa\""));
-// 	// print_token_list(lexer(" \" \' \" \""));
+// 	// print_token_list(lexer("   \"echo    \"aa&&    echo gg|cat&& echo   ss "));
+// 	print_token_list(lexer(" \" \' \'\" \""));
 // 	return 0;
 // }
 
