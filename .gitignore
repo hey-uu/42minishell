@@ -1,6 +1,7 @@
 # extra
 .DS_Store
 .vscode
+lexer_test
 
 # Prerequisites
 *.d
