@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    variables_definition.mk                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 08:35:23 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/06 11:09:16 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/07 18:43:48 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,9 @@ BONUS_FILE = ft_lstadd_back \
 			ft_lstsize \
 			ft_lstlast \
 			ft_lstmap
+
 ADT_FILE = int_vector
+
 # directory files
 OBJ_DIR = objcs
 LIBFT_DIR = libft_mandatory

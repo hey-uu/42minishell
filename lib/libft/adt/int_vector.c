@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   int_vector.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 09:33:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/06 11:03:51 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:41:02 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "array.h"
+#include "vector.h"
 #include "libft.h"
 #include <unistd.h>
 
@@ -22,7 +22,7 @@ t_ivector	ivec_create(int capacity)
 	new = ft_malloc(sizeof(struct s_ivector));
 	new->used_size = 0;
 	new->capacity = capacity;
-	value->array = ft_malloc(sizeof(int) * new->capacity);
+	new->array = ft_malloc(sizeof(int) * new->capacity);
 	return (new);
 }
 
@@ -39,7 +39,7 @@ static void	ivec_double_array_size(t_ivector vector)
 
 	new_capacity = vector->capacity * 2;
 	new_array = ft_malloc(sizeof(int) * new_capacity);
-	ft_memcpy(new_array, vector->array, sizeof(int) * vetor->used_size);
+	ft_memcpy(new_array, vector->array, sizeof(int) * vector->used_size);
 	free(vector->array);
 	vector->capacity = new_capacity;
 	vector->array = new_array;
@@ -93,7 +93,7 @@ void	ivec_put(t_ivector vector, int idx, int data)
 	vector->array[idx] = data;
 }
 
-void	ivec_get(t_ivector vector, int idx)
+int	ivec_get(t_ivector vector, int idx)
 {
 	if (idx >= vector->used_size)
 	{

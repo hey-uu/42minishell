@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 20:49:09 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/07 19:08:47 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,70 @@ void	print_token_list(t_token *list)
 	}
 }
 
-int	is_blank(char c)
+// 현재 포인터 위치의 문자가 blank이면 str 포인터를 한칸 이동시킴
+// 반환값 : blank가 있으면 1, blank가 없으면 0
+int	skip_blank(char **str)
+{
+	const int	c = **str;
+
+	if (c == ' ' || c == '\t' || c == '\n')
+		*str += 1;
+	else
+		return (0);
+	return (1);
+}
+
+// 현재 포인터 위치의 문자가 operator이면 operator 길이만큼 이동시킴
+// 반환값 : operator가 있으면 1, 없으면 0
+int	skip_operator(char **str)
+{
+	const char	first = **str;
+	const char	second = *(*str + 1);
+
+	if ((first == '&' && second == '&') || (first == '|' && second == '|') ||\
+		(first == '<' && second == '<') || (first == '>' && second == '>'))
+		*str += 2;
+	else if (first == '|' || first == '<' || first == '>' || \
+			first == '(' || first == ')')
+		*str += 1;
+	else
+		return (0);
+	return (1);
+}
+
+int	count_tokens(char *str)
+{
+	int	cnt;
+	int	flag;
+
+	cnt = 0;
+	while (*str)
+	{
+		flag = 0;
+		while (*str && skip_blank(&str))
+			;
+		if (*str && skip_operator(&str))
+			cnt++;
+		while (*str && !skip_blank(&str) && !skip_operator(&str))
+		{
+			str += 1;
+			if (!flag)
+				cnt++;
+			flag = 1;
+		}
+	}
+	return (cnt);
+}
+
+//   echo aa&&    echo gg|cat&& echo   ss
+// -> echo, aa, &&, echo, gg, |, cat, &&, echo, ss
+
+// 우리의 쉘에서 & 하나만 있는 경우는 다루지 않음.
+	// 즉 echo aa&| echo gg|cat&& echo ss인 경우
+	// -> echo, aa&, |, echo, gg, |, cat, &&, echo, ss
+
+
+int is_blank(char c)
 {
 	return (c == ' ' || c == '\t');
 }
@@ -59,68 +122,15 @@ int	get_token_type(char *input)
 		return (TOKEN_WORD);
 }
 
-int	operator_length(int token_type)
-{
-	if (token_type == TOKEN_AND_IF \
-		|| token_type == TOKEN_OR_IF \
-		|| token_type == TOKEN_REDIR_IN_HERE \
-		|| token_type == TOKEN_REDIR_OUT_APP)
-		return (2);
-	else
-		return (1);
-}
-
-// 현재 가리키고 있는게 끝이 아니고, 
-// 따옴표가 아직 닫히지 않았거나 혹은 아직 워드일 경우 (blank가 아님 && 토큰 타입 워드
-
-// 따옴표 안 닫혔을 경우 syntax error 여기서 처리
-int	word_length(char *input)
-{
-	int	len;
-	int	quote;
-
-	len = 0;
-	quote = 0;
-	while ((input[len] && quote) || \
-	(!is_blank(input[len]) && get_token_type(&input[len]) == TOKEN_WORD))
-	{
-		if (quote && input[len] == quote)
-			quote = 0;
-		if (input[len] == '\'' || input[len] == '\"')
-			quote = input[len];
-		len++;
-	}
-	return (len);
-}
-
-int	count_tokens(char *input)
-{
-	int	cnt;
-	int	cur_token_type;
-
-	cnt = 0;
-	while (is_blank(*input))
-			input++;
-	while (*input)
-	{
-		cur_token_type = get_token_type(input);
-		if (cur_token_type == TOKEN_WORD)
-			input += word_length(input);
-		else
-			input += operator_length(cur_token_type);
-		while (is_blank(*input))
-			input++;
-		cnt++;
-	}
-	return (cnt);
-}
-
 t_token	extract_word_token(char **input)
 {
 	t_token	token;
 	int		word_len;
 
-	word_len = word_length(*input);
+	word_len = 0;
+	while (!is_blank((*input)[word_len]) && \
+		get_token_type(&(*input)[word_len]) == TOKEN_WORD)
+		word_len++;
 	token.str = ft_substr(*input, 0, word_len);
 	token.type = TOKEN_WORD;
 	*input += word_len;
@@ -130,18 +140,25 @@ t_token	extract_word_token(char **input)
 t_token extract_operator_token(char **input, int token_type)
 {
 	t_token	token;
+	int		op_len;
 
+	if (token_type == TOKEN_AND_IF \
+		|| token_type == TOKEN_OR_IF \
+		|| token_type == TOKEN_REDIR_IN_HERE \
+		|| token_type == TOKEN_REDIR_OUT_APP)
+		op_len = 2;
+	else
+		op_len = 1;
 	token.type = token_type;
-	token.str = NULL;
-	*input += operator_length(token_type);
+	*input += op_len;
 	return (token);
 }
 
 t_token	*lexer(char *input)
 {
 	t_token	*token_list;
-	int		cur_token_type;
 	int		token_cnt;
+	int		cur_token_type;
 	int		i;
 
 	token_cnt = count_tokens(input);
@@ -152,7 +169,7 @@ t_token	*lexer(char *input)
 		while (is_blank(*input))
 			input++;
 		cur_token_type = get_token_type(input);
-		if (cur_token_type == TOKEN_WORD)
+		if (get_token_type(input) == TOKEN_WORD)
 			token_list[i] = extract_word_token(&input);
 		else
 			token_list[i] = extract_operator_token(&input, cur_token_type);
@@ -165,10 +182,8 @@ t_token	*lexer(char *input)
 #include <stdio.h>
 int main()
 {
-	// printf("%d\n", count_tokens("   ss"));
-	printf("%d\n", word_length("\"echo    \" "));
-	// printf("%d\n", count_tokens("   \"echo    \" aa&&    echo gg|cat&& echo   ss "));
-	// print_token_list(lexer("   \"<file < file   \" aa&&    echo gg|cat&& echo   ss "));
+	printf("%d\n", count_tokens("   echo aa&&    echo gg|cat&& echo   ss"));
+	// print_token_list(lexer("   echo aa&&    echo gg|cat&& echo   ss"));
 	return 0;
 }
 

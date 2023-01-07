@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 11:46:51 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/06 09:43:22 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/07 18:35:31 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ $(NAME) : $(OBJ)
 include config/compile_rules.mk
 
 # options for making the libft library
-.PHONY : bonus printf gnl printf_gnl
+.PHONY : bonus printf gnl printf_gnl adt
 bonus :
 	# libft with linked list utils
 	make WITH_BONUS=1 all

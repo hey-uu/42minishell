@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/06 17:10:19 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/07 20:33:25 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ t_goldsh	g_goldsh;
 
 // 	argc = 0;
 // 	argv = 0;
+// 	envp = 0;
 // 	print_welcome();
+// 	// signal 설정
 // 	while (1)
 // 	{
 // 		lists_of_commands = readline(PS1_DOLLAR);
-// 		update_history();
-// 		wait_signal();
-// 		lexer(lists_of_commands, envp);
-// 		parser();
-// 		executor();
-// 		free(cmd_line);
+// 		// update_history();
+// 		// lexer(lists_of_commands, envp);
+// 		// parser();
+// 		// executor();
+// 		free(lists_of_commands);
 // 	}
 // }
