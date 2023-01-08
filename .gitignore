@@ -2,6 +2,7 @@
 .DS_Store
 .vscode
 lexer_test
+minishell
 
 # Prerequisites
 *.d
