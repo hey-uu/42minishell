@@ -6,13 +6,14 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 07:09:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 08:33:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 08:53:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
 
+// gcc -Wall -Wextra -Werror parser_test.c ../../src/mandatory/parser.c ../../src/mandatory/lexer.c -I../../inc/mandatory -I../../lib/libft/includes/. -lft -L../../lib/libft -fsanitize=address -g3
 void	print_indent(int depth)
 {
 	int	i;
@@ -21,12 +22,10 @@ void	print_indent(int depth)
 		printf(" ");
 }
 
-void	show_simple_command(t_simple_command *simple, int depth)
+void	print_arguments(t_simple_command *simple, int depth)
 {
 	int	i;
 
-	print_indent(depth);
-	printf("command name : %s\n", simple->cmd_name);
 	print_indent(depth);
 	printf("arguments:\n");
 	print_indent(depth);
@@ -39,6 +38,13 @@ void	show_simple_command(t_simple_command *simple, int depth)
 	}
 	print_indent(depth);
 	printf("]\n");
+}
+
+void	print_redirection_in(t_simple_command *simple, int depth)
+{
+	int			type;
+	int			i;
+
 	print_indent(depth);
 	printf("redirection in : \n");
 	print_indent(depth);
@@ -47,12 +53,23 @@ void	show_simple_command(t_simple_command *simple, int depth)
 	while (++i < simple->redir_in->used_size)
 	{
 		print_indent(depth + 1);
-		printf("type : %d\n", simple->redir_in->iarr[(simple->redir_in->front + i) % simple->redir_in->size]);
+		type = simple->redir_in->iarr[(simple->redir_in->front + i) % simple->redir_in->size];
+		if (type == TOKEN_REDIR_IN)
+			printf("type : <\n");
+		else
+			printf("type : <<\n");
 		print_indent(depth + 1);
 		printf("file name : %s\n", simple->redir_in->strarr[(simple->redir_in->front + i) % simple->redir_in->size]);	
 	}
 	print_indent(depth);
 	printf("]\n");
+}
+
+void	print_redirection_out(t_simple_command *simple, int depth)
+{
+	int	type;
+	int	i;
+
 	print_indent(depth);
 	printf("redirection out : \n");
 	print_indent(depth);
@@ -61,12 +78,25 @@ void	show_simple_command(t_simple_command *simple, int depth)
 	while (++i < simple->redir_out->used_size)
 	{
 		print_indent(depth + 1);
-		printf("type : %d\n", simple->redir_out->iarr[(simple->redir_out->front + i) % simple->redir_out->size]);
+		type = simple->redir_out->iarr[(simple->redir_out->front + i) % simple->redir_out->size];
+		if (type == TOKEN_REDIR_OUT)
+			printf("type : >\n");
+		else
+			printf("type : >>\n");
 		print_indent(depth + 1);
 		printf("file name : %s\n", simple->redir_out->strarr[(simple->redir_out->front + i) % simple->redir_out->size]);	
 	}
 	print_indent(depth);
 	printf("]\n");
+}
+
+void	show_simple_command(t_simple_command *simple, int depth)
+{
+	print_indent(depth);
+	printf("command name : %s\n", simple->cmd_name);
+	print_arguments(simple, depth);
+	print_redirection_in(simple, depth);
+	print_redirection_out(simple, depth);
 }
 
 void	show_subshell(t_subshell *subshell, int depth)
@@ -110,5 +140,4 @@ int	main(void)
 
 	show_tree(tree, 0);
 	destroy_parse_tree(tree);
-
 }
