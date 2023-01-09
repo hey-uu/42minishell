@@ -1,5 +1,5 @@
 # minishell
-- "yonazang & meyunkim's 금쪽이(Gold Baby Shell)"
+- "yonazang & meyun's 금쪽이(Gold Baby Shell)"
 - GNU의 Bash를 '과제가 요구하는 만큼만' 최대한 비슷하게 구현합니다. (Bash와 완벽하게 같지 않습니다)
 
 ## Official Documents
