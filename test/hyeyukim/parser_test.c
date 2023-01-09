@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 07:09:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 09:19:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:55:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	print_arguments(t_simple_command *simple, int depth)
 	int	i;
 
 	print_indent(depth);
-	printf("arguments:\n");
-	print_indent(depth);
-	printf("[\n");
+	printf("arguments: [\n");
+	// print_indent(depth);
+	// printf("[\n");
 	i = -1;
 	while (++i < simple->argv->used_size)
 	{
@@ -48,9 +48,9 @@ void	print_redirection_in(t_simple_command *simple, int depth)
 	int			i;
 
 	print_indent(depth);
-	printf("redirection in : \n");
-	print_indent(depth);
-	printf("[\n");
+	printf("redirection in : [\n");
+	// print_indent(depth);
+	// printf("[\n");
 	i = -1;
 	while (++i < simple->redir_in->used_size)
 	{
@@ -73,9 +73,9 @@ void	print_redirection_out(t_simple_command *simple, int depth)
 	int	i;
 
 	print_indent(depth);
-	printf("redirection out : \n");
-	print_indent(depth);
-	printf("[\n");
+	printf("redirection out : [\n");
+	// print_indent(depth);
+	// printf("[\n");
 	i = -1;
 	while (++i < simple->redir_out->used_size)
 	{
@@ -109,7 +109,8 @@ void	show_subshell(t_subshell *subshell, int depth)
 
 void	print_type(int type)
 {
-	static char	*str_type[] = {"none", "simple_command", "subshell", "pipeline", "&&", "||"};
+	static char	*str_type[] = {"none", "simple_command", "subshell", \
+							"pipeline", "&&", "||"};
 
 	printf("type : %s\n", str_type[type]);
 }
@@ -142,9 +143,10 @@ int	main(void)
 
 	show_tree(tree, 0);
 	destroy_parse_tree(tree);
+	tree = 0;
 	while (1)
 	{
 		system("leaks a.out");
-		sleep(1);
+		sleep(5);
 	}
 }
