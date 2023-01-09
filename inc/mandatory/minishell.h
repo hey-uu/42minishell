@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 08:02:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 09:23:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-// # include "vector.h"
 # include "queue.h"
 # include "libft.h"
 

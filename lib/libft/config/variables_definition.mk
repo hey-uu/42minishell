@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 08:35:23 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/09 06:42:34 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/09 09:23:15 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,8 +77,7 @@ BONUS_FILE = ft_lstadd_back \
 			ft_lstlast \
 			ft_lstmap
 
-ADT_FILE = int_vector \
-			queue_generate \
+ADT_FILE =	queue_generate \
 			queue_pop \
 			queue_push \
 			queue_show
