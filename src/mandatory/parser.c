@@ -6,15 +6,21 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 08:36:08 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:09:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_tree *create_tree_node(void)
+// 파싱하면서 heredoc 처리 (확정은 아니고 고려중)
+// - redir_in queue에 delimiter를 저장하지 않고
+// - 생성한 임시 파일의 이름을 저장할 것
+
+// malloc 실패한 경우 처리에 대해 고민해보자
+
+t_tree	*create_tree_node(void)
 {
-	t_tree *new;
+	t_tree	*new;
 
 	new = ft_malloc(sizeof(t_tree));
 	new->type = NODE_NONE;
@@ -79,7 +85,6 @@ void	push_arguments(t_simple_command *simple, t_token *token, int offset)
 
 	queue_push_str(simple->argv, (char *)str);
 }
-
 
 int	parse_prefix(t_simple_command *simple, t_token *token, int offset)
 {
@@ -243,10 +248,10 @@ void	destroy_subshell(t_subshell *subshell)
 
 void	destroy_parse_tree(t_tree *node)
 {
-	if (node->first_child)
-		destroy_parse_tree(node->first_child);
-	if (node->next_sibling)
-		destroy_parse_tree(node->next_sibling);
+	if (!node)
+		return ;
+	destroy_parse_tree(node->first_child);
+	destroy_parse_tree(node->next_sibling);
 	if (node->type == NODE_SIMPLE_COMMAND)
 		destroy_simple_command(node->content.simple);
 	if (node->type == NODE_SUBSHELL)

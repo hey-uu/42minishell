@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 09:23:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:27:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_simple_command
 {
 	char	*cmd_name;
 	t_queue	*argv;
+	// heredoc 처리는 파싱하면서 그때 그때 처리하는 건 어떠신지...?
 	t_queue	*redir_in;
 	t_queue	*redir_out;
 }	t_simple_command;
@@ -105,7 +106,6 @@ typedef struct s_tree
 enum e_syntax_error
 {
 	NONE = 0,
-	
 };
 typedef enum e_syntax_error t_stx_err;
 
