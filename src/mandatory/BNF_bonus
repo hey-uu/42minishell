@@ -6,7 +6,7 @@
 <command>			: <simple_command>
 					| <subshell>
 <subshell> 			: LPAREN <list> RPAREN
-					| LPAREN <list> RPAREN <redirec_list>
+					| LPAREN <list> RPAREN <redirect_list>
 <simple_command>	: <cmd_prefix> <cmd_name> <cmd_suffix>
 					| <cmd_prefix> <cmd_name>
 					| <cmd_prefix>
