@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    compile_rules.mk                                   :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 08:37:47 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/07 18:39:52 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/09 11:39:46 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(OBJ_DIR)/$(GNL_DIR)/%.o : $(GNL_DIR)/%.c $(INC_DIR)/get_next_line.h
 	@mkdir -p $(OBJ_DIR)/$(GNL_DIR)
 	@$(CC) -c $(CFLAGS) $< -I$(INC_DIR) -o $@
 
-$(OBJ_DIR)/$(ADT_DIR)/%.o : $(ADT_DIR)/%.c $(INC_DIR)/vector.h
+$(OBJ_DIR)/$(ADT_DIR)/%.o : $(ADT_DIR)/%.c $(INC_DIR)/queue.h
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(ADT_DIR)
 	@$(CC) -c $(CFLAGS) $< -I$(INC_DIR) -o $@

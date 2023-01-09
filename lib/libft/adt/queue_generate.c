@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:16:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 07:07:13 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:51:26 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	destroy_queue(t_queue *queue)
 {
 	int	i;
 
-	if (queue->type == QUEUE_STR_ONLY || queue->type == QUEUE_INTSTR)
+	if (queue->strarr)
 	{
 		i = -1;
 		while (++i < queue->used_size)
 			free(queue->strarr[i]);
 		free(queue->strarr);
 	}
-	if (queue->type == QUEUE_INT_ONLY || queue->type == QUEUE_INTSTR)
+	if (queue->iarr)
 		free(queue->iarr);
 	free(queue);
 }
@@ -63,7 +63,6 @@ void	queue_double_size_iarr(t_queue *queue)
 		while (++i < queue->used_size)
 			new[i] = queue->iarr[(queue->front + i) % queue->size];
 	}
-
 	free(queue->iarr);
 	queue->iarr = new;
 }
@@ -86,9 +85,9 @@ void	queue_double_size_strarr(t_queue *queue)
 
 int	queue_double_size(t_queue *queue)
 {
-	if (queue->type == QUEUE_INT_ONLY || QUEUE_INTSTR)
+	if (queue->type == QUEUE_INT_ONLY || queue->type == QUEUE_INTSTR)
 		queue_double_size_iarr(queue);
-	if (queue->type == QUEUE_STR_ONLY || QUEUE_INTSTR)
+	if (queue->type == QUEUE_STR_ONLY || queue->type == QUEUE_INTSTR)
 		queue_double_size_strarr(queue);
 	queue->front = 0;
 	queue->rear = queue->used_size;
