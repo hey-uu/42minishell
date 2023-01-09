@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 07:09:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 11:55:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:18:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,96 +15,95 @@
 #include <stdlib.h>
 
 // make -C ../../lib/libft adt
-// gcc -Wall -Wextra -Werror parser_test.c ../../src/mandatory/parser.c ../../src/mandatory/lexer.c -I../../inc/mandatory -I../../lib/libft/includes/. -lft -L../../lib/libft -fsanitize=address -g3
+// gcc -Wall -Wextra -Werror parser_test.c ../../src/mandatory/parser.c ../../src/mandatory/lexer.c -I../../inc/mandatory -I../../lib/libft/includes/. -lft -L../../lib/libft
+
 void	print_indent(int depth)
 {
 	int	i;
+
 	i = -1;
 	while (++i < depth * 3)
 		printf(" ");
 }
 
-void	print_arguments(t_simple_command *simple, int depth)
+void	print_arguments(t_queue *argv, int depth)
 {
 	int	i;
 
 	print_indent(depth);
 	printf("arguments: [\n");
-	// print_indent(depth);
-	// printf("[\n");
 	i = -1;
-	while (++i < simple->argv->used_size)
+	while (++i < argv->used_size)
 	{
 		print_indent(depth + 1);
-		printf("%s\n", simple->argv->strarr[(simple->argv->front + i) % simple->argv->size]);
+		printf("%s\n", argv->strarr[(argv->front + i) % argv->size]);
 	}
 	print_indent(depth);
 	printf("]\n");
 }
 
-void	print_redirection_in(t_simple_command *simple, int depth)
+void	print_redirection_in(t_queue *redir_in, int depth)
 {
 	int			type;
 	int			i;
 
 	print_indent(depth);
 	printf("redirection in : [\n");
-	// print_indent(depth);
-	// printf("[\n");
 	i = -1;
-	while (++i < simple->redir_in->used_size)
+	while (++i < redir_in->used_size)
 	{
 		print_indent(depth + 1);
-		type = simple->redir_in->iarr[(simple->redir_in->front + i) % simple->redir_in->size];
+		type = redir_in->iarr[(redir_in->front + i) % redir_in->size];
 		if (type == TOKEN_REDIR_IN)
 			printf("type : <\n");
 		else
 			printf("type : <<\n");
 		print_indent(depth + 1);
-		printf("file name : %s\n", simple->redir_in->strarr[(simple->redir_in->front + i) % simple->redir_in->size]);	
+		printf("file name : %s\n", \
+				redir_in->strarr[(redir_in->front + i) % redir_in->size]);
 	}
 	print_indent(depth);
 	printf("]\n");
 }
 
-void	print_redirection_out(t_simple_command *simple, int depth)
+void	print_redirection_out(t_queue *redir_out, int depth)
 {
 	int	type;
 	int	i;
 
 	print_indent(depth);
 	printf("redirection out : [\n");
-	// print_indent(depth);
-	// printf("[\n");
 	i = -1;
-	while (++i < simple->redir_out->used_size)
+	while (++i < redir_out->used_size)
 	{
 		print_indent(depth + 1);
-		type = simple->redir_out->iarr[(simple->redir_out->front + i) % simple->redir_out->size];
+		type = redir_out->iarr[(redir_out->front + i) % redir_out->size];
 		if (type == TOKEN_REDIR_OUT)
 			printf("type : >\n");
 		else
 			printf("type : >>\n");
 		print_indent(depth + 1);
-		printf("file name : %s\n", simple->redir_out->strarr[(simple->redir_out->front + i) % simple->redir_out->size]);	
+		printf("file name : %s\n", \
+				redir_out->strarr[(redir_out->front + i) % redir_out->size]);
 	}
 	print_indent(depth);
 	printf("]\n");
 }
 
-void	show_simple_command(t_simple_command *simple, int depth)
+void	show_simple_command(t_execute_unit *unit, int depth)
 {
 	print_indent(depth);
-	printf("command name : %s\n", simple->cmd_name);
-	print_arguments(simple, depth);
-	print_redirection_in(simple, depth);
-	print_redirection_out(simple, depth);
+	printf("command name : %s\n", unit->simple_cmd->name);
+	print_arguments(unit->simple_cmd->argv, depth);
+	print_redirection_in(unit->io_list->redir_in, depth);
+	print_redirection_out(unit->io_list->redir_out, depth);
 }
 
-void	show_subshell(t_subshell *subshell, int depth)
+void	show_subshell(t_node *tree, int depth)
 {
 	print_indent(depth);
-	printf("%d\n", subshell->check);
+	print_redirection_in(tree->exe_unit.io_list->redir_in, depth);
+	print_redirection_out(tree->exe_unit.io_list->redir_out, depth);
 }
 
 void	print_type(int type)
@@ -115,19 +114,19 @@ void	print_type(int type)
 	printf("type : %s\n", str_type[type]);
 }
 
-void	show_tree(t_tree *tree, int depth)
+void	show_tree(t_node *tree, int depth)
 {
 	if (!tree)
-		return;
+		return ;
 	print_indent(depth);
 	if (depth)
 		printf("{\n");
 	print_indent(depth + 1);
 	print_type(tree->type);
-	if (tree->type == NODE_SIMPLE_COMMAND)
-		show_simple_command(tree->content.simple, depth + 1);
+	if (tree->type == NODE_SIMPLE_CMD)
+		show_simple_command(&tree->exe_unit, depth + 1);
 	if (tree->type == NODE_SUBSHELL)
-		show_subshell(tree->content.subshell, depth + 1);
+		show_subshell(tree, depth + 1);
 	if (tree->first_child)
 		show_tree(tree->first_child, depth + 1);
 	print_indent(depth);
@@ -136,11 +135,15 @@ void	show_tree(t_tree *tree, int depth)
 		show_tree(tree->next_sibling, depth);
 }
 
+#define TESTSTR "> suffix a -l < hi << hello && (b) | c && d"
+
 int	main(void)
 {
-	t_token	*arr = lexer("> suffix a -l < hi << hello && b | c && d");
-	t_tree	*tree = parser(arr);
+	t_token	*arr;
+	t_node	*tree;
 
+	arr = lexer(TESTSTR);
+	tree = parser(arr);
 	show_tree(tree, 0);
 	destroy_parse_tree(tree);
 	tree = 0;
