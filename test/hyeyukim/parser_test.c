@@ -6,13 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 07:09:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 08:53:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 09:19:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
+#include <stdlib.h>
 
+// make -C ../../lib/libft adt
 // gcc -Wall -Wextra -Werror parser_test.c ../../src/mandatory/parser.c ../../src/mandatory/lexer.c -I../../inc/mandatory -I../../lib/libft/includes/. -lft -L../../lib/libft -fsanitize=address -g3
 void	print_indent(int depth)
 {
@@ -140,4 +142,9 @@ int	main(void)
 
 	show_tree(tree, 0);
 	destroy_parse_tree(tree);
+	while (1)
+	{
+		system("leaks a.out");
+		sleep(1);
+	}
 }
