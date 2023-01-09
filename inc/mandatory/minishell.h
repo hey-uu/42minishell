@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 13:27:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:49:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,57 +64,61 @@ typedef struct s_token
 typedef enum e_node_type
 {
 	NODE_NONE = 0,
-	NODE_SIMPLE_COMMAND = 1,
+	NODE_SIMPLE_Cmd = 1,
 	NODE_SUBSHELL = 2,
 	NODE_PIPELINE = 3,
 	NODE_AND_IF = 4,
 	NODE_OR_IF = 5
+	NODE_REDIRECTION_LIST = 6
 }	t_node_type;
 
 /**
  * @brief Parsor
  * 
  */
-typedef struct s_simple_command
+
+// name : 실행하고자 하는 command의 이름(절대 경로 포함 필수 x)
+// argv : command의 이름과 command의 인자들
+typedef struct s_simple_cmd
 {
-	char	*cmd_name;
+	char	*name;
 	t_queue	*argv;
 	// heredoc 처리는 파싱하면서 그때 그때 처리하는 건 어떠신지...?
+}	t_simple_cmd;
+
+typedef struct s_redir_list
+{
 	t_queue	*redir_in;
 	t_queue	*redir_out;
-}	t_simple_command;
+}	t_redir_list;
 
-typedef struct s_subshell
+typedef struct s_execute_unit
 {
-	int	check;
-}	t_subshell;
+	t_simple_cmd	*simple_cmd;
+	t_redir_list	*io_list;
+}	t_execute_unit;
 
-typedef union u_command
+typedef struct s_node
 {
-	t_simple_command	*simple;
-	t_subshell			*subshell;
-}	t_command;
+	t_node_type		type;
+	t_execute_unit	exe_unit;
+	struct s_node	*first_child;
+	struct s_node	*next_sibling;
+}	t_node;
 
-typedef struct s_tree
-{
-	t_node_type			type;
-	t_command			content;
-	struct s_tree		*first_child;
-	struct s_tree		*next_sibling;
-}	t_tree;
+typedef t_node	t_subshell;
 
 enum e_syntax_error
 {
 	NONE = 0,
 };
-typedef enum e_syntax_error t_stx_err;
 
 typedef struct s_goldsh
 {
-	char		**envp;
-	t_token		*token;
-	t_tree		*tree;
-	t_stx_err	syntax_error;
+	char	**envp;
+	t_token	*token;
+	t_tree	*tree;
+	int		syntax_error;
 }	t_goldsh;
 
 t_goldsh	g_goldsh;
