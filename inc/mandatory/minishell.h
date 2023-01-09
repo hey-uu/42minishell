@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 14:49:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:02:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ typedef struct s_token
 typedef enum e_node_type
 {
 	NODE_NONE = 0,
-	NODE_SIMPLE_Cmd = 1,
+	NODE_SIMPLE_CMD = 1,
 	NODE_SUBSHELL = 2,
 	NODE_PIPELINE = 3,
 	NODE_AND_IF = 4,
-	NODE_OR_IF = 5
-	NODE_REDIRECTION_LIST = 6
+	NODE_OR_IF = 5,
+	NODE_REDIR_LIST = 6
 }	t_node_type;
 
 /**
@@ -106,7 +106,7 @@ typedef struct s_node
 	struct s_node	*next_sibling;
 }	t_node;
 
-typedef t_node	t_subshell;
+// typedef t_node	t_subshell;
 
 enum e_syntax_error
 {
@@ -117,7 +117,7 @@ typedef struct s_goldsh
 {
 	char	**envp;
 	t_token	*token;
-	t_tree	*tree;
+	t_node	*node;
 	int		syntax_error;
 }	t_goldsh;
 
@@ -126,7 +126,8 @@ t_goldsh	g_goldsh;
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 t_token	*lexer(char *input);
-t_tree	*parser(t_token *tokens);
-void	destroy_parse_tree(t_tree *node);
+t_node	*parser(t_token *tokens);
+void	destroy_parse_tree(t_node *node);
+int		parse_list(t_node **root, t_token *tokens, int offset);
 
 #endif
