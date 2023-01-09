@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    variables_definition.mk                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyun <hyeyun@student.42.fr>              +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/07 23:48:56 by hyeyun           ###   ########.fr        #
+#    Updated: 2023/01/09 17:58:23 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,8 @@ else
 endif
 
 # tester
-TEST_FILE1 = lexer_test
+TEST_FILE1 =	lexer_test \
+				parser_test
 TEST_DIR = test
 TEST_HYE_DIR = $(TEST_DIR)/hyeyukim
 TEST_OBJ1 = $(addprefix $(OBJ_DIR)/$(TEST_HYE)/, $(addsuffix .o, $(TEST_FILE1)))

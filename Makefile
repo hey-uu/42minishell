@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/08 01:11:05 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/09 17:58:55 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,12 @@ lexer_test : obj/mandatory/lexer.o $(OBJ_DIR)/$(TEST_HYE_DIR)/lexer_test.o
 	make -C $(LIBFT_DIR) adt
 	$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o lexer_test
 
+parser_test : obj/mandatory/lexer.o obj/mandatory/parser.o $(OBJ_DIR)/$(TEST_HYE_DIR)/parser_test.o
+	make -C $(LIBFT_DIR) adt
+	$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o parser_test
+
 .PHONY : test_fclean
 test_fclean :
 	$(RM) $(RMFLAGS) $(OBJ_DIR)/$(TEST_DIR)
 	$(RM) $(RMFLAGS) lexer_test
+	$(RM) $(RMFLAGS) parser_test
