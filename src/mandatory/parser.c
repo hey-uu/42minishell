@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 16:49:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:14:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ t_redir_list	*create_redirect_list(void)
 // destroy : free를 통해서 동적으로 할당된 메모리를 해제하는 함수
 void	destroy_simple_command(t_simple_cmd *simple)
 {
-	if (simple->name)
-		free(simple->name);
 	destroy_queue(simple->argv);
+	free(simple);
 }
 
 void	destroy_redirect_list(t_redir_list *io_list)
 {
 	destroy_queue(io_list->redir_in);
 	destroy_queue(io_list->redir_out);
+	free(io_list);
 }
 
 void	destroy_parse_tree(t_node *parent)
@@ -74,7 +74,7 @@ void	destroy_parse_tree(t_node *parent)
 	destroy_parse_tree(parent->next_sibling);
 	if (parent->type == NODE_SIMPLE_CMD)
 	{
-		destroy_simple_comand(parent->exe_unit.simple_cmd);
+		destroy_simple_command(parent->exe_unit.simple_cmd);
 		destroy_redirect_list(parent->exe_unit.io_list);
 	}
 	if (parent->type == NODE_SUBSHELL)
