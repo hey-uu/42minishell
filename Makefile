@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/09 18:10:23 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/10 14:30:08 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-include config/variables_definition.mk
+include config/definition.mk
 
 .PHONY : all
 all : $(NAME)
@@ -25,7 +25,7 @@ $(NAME) : $(INCS) $(OBJ)
 bonus :
 	make WITH_BONUS=1 all
 
-include config/compile_rules.mk
+include config/rules.mk
 
 # basic rules
 .PHONY : clean fclean re
