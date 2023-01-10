@@ -6,11 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:04:18 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 13:48:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:45:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_internal.h"
+#include <stdlib.h>
 
 char	*ft_strnstr(const char *haydequeue, const char *needle, size_t len)
 {

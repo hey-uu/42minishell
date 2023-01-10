@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:04:09 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 13:48:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:45:22 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft_internal.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))

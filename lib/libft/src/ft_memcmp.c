@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:02:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 13:48:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:34:29 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
+#include <sys/types.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:02:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 13:48:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:41:10 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
+#include <stdlib.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

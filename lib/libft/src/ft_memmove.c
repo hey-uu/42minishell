@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:02:46 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 13:48:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 20:41:22 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_internal.h"
+#include <sys/types.h>
 
 void	*ft_memmove(void *dst, const void *str, size_t len)
 {
