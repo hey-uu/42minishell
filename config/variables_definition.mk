@@ -6,12 +6,13 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/09 17:58:23 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/09 18:08:55 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # commands and flags
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+# CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = crs
 RM = rm
@@ -51,7 +52,8 @@ BON_INC_FLAG = -I./$(BON_INC_DIR) -I./$(LIBFT_INC_DIR)
 # file names
 MAN_FILE =	main \
 			prompt \
-			lexer
+			lexer \
+			parser
 BON_FILE =	
 
 

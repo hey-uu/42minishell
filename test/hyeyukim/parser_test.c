@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 07:09:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 17:18:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:20:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	show_simple_command(t_execute_unit *unit, int depth)
 
 void	show_subshell(t_node *tree, int depth)
 {
-	print_indent(depth);
+	// print_indent(depth);
 	print_redirection_in(tree->exe_unit.io_list->redir_in, depth);
 	print_redirection_out(tree->exe_unit.io_list->redir_out, depth);
 }
@@ -135,21 +135,22 @@ void	show_tree(t_node *tree, int depth)
 		show_tree(tree->next_sibling, depth);
 }
 
-#define TESTSTR "> suffix a -l < hi << hello && (b) | c && d"
+#define TEST_STR "> suffix a -l < hi << hello || (b) | c && d"
 
 int	main(void)
 {
 	t_token	*arr;
 	t_node	*tree;
 
-	arr = lexer(TESTSTR);
+	printf("test case: [%s]\n", TEST_STR);
+	arr = lexer(TEST_STR);
 	tree = parser(arr);
 	show_tree(tree, 0);
 	destroy_parse_tree(tree);
 	tree = 0;
 	while (1)
 	{
-		system("leaks a.out");
+		system("leaks parser_test");
 		sleep(5);
 	}
 }
