@@ -1,42 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_internal.h                                   :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:04:52 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 14:34:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:35:51 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_INTERNAL_H
 # define LIBFT_INTERNAL_H
 
-# include <stdlib.h>
-# include <unistd.h>
-
-# ifndef FT_SIZE_MAX
-#  define FT_SIZE_MAX 9223372036854775807
-# endif
-
-# ifndef FT_LONG_MAX
-#  define FT_LONG_MAX 9223372036854775807L
-# endif
-
-typedef enum e_libft_error
-{
-	NORMAL = 0,
-	BADALLOC,
-	OVERSIZE,
-	BADENVP
-}	t_libft_error;
-
-typedef enum e_bool
-{
-	TRUE = 1,
-	FALSE = 0
-}	t_bool;
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
 // libft mandatory
 int		ft_atoi(const char *str);

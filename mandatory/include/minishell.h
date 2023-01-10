@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 13:14:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 16:37:37 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "queue.h"
 # include "libft.h"
+# include "libadt.h"
+# include "lexer.h"
+# include "parser.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -96,16 +98,15 @@ typedef struct s_execute_unit
 	t_redir_list	*io_list;
 }	t_execute_unit;
 
-typedef struct s_node
+typedef struct s_tree_node
 {
-	t_node_type		type;
-	void			*content;
-	// t_execute_unit	exe_unit;
-	struct s_node	*first_child;
-	struct s_node	*next_sibling;
-}	t_node;
+	int				type;
+	t_execute_unit	exe_unit;
+	struct s_tree_node	*first_child;
+	struct s_tree_node	*next_sibling;
+}	t_tree_node;
 
-// typedef t_node	t_subshell;
+typedef struct t_tree_node	t_node;
 
 enum e_syntax_error
 {
@@ -126,7 +127,7 @@ t_goldsh	g_goldsh;
 
 t_token	*lexer(char *input);
 t_node	*parser(t_token *tokens);
-void	destroy_parse_tree(t_node *node);
+void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int offset);
 
 #endif
