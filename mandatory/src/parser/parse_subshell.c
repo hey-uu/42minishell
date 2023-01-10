@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_subshell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/10 16:24:38 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:12:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 int	parse_subshell(t_node *node, t_token *tokens, int offset)
 {
@@ -34,7 +34,7 @@ int	parse_subshell(t_node *node, t_token *tokens, int offset)
 	while (is_redirection(tokens[offset + cnt].type))
 	{
 		if (tokens[offset + cnt + 1].type == TOKEN_WORD)
-			push_redirection(node->exe_unit.io_list, tokens, offset);
+			push_redirection(node->exe_unit.io_list, tokens, offset + cnt);
 		else
 			return (0);
 		cnt += 2;
