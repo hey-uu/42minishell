@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:46:58 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 06:52:58 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:00:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../lib/libft/includes/queue.h"
+#include "../../lib/include/libadt.h"
 
 int	main(void)
 {

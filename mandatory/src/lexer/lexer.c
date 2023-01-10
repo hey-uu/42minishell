@@ -6,11 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 18:50:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:32:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdlib.h>
+#include "libft.h"
+#include "lexer.h"
 
 // control operator (제어 연산자)
 	// : 제어 함수를 실행하는 토큰.  개행이나 다음 중 하나입니다.
@@ -99,7 +101,7 @@ static int	length_word(const char *input)
 	return (len);
 }
 
-static int	count_tokens(const char *input)
+int	count_tokens(const char *input)
 {
 	int	cnt;
 	int	cur_token_type;

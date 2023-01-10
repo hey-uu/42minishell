@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:38:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:52:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	print_syntax_error_message(t_token *token)
 {
-	static char	*token_str[11] = {"newline", 0, "(", ")", "&&", "||", \
+	static char	*token_str[11] = {"\n", 0, "(", ")", "&&", "||", \
 								"|", "<", ">", "<<", ">>"};
 
 	printf("goldsh: syntax error near unexpected token ");
@@ -25,35 +25,21 @@ void	print_syntax_error_message(t_token *token)
 		printf("'%s'\n", token_str[token->type]);
 }
 
-void	destroy_token(t_token *token)
-{
-	int	i;
-
-	i = -1;
-	while (token[++i].type != TOKEN_NONE)
-	{
-		if (token[i].type == TOKEN_WORD)
-			free(token[i].str);
-	}
-	free(token);
-}
-
-t_node	*parser(t_token *token)
+t_node	*parser(t_token *tokens)
 {
 	t_node	*parse_tree;
-	int		res;
-	int		offset;
+	int		token_num;
 
 	parse_tree = create_tree_node();
-	offset = 0;
-	res = parse_list(&parse_tree, token, &offset);
-	if (!res || token[offset].type != TOKEN_NONE)
+	token_num = parse_list(&parse_tree, tokens, 0);
+	free(tokens);
+	if (tokens[token_num].type != TOKEN_NONE)
 	{
-		print_syntax_error_message(&token[offset]);
-		destroy_token(token);
+		print_syntax_error_message(&tokens[token_num]);
 		destroy_tree(parse_tree);
 		return (NULL);
+		//error 처리
+		// error 문구는 : tokens[token_num - 1].str 토큰을 사용할 것
 	}
-	destroy_token(token);
 	return (parse_tree);
 }

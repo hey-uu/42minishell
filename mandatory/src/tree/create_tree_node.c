@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_tree_node.c                                      :+:      :+:    :+:   */
+/*   create_tree_node.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 15:51:46 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/10 15:51:47 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/10 22:18:50 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/10 23:15:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stddef.h>
+#include "tree.h"
 
 t_node	*create_tree_node(void)
 {

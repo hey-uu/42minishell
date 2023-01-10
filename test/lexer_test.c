@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:00:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/08 00:00:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:27:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ int	main(void)
 				printf("		::token: %s\n", res_tokens[j].str);
 			printf("		::token type : result(%d) answer(%d)\n", \
 			res_tokens[j].type, tokens[i][j]);
-			assert(res_tokens[j].type == (t_token_type)tokens[i][j]);
+			assert(res_tokens[j].type == tokens[i][j]);
 		}
 		free(res_tokens);
 		printf("--> ok\n");

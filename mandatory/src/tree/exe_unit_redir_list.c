@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue_redirections.c                               :+:      :+:    :+:   */
+/*   exe_unit_redir_list.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:03:05 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/10 16:22:28 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:17:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tree.h"
+
+int	is_redirection(int type)
+{
+	if (type == TOKEN_REDIR_IN || type == TOKEN_REDIR_IN_HERE || \
+		type == TOKEN_REDIR_OUT || type == TOKEN_REDIR_OUT_APP)
+		return (1);
+	return (0);
+}
 
 t_redir_list	*create_redirect_list(void)
 {
@@ -25,7 +33,7 @@ t_redir_list	*create_redirect_list(void)
 void	push_redirection(t_redir_list *io_list, t_token *token, int offset)
 {
 	const int	type = token[offset].type;
-	const char	*str = token[offset + 1].str;
+	const char	*str = ft_strdup(token[offset + 1].str);
 
 	if (type == TOKEN_REDIR_IN || type == TOKEN_REDIR_IN_HERE)
 		queue_push_intstr(io_list->redir_in, (int)type, (char *)str);

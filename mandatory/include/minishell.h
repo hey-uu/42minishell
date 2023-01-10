@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 23:04:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:40:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
-# define SYNTAX_ERROR -1
 
 enum e_syntax_error
 {
@@ -51,6 +50,6 @@ t_goldsh	g_goldsh;
 t_token	*lexer(char *input);
 t_node	*parser(t_token *tokens);
 void	destroy_tree(t_node *node);
-int		parse_list(t_node **root, t_token *tokens, int offset);
+int		parse_list(t_node **root, t_token *tokens, int *offset);
 
 #endif

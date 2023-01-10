@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <stdlib.h>
+#include "tree.h"
 
 static void	destroy_simple_command(t_simple_cmd *simple_cmd)
 {
+	free(simple_cmd->name);
 	destroy_queue(simple_cmd->argv);
 	free(simple_cmd);
 }
