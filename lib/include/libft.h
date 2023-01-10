@@ -6,12 +6,16 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:04:52 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 18:58:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 23:01:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <sys/types.h>
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

@@ -6,12 +6,16 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 19:04:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 22:42:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBADT_H
 # define LIBADT_H
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+# define QUEUE_INITIAL_SIZE 10
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
