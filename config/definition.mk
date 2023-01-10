@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 17:09:27 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/10 18:44:52 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ ifdef FSANITIZE_FLAG
 	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
 else
 	CFLAGS		=		$(CFLAGS1)
+endif
 
 # library archive
 AR				=		ar
@@ -39,12 +40,12 @@ INC_DIR			=		include
 MAN_DIR			=		mandatory
 BON_DIR			=		bonus
 
-SRC_DIR1		=		built-in
-SRC_DIR2		=		executor
-SRC_DIR3		=		expansion
-SRC_DIR4		=		extra
-SRC_DIR5		=		lexer
-SRC_DIR6		=		parser
+BUILTIN_DIR		=		built-in
+EXECUTOR_DIR	=		executor
+EXTRA_DIR		=		extra
+LEXER_DIR		=		lexer
+PARSER_DIR		=		parser
+TREE_DIR		=		tree
 
 # ********************************* library ********************************** #
 
@@ -54,12 +55,14 @@ LIB_DIR			=		lib
 # libadt
 LIBADT_DIR		=		libadt
 LIBADT_NAME		=		libadt.a
-LIBADT_PATH		=		$(LIB)/$(LIBADT_DIR)/$(LIBADT_NAME)
+LIBADT_PATH		=		$(LIB)/$(LIBADT_DIR)
+LIBADT			=		$(LIBADT_PATH)/$(LIBADT_NAME)
 
 # libft
 LIBFT_DIR		=		libft
 LIBFT_NAME		=		libft.a
-LIBFT_PATH		=		$(LIB_DIR)/$(LIBFT_DIR)/$(LIBFT_NAME)
+LIBFT_PATH		=		$(LIB_DIR)/$(LIBFT_DIR)
+LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
 # flags
 LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L.$(LIBADT_PATH) -lreadline
@@ -80,7 +83,7 @@ INC_FILE		=		lexer \
 
 # file name(absolute path)
 MAN_INC			=		$(addprefix $(MAN_INC_PATH)/, $(addsuffix .h, $(INC_FILE)))
-BON_INC			=		$(addprefix $(BON_INC_PATH), $(addsuffix _bonus.h, $(INC_FILE)))
+BON_INC			=		$(addprefix $(BON_INC_PATH)/, $(addsuffix _bonus.h, $(INC_FILE)))
 
 # flags
 MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH)
@@ -95,32 +98,47 @@ MAN_SRC_PATH	=		$(MAN_DIR)/$(SRC_DIR)
 BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 
 # file name
-MAN_FILE		=		$(SRC_DIR1)/* \
-						$(SRC_DIR2)/* \
-						$(SRC_DIR3)/* \
-						$(SRC_DIR4)/* \
-						$(SRC_DIR5)/* \
-						$(SRC_DIR6)/*
-BON_FILE		=		
+BUILTIN_FILE	=		
+EXECUTOR_FILE	=		
+EXTRA_FILE		=		history \
+						prompt \
+						signal
+LEXER_FILE		=		lexer 
+PARSER_FILE		=		parse_list \
+						parse_pipeline \
+						parse_simple_command \
+						parse_subshell \
+						parser
+TREE_FILE		=		create_tree_node \
+						destroy_tree \
+						exe_unit_redir_list \
+						simple_cmd_argv
+SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
+						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
+						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
+						$(addprefix $(LEXER_DIR)/, $(LEXER_FILE)) \
+						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
+						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
+						main
 
 # file name(absolute path)
-MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(MAN_FILE)))
-BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix .o, $(BON_FILE)))
+MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
+BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE)))
 
 
 # *********************************** bonus *********************************** #
 
 # bonus flag
 ifdef   WITH_BONUS
-    RM_OBJ		=	 	$(MAN_OBJ)
+	RM_OBJ_DIR	=		$(MAN_OBJ_PATH)
     OBJ			=		$(BON_OBJ)
-	INC			= 		$(MAN_INC)
-	INC_FLAG	= 		$(MAN_INC_FLAG)
+	INC			= 		$(BON_INC)
+	INC_FLAG	= 		$(BON_INC_FLAG)
 else
-    RM_OBJ		= 		$(BON_OBJ)
+    RM_OBJ_DIR	= 		$(BON_OBJ_PATH)
     OBJ			=		$(MAN_OBJ)
-	INC			=		$(BON_INC)
-	INC_FLAG	=		$(BON_INC_FLAG)
+	INC			=		$(MAN_INC)
+	INC_FLAG	=		$(MAN_INC_FLAG)
 endif
 
 # *********************************** tester ********************************** #
@@ -136,8 +154,8 @@ TEST_OBJ_PATH	=		$(TEST_DIR)/$(OBJ_DIR)
 TEST_INC_PATH	=		$(TEST_DIR)
 
 # header
-TEST_INC_FILE	=		test.h
-TEST_INC		=		$(addprefix $(TEST_INC_PATH), $(addsuffix _bonus.h, $(TEST_INC_FILE)))
+TEST_INC_FILE	=		test
+TEST_INC		=		$(addprefix $(TEST_INC_PATH)/, $(addsuffix .h, $(TEST_INC_FILE)))
 TEST_INC_FLAG	=		-I./$(TEST_INC_PATH) -I./$(LIB_INC_PATH)
 
 # file name
