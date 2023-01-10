@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 23:07:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 23:08:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 01:00:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "tree.h"
 
-void	print_indent(int depth)
+static void	print_indent(int depth)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ void	print_indent(int depth)
 		printf(" ");
 }
 
-void	print_arguments(t_queue *argv, int depth)
+static void	print_arguments(t_queue *argv, int depth)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ void	print_arguments(t_queue *argv, int depth)
 	printf("]\n");
 }
 
-void	print_redirection_in(t_queue *redir_in, int depth)
+static void	print_redirection_in(t_queue *redir_in, int depth)
 {
 	int			type;
 	int			i;
@@ -63,7 +63,7 @@ void	print_redirection_in(t_queue *redir_in, int depth)
 	printf("]\n");
 }
 
-void	print_redirection_out(t_queue *redir_out, int depth)
+static void	print_redirection_out(t_queue *redir_out, int depth)
 {
 	int	type;
 	int	i;
@@ -87,7 +87,7 @@ void	print_redirection_out(t_queue *redir_out, int depth)
 	printf("]\n");
 }
 
-void	show_simple_command(t_execute_unit *unit, int depth)
+static void	show_simple_command(t_execute_unit *unit, int depth)
 {
 	print_indent(depth);
 	printf("command name : %s\n", unit->simple_cmd->name);
@@ -96,14 +96,13 @@ void	show_simple_command(t_execute_unit *unit, int depth)
 	print_redirection_out(unit->io_list->redir_out, depth);
 }
 
-void	show_subshell(t_node *tree, int depth)
+static void	show_subshell(t_node *tree, int depth)
 {
-	// print_indent(depth);
 	print_redirection_in(tree->exe_unit.io_list->redir_in, depth);
 	print_redirection_out(tree->exe_unit.io_list->redir_out, depth);
 }
 
-void	print_type(int type)
+static void	print_type(int type)
 {
 	static char	*str_type[] = {"none", "simple_command", "subshell", \
 							"pipeline", "&&", "||"};

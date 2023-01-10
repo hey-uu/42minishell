@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:29:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:56:22 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+// 처리해야할 것
+// * signal 설정
+// * history 업데이트
+// * executor 함수
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -27,18 +31,13 @@ int	main(int argc, char **argv, char **envp)
 	argv = 0;
 	envp = 0;
 	print_welcome();
-	// signal 설정
 	while (1)
 	{
 		lists_of_commands = readline(PS1_DOLLAR);
-		// update_history();
 		g_goldsh.token = lexer(lists_of_commands);
 		g_goldsh.node = parser(g_goldsh.token);
 		show_tree(g_goldsh.node, 0);
 		destroy_tree(g_goldsh.node);
-		// sleep(3);
-		// system("leaks minishell");
-		// executor();
 		free(lists_of_commands);
 	}
 }

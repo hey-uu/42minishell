@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:40:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:54:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include "parser.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
-
 
 enum e_syntax_error
 {

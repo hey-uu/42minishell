@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:43:41 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:49:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ static int	parse_prefix(t_redir_list *io_list, t_token *token, int *offset)
 	return (SYNTAX_NORMAL);
 }
 
-static int	parse_command_name(t_simple_cmd *simple_cmd, t_token *token, int *offset)
+static int	parse_command_name(\
+			t_simple_cmd *simple_cmd, t_token *token, int *offset)
 {
 	if (token[*offset].type == TOKEN_WORD)
 	{

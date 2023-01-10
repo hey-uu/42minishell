@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:49:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 22:52:09 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:53:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,17 @@ enum e_token_type
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
+	// int	str_len;
+	// int	expansion_mask; 
+	// 와일드카드, 달러 여부 체크하여 마스크로 기록
 typedef struct s_token
 {
 	int		type;
 	char	*str;
-	// int	str_len;
-	// int	expansion_mask; 
-	// 와일드카드, 달러 여부 체크하여 마스크로 기록
 }	t_token;
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 t_token	*lexer(char *input);
-
 
 #endif

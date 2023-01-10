@@ -6,7 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 08:46:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/06 08:46:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:58:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "signal.h"
+
+// signal hook 함수

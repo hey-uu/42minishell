@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:22:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 23:08:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:55:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ void			push_redirection(\
 void			push_arguments(\
 				t_simple_cmd *simple_cmd, t_token *token, int offset);
 void			show_tree(t_node *tree, int depth);
-
 
 #endif
