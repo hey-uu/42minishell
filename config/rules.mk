@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 22:04:43 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/10 23:03:08 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,10 @@ $(MAN_OBJ_PATH)/$(TREE_DIR)/%.o : $(MAN_SRC_PATH)/$(TREE_DIR)/%.c $(MAN_INC)
 	@mkdir -p $(MAN_OBJ_PATH)/$(TREE_DIR)
 	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
+$(MAN_OBJ_PATH)/%.o : $(MAN_SRC_PATH)/%.c $(MAN_INC)
+	@mkdir -p $(MAN_OBJ_PATH)
+	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
 # bonus
 $(BON_OBJ_PATH)/$(BUILTIN_DIR)/%.o : $(BON_SRC_PATH)/$(BUILTIN_DIR)/%.c $(BON_INC)
 	@mkdir -p $(BON_OBJ_PATH)
@@ -70,6 +74,10 @@ $(BON_OBJ_PATH)/$(PARSER_DIR)/%.o : $(BON_SRC_PATH)/$(PARSER_DIR)/%.c $(BON_INC)
 $(BON_OBJ_PATH)/$(TREE_DIR)/%.o : $(BON_SRC_PATH)/$(TREE_DIR)/%.c $(BON_INC)
 	@mkdir -p $(BON_OBJ_PATH)
 	@mkdir -p $(BON_OBJ_PATH)/$(TREE_DIR)
+	@$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/%.o : $(BON_SRC_PATH)/%.c $(BON_INC)
+	@mkdir -p $(BON_OBJ_PATH)
 	@$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
 # test
