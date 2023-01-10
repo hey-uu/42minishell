@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:38:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 01:59:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_node	*parser(t_token *token)
 	parse_tree = create_tree_node();
 	offset = 0;
 	res = parse_list(&parse_tree, token, &offset);
-	if (!res || token[offset].type != TOKEN_NONE)
+	if (res == SYNTAX_ERROR || token[offset].type != TOKEN_NONE)
 	{
 		print_syntax_error_message(&token[offset]);
 		destroy_token(token);

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:44:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 01:57:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ int	parse_subshell(t_node *node, t_token *token, int *offset)
 	node->exe_unit.io_list = create_redirect_list();
 	while (is_redirection(token[*offset].type))
 	{
-		if (token[*offset + 1].type == TOKEN_WORD)
-			push_redirection(node->exe_unit.io_list, token, *offset);
+		*offset += 1;
+		if (token[*offset].type == TOKEN_WORD)
+			push_redirection(node->exe_unit.io_list, token, *offset - 1);
 		else
 			return (SYNTAX_ERROR);
-		*offset += 2;
+		*offset += 1;
 	}
 	return (SYNTAX_NORMAL);
 }

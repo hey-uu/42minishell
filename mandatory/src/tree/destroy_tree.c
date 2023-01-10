@@ -15,6 +15,8 @@
 
 static void	destroy_simple_command(t_simple_cmd *simple_cmd)
 {
+	if (!simple_cmd)
+		return ;
 	free(simple_cmd->name);
 	destroy_queue(simple_cmd->argv);
 	free(simple_cmd);
@@ -22,6 +24,8 @@ static void	destroy_simple_command(t_simple_cmd *simple_cmd)
 
 static void	destroy_redirect_list(t_redir_list *io_list)
 {
+	if (!io_list)
+		return ;
 	destroy_queue(io_list->redir_in);
 	destroy_queue(io_list->redir_out);
 	free(io_list);

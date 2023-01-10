@@ -6,11 +6,9 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:58:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 01:35:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "history.h"
 
 void	update_history(char *line)
 {

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:49:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 02:06:45 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ static int	parse_suffix(t_execute_unit *unit, t_token *token, int *offset)
 		}
 		else if (is_redirection(token[*offset].type))
 		{
-			if (token[*offset + 1].type == TOKEN_WORD)
-				push_redirection(unit->io_list, token, *offset);
+			*offset += 1;
+			if (token[*offset].type == TOKEN_WORD)
+				push_redirection(unit->io_list, token, *offset - 1);
 			else
 				return (SYNTAX_ERROR);
-			*offset += 2;
+			*offset += 1;
 		}
 		else
 			break ;
@@ -51,11 +52,12 @@ static int	parse_prefix(t_redir_list *io_list, t_token *token, int *offset)
 {
 	while (is_redirection(token[*offset].type))
 	{
-		if (token[*offset + 1].type == TOKEN_WORD)
-			push_redirection(io_list, token, *offset);
+		*offset += 1;
+		if (token[*offset].type == TOKEN_WORD)
+			push_redirection(io_list, token, *offset - 1);
 		else
 			return (SYNTAX_ERROR);
-		*offset += 2;
+		*offset += 1;
 	}
 	return (SYNTAX_NORMAL);
 }
@@ -67,8 +69,8 @@ static int	parse_command_name(\
 	{
 		simple_cmd->name = ft_strdup(token[*offset].str);
 		push_arguments(simple_cmd, token, *offset);
+		*offset += 1;
 	}
-	*offset += 1;
 	return (SYNTAX_NORMAL);
 }
 

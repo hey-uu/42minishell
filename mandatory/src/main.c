@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:56:22 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 01:55:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(int argc, char **argv, char **envp)
 		g_goldsh.node = parser(g_goldsh.token);
 		show_tree(g_goldsh.node, 0);
 		destroy_tree(g_goldsh.node);
+		// sleep(2);
+		// system("leaks minishell");
 		free(lists_of_commands);
 	}
 }
