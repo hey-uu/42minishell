@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:04:52 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 14:35:51 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:58:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_INTERNAL_H
-# define LIBFT_INTERNAL_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
