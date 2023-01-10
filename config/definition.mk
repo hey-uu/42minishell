@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 18:44:52 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/10 19:27:51 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ BON_INC			=		$(addprefix $(BON_INC_PATH)/, $(addsuffix _bonus.h, $(INC_FILE)))
 MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH)
 BON_INC_FLAG	=		-I./$(BON_INC_PATH) -I./$(LIB_INC_PATH)
 
-# ****************************** object files ******************************* #
+# ******************************* object files ******************************* #
 
 # directory path
 MAN_OBJ_PATH	=		$(MAN_DIR)/$(OBJ_DIR)
