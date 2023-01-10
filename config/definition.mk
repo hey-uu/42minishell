@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 21:17:18 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/10 21:52:53 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIB_DIR			=		lib
 # libadt
 LIBADT_DIR		=		libadt
 LIBADT_NAME		=		libadt.a
-LIBADT_PATH		=		$(LIB)/$(LIBADT_DIR)
+LIBADT_PATH		=		$(LIB_DIR)/$(LIBADT_DIR)
 LIBADT			=		$(LIBADT_PATH)/$(LIBADT_NAME)
 
 # libft
