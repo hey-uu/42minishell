@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 21:52:53 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/10 22:10:57 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ LIBFT_PATH		=		$(LIB_DIR)/$(LIBFT_DIR)
 LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
 # flags
-LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L.$(LIBADT_PATH) -lreadline
+LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lreadline
 
 # ******************************** directory ********************************* #
 
@@ -125,6 +125,8 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
 BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE)))
 
+LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER_FILE)))
+PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
 
 # *********************************** bonus *********************************** #
 
@@ -156,7 +158,7 @@ TEST_INC_PATH	=		$(TEST_DIR)
 # header
 TEST_INC_FILE	=		test
 TEST_INC		=		$(addprefix $(TEST_INC_PATH)/, $(addsuffix .h, $(TEST_INC_FILE)))
-TEST_INC_FLAG	=		-I./$(TEST_INC_PATH) -I./$(LIB_INC_PATH)
+TEST_INC_FLAG	=		-I./$(TEST_INC_PATH) -I./$(LIB_INC_PATH) -I./$(MAN_INC_PATH)
 
 # file name
 TEST_FILE		=		lexer_test \
@@ -168,3 +170,8 @@ TEST_FILE2		=
 TEST_OBJ		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE)))
 TEST_OBJ1		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE1)))
 TEST_OBJ2		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE2)))
+
+LEXER_TEST_OBJ	=		$(LEXER_OBJ) $(TEST_OBJ_PATH)/lexer_test.o
+LEXER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(TEST_OBJ_PATH)/lexer_test.o $(TEST_INC_PATH)/test.h
+PARSER_TEST_OBJ	=		$(LEXER_OBJ) $(PARSER_OBJ) $(TEST_OBJ_PATH)/parser_test.o
+PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser.h $(TEST_INC_PATH)/test.h
