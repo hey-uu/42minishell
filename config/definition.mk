@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 19:27:51 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/10 21:17:18 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,22 +31,6 @@ ARFLAGS			=		crs
 RM				=		rm
 RMFLAGS			=		-rf
 
-# ******************************** directory ********************************* #
-
-SRC_DIR			=		src
-OBJ_DIR			=		obj
-INC_DIR			=		include
-
-MAN_DIR			=		mandatory
-BON_DIR			=		bonus
-
-BUILTIN_DIR		=		built-in
-EXECUTOR_DIR	=		executor
-EXTRA_DIR		=		extra
-LEXER_DIR		=		lexer
-PARSER_DIR		=		parser
-TREE_DIR		=		tree
-
 # ********************************* library ********************************** #
 
 # directory name
@@ -66,6 +50,22 @@ LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
 # flags
 LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L.$(LIBADT_PATH) -lreadline
+
+# ******************************** directory ********************************* #
+
+SRC_DIR			=		src
+OBJ_DIR			=		obj
+INC_DIR			=		include
+
+MAN_DIR			=		mandatory
+BON_DIR			=		bonus
+
+BUILTIN_DIR		=		built-in
+EXECUTOR_DIR	=		executor
+EXTRA_DIR		=		extra
+LEXER_DIR		=		lexer
+PARSER_DIR		=		parser
+TREE_DIR		=		tree
 
 # ******************************* header files ******************************* #
 
