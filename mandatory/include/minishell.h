@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 16:37:37 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/10 18:52:22 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ typedef struct s_execute_unit
 
 typedef struct s_tree_node
 {
-	int				type;
-	t_execute_unit	exe_unit;
+	int					type;
+	t_execute_unit		exe_unit;
 	struct s_tree_node	*first_child;
 	struct s_tree_node	*next_sibling;
 }	t_tree_node;
 
-typedef struct t_tree_node	t_node;
+typedef t_tree_node	t_node;
 
 enum e_syntax_error
 {
