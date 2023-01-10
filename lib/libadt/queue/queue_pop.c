@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:37:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 06:56:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:42:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue.h"
+#include "queue_internal.h"
 
 int	queue_pop_int(t_queue *deq)
 {

@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:16:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 11:51:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:42:45 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue.h"
+#include "queue_internal.h"
 #include <stdlib.h>
 #include "libft.h"
 

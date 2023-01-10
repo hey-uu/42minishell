@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:29:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/09 07:47:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:42:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue.h"
+#include "queue_internal.h"
 
 void	queue_push_int(t_queue *queue, int new_data)
 {
