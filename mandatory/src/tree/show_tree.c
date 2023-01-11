@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 23:07:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 02:48:15 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 09:41:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	print_indent1(int depth)
 	i = -1;
 	while (++i < depth - 2)
 		printf("|  ");
-	printf("|--  ");
+	printf("|--* ");
 }
 
 static void	print_indent2(int depth)
@@ -142,9 +142,11 @@ void	show_tree(t_node *tree, int depth)
 		return ;
 	print_indent2(depth);
 	if (!depth)
-		printf("\n{\n   ");
+		printf("\n{\n*  ");
 	else
 	{
+		printf("children :\n");
+		print_indent2(depth);
 		printf("{\n");
 		print_indent1(depth + 1);
 	}
