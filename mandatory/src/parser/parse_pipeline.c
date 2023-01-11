@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:54:11 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:42:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:47:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static int	parse_command(t_node *node, t_token *token, int *offset)
 	return (res);
 }
 
-int	parse_pipeline(t_node *parent, t_token *token, int *offset)
+int	parse_pipeline(t_node *node, t_token *token, int *offset)
 {
 	t_node	*cur_node;
 
-	parent->type = NODE_PIPELINE;
-	parent->first_child = create_tree_node();
-	if (!parse_command(parent->first_child, token, offset))
+	node->type = NODE_PIPELINE;
+	node->first_child = create_tree_node();
+	if (!parse_command(node->first_child, token, offset))
 		return (SYNTAX_ERROR);
-	cur_node = parent->first_child;
+	cur_node = node->first_child;
 	while (token[*offset].type == TOKEN_PIPE)
 	{
 		*offset += 1;
@@ -39,5 +39,5 @@ int	parse_pipeline(t_node *parent, t_token *token, int *offset)
 		if (!parse_command(cur_node->next_sibling, token, offset))
 			return (SYNTAX_ERROR);
 	}
-	return (SYNTAX_NORMAL);
+	return (SYNTAX_OK);
 }

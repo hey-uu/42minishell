@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 23:09:09 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/11 14:55:12 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,10 +109,10 @@ PARSER_FILE		=		parse_list \
 						parse_simple_command \
 						parse_subshell \
 						parser
-TREE_FILE		=		create_tree_node \
+TREE_FILE		=		create_execute_unit \
+						create_tree_node \
 						destroy_tree \
-						exe_unit_redir_list \
-						simple_cmd_argv \
+						push_execute_unit_content \
 						show_tree
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \

@@ -6,12 +6,20 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 01:59:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:49:18 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+
+int	is_redirection(int type)
+{
+	if (type == TOKEN_REDIR_IN || type == TOKEN_REDIR_IN_HERE || \
+		type == TOKEN_REDIR_OUT || type == TOKEN_REDIR_OUT_APP)
+		return (1);
+	return (0);
+}
 
 void	print_syntax_error_message(t_token *token)
 {

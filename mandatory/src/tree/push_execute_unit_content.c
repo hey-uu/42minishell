@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exe_unit_redir_list.c                              :+:      :+:    :+:   */
+/*   push_execute_unit_content.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 16:03:05 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 10:57:59 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/11 14:49:32 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/11 14:53:18 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tree.h"
 
-int	is_redirection(int type)
+void	push_arguments(t_queue *cmd_argv, t_token *token, int offset)
 {
-	if (type == TOKEN_REDIR_IN || type == TOKEN_REDIR_IN_HERE || \
-		type == TOKEN_REDIR_OUT || type == TOKEN_REDIR_OUT_APP)
-		return (1);
-	return (0);
-}
+	char	*str;
 
-t_queue	*create_redirect_list(void)
-{
-	t_queue	*new;
-
-	new = create_queue(QUEUE_INITIAL_SIZE, QUEUE_INTSTR);
-	return (new);
+	if (token[offset].str)
+		str = ft_strdup(token[offset].str);
+	else
+		return ;
+	queue_push_str(cmd_argv, str);
 }
 
 void	push_redirection(t_queue *redir_list, t_token *token, int offset)

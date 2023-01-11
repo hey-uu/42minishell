@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:54:11 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/10 22:54:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:47:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ static int	parse_command(t_node *node, t_token *tokens, int offset)
 	return (res);
 }
 
-int	parse_pipeline(t_node *parent, t_token *tokens, int offset)
+int	parse_pipeline(t_node *node, t_token *tokens, int offset)
 {
 	t_node	*cur_node;
 	int		cnt;
 	int		res;
 
-	parent->type = NODE_PIPELINE;
-	parent->first_child = create_tree_node();
-	res = parse_command(parent->first_child, tokens, offset);
+	node->type = NODE_PIPELINE;
+	node->first_child = create_tree_node();
+	res = parse_command(node->first_child, tokens, offset);
 	if (!res)
 		return (0);
 	cnt = res;
-	cur_node = parent->first_child;
+	cur_node = node->first_child;
 	while (tokens[offset + cnt].type == TOKEN_PIPE)
 	{
 		cnt++;

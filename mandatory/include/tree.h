@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:22:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 10:55:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:54:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,36 +28,26 @@ enum e_node_type
 	NODE_SUBSHELL = 2,
 	NODE_PIPELINE = 3,
 	NODE_AND_IF = 4,
-	NODE_OR_IF = 5,
-	NODE_REDIR_LIST = 6
+	NODE_OR_IF = 5
 };
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
 // name : 실행하고자 하는 command의 이름(절대 경로 포함 필수 x)
 // argv : command의 이름과 command의 인자들
-typedef struct s_simple_cmd
-{
-	char	*name;
-	t_queue	*argv;
-}	t_simple_cmd;
-
-// typedef struct s_redir_list
-// {
-// 	t_queue	*redir_in;
-// 	t_queue	*redir_out;
-// }	t_redir_list;
 
 typedef struct s_execute_unit
 {
-	t_simple_cmd	*simple_cmd;
-	t_queue			*redir_list;
+	char	*cmd_name;
+	t_queue	*cmd_argv;
+	t_queue	*redir_list;
 }	t_execute_unit;
+
 
 typedef struct s_tree_node
 {
 	int					type;
-	t_execute_unit		exe_unit;
+	t_execute_unit		*exe_unit;
 	struct s_tree_node	*first_child;
 	struct s_tree_node	*next_sibling;
 }	t_tree_node;
@@ -66,12 +56,12 @@ typedef t_tree_node	t_node;
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_node	*create_tree_node(void);
-void	destroy_tree(t_node *parent);
-int		is_redirection(int type);
-t_queue	*create_redirect_list(void);
-void	push_redirection(t_queue *redir_list, t_token *token, int offset);
-void	push_arguments(	t_simple_cmd *simple_cmd, t_token *token, int offset);
-void	show_tree(t_node *tree, int depth);
+t_node			*create_tree_node(void);
+void			destroy_tree(t_node *node);
+t_execute_unit	*create_execute_unit(int node_type);
+void			push_arguments(t_queue *cmd_argv, t_token *token, int offset);
+void			push_redirection(\
+				t_queue *redir_list, t_token *token, int offset);
+void			show_tree(t_node *tree, int depth);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:52:43 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:42:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:39:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	parse_list(t_node **root, t_token *token, int *offset)
 	{
 		*root = node->first_child;
 		free(node);
-		return (SYNTAX_NORMAL);
+		return (SYNTAX_OK);
 	}
 	*offset += 1;
 	node->first_child->next_sibling = create_tree_node();
 	if (!parse_list(&(node->first_child->next_sibling), token, offset))
 		return (SYNTAX_ERROR);
-	return (SYNTAX_NORMAL);
+	return (SYNTAX_OK);
 }

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 23:07:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 11:05:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:55:47 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,14 @@ static void	print_redirect_list(t_queue *redir_list, int depth)
 static void	show_simple_command(t_execute_unit *unit, int depth)
 {
 	print_indent2(depth);
-	printf("command name : %s\n", unit->simple_cmd->name);
-	print_arguments(unit->simple_cmd->argv, depth);
+	printf("command name : %s\n", unit->cmd_name);
+	print_arguments(unit->cmd_argv, depth);
 	print_redirect_list(unit->redir_list, depth);
 }
 
 static void	show_subshell(t_node *tree, int depth)
 {
-	print_redirect_list(tree->exe_unit.redir_list, depth);
+	print_redirect_list(tree->exe_unit->redir_list, depth);
 }
 
 static void	print_node_type(int type)
@@ -135,7 +135,7 @@ void	show_tree(t_node *tree, int depth)
 	}
 	print_node_type(tree->type);
 	if (tree->type == NODE_SIMPLE_CMD)
-		show_simple_command(&tree->exe_unit, depth + 1);
+		show_simple_command(tree->exe_unit, depth + 1);
 	if (tree->type == NODE_SUBSHELL)
 		show_subshell(tree, depth + 1);
 	if (tree->first_child)

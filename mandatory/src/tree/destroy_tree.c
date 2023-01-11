@@ -13,34 +13,25 @@
 #include <stdlib.h>
 #include "tree.h"
 
-static void	destroy_simple_command(t_simple_cmd *simple_cmd)
+static void	destroy_execute_unit(t_execute_unit *exe_unit)
 {
-	if (!simple_cmd)
+	if (!exe_unit)
 		return ;
-	free(simple_cmd->name);
-	destroy_queue(simple_cmd->argv);
-	free(simple_cmd);
+	if (exe_unit->cmd_name)
+		free(exe_unit->cmd_name);
+	if (exe_unit->cmd_argv)
+		destroy_queue(exe_unit->cmd_argv);
+	if (exe_unit->redir_list)
+		destroy_queue(exe_unit->redir_list);
+	free(exe_unit);
 }
 
-static void	destroy_redirect_list(t_queue *redir_list)
+void	destroy_tree(t_node *node)
 {
-	if (!redir_list)
+	if (!node)
 		return ;
-	destroy_queue(redir_list);
-}
-
-void	destroy_tree(t_node *parent)
-{
-	if (!parent)
-		return ;
-	destroy_tree(parent->first_child);
-	destroy_tree(parent->next_sibling);
-	if (parent->type == NODE_SIMPLE_CMD)
-	{
-		destroy_simple_command(parent->exe_unit.simple_cmd);
-		destroy_redirect_list(parent->exe_unit.redir_list);
-	}
-	if (parent->type == NODE_SUBSHELL)
-		destroy_redirect_list(parent->exe_unit.redir_list);
-	free(parent);
+	destroy_tree(node->first_child);
+	destroy_tree(node->next_sibling);
+	destroy_execute_unit(node->exe_unit);
+	free(node);
 }
