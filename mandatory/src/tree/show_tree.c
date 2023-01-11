@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 23:07:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 09:41:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:05:50 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	print_indent1(int depth)
 	i = -1;
 	while (++i < depth - 2)
 		printf("|  ");
-	printf("|--* ");
+	printf("|--*  ");
 }
 
 static void	print_indent2(int depth)
@@ -59,55 +59,40 @@ static void	print_arguments(t_queue *argv, int depth)
 	while (++i < argv->used_size)
 	{
 		print_indent3(depth + 1);
-		printf("%s\n", argv->strarr[(argv->front + i) % argv->size]);
+		printf("+ %s\n", argv->strarr[(argv->front + i) % argv->size]);
 	}
 	print_indent2(depth);
 	printf("]\n");
 }
 
-static void	print_redirection_in(t_queue *redir_in, int depth)
+static void	print_redirect_type(int type)
 {
-	int			type;
-	int			i;
-
-	print_indent2(depth);
-	printf("redirection in : [\n");
-	i = -1;
-	while (++i < redir_in->used_size)
-	{
-		print_indent3(depth + 1);
-		type = redir_in->iarr[(redir_in->front + i) % redir_in->size];
-		if (type == TOKEN_REDIR_IN)
-			printf("type : <\n");
-		else
-			printf("type : <<\n");
-		print_indent3(depth + 1);
-		printf("file name : %s\n", \
-				redir_in->strarr[(redir_in->front + i) % redir_in->size]);
-	}
-	print_indent2(depth);
-	printf("]\n");
+	if (type == TOKEN_REDIR_IN)
+		printf("+ type : <\n");
+	else if (type == TOKEN_REDIR_IN_HERE)
+		printf("+ type : <<\n");
+	else if (type == TOKEN_REDIR_OUT)
+		printf("+ type : >\n");
+	else if (type == TOKEN_REDIR_OUT_APP)
+		printf("+ type : >>\n");
 }
 
-static void	print_redirection_out(t_queue *redir_out, int depth)
+static void	print_redirect_list(t_queue *redir_list, int depth)
 {
 	int	type;
 	int	i;
 
 	print_indent2(depth);
-	printf("redirection out : [\n");
+	printf("redirection : [\n");
 	i = -1;
-	while (++i < redir_out->used_size)
+	while (++i < redir_list->used_size)
 	{
 		print_indent3(depth + 1);
-		type = redir_out->iarr[(redir_out->front + i) % redir_out->size];
-		if (type == TOKEN_REDIR_OUT)
-			printf("type : >\n");
-		else
-			printf("type : >>\n");
+		type = redir_list->iarr[(redir_list->front + i) % redir_list->size];
+		print_redirect_type(type);
 		print_indent3(depth + 1);
-		printf("file name : %s\n", \
-				redir_out->strarr[(redir_out->front + i) % redir_out->size]);
+		printf("  file name : %s\n", \
+				redir_list->strarr[(redir_list->front + i) % redir_list->size]);
 	}
 	print_indent2(depth);
 	printf("]\n");
@@ -118,17 +103,15 @@ static void	show_simple_command(t_execute_unit *unit, int depth)
 	print_indent2(depth);
 	printf("command name : %s\n", unit->simple_cmd->name);
 	print_arguments(unit->simple_cmd->argv, depth);
-	print_redirection_in(unit->io_list->redir_in, depth);
-	print_redirection_out(unit->io_list->redir_out, depth);
+	print_redirect_list(unit->redir_list, depth);
 }
 
 static void	show_subshell(t_node *tree, int depth)
 {
-	print_redirection_in(tree->exe_unit.io_list->redir_in, depth);
-	print_redirection_out(tree->exe_unit.io_list->redir_out, depth);
+	print_redirect_list(tree->exe_unit.redir_list, depth);
 }
 
-static void	print_type(int type)
+static void	print_node_type(int type)
 {
 	static char	*str_type[] = {"none", "simple_command", "subshell", \
 							"pipeline", "&&", "||"};
@@ -150,7 +133,7 @@ void	show_tree(t_node *tree, int depth)
 		printf("{\n");
 		print_indent1(depth + 1);
 	}
-	print_type(tree->type);
+	print_node_type(tree->type);
 	if (tree->type == NODE_SIMPLE_CMD)
 		show_simple_command(&tree->exe_unit, depth + 1);
 	if (tree->type == NODE_SUBSHELL)

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:22:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:55:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:55:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ typedef struct s_simple_cmd
 	t_queue	*argv;
 }	t_simple_cmd;
 
-typedef struct s_redir_list
-{
-	t_queue	*redir_in;
-	t_queue	*redir_out;
-}	t_redir_list;
+// typedef struct s_redir_list
+// {
+// 	t_queue	*redir_in;
+// 	t_queue	*redir_out;
+// }	t_redir_list;
 
 typedef struct s_execute_unit
 {
 	t_simple_cmd	*simple_cmd;
-	t_redir_list	*io_list;
+	t_queue			*redir_list;
 }	t_execute_unit;
 
 typedef struct s_tree_node
@@ -66,14 +66,12 @@ typedef t_tree_node	t_node;
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_node			*create_tree_node(void);
-void			destroy_tree(t_node *parent);
-int				is_redirection(int type);
-t_redir_list	*create_redirect_list(void);
-void			push_redirection(\
-				t_redir_list *io_list, t_token *token, int offset);
-void			push_arguments(\
-				t_simple_cmd *simple_cmd, t_token *token, int offset);
-void			show_tree(t_node *tree, int depth);
+t_node	*create_tree_node(void);
+void	destroy_tree(t_node *parent);
+int		is_redirection(int type);
+t_queue	*create_redirect_list(void);
+void	push_redirection(t_queue *redir_list, t_token *token, int offset);
+void	push_arguments(	t_simple_cmd *simple_cmd, t_token *token, int offset);
+void	show_tree(t_node *tree, int depth);
 
 #endif

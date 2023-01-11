@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:03:05 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 02:03:31 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:57:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@ int	is_redirection(int type)
 	return (0);
 }
 
-t_redir_list	*create_redirect_list(void)
+t_queue	*create_redirect_list(void)
 {
-	t_redir_list	*new;
+	t_queue	*new;
 
-	new = ft_malloc(sizeof(t_redir_list));
-	new->redir_in = create_queue(QUEUE_INITIAL_SIZE, QUEUE_INTSTR);
-	new->redir_out = create_queue(QUEUE_INITIAL_SIZE, QUEUE_INTSTR);
+	new = create_queue(QUEUE_INITIAL_SIZE, QUEUE_INTSTR);
 	return (new);
 }
 
-void	push_redirection(t_redir_list *io_list, t_token *token, int offset)
+void	push_redirection(t_queue *redir_list, t_token *token, int offset)
 {
 	const int	type = token[offset].type;
 	char		*str;
@@ -39,8 +37,5 @@ void	push_redirection(t_redir_list *io_list, t_token *token, int offset)
 		str = ft_strdup(token[offset + 1].str);
 	else
 		return ;
-	if (type == TOKEN_REDIR_IN || type == TOKEN_REDIR_IN_HERE)
-		queue_push_intstr(io_list->redir_in, (int)type, (char *)str);
-	else
-		queue_push_intstr(io_list->redir_out, (int)type, (char *)str);
+	queue_push_intstr(redir_list, (int)type, (char *)str);
 }

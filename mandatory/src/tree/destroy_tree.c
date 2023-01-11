@@ -22,13 +22,11 @@ static void	destroy_simple_command(t_simple_cmd *simple_cmd)
 	free(simple_cmd);
 }
 
-static void	destroy_redirect_list(t_redir_list *io_list)
+static void	destroy_redirect_list(t_queue *redir_list)
 {
-	if (!io_list)
+	if (!redir_list)
 		return ;
-	destroy_queue(io_list->redir_in);
-	destroy_queue(io_list->redir_out);
-	free(io_list);
+	destroy_queue(redir_list);
 }
 
 void	destroy_tree(t_node *parent)
@@ -40,9 +38,9 @@ void	destroy_tree(t_node *parent)
 	if (parent->type == NODE_SIMPLE_CMD)
 	{
 		destroy_simple_command(parent->exe_unit.simple_cmd);
-		destroy_redirect_list(parent->exe_unit.io_list);
+		destroy_redirect_list(parent->exe_unit.redir_list);
 	}
 	if (parent->type == NODE_SUBSHELL)
-		destroy_redirect_list(parent->exe_unit.io_list);
+		destroy_redirect_list(parent->exe_unit.redir_list);
 	free(parent);
 }
