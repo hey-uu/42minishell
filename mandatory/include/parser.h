@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:20:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:55:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 02:29:22 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
-enum e_syntax_error
+enum e_syntax_status
 {
 	SYNTAX_ERROR = 0,
 	SYNTAX_OK = 1
