@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/07 11:46:51 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 20:18:47 by hyeyukim         ###   ########.fr        #
+#    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
+#    Updated: 2023/01/10 21:48:53 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libadt.a
 
 # **************************** command and flags ***************************** #
 
@@ -21,6 +21,7 @@ CFLAGS2			=		-fsanitize=address -g3
 
 ifdef FSANITIZE_FLAG
 	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
+	FSAN_OPT	=		fsanitize_all
 else
 	CFLAGS		=		$(CFLAGS1)
 endif
@@ -33,60 +34,51 @@ ARFLAGS			=		crs
 RM				=		rm
 RMFLAGS			=		-rf
 
+# ********************************* library ********************************** #
+
+# libft
+LIBFT_DIR		=		libft
+LIBFT_NAME		=		libft.a
+LIBFT_PATH		=		../$(LIBFT_DIR)
+LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
+
+# flags
+# LIBFLAGS		=		-lft -L$(LIBFT_PATH)
+
 # ******************************** directory ********************************* #
 
-SRC_DIR			=		src
+LIST_DIR		=		list
+QUEUE_DIR		=		queue
 OBJ_DIR			=		obj
-INC_DIR			=		.
+INC_DIR			=		include
 
 # ******************************* header files ******************************* #
 
-INC_PATH		=		$(INC_DIR)
-INC				=		libft_internal.h
-INC_FLAG		=		-I./$(INC_PATH)
+LIBFT_INC_PATH	=		../$(INC_DIR)
+LIST_INC_PATH	=		$(LIST_DIR)
+QUEUE_INC_PATH	=		$(QUEUE_DIR)
+
+LIST_INC_FLAG	=		-I./$(LIST_DIR) -I./$(LIBFT_INC_PATH)
+QUEUE_INC_FLAG	=		-I./$(QUEUE_DIR) -I./$(LIBFT_INC_PATH)
 
 # ******************************* object files ******************************* #
 
-SRC_FILE		=		ft_atoi \
-						ft_bzero \
-						ft_calloc \
-						ft_isalnum \
-						ft_isalpha \
-						ft_isascii \
-						ft_isdigit \
-						ft_isprint \
-						ft_memchr \
-						ft_memcmp \
-						ft_memcpy \
-						ft_memmove \
-						ft_memset \
-						ft_strchr \
-						ft_strdup \
-						ft_strlcat \
-						ft_strlcpy \
-						ft_strlen \
-						ft_strncmp \
-						ft_strnstr \
-						ft_strrchr \
-						ft_tolower \
-						ft_toupper \
-						ft_substr \
-						ft_strjoin \
-						ft_strtrim \
-						ft_split \
-						ft_itoa \
-						ft_strmapi \
-						ft_striteri \
-						ft_putchar_fd \
-						ft_putstr_fd \
-						ft_putendl_fd \
-						ft_putnbr_fd \
-						ft_exit \
-						ft_malloc \
-						ft_max \
-						ft_abs
-
-OBJ				=		$(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILE)))
+LIST_FILE		=		ft_lstadd_back \
+						ft_lstadd_front \
+						ft_lstclear \
+						ft_lstdelone \
+						ft_lstiter \
+						ft_lstlast \
+						ft_lstmap \
+						ft_lstnew \
+						ft_lstsize
+QUEUE_FILE		=		queue_generate \
+						queue_pop \
+						queue_push \
+						queue_show
+LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
+QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
+OBJ				=		$(LIST_OBJ) $(QUEUE_OBJ)
 
 # ******************************* basic rules ******************************** #
 
@@ -98,6 +90,7 @@ $(NAME) : $(OBJ)
 bonus : all
 
 clean :
+	make -C $(LIBFT_PATH) fclean
 	$(RM) $(RMFLAGS) $(OBJ_DIR)
 
 fclean : clean
@@ -109,9 +102,18 @@ re :
 
 # ****************************** compile rules ******************************* #
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(INC_DIR)/libft_internal.h
-	mkdir -p $(OBJ_DIR)
-	$(CC) -c $(CFLAGS) $< $(INC_FLAG) -o $@
+$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_DIR)/list_internal.h $(LIBFT)
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(LIST_DIR)
+	$(CC) -c $(CFLAGS) $< $(LIST_INC_FLAG) $(LIBFLAGS) -o $@
+
+$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_DIR)/queue_internal.h $(LIBFT)
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(QUEUE_DIR)
+	$(CC) -c $(CFLAGS) $< $(QUEUE_INC_FLAG) $(LIBFLAGS) -o $@
+
+$(LIBFT) :
+	make -C $(LIBFT_PATH) $(FSAN_OPT)
 
 # ******************************* assist rules ******************************* #
 

@@ -1,0 +1,29 @@
+<list>				: <pipeline>
+					| <list> AND_IF <pipeline>
+					| <list> OR_IF <pipeline>
+<pipeline>			: <command>
+					| <pipeline> PIPE <command>
+<command>			: <simple_command>
+					| <subshell>
+<subshell> 			: LPAREN <list> RPAREN
+					| LPAREN <list> RPAREN <redirect_list>
+<simple_command>	: <cmd_prefix> <cmd_name> <cmd_suffix>
+					| <cmd_prefix> <cmd_name>
+					| <cmd_prefix>
+					| <cmd_name> <cmd_suffix>
+					| <cmd_name>
+<cmd_name>			: WORD
+<cmd_prefix>		: <io_redirect>
+					| <cmd_prefix> <io_redirect>
+<cmd_suffix>		: <io_redirect>
+					| <cmd_suffix> <io_redirect>
+					| WORD
+					| <cmd_suffix> WORD
+<redirect_list>		: <io_redirect>
+					| <iredirect_list> <io_redirect>
+<io_redirect>		: REDIR_IN <filename>
+					| REDIR_OUT <filename>
+					| DGREAT <filename>
+					| DLESS <here_end>
+<filename>			: WORD
+<here_end>			: WORD
