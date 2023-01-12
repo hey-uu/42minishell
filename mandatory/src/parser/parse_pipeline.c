@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:54:11 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:47:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/13 03:00:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ int	parse_pipeline(t_node *node, t_token *token, int *offset)
 	cur_node = node->first_child;
 	while (token[*offset].type == TOKEN_PIPE)
 	{
-		*offset += 1;
+		(*offset)++;
 		cur_node->next_sibling = create_tree_node();
 		if (!parse_command(cur_node->next_sibling, token, offset))
 			return (SYNTAX_ERROR);
+		cur_node = cur_node->next_sibling;
 	}
 	return (SYNTAX_OK);
 }

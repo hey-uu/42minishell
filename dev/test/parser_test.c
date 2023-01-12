@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:39:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 22:13:18 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/13 01:36:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	main(int argc, char **argv, char **envp)
 {
 	char	*lists_of_commands;
 
-	argc = 0;
-	argv = 0;
-	envp = 0;
+	argc++;
+	argv++;
+	envp++;
 	print_welcome();
 	while (1)
 	{
