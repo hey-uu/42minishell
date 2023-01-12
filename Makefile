@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/12 22:21:15 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/13 04:25:13 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ parser_test :	$(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
 # remove test program
 .PHONY : test_clean test_fclean
 test_clean :
-	$(RM) $(RMFLAGS) $(TEST_OBJ_PATH) $(MODULE_OBJ_PATH)
+	$(RM) $(RMFLAGS) $(DEV_PATH)/$(OBJ_DIR)
 
 test_fclean : test_clean
 	$(RM) $(RMFLAGS) lexer_test
