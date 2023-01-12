@@ -3,32 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:20:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 02:29:22 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/12 14:01:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-/**
- * @brief Parser
- * 
- */
-
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "tree.h"
-
-/*------------ DEFINE MACRO CONSTANTS ------------*/
-
-enum e_syntax_status
-{
-	SYNTAX_ERROR = 0,
-	SYNTAX_OK = 1
-};
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

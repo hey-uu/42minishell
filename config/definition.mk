@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yona <yona@student.42.fr>                  +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/12 00:57:03 by yona             ###   ########.fr        #
+#    Updated: 2023/01/12 11:47:04 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,7 @@ PARSER_FILE		=		parse_list \
 TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
-						push_execute_unit_content \
+						push_execute_unit_content
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
@@ -128,6 +128,13 @@ BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE)))
 
 LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER_FILE)))
 PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
+
+# ************************************ dev ************************************ #
+
+DEV_FILE		=		lexer_test1 \
+						lexer_test2 \
+						print_token_list \
+						show_tree
 
 # *********************************** bonus *********************************** #
 

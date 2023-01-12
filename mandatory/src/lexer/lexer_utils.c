@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 02:15:17 by yona              #+#    #+#             */
-/*   Updated: 2023/01/12 02:35:58 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/12 13:49:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int	length_of_word(const char *input)
 		len++;
 	}
 	if (quote)
-		return (MISSING_QUOTE);
+		return (SYNTAX_ERROR);
 	return (len);
 }

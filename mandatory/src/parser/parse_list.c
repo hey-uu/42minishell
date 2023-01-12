@@ -6,11 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:52:43 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:39:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:03:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "parser.h"
 
 int	parse_list(t_node **root, t_token *token, int *offset)

@@ -6,12 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:49:18 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:07:05 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "parser.h"
 
 int	is_redirection(int type)
 {
@@ -21,17 +20,6 @@ int	is_redirection(int type)
 	return (0);
 }
 
-void	print_syntax_error_message(t_token *token)
-{
-	static char	*token_str[11] = {"newline", 0, "(", ")", "&&", "||", \
-								"|", "<", ">", "<<", ">>"};
-
-	printf("goldsh: syntax error near unexpected token ");
-	if (token->type == TOKEN_WORD)
-		printf("'%s'\n", token->str);
-	else
-		printf("'%s'\n", token_str[token->type]);
-}
 
 void	destroy_token(t_token *token)
 {
@@ -57,7 +45,7 @@ t_node	*parser(t_token *token)
 	res = parse_list(&parse_tree, token, &offset);
 	if (res == SYNTAX_ERROR || token[offset].type != TOKEN_NONE)
 	{
-		print_syntax_error_message(&token[offset]);
+		print_syntax_error_message(token[offset].type, token[offset].str);
 		destroy_token(token);
 		destroy_tree(parse_tree);
 		return (NULL);

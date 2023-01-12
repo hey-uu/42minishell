@@ -3,15 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 02:37:25 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/12 14:05:48 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
 #include "lexer.h"
 
 static int	count_tokens(const char *input)
@@ -31,8 +29,8 @@ static int	count_tokens(const char *input)
 		else if (cur_token_type == TOKEN_WORD)
 		{
 			cur_word_length = length_of_word(input);
-			if (cur_word_length == MISSING_QUOTE)
-				return (MISSING_QUOTE);
+			if (cur_word_length == SYNTAX_ERROR)
+				return (SYNTAX_ERROR);
 			input += cur_word_length;
 		}
 		else
@@ -76,9 +74,9 @@ t_token	*lexer(char *input)
 	int		token_cnt;
 
 	token_cnt = count_tokens(input);
-	if (token_cnt == MISSING_QUOTE)
+	if (token_cnt == SYNTAX_ERROR)
 	{
-		dprintf(2, "missing quote!!!! (NOT Syntax Error...)\n");
+		print_syntax_error_message(TOKEN_NONE, NULL);
 		return (NULL);
 	}
 	token_list = malloc(sizeof(t_token) * (token_cnt + 1));

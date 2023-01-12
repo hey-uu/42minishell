@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_tree_node.c                                 :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 22:18:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:03:40 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/12 14:06:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
+#include "error.h"
 
-t_node	*create_tree_node(void)
+void	print_syntax_error_message(int token_type, char *token_str)
 {
-	t_node	*new;
+	static char	*type_str[11] = {"newline", 0, "(", ")", "&&", "||", \
+								"|", "<", ">", "<<", ">>"};
 
-	new = ft_malloc(sizeof(t_node));
-	new->type = NODE_NONE;
-	new->exe_unit = NULL;
-	new->first_child = NULL;
-	new->next_sibling = NULL;
-	return (new);
+	printf("goldsh: syntax error near unexpected token ");
+	if (token_type == TOKEN_WORD)
+		printf("'%s'\n", token_str);
+	else
+		printf("'%s'\n", type_str[token_type]);
 }

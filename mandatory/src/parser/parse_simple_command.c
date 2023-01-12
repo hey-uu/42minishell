@@ -6,12 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:39:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:03:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "libft.h"
 #include "parser.h"
 
 static int	parse_prefix(t_execute_unit *exe_unit, t_token *token, int *offset)

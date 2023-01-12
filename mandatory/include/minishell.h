@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 01:38:46 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:59:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,71 @@
 
 # include "libft.h"
 # include "libadt.h"
-// # include "lexer.h"
-# include "parser.h"
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum e_token_type
+{
+	TOKEN_NONE,
+	TOKEN_WORD,
+	TOKEN_LPAREN,
+	TOKEN_RPAREN,
+	TOKEN_AND_IF,
+	TOKEN_OR_IF,
+	TOKEN_PIPE,
+	TOKEN_REDIR_IN,
+	TOKEN_REDIR_OUT,
+	TOKEN_REDIR_IN_HERE,
+	TOKEN_REDIR_OUT_APP
+};
+
+enum e_syntax_status
+{
+	SYNTAX_ERROR = 0,
+	SYNTAX_OK = 1
+};
+
+enum e_success_or_failure
+{
+	FAILURE = -1,
+	SUCCESS = 0
+};
+
+enum e_node_type
+{
+	NODE_NONE,
+	NODE_SIMPLE_CMD,
+	NODE_SUBSHELL,
+	NODE_PIPELINE,
+	NODE_AND_IF,
+	NODE_OR_IF
+};
 
 /*------------- STRUCT DECLARATIONS --------------*/
+
+typedef struct s_token
+{
+	int		type;
+	char	*str;
+}	t_token;
+
+typedef struct s_execute_unit
+{
+	char	*cmd_name;
+	t_queue	*cmd_argv;
+	t_queue	*redir_list;
+}	t_execute_unit;
+
+
+typedef struct s_tree_node
+{
+	int					type;
+	t_execute_unit		*exe_unit;
+	struct s_tree_node	*first_child;
+	struct s_tree_node	*next_sibling;
+}	t_tree_node;
+
+typedef t_tree_node	t_node;
 
 typedef struct s_goldsh
 {

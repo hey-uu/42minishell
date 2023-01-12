@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 00:05:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/08 00:12:18 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/12 14:08:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef ERROR_H
+# define ERROR_H
 
-#include "minishell.h"
-#include <stdio.h>
-#include <assert.h>
+/*-------------- USER DEFINED HEADERS ------------*/
 
-# define TOKEN_ERROR -1
+# include "minishell.h"
 
-int	count_tokens(char *input);
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+void	print_syntax_error_message(int token_type, char *token_str);
 
 #endif

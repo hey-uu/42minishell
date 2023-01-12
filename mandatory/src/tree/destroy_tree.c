@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "tree.h"
 
 static void	destroy_execute_unit(t_execute_unit *exe_unit)
