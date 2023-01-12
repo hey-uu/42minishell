@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 21:37:47 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/13 04:54:25 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ enum e_token_type
 
 enum e_syntax_status
 {
-	SYNTAX_ERROR = 0,
+	SYNTAX_ERROR = -1,
 	SYNTAX_OK = 1
 };
 
@@ -102,6 +102,7 @@ t_goldsh	g_goldsh;
 
 t_token	*lexer(char *input);
 t_node	*parser(t_token *tokens);
+void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
 
