@@ -6,11 +6,41 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:00:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 11:45:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:09:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
+#include "lexer.h"
+#include "error.h"
+
+static int	count_tokens(const char *input)
+{
+	int	cnt;
+	int	cur_token_type;
+	int	cur_word_length;
+
+	cnt = 0;
+	while (*input)
+	{
+		while (is_blank(*input))
+			input++;
+		cur_token_type = get_token_type(input);
+		if (cur_token_type == TOKEN_NONE)
+			break ;
+		else if (cur_token_type == TOKEN_WORD)
+		{
+			cur_word_length = length_of_word(input);
+			if (cur_word_length == SYNTAX_ERROR)
+				return (SYNTAX_ERROR);
+			input += cur_word_length;
+		}
+		else
+			input += length_of_operator(cur_token_type);
+		cnt++;
+	}
+	return (cnt);
+}
 
 void	check_token_counts(int i)
 {
@@ -24,7 +54,6 @@ void	check_token_counts(int i)
 int	main(void)
 {
 	int		i, j;
-	int		res_token_cnt;
 	t_token	*res_tokens;
 
 	i = -1;

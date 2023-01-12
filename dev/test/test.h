@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:05:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 11:45:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 22:07:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,6 @@ int	tokens[TEST_NUM][100] = {\
 	{TOKEN_ERROR}
 };
 
-int	count_tokens(char *input);
+void	show_tree(t_node *tree, int depth);
 
 #endif

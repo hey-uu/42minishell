@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/12 11:47:04 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/12 22:19:26 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,10 +101,14 @@ BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 # file name
 BUILTIN_FILE	=		
 EXECUTOR_FILE	=		
-EXTRA_FILE		=		history \
+EXTRA_FILE		=		error \
+						history \
 						prompt \
 						signal
-LEXER_FILE		=		lexer 
+LEXER_FILE		=		destroy_token_list \
+						extract_token \
+						lexer_utils \
+						lexer
 PARSER_FILE		=		parse_list \
 						parse_pipeline \
 						parse_simple_command \
@@ -120,14 +124,16 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(LEXER_DIR)/, $(LEXER_FILE)) \
 						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
-						main
 
 # file name(absolute path)
-MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
-BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE)))
+MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
+MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE))) $(MAN_OBJ_PATH)/main.o
+BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE))) $(BON_OBJ_PATH)/main.o
 
+ERROR_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXTRA_DIR)/, error.o)
 LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER_FILE)))
 PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
+TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FILE)))
 
 # ************************************ dev ************************************ #
 
@@ -151,35 +157,40 @@ else
 	INC_FLAG	=		$(MAN_INC_FLAG)
 endif
 
-# *********************************** tester ********************************** #
+# ************************************ dev ************************************ #
 
 # directory name
+DEV_DIR			=		dev
+MODULE_DIR		=		module
 TEST_DIR		=		test
-TEST_DIR1		=		hyeyukim
-TEST_DIR2		=		yona
 
 # directory path
-TEST_PATH		=		$(TEST_DIR)
-TEST_OBJ_PATH	=		$(TEST_DIR)/$(OBJ_DIR)
-TEST_INC_PATH	=		$(TEST_DIR)
+DEV_PATH		=		$(DEV_DIR)
+MODULE_PATH		=		$(DEV_PATH)/$(MODULE_DIR)
+TEST_PATH		=		$(DEV_PATH)/$(TEST_DIR)
+MODULE_OBJ_PATH	=		$(DEV_PATH)/$(OBJ_DIR)/$(MODULE_DIR)
+TEST_OBJ_PATH	=		$(DEV_PATH)/$(OBJ_DIR)/$(TEST_DIR)
+MODULE_INC_PATH	=		$(MODULE_PATH)
+TEST_INC_PATH	=		$(TEST_PATH)
 
 # header
 TEST_INC_FILE	=		test
 TEST_INC		=		$(addprefix $(TEST_INC_PATH)/, $(addsuffix .h, $(TEST_INC_FILE)))
 TEST_INC_FLAG	=		-I./$(TEST_INC_PATH) -I./$(LIB_INC_PATH) -I./$(MAN_INC_PATH)
 
+MODULE_INC_FILE	=		
+MODULE_INC		=		$(addprefix $(TEST_INC_PATH)/, $(addsuffix .h, $(TEST_INC_FILE)))
+MODULE_INC_FLAG	=		-I./$(MODULE_INC_PATH) -I./$(LIB_INC_PATH) -I./$(MAN_INC_PATH)
+
 # file name
-TEST_FILE		=		lexer_test \
-						parser_test
-TEST_FILE1		=		
-TEST_FILE2		=		
+MODULE_FILE		=		print_token_list \
+						show_tree
 
 # object file name(absolute path)
-TEST_OBJ		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE)))
-TEST_OBJ1		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE1)))
-TEST_OBJ2		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE2)))
+MODULE_OBJ		=		$(addprefix $(MODULE_OBJ_PATH)/, $(addsuffix .o, $(MODULE_FILE)))
 
-LEXER_TEST_OBJ	=		$(LEXER_OBJ) $(TEST_OBJ_PATH)/lexer_test.o
-LEXER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(TEST_OBJ_PATH)/lexer_test.o $(TEST_INC_PATH)/test.h
-PARSER_TEST_OBJ	=		$(LEXER_OBJ) $(PARSER_OBJ) $(TEST_OBJ_PATH)/parser_test.o
-PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser.h $(TEST_INC_PATH)/test.h
+LEXER_TEST_OBJ	=		$(ERROR_OBJ) $(LEXER_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/lexer_test2.o
+LEXER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(TEST_INC)
+
+PARSER_TEST_OBJ	=		$(MAN_NO_MAIN_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/parser_test.o
+PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser.h $(TEST_INC)

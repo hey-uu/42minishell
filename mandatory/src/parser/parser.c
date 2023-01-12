@@ -6,11 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:07:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:38:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "parser.h"
+#include "error.h"
 
 int	is_redirection(int type)
 {

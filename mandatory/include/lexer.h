@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:49:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:01:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 21:38:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "minishell.h"
+# include "error.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

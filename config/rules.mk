@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 23:03:08 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/12 22:03:21 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,10 @@ $(BON_OBJ_PATH)/%.o : $(BON_SRC_PATH)/%.c $(BON_INC)
 	@$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
 # test
+$(MODULE_OBJ_PATH)/%.o : $(MODULE_PATH)/%.c
+	mkdir -p $(MODULE_OBJ_PATH)
+	$(CC) -c $(CFLAGS) $< $(TEST_INC_FLAG) -o $@
+
 $(TEST_OBJ_PATH)/%.o : $(TEST_PATH)/%.c $(TEST_INC)
 	mkdir -p $(TEST_OBJ_PATH)
 	$(CC) -c $(CFLAGS) $< $(TEST_INC_FLAG) -o $@

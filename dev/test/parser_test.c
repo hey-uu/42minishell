@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 22:15:48 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/12 21:39:37 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/12 22:13:18 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 #include "prompt.h"
 #include <readline/readline.h>
 #include <readline/history.h>
+#include "test.h"
+#include "tree.h"
 
-// 처리해야할 것
-// * signal 설정
-// * history 업데이트
-// * executor 함수
 
 int	main(int argc, char **argv, char **envp)
 {

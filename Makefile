@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 22:10:32 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/12 22:21:15 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,21 +54,21 @@ fsanitize_bonus :
 	make FSANITIZE_FLAG=1 bonus
 
 # build test program
-man_lexer_test :	$(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
+lexer_test :	$(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
 	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
-	$(CC) $(CFLAGS) $(LEXER_TEST_OBJ) $(LIBFLAGS) -o man_lexer_test
+	$(CC) $(CFLAGS) $(LEXER_TEST_OBJ) $(LIBFLAGS) -o lexer_test
 
-man_parser_test :	$(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
+parser_test :	$(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
 	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
-	$(CC) $(CFLAGS) $(PARSER_TEST_OBJ) $(LIBFLAGS) -o man_parser_test
+	$(CC) $(CFLAGS) $(PARSER_TEST_OBJ) $(LIBFLAGS) -o parser_test
 
 # remove test program
 .PHONY : test_clean test_fclean
 test_clean :
-	$(RM) $(RMFLAGS) $(TEST_OBJ_PATH)
+	$(RM) $(RMFLAGS) $(TEST_OBJ_PATH) $(MODULE_OBJ_PATH)
 
 test_fclean : test_clean
-	$(RM) $(RMFLAGS) man_lexer_test
-	$(RM) $(RMFLAGS) man_parser_test
+	$(RM) $(RMFLAGS) lexer_test
+	$(RM) $(RMFLAGS) parser_test
