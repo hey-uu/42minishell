@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_subshell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:41:10 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:16:09 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 static int	subshell_parenthesis(t_node *node, t_token *token, int *offset)
 {

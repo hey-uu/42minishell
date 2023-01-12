@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/12 11:47:04 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/12 20:56:18 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ LEXER_DIR		=		lexer
 PARSER_DIR		=		parser
 TREE_DIR		=		tree
 DEV_DIR			=		dev
+DEV_MODULE_DIR	=		dev/module
 
 # ******************************* header files ******************************* #
 
@@ -101,7 +102,8 @@ BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 # file name
 BUILTIN_FILE	=		
 EXECUTOR_FILE	=		
-EXTRA_FILE		=		history \
+EXTRA_FILE		=		error \
+						history \
 						prompt \
 						signal
 LEXER_FILE		=		lexer 
@@ -121,6 +123,8 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
 						main
+DEV_MODULE_FILE	=		print_token_list \
+						show_tree
 
 # file name(absolute path)
 MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
@@ -128,6 +132,9 @@ BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE)))
 
 LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER_FILE)))
 PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
+TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FILE)))
+EXTRA_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXTRA_DIR)/, $(addsuffix .o, $(EXTRA_FILE)))
+DEV_MODULE_OBJ	=		$(addprefix $(DEV_MODULE_DIR)/, $(addsuffix .o, $(DEV_MODULE_FILE)))
 
 # ************************************ dev ************************************ #
 
@@ -154,9 +161,7 @@ endif
 # *********************************** tester ********************************** #
 
 # directory name
-TEST_DIR		=		test
-TEST_DIR1		=		hyeyukim
-TEST_DIR2		=		yona
+TEST_DIR		=		$(DEV_DIR)/test
 
 # directory path
 TEST_PATH		=		$(TEST_DIR)
@@ -181,5 +186,5 @@ TEST_OBJ2		=		$(addprefix $(TEST)/$(OBJ_DIR)/, $(addsuffix .o, $(TEST_FILE2)))
 
 LEXER_TEST_OBJ	=		$(LEXER_OBJ) $(TEST_OBJ_PATH)/lexer_test.o
 LEXER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(TEST_OBJ_PATH)/lexer_test.o $(TEST_INC_PATH)/test.h
-PARSER_TEST_OBJ	=		$(LEXER_OBJ) $(PARSER_OBJ) $(TEST_OBJ_PATH)/parser_test.o
+PARSER_TEST_OBJ	=		$(PARSER_OBJ) $(TREE_OBJ) $(EXTRA_OBJ) $(DEV_MODULE_OBJ) $(TEST_OBJ_PATH)/parser_test.o
 PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser.h $(TEST_INC_PATH)/test.h

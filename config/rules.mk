@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    rules.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 23:03:08 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/12 20:36:10 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

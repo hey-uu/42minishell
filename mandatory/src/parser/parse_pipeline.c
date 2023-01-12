@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_pipeline.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:54:11 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:47:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:02:20 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 static int	parse_command(t_node *node, t_token *token, int *offset)
 {

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   extract_token.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 01:56:40 by yona              #+#    #+#             */
-/*   Updated: 2023/01/12 02:07:41 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/12 19:59:03 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "libft.h"
-#include "lexer.h"
+#include "minishell.h"
 
 t_token	extract_word_token(char **input)
 {

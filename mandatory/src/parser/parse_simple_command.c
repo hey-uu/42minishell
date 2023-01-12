@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_simple_command.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:03:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:02:12 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 static int	parse_prefix(t_execute_unit *exe_unit, t_token *token, int *offset)
 {

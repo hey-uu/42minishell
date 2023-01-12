@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 13:59:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:02:31 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libft.h"
 # include "libadt.h"
+# include "tree.h"
+# include "lexer.h"
+# include "parser.h"
+# include "executor.h"
+# include "error.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -104,5 +110,37 @@ t_token	*lexer(char *input);
 t_node	*parser(t_token *tokens);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
+
+// error
+void	print_syntax_error_message(int token_type, char *token_str);
+
+// lexer
+t_token	*lexer(char *input);
+void	print_token_list(t_token *list);
+void	destroy_token_list(t_token *token_list);
+t_token	extract_word_token(char **input);
+t_token	extract_operator_token(char **input, const int token_type);
+int		get_token_type(const char *input);
+int		is_blank(const char c);
+int		length_of_word(const char *input);
+int		length_of_operator(const int token_type);
+
+// parser
+int	is_redirection(int type);
+int	parse_list(t_node **root, t_token *tokens, int *offset);
+int	parse_pipeline(t_node *node, t_token *tokens, int *offset);
+int	parse_simple_command(t_node *node, t_token *token, int *offset);
+int	parse_subshell(t_node *node, t_token *tokens, int *offset);
+
+
+// tree
+t_node			*create_tree_node(void);
+void			destroy_tree(t_node *node);
+t_execute_unit	*create_execute_unit(int node_type);
+void			push_arguments(t_queue *cmd_argv, t_token *token, int offset);
+void			push_redirection(\
+				t_queue *redir_list, t_token *token, int offset);
+void			show_tree(t_node *tree, int depth);
+
 
 #endif

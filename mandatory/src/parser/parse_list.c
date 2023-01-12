@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:52:43 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:03:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:01:51 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 int	parse_list(t_node **root, t_token *token, int *offset)
 {

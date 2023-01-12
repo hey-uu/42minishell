@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 02:15:17 by yona              #+#    #+#             */
-/*   Updated: 2023/01/12 13:49:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:58:50 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "lexer.h"
+#include "minishell.h"
 
 int	is_blank(const char c)
 {
