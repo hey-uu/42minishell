@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 18:21:17 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 21:53:31 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,12 @@ QUEUE_FILE		=		queue_create \
 						queue_push \
 						queue_show
 HASH_FILE		=		hash_function \
-						hash_table_create
+						hash_table_create \
+						hash_table_destroy \
+						hash_table_insert \
+						hash_table_resize \
+						hash_table_search \
+						hash_table_update
 LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
 QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
 HASH_OBJ		=		$(addprefix $(OBJ_DIR)/$(HASH_DIR)/, $(addsuffix .o, $(HASH_FILE)))

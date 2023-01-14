@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:18:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 20:32:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 21:35:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ int	main(void)
 		bucket =  hash_bucket(key[i], tab->bucket_cnt);
 		printf("hash: %d\n", bucket);
 		printf("key: %s, content: %s\n\n", key[i], content[i]);
-		hash_table_insert(tab, ft_strdup(key[i]), ft_strdup(content[i]));
+		hash_table_insert(tab, ft_strdup(key[i]), ft_strdup(content[i]), bucket);
 		assert(tab->entry_cnt == (i  + 1));
 	}
 	printf("insert method --> ok\n\n");
 	printf("======================= [test] : search ======================\n");
 	while (--i >= 0)
 	{
-		target = hash_table_search(tab, key[i]);
+		bucket = hash_bucket(key[i], tab->bucket_cnt);
+		target = hash_table_search(tab, key[i], bucket);
 		assert(target != NULL);
 		printf("key: %s, content: %s\n\n", key[i], (char *)target->content);
 		assert(!ft_strncmp(target->content, content[i], ft_strlen(content[i]) + 1));
@@ -65,7 +66,8 @@ int	main(void)
 	while (++i < ENTRY_CNT)
 	{
 		hash_table_update(tab, key[i], ft_strdup(content[ENTRY_CNT - i - 1]));
-		target = hash_table_search(tab, key[i]);
+		bucket = hash_bucket(key[i], tab->bucket_cnt);
+		target = hash_table_search(tab, key[i], bucket);
 		printf("key: %s, updated content: %s\n\n", \
 											key[i], (char *)target->content);
 		assert(!ft_strncmp(target->content, \
@@ -79,7 +81,8 @@ int	main(void)
 	{
 		hash_table_delete(tab, key[i]);
 		assert(tab->entry_cnt == i);
-		assert(!hash_table_search(tab, key[i]));
+		bucket = hash_bucket(key[i], tab->bucket_cnt);
+		assert(!hash_table_search(tab, key[i], bucket));
 		printf("%s is gone!\n", key[i]);
 	}
 	printf("======================= [test] : destroy ======================\n");

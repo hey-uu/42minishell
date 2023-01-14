@@ -6,14 +6,14 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:00:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 18:48:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 21:49:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // https://www.partow.net/programming/hashfunctions/index.html
-// file:///C:/Users/user/Downloads/14750.pdf
 // https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)HashTables.html?highlight=%28CategoryAlgorithmNotes%29
 // https://cseweb.ucsd.edu/~kube/cls/100/Lectures/lec16/lec16-12.html
+// https://www.strchr.com/hash_functions
 
 #include "hash_table.h"
 #include "libft.h"
