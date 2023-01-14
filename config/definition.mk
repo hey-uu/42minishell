@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 22:27:25 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 23:23:40 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ EXTRA_DIR		=		extra
 LEXER_DIR		=		lexer
 PARSER_DIR		=		parser
 TREE_DIR		=		tree
+ENV_DIR			=		env_manager
 DEV_DIR			=		dev
 
 # ******************************* header files ******************************* #
@@ -118,12 +119,14 @@ TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
 						push_execute_unit_content
+ENV_FILE		=		env_initialize
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
 						$(addprefix $(LEXER_DIR)/, $(LEXER_FILE)) \
 						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
+						$(addprefix $(ENV_DIR)/, $(ENV_FILE))
 
 # file name(absolute path)
 MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
@@ -134,6 +137,7 @@ ERROR_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXTRA_DIR)/, error.o)
 LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER_FILE)))
 PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
 TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FILE)))
+ENV_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/$(ENV_DIR)/, $(addsuffix .o, $(ENV_FILE)))
 
 # *********************************** bonus *********************************** #
 
@@ -194,3 +198,8 @@ PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser.h $(TEST_INC)
 
 HASH_TEST_OBJ	=		$(TEST_OBJ_PATH)/hash_table_test2.o $(MODULE_OBJ_PATH)/show_hash_table.o
 HASH_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
+
+ENV_TEST_OBJ	=		$(TEST_OBJ_PATH)/env_table_test.o \
+						$(MODULE_OBJ_PATH)/show_hash_table.o \
+						$(ENV_OBJ)
+ENV_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)

@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 22:36:14 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 23:18:44 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,9 @@ hash_test : $(HASH_TEST_OBJ) $(HASH_TEST_INC)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(HASH_TEST_OBJ) $(HASH_TEST_LIBFLAGS) -o hash_test
 
+env_test : $(ENV_TEST_OBJ) $(ENV_TEST_INC)
+	make -C $(LIBADT_PATH)
+	$(CC) $(CFLAGS) $(ENV_TEST_OBJ) $(ENV_TEST_LIBFLAGS) -o env_test
 
 # remove test program
 .PHONY : test_clean test_fclean
