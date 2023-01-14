@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:19:48 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 22:38:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:25:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	show_hash_table(t_hash_table *table)
 			printf("\nhash : %d\n", i);
 		while (content)
 		{
-			printf("key: %s, content: %s\n", content->key, (char *)content->content);
+			printf("+ key: %s\n  content: %s\n", content->key, (char *)content->content);
 			content = content->next;
 		}
 	}

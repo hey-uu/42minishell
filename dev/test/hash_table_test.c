@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:18:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 22:15:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:05:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(void)
 		bucket =  hash_bucket(key[i], tab->bucket_cnt);
 		printf("hash: %d\n", bucket);
 		printf("key: %s, content: %s\n\n", key[i], content[i]);
-		hash_table_insert(tab, ft_strdup(key[i]), ft_strdup(content[i]), bucket);
+		hash_table_insert(tab, ft_strdup(key[i]), ft_strdup(content[i]));
 		assert(tab->entry_cnt == (i  + 1));
 	}
 	printf("insert method --> ok\n\n");

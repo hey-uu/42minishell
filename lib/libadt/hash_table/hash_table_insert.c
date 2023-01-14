@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:10:18 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 21:56:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:05:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,15 @@ static t_hash_content	*hash_table_create_content(char *key, void *content)
  * Make sure that both hash table and key must not be NULL.
 */
 void	hash_table_insert(\
-		t_hash_table *table, char *key, void *content, int bucket)
+		t_hash_table *table, char *key, void *content)
 {
 	t_hash_content	*new_entry;
+	int				bucket;
 
 	printf("inserting...%s, %s\n", key, (char *)content);
 	if (table->entry_cnt >= table->bucket_cnt * LOAD_FACTOR)
-	{
 		hash_table_grow(table);
-		bucket = hash_bucket(key, table->bucket_cnt);
-	}
+	bucket = hash_bucket(key, table->bucket_cnt);
 	new_entry = hash_table_create_content(key, content);
 	hash_table_insert_entry(table->bucket_arr, new_entry, bucket);
 	table->entry_cnt++;
