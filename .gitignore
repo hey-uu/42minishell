@@ -3,6 +3,7 @@
 .vscode
 lexer_test
 minishell
+*_test
 
 # Prerequisites
 *.d
