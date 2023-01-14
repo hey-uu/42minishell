@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 22:16:02 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 22:36:14 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ include config/definition.mk
 all : $(NAME)
 $(NAME) : $(INC) $(OBJ)
 	$(RM) $(RMFLAGS) $(RM_OBJ_DIR)
-	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFLAGS) -o $@
 
@@ -32,7 +31,6 @@ include config/rules.mk
 .PHONY : clean fclean re
 clean :
 	$(RM) $(RMFLAGS) $(MAN_OBJ_PATH) $(BON_OBJ_PATH)
-	make -C $(LIBFT_PATH) fclean
 	make -C $(LIBADT_PATH) fclean
 	make test_fclean
 
@@ -55,12 +53,10 @@ fsanitize_bonus :
 
 # build test program
 lexer_test : $(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
-	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(LEXER_TEST_OBJ) $(LIBFLAGS) -o lexer_test
 
 parser_test : $(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
-	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(PARSER_TEST_OBJ) $(LIBFLAGS) -o parser_test
 
