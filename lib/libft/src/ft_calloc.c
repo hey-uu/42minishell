@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:00:12 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 20:47:46 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 18:18:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 #include "libft_internal.h"
 
 void	*ft_calloc(size_t cnt, size_t size)

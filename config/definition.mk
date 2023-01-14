@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/12 22:19:26 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 17:58:25 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,13 +135,6 @@ LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER
 PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
 TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FILE)))
 
-# ************************************ dev ************************************ #
-
-DEV_FILE		=		lexer_test1 \
-						lexer_test2 \
-						print_token_list \
-						show_tree
-
 # *********************************** bonus *********************************** #
 
 # bonus flag
@@ -168,8 +161,10 @@ TEST_DIR		=		test
 DEV_PATH		=		$(DEV_DIR)
 MODULE_PATH		=		$(DEV_PATH)/$(MODULE_DIR)
 TEST_PATH		=		$(DEV_PATH)/$(TEST_DIR)
+
 MODULE_OBJ_PATH	=		$(DEV_PATH)/$(OBJ_DIR)/$(MODULE_DIR)
 TEST_OBJ_PATH	=		$(DEV_PATH)/$(OBJ_DIR)/$(TEST_DIR)
+
 MODULE_INC_PATH	=		$(MODULE_PATH)
 TEST_INC_PATH	=		$(TEST_PATH)
 
@@ -183,6 +178,7 @@ MODULE_INC		=		$(addprefix $(TEST_INC_PATH)/, $(addsuffix .h, $(TEST_INC_FILE)))
 MODULE_INC_FLAG	=		-I./$(MODULE_INC_PATH) -I./$(LIB_INC_PATH) -I./$(MAN_INC_PATH)
 
 # file name
+
 MODULE_FILE		=		print_token_list \
 						show_tree
 
@@ -194,3 +190,6 @@ LEXER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(TEST_INC)
 
 PARSER_TEST_OBJ	=		$(MAN_NO_MAIN_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/parser_test.o
 PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser.h $(TEST_INC)
+
+HASH_TEST_OBJ	=		$(TEST_OBJ_PATH)/hash_table_test.o
+HASH_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)

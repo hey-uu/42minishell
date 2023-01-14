@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 00:36:26 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 18:21:17 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,12 +43,14 @@ LIBFT_PATH		=		../$(LIBFT_DIR)
 LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
 # flags
-# LIBFLAGS		=		-lft -L$(LIBFT_PATH)
+LIBFLAGS		=		-lft -L./$(LIBFT_PATH)
 
 # ******************************** directory ********************************* #
 
 LIST_DIR		=		list
 QUEUE_DIR		=		queue
+HASH_DIR		=		hash_table
+
 OBJ_DIR			=		obj
 INC_DIR			=		include
 
@@ -57,9 +59,11 @@ INC_DIR			=		include
 LIBFT_INC_PATH	=		../$(INC_DIR)
 LIST_INC_PATH	=		$(LIST_DIR)
 QUEUE_INC_PATH	=		$(QUEUE_DIR)
+HASH_INC_PATH	=		$(HASH_DIR)
 
 LIST_INC_FLAG	=		-I./$(LIST_DIR) -I./$(LIBFT_INC_PATH)
 QUEUE_INC_FLAG	=		-I./$(QUEUE_DIR) -I./$(LIBFT_INC_PATH)
+HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH)
 
 # ******************************* object files ******************************* #
 
@@ -76,15 +80,18 @@ QUEUE_FILE		=		queue_create \
 						queue_pop \
 						queue_push \
 						queue_show
+HASH_FILE		=		hash_function \
+						hash_table_create
 LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
 QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
-OBJ				=		$(LIST_OBJ) $(QUEUE_OBJ)
+HASH_OBJ		=		$(addprefix $(OBJ_DIR)/$(HASH_DIR)/, $(addsuffix .o, $(HASH_FILE)))
+OBJ				=		$(LIST_OBJ) $(QUEUE_OBJ) $(HASH_OBJ)
 
 # ******************************* basic rules ******************************** #
 
 .PHONY : all bonus clean fclean re
 all : $(NAME)
-$(NAME) : $(OBJ)
+$(NAME) : $(LIBFT) $(OBJ)
 	$(AR) $(ARFLAGS) $@ $(OBJ)
 
 bonus : all
@@ -102,15 +109,20 @@ re :
 
 # ****************************** compile rules ******************************* #
 
-$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_DIR)/list_internal.h $(LIBFT)
+$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_DIR)/list.h
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(LIST_DIR)
 	$(CC) -c $(CFLAGS) $< $(LIST_INC_FLAG) $(LIBFLAGS) -o $@
 
-$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_DIR)/queue_internal.h $(LIBFT)
+$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_DIR)/queue.h
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(QUEUE_DIR)
 	$(CC) -c $(CFLAGS) $< $(QUEUE_INC_FLAG) $(LIBFLAGS) -o $@
+
+$(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(HASH_DIR)/hash_table.h
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(HASH_DIR)
+	$(CC) -c $(CFLAGS) $< $(HASH_INC_FLAG) $(LIBFLAGS) -o $@
 
 $(LIBFT) :
 	make -C $(LIBFT_PATH) $(FSAN_OPT)

@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/13 04:25:13 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 18:36:29 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,15 +54,20 @@ fsanitize_bonus :
 	make FSANITIZE_FLAG=1 bonus
 
 # build test program
-lexer_test :	$(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
+lexer_test : $(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
 	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(LEXER_TEST_OBJ) $(LIBFLAGS) -o lexer_test
 
-parser_test :	$(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
+parser_test : $(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
 	make -C $(LIBFT_PATH)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(PARSER_TEST_OBJ) $(LIBFLAGS) -o parser_test
+
+hash_test : $(HASH_TEST_OBJ) $(HASH_TEST_INC)
+	make -C $(LIBADT_PATH)
+	$(CC) $(CFLAGS) $(HASH_TEST_OBJ) $(HASH_TEST_LIBFLAGS) -o hash_test
+
 
 # remove test program
 .PHONY : test_clean test_fclean
