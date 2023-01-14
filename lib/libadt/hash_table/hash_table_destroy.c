@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:16:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 21:44:03 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:08:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	hash_table_delete_entry(\
 	t_hash_table *hash_table, t_hash_content *target, int bucket)
 {
-	printf("gonna deleted soon... %s\n", target->key);
+	printf("gonna delete soon... %s\n", target->key);
 	if (!target->prev)
 		hash_table->bucket_arr[bucket] = target->next;
 	else
@@ -27,6 +27,7 @@ static void	hash_table_delete_entry(\
 	free(target->content);
 	free(target);
 	hash_table->entry_cnt--;
+	printf("just deleted... %s\n", target->key);
 }
 
 /**
@@ -41,8 +42,8 @@ void	hash_table_delete(t_hash_table *hash_table, char *key)
 	t_hash_content	*target;
 	int				bucket;
 
-	if (hash_table->entry_cnt >= INITIAL_BUCKET_CNT && \
-		hash_table->entry_cnt <= hash_table->bucket_cnt * LOAD_FACTOR * 2)
+	if (hash_table->entry_cnt > INITIAL_BUCKET_CNT && \
+		hash_table->entry_cnt <= hash_table->bucket_cnt / (LOAD_FACTOR * 2))
 	{
 		hash_table_shrink(hash_table);
 	}

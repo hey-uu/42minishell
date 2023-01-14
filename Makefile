@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 18:36:29 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 22:16:02 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,5 +75,4 @@ test_clean :
 	$(RM) $(RMFLAGS) $(DEV_PATH)/$(OBJ_DIR)
 
 test_fclean : test_clean
-	$(RM) $(RMFLAGS) lexer_test
-	$(RM) $(RMFLAGS) parser_test
+	$(RM) $(RMFLAGS) lexer_test parser_test hash_test

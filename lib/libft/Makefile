@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 11:46:51 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/10 20:18:47 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/14 22:02:33 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,25 +47,29 @@ INC_FLAG		=		-I./$(INC_PATH)
 
 # ******************************* object files ******************************* #
 
-SRC_FILE		=		ft_atoi \
+SRC_FILE		=		ft_exit \
+						ft_malloc \
+						ft_isdigit \
+						ft_strlen \
+						ft_isalpha \
+						ft_abs \
+						ft_putstr_fd \
+						ft_strlcpy \
+						ft_strncmp \
+						ft_strchr \
+						ft_atoi \
 						ft_bzero \
 						ft_calloc \
 						ft_isalnum \
-						ft_isalpha \
 						ft_isascii \
-						ft_isdigit \
 						ft_isprint \
 						ft_memchr \
 						ft_memcmp \
 						ft_memcpy \
 						ft_memmove \
 						ft_memset \
-						ft_strchr \
 						ft_strdup \
 						ft_strlcat \
-						ft_strlcpy \
-						ft_strlen \
-						ft_strncmp \
 						ft_strnstr \
 						ft_strrchr \
 						ft_tolower \
@@ -78,13 +82,9 @@ SRC_FILE		=		ft_atoi \
 						ft_strmapi \
 						ft_striteri \
 						ft_putchar_fd \
-						ft_putstr_fd \
 						ft_putendl_fd \
 						ft_putnbr_fd \
-						ft_exit \
-						ft_malloc \
 						ft_max \
-						ft_abs
 
 OBJ				=		$(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILE)))
 

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:18:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 21:35:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:15:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,34 @@
 #include <assert.h>
 #include <unistd.h>
 
-#define ENTRY_CNT 4
+#define ENTRY_CNT 11
 
 static char	*key[] = {
 	"hyeyun", // 1
 	"yoenhkim", // 2
 	"donghyle", // 3
-	"dahkang" // 4
+	"dahkang", // 4
+	"minseok2", // 5
+	"hello", // 6
+	"this", // 7
+	"is", // 8
+	"so", // 9
+	"funny", // 10
+	"?" // 11
 };
 
 static char	*content[] = {
 	"23 years old", // 1
 	"so funny", // 2
 	"notebook lover", // 3
-	"studying english hard" //4
+	"studying english hard", // 4
+	"philosopher study team", // 5 
+	"greeting", // 6
+	"content_this", // 7
+	"content_is", // 8
+	"content_so", // 9
+	"content_funny", // 10
+	"content_?" // 11
 };
 
 
