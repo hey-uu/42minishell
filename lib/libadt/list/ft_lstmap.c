@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:01:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 21:28:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "list_internal.h"
+#include "list.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

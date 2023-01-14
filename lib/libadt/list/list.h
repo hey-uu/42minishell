@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_internal.h                                    :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 19:09:22 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 19:13:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:42:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_INTERNAL_H
-# define LIST_INTERNAL_H
+#ifndef LIST_H
+# define LIST_H
 
 /*------------- STRUCT DECLARATIONS --------------*/
 

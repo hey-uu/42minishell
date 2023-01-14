@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:02:05 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 19:11:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list_internal.h"
+#include "list.h"
 
 int	ft_lstsize(t_list *lst)
 {
