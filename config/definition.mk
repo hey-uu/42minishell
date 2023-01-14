@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 23:23:40 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/15 00:15:02 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,9 @@ TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
 						push_execute_unit_content
-ENV_FILE		=		env_initialize
+ENV_FILE		=		env_get \
+						env_initialize \
+						env_set
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
