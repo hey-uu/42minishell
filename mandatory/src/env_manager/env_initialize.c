@@ -6,14 +6,14 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:09:45 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 23:24:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:52:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "env_manager.h"
 
-char	*ft_strndup(char *str, int n)
+static char	*ft_strndup(char *str, int n)
 {
 	char	*new;
 	int		i;
