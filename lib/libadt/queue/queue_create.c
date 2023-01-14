@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue_generate.c                                   :+:      :+:    :+:   */
+/*   queue_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:16:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:50:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:43:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue_internal.h"
+#include "queue.h"
 #include <stdlib.h>
 #include "libft.h"
 

@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:38:01 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 00:50:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:43:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue_internal.h"
+#include "queue.h"
 #include <stdio.h>
 
 void	queue_show(t_queue *queue)

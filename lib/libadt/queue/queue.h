@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue_internal.h                                   :+:      :+:    :+:   */
+/*   queue.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 02:10:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 19:09:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/14 11:43:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef QUEUE_INTERNAL_H
-# define QUEUE_INTERNAL_H
+#ifndef QUEUE_H
+# define QUEUE_H
 
 typedef enum e_queue_type
 {
