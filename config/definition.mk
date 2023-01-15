@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/15 00:15:02 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/16 07:03:50 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,8 @@ LEXER_DIR		=		lexer
 PARSER_DIR		=		parser
 TREE_DIR		=		tree
 ENV_DIR			=		env_manager
+EXPAND_DIR		=		expansion
+
 DEV_DIR			=		dev
 
 # ******************************* header files ******************************* #
@@ -105,7 +107,8 @@ EXECUTOR_FILE	=
 EXTRA_FILE		=		error \
 						history \
 						prompt \
-						signal
+						signal \
+						utils
 LEXER_FILE		=		destroy_token_list \
 						extract_token \
 						lexer_utils \
@@ -122,13 +125,19 @@ TREE_FILE		=		create_execute_unit \
 ENV_FILE		=		env_get \
 						env_initialize \
 						env_set
+EXPAND_FILE		=		expand_variable \
+						expand_word \
+						expansion_allocation \
+						field_split \
+						destroy_expansion
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
 						$(addprefix $(LEXER_DIR)/, $(LEXER_FILE)) \
 						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
-						$(addprefix $(ENV_DIR)/, $(ENV_FILE))
+						$(addprefix $(ENV_DIR)/, $(ENV_FILE)) \
+						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE))
 
 # file name(absolute path)
 MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
@@ -140,6 +149,7 @@ LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER
 PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PARSER_FILE)))
 TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FILE)))
 ENV_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/$(ENV_DIR)/, $(addsuffix .o, $(ENV_FILE)))
+EXPAND_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXPAND_DIR)/, $(addsuffix .o, $(EXPAND_FILE)))
 
 # *********************************** bonus *********************************** #
 
@@ -205,3 +215,9 @@ ENV_TEST_OBJ	=		$(TEST_OBJ_PATH)/env_table_test.o \
 						$(MODULE_OBJ_PATH)/show_hash_table.o \
 						$(ENV_OBJ)
 ENV_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
+
+EXPAND_TEST_OBJ = 	$(MODULE_OBJ_PATH)/show_hash_table.o \
+					$(ENV_OBJ) \
+					$(EXPAND_OBJ) $(TEST_OBJ_PATH)/expansion_test.o \
+					$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o
+EXPAND_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)

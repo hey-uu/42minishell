@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 23:18:44 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/16 06:43:41 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,10 +68,14 @@ env_test : $(ENV_TEST_OBJ) $(ENV_TEST_INC)
 	make -C $(LIBADT_PATH)
 	$(CC) $(CFLAGS) $(ENV_TEST_OBJ) $(ENV_TEST_LIBFLAGS) -o env_test
 
+expand_test : $(EXPAND_TEST_OBJ)
+	make -C $(LIBADT_PATH)
+	$(CC) $(CFLAGS) $(EXPAND_TEST_OBJ) $(EXPAND_TEST_LIBFLAGS) -o expand_test
+
 # remove test program
 .PHONY : test_clean test_fclean
 test_clean :
 	$(RM) $(RMFLAGS) $(DEV_PATH)/$(OBJ_DIR)
 
 test_fclean : test_clean
-	$(RM) $(RMFLAGS) lexer_test parser_test hash_test
+	$(RM) $(RMFLAGS) lexer_test parser_test hash_test env_test expand_test

@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 23:24:06 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/16 06:29:32 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,11 @@ $(MAN_OBJ_PATH)/$(TREE_DIR)/%.o : $(MAN_SRC_PATH)/$(TREE_DIR)/%.c $(MAN_INC)
 $(MAN_OBJ_PATH)/$(ENV_DIR)/%.o : $(MAN_SRC_PATH)/$(ENV_DIR)/%.c $(MAN_INC)
 	@mkdir -p $(MAN_OBJ_PATH)
 	@mkdir -p $(MAN_OBJ_PATH)/$(ENV_DIR)
+	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
+$(MAN_OBJ_PATH)/$(EXPAND_DIR)/%.o : $(MAN_SRC_PATH)/$(EXPAND_DIR)/%.c $(MAN_INC)
+	@mkdir -p $(MAN_OBJ_PATH)
+	@mkdir -p $(MAN_OBJ_PATH)/$(EXPAND_DIR)
 	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
 $(MAN_OBJ_PATH)/%.o : $(MAN_SRC_PATH)/%.c $(MAN_INC)
