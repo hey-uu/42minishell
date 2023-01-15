@@ -6,28 +6,14 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:09:45 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 23:52:09 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 21:57:45 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "env_manager.h"
 
-static char	*ft_strndup(char *str, int n)
-{
-	char	*new;
-	int		i;
-
-	new = ft_malloc(sizeof(char) * n);
-	i = 0;
-	while (i < (n - 1) && str[i])
-	{
-		new[i] = str[i];
-		i++;
-	}
-	new[i] = 0;
-	return (new);
-}
+char	*ft_strndup(char *str, int n);
 
 void	initialize_env_table(t_env_tab **table, char **envp)
 {
@@ -43,8 +29,8 @@ void	initialize_env_table(t_env_tab **table, char **envp)
 		j = 0;
 		while (envp[i][j] && envp[i][j] != '=')
 			j++;
-		key = ft_strndup(envp[i], ++j);
-		value = ft_strdup(&envp[i][j]);
+		key = ft_strndup(envp[i], j);
+		value = ft_strdup(&envp[i][j + 1]);
 		hash_table_insert(*table, key, value);
 		i++;
 	}
