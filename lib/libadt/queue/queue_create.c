@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:16:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:59:48 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,6 @@ t_queue	*create_queue(int initial_size, int type)
 	else
 		queue->strarr = NULL;
 	return (queue);
-}
-
-void	destroy_queue(t_queue *queue)
-{
-	int	i;
-
-	if (queue->strarr)
-	{
-		i = -1;
-		while (++i < queue->used_size)
-			free(queue->strarr[i]);
-		free(queue->strarr);
-	}
-	if (queue->iarr)
-		free(queue->iarr);
-	free(queue);
 }
 
 void	queue_double_size_iarr(t_queue *queue)

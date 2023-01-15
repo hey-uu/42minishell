@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/14 22:35:13 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/15 17:14:22 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ LIST_FILE		=		ft_lstadd_back \
 						ft_lstnew \
 						ft_lstsize
 QUEUE_FILE		=		queue_create \
+						queue_destroy \
 						queue_pop \
 						queue_push \
 						queue_show
