@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 19:31:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:44:48 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,18 @@ int	is_redirection(int token_type)
 	return (0);
 }
 
-t_node	*parser(t_token *tokens)
+void	parser(t_token *tokens, t_node **parse_tree, int *errcode, \
+									t_token *syntax_error_near_token)
 {
-	t_node	*parse_tree;
 	int		res;
 	int		offset;
 
-	parse_tree = create_tree_node();
+	*parse_tree = create_tree_node();
 	offset = 0;
-	res = parse_list(&parse_tree, tokens, &offset);
+	res = parse_list(parse_tree, tokens, &offset);
 	if (res == SYNTAX_ERROR || tokens[offset].type != TOKEN_NONE)
 	{
-		print_syntax_error_message(tokens[offset].type, tokens[offset].str);
-		destroy_token_list(tokens);
-		destroy_tree(parse_tree);
-		return (NULL);
+		*syntax_error_near_token = tokens[offset];
+		*errcode = ERROR_IN_SYNTAX;
 	}
-	destroy_token_list(tokens);
-	return (parse_tree);
 }

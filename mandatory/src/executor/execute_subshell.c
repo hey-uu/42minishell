@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 23:53:15 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:51:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 	else if (pid == 0)
 	{
 		set_standard_stream(pl, node->exe_unit->redir_list, nth);
-		exit_code = executor(node->first_child);
+		exit_code = execute_list(node->first_child);
 		exit(0);
 	}
 	else

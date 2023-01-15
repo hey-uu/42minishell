@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 23:07:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/11 14:55:47 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:24:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	print_redirect_type(int type)
 		printf("+ type : >>\n");
 }
 
-static void	print_redirect_list(t_queue *redir_list, int depth)
+static void	print_redirect_list(t_queue *q_redir_list, int depth)
 {
 	int	type;
 	int	i;
@@ -85,14 +85,14 @@ static void	print_redirect_list(t_queue *redir_list, int depth)
 	print_indent2(depth);
 	printf("redirection : [\n");
 	i = -1;
-	while (++i < redir_list->used_size)
+	while (++i < q_redir_list->used_size)
 	{
 		print_indent3(depth + 1);
-		type = redir_list->iarr[(redir_list->front + i) % redir_list->size];
+		type = q_redir_list->iarr[(q_redir_list->front + i) % q_redir_list->size];
 		print_redirect_type(type);
 		print_indent3(depth + 1);
 		printf("  file name : %s\n", \
-				redir_list->strarr[(redir_list->front + i) % redir_list->size]);
+				q_redir_list->strarr[(q_redir_list->front + i) % q_redir_list->size]);
 	}
 	print_indent2(depth);
 	printf("]\n");
@@ -102,13 +102,13 @@ static void	show_simple_command(t_execute_unit *unit, int depth)
 {
 	print_indent2(depth);
 	printf("command name : %s\n", unit->cmd_name);
-	print_arguments(unit->cmd_argv, depth);
-	print_redirect_list(unit->redir_list, depth);
+	print_arguments(unit->q_cmd_argv, depth);
+	print_redirect_list(unit->q_redir_list, depth);
 }
 
 static void	show_subshell(t_node *tree, int depth)
 {
-	print_redirect_list(tree->exe_unit->redir_list, depth);
+	print_redirect_list(tree->exe_unit->q_redir_list, depth);
 }
 
 static void	print_node_type(int type)

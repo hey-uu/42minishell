@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 23:29:32 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:51:52 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "expansion_internal.h"
 #include "s_tree_node.h"
+#include <stdio.h>
 
 char	**expand_word_to_strings(char *word)
 {
@@ -28,17 +29,17 @@ char	**expand_word_to_strings(char *word)
 	return (strings);
 }
 
-void	expand_cmd(char **cmd)
+void	expand_cmd_name(char **cmd)
 {
 	char		**strings;
 	int			i;
 
 // printf("> expand cmd!\n");
-	printf("%p\n", *cmd);
-	assert(*cmd != NULL);
+// assert(*cmd != NULL);
 	strings = expand_word_to_strings(*cmd);
 	free(*cmd);
 	*cmd = strings[0];
+// printf("cmd: %s\n", *cmd);
 	i = 1;
 	while (strings[i])
 	{
@@ -48,9 +49,9 @@ void	expand_cmd(char **cmd)
 	free(strings);
 }
 
-void	expand_cmd_argv(t_queue **cmd_argv)
+void	expand_cmd_argv(t_queue **q_cmd_argv)
 {
-	const int	old_used_size = (*cmd_argv)->used_size;
+	const int	old_used_size = (*q_cmd_argv)->used_size;
 	char		*argument;
 	char		**strings;
 	int			i;
@@ -59,17 +60,18 @@ void	expand_cmd_argv(t_queue **cmd_argv)
 	i = 0;
 	while (i < old_used_size)
 	{
-		argument = queue_pop_str(*cmd_argv);
+		argument = queue_pop_str(*q_cmd_argv);
 		strings = expand_word_to_strings(argument);
-		queue_push_strs(*cmd_argv, strings);
+		free(argument);
+		queue_push_strs(*q_cmd_argv, strings);
 		free(strings);
 		i++;
 	}
 }
 
-int	expand_redir_list(t_queue **redir_list)
+int	expand_redir_list(t_queue **q_redir_list)
 {
-	const int	old_used_size = (*redir_list)->used_size;
+	const int	old_used_size = (*q_redir_list)->used_size;
 	char		**strings;
 	int			i;
 	t_intstr	qdata;
@@ -78,7 +80,7 @@ int	expand_redir_list(t_queue **redir_list)
 	i = -1;
 	while (++i < old_used_size)
 	{
-		qdata = queue_pop_intstr(*redir_list);
+		qdata = queue_pop_intstr(*q_redir_list);
 		strings = expand_word_to_strings(qdata.str);
 		if (strings[0] && strings[1])
 		{
@@ -88,7 +90,7 @@ int	expand_redir_list(t_queue **redir_list)
 			return (EXPAND_AMBIGUOUS_REDIRECT_ERROR);
 		}
 		else
-			queue_push_intstr(*redir_list, qdata.num, strings[0]);
+			queue_push_intstr(*q_redir_list, qdata.num, strings[0]);
 		free(strings);
 	}
 	return (EXPAND_SUCCESS);
@@ -99,8 +101,10 @@ int	do_expansion(t_execute_unit *exe_unit)
 	int	res;
 
 	res = 0;
-	expand_cmd(&exe_unit->cmd_name);
-	expand_cmd_argv(&exe_unit->cmd_argv);
-	res = expand_redir_list(&exe_unit->redir_list);
+	expand_cmd_name(&exe_unit->cmd_name);
+	expand_cmd_argv(&exe_unit->q_cmd_argv);
+	exe_unit->cmd_argv = queue_get_str_arr(exe_unit->q_cmd_argv);
+	res = expand_redir_list(&exe_unit->q_redir_list);
+	exe_unit->redir_list = queue_get_intstr_arr(exe_unit->q_redir_list);
 	return (res);
 }

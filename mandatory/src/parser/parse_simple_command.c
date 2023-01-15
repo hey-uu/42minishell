@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/13 04:44:15 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:24:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	parse_prefix(t_execute_unit *exe_unit, t_token *tokens, int *offset)
 	{
 		(*offset)++;
 		if (tokens[*offset].type == TOKEN_WORD)
-			push_redirection(exe_unit->redir_list, tokens, *offset - 1);
+			push_redirection(exe_unit->q_redir_list, tokens, *offset - 1);
 		else
 			return (SYNTAX_ERROR);
 		(*offset)++;
@@ -32,7 +32,7 @@ static int	parse_command_name(\
 	if (tokens[*offset].type == TOKEN_WORD)
 	{
 		exe_unit->cmd_name = ft_strdup(tokens[*offset].str);
-		push_arguments(exe_unit->cmd_argv, tokens, *offset);
+		push_arguments(exe_unit->q_cmd_argv, tokens, *offset);
 		(*offset)++;
 	}
 	return (SYNTAX_OK);
@@ -44,14 +44,14 @@ static int	parse_suffix(t_execute_unit *exe_unit, t_token *tokens, int *offset)
 	{
 		if (tokens[*offset].type == TOKEN_WORD)
 		{
-			push_arguments(exe_unit->cmd_argv, tokens, *offset);
+			push_arguments(exe_unit->q_cmd_argv, tokens, *offset);
 			(*offset)++;
 		}
 		else if (is_redirection(tokens[*offset].type))
 		{
 			(*offset)++;
 			if (tokens[*offset].type == TOKEN_WORD)
-				push_redirection(exe_unit->redir_list, tokens, *offset - 1);
+				push_redirection(exe_unit->q_redir_list, tokens, *offset - 1);
 			else
 				return (SYNTAX_ERROR);
 			(*offset)++;

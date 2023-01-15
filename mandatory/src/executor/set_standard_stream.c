@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 17:30:28 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:33:26 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,26 @@
 #include "minishell.h"
 #include "parser.h"
 
-static void	do_redirecting(t_queue *redir_list)
+static void	do_redirecting(t_redir *redir_list)
 {
 	int	fd;
 	int	err;
 	int	i;
-	int	idx;
 
 	i = 0;
-	// 원형 큐에 알맞은 인덱스를 구하기
-	while (i < redir_list->used_size)
+	while (redir_list[i].str)
 	{
-		if (redir_list->iarr[i] == TOKEN_REDIR_IN \
-				|| redir_list->iarr[i] == TOKEN_REDIR_IN_HERE)
+		if (redir_list[i].num == TOKEN_REDIR_IN \
+				|| redir_list[i].num == TOKEN_REDIR_IN_HERE)
 		{
-			fd = open(redir_list->strarr[i], O_RDONLY);
+			fd = open(redir_list[i].str, O_RDONLY);
 			err = dup2(fd, STDIN_FILENO);
-			if (redir_list->iarr[i] == TOKEN_REDIR_IN_HERE)
-				unlink(redir_list->strarr[i]);
+			if (redir_list[i].num == TOKEN_REDIR_IN_HERE)
+				unlink(redir_list[i].str);
 		}
-		else if (redir_list->iarr[i] == TOKEN_REDIR_OUT)
+		else if (redir_list[i].num == TOKEN_REDIR_OUT)
 		{
-			fd = open(redir_list->strarr[i], \
+			fd = open(redir_list[i].str, \
 						O_WRONLY | O_CREAT | O_TRUNC, 0644);
 			err = dup2(fd, STDOUT_FILENO);
 		}
@@ -75,7 +73,7 @@ static void	do_piping(int old_pipe_fd[2], int new_pipe_fd[2], \
 		exit_by_error("dup2 error");
 }
 
-void	set_standard_stream(t_pipeline *pl, t_queue *redir_list, int nth)
+void	set_standard_stream(t_pipeline *pl, t_redir *redir_list, int nth)
 {
 	if (pl && pl->pipe_exist)
 		do_piping(pl->old_pipe_fd, pl->new_pipe_fd, nth, pl->child_cnt);

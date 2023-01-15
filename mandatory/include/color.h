@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.c                                         :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 11:33:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 02:08:54 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/19 13:05:53 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/19 13:08:47 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
-#include "parser.h"
-#include "env_manager.h"
+#ifndef	COLOR_H
+# define COLOR_H
 
-void	executor(t_node *parse_tree, int *errcode)
-{
-	if (execute_list(parse_tree) == FAILURE)
-		*errcode = ERROR_EXECUTE_FAILED;
-}
+/* ANSI Escape codes defines print style */
+# define RESET		"\x1B[0m"
+# define BOLD		"\x1B[1m"
+# define FAINT		"\x1B[2m"
+# define ITAL		"\x1B[3m"
+# define RED		"\x1B[31m"
+# define GREEN		"\x1B[32m"
+# define YELLO		"\x1B[33m"
+# define BLUE		"\x1B[34m"
+# define MAGENTA	"\x1B[35m"
+# define CYAN		"\x1B[36m"
+
+#endif
