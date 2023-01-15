@@ -6,7 +6,7 @@
 /*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 03:13:08 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/15 22:22:00 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	get_builtin_cmd_idx(char *cmd_name)
 	const char	*builtin[6] = {"echo", "cd", "pwd", "export", "env", "exit"};
 	int			i;
 
+	if (!cmd_name)
+		return (FAILURE);
 	i = 0;
 	while (i < 6)
 	{
@@ -118,27 +120,30 @@ int	executor(t_node *node, char **envp);
 
 int	execute_pipeline(t_node *node, char **envp)
 {
+	int	pid;
+
 	if (!node->next_sibling && \
 			get_builtin_cmd_idx(node->exe_unit->cmd_name) >= 0)
 		execute_single_builtin(node->exe_unit, envp);
-	else if (node->type == NODE_SUBSHELL)
+	while (node)
 	{
-		executor(node->first_child, envp);
-	}
-	else
-	{
-		while (node)
+		if (node->type == NODE_SUBSHELL)
 		{
-			if (execute_simple_command(node->exe_unit, envp, \
-				(node->next_sibling == NULL)) == FAILURE)
-				return (FAILURE);
-			node = node->next_sibling;
+			pid = fork();
+			if (pid == 0)
+			{
+				do_redirecting(node->exe_unit->redir_list);
+				executor(node->first_child, envp);
+			}
 		}
+		else
+			execute_simple_command(node->exe_unit, envp, (node->next_sibling == NULL));
+		node = node->next_sibling;
 	}
 	return (SUCCESS);
 }
 
-int	executor(t_node *node, char **envp)
+int	executor(t_node *node, char *envp[])
 {
 	if (node->type == NODE_PIPELINE)
 		return (execute_pipeline(node->first_child, envp));
@@ -153,37 +158,4 @@ int	executor(t_node *node, char **envp)
 			executor(node->first_child->next_sibling, envp);
 	}
 	return (SUCCESS);
-}
-
-// cat <infile | cat -e >outfile
-
-// node[0]
-	// - node[1]
-	// - node[2]
-int main()
-{
-	t_node	node[10];
-	t_node	*root = &node[0];
-
-	node[0].type = NODE_PIPELINE;
-	node[1].type = NODE_SIMPLE_CMD;
-	node[2].type = NODE_SIMPLE_CMD;
-
-	node[0].first_child = node[1];
-	node[1].next_sibling = node[2];
-
-	node[1].exe_unit = malloc(sizeof(t_execute_unit));
-	node[1].exe_unit->cmd_name = "/bin/cat";
-	node[1].exe_unit->cmd_argv = create_queue(QUEUE_INITIAL_SIZE, QUEUE_STR_ONLY);
-	node[1].exe_unit->redir_list = create_queue(QUEUE_INITIAL_SIZE, QUEUE_INTSTR);
-	queue_push_intstr(node[1].exe_unit->redir_list, TOKEN_REDIR_IN, "infile");
-
-	node[2].exe_unit = malloc(sizeof(t_execute_unit));
-	node[2].exe_unit->cmd_name = "/bin/cat";
-	node[2].exe_unit->cmd_argv = create_queue(QUEUE_INITIAL_SIZE, QUEUE_STR_ONLY);
-	node[2].exe_unit->redir_list = create_queue(QUEUE_INITIAL_SIZE, QUEUE_INTSTR);
-	queue_push_str(node[2].exe_unit->cmd_argv, "-e");
-	queue_push_intstr(node[2].exe_unit->redir_list, TOKEN_REDIR_OUT, "outfile");
-
-	
 }
