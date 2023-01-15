@@ -19,9 +19,9 @@ static void	destroy_execute_unit(t_execute_unit *exe_unit)
 	if (exe_unit->cmd_name)
 		free(exe_unit->cmd_name);
 	if (exe_unit->cmd_argv)
-		destroy_queue(exe_unit->cmd_argv);
+		destroy_queue(&exe_unit->cmd_argv);
 	if (exe_unit->redir_list)
-		destroy_queue(exe_unit->redir_list);
+		destroy_queue(&exe_unit->redir_list);
 	free(exe_unit);
 }
 

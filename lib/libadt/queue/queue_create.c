@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:16:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 16:59:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:44:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ t_queue	*create_queue(int initial_size, int type)
 	queue->front = 0;
 	queue->rear = 0;
 	if (type == QUEUE_INT_ONLY || type == QUEUE_INTSTR)
-		queue->iarr = ft_malloc(sizeof(int) * queue->size);
+		queue->iarr = ft_malloc(queue->size * sizeof(int));
 	else
 		queue->iarr = NULL;
 	if (type == QUEUE_STR_ONLY || type == QUEUE_INTSTR)
-		queue->strarr = ft_malloc(sizeof(char *) * queue->size);
+		queue->strarr = ft_calloc(queue->size, sizeof(char *));
 	else
 		queue->strarr = NULL;
 	return (queue);
@@ -56,7 +56,7 @@ void	queue_double_size_strarr(t_queue *queue)
 	char	**new;
 	int		i;
 
-	new = ft_malloc(sizeof(char *) * queue->size * 2);
+	new = ft_calloc(queue->size * 2, sizeof(char *));
 	if (queue->used_size != 0)
 	{
 		i = -1;

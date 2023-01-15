@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 02:10:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:48:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_intstr
 }	t_intstr;
 
 t_queue		*create_queue(int initial_size, int type);
-void		destroy_queue(t_queue *queue);
+void		destroy_queue(t_queue **queue);
 int			queue_double_size(t_queue *queue);
 int			queue_pop_int(t_queue *deq);
 char		*queue_pop_str(t_queue *deq);

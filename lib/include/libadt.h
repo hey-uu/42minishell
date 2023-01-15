@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 17:48:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:48:43 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			ft_lstsize(t_list *lst);
 
 // queue
 t_queue		*create_queue(int initial_size, int type);
-void		destroy_queue(t_queue *queue);
+void		destroy_queue(t_queue **queue);
 int			queue_pop_int(t_queue *deq);
 char		*queue_pop_str(t_queue *deq);
 t_intstr	queue_pop_intstr(t_queue *deq);

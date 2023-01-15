@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   queue_flush.c                                      :+:      :+:    :+:   */
+/*   queue_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:58:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 17:07:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:48:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ void	queue_flush(t_queue *queue)
 	queue->rear = 0;
 }
 
-void	destroy_queue(t_queue *queue)
+void	destroy_queue(t_queue **queue)
 {
-	queue_flush(queue);
-	if (queue->strarr)
-		free(queue->strarr);
-	if (queue->iarr)
-		free(queue->iarr);
-	free(queue);
+	queue_flush(*queue);
+	if ((*queue)->strarr)
+		free((*queue)->strarr);
+	if ((*queue)->iarr)
+		free((*queue)->iarr);
+	free(*queue);
+	*queue = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:38:01 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:36:40 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	queue_show(t_queue *queue)
 {
 	int	i;
 
-	i = -1;
+	if (!queue)
+		return ;
 	printf("-----------------------------------------\n");
 	printf("size: %d, used_size: %d, front: %d, rear: %d\n", \
 		queue->size, queue->used_size, queue->front, queue->rear);
@@ -28,6 +29,7 @@ void	queue_show(t_queue *queue)
 	else
 		printf("value data type : {int, string}\n");
 	printf("val| id : data\n");
+	i = -1;
 	while (++i < queue->size)
 	{
 		if (queue->type == QUEUE_INT_ONLY || queue->type == QUEUE_INTSTR)
