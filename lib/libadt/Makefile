@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/20 19:23:15 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/20 19:28:49 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,17 +132,17 @@ re :
 $(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(LIST_DIR)
-	$(CC) -c $(CFLAGS) $< $(LIST_INC_FLAG) -o $@
+	$(CC) -c $(CFLAGS) $< $(LIBFLAGS) $(LIST_INC_FLAG) -o $@
 
 $(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(QUEUE_DIR)
-	$(CC) -c $(CFLAGS) $< $(QUEUE_INC_FLAG) -o $@
+	$(CC) -c $(CFLAGS) $< $(LIBFLAGS) $(QUEUE_INC_FLAG) -o $@
 
 $(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(HASH_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(HASH_DIR)
-	$(CC) -c $(CFLAGS) $< $(HASH_INC_FLAG) -o $@
+	$(CC) -c $(CFLAGS) $< $(LIBFLAGS) $(HASH_INC_FLAG) -o $@
 
 $(LIBFT) :
 	make -C $(LIBFT_PATH) $(FSAN_OPT) all
