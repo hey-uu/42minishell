@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:59:34 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 19:32:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:51:32 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ t_intstr	queue_get_intstr(t_queue *queue, int i)
 
 	idx = (queue->front + i) % queue->size;
 	return ((t_intstr){queue->iarr[idx], queue->strarr[idx]});
+}
+
+int	queue_get_idx(t_queue *queue, int i)
+{
+	return ((queue->front + i) % queue->size);
 }
