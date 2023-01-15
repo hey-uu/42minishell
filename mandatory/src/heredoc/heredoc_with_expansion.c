@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:40:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 12:06:15 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 01:55:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ void	make_heredoc_with_expansion(char *line, int fd)
 			i += expand_variable_in_heredoc(&line[i], fd);
 			len = 0;
 		}
-		i++;
-		len++;
+		else
+		{
+			i++;
+			len++;
+		}
 	}
 	if (len)
 		write(fd, line + i - len, len);
