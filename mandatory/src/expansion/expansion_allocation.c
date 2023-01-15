@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_expansion_set.c                             :+:      :+:    :+:   */
+/*   expansion_allocation.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:00:10 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:12:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 07:59:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include "libft.h"
 #include <stddef.h>
 
-char	*ft_strndup(char *str, int n);
+char		*ft_strndup(char *str, int n);
 
-t_word	*create_word_node(void)
+static t_word	*create_word_node(void)
 {
 	t_word	*new;
 
 	new = ft_malloc(sizeof(t_word));
 	new->data = NULL;
 	new->len = 0;
-	new->quote = EXP_UNQUOTED;
+	new->mask = EXPAND_NONE;
 	new->next = NULL;
 	return (new);
 }
@@ -34,9 +34,10 @@ t_expansion	*create_expansion_set(char *origin, t_env_tab *envtab)
 	t_expansion	*new;
 
 	new = ft_malloc(sizeof(t_expansion));
+	new->envtab = envtab;
 	new->origin = origin;
 	new->origin_len = ft_strlen(origin);
-	new->head = NULL;
+	new->first = NULL;
 	new->last = NULL;
 	new->count = 0;
 	return (new);
@@ -47,9 +48,9 @@ t_word	*add_new_word_node_back(t_expansion *set)
 	t_word	*new;
 
 	new = create_word_node();
-	if (!set->head)
+	if (!set->first)
 	{
-		set->head = new;
+		set->first = new;
 		set->last = new;
 	}
 	else

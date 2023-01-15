@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   destroy_expansion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 20:43:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 06:51:39 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/16 07:00:32 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/16 07:03:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
-char	*ft_strndup(char *str, int n)
-{
-	char	*new;
-	int		i;
+#include "expansion.h"
+#include <stdlib.h>
 
-	if (!n)
-		return (NULL);
-	new = ft_malloc(sizeof(char) * (n + 1));
-	i = 0;
-	while (i < n && str[i])
+void	destroy_expansion(t_expansion *set)
+{
+	t_word	*node;
+	t_word	*next;
+
+	node = set->first;
+	while (node)
 	{
-		new[i] = str[i];
-		i++;
+		next = node->next;
+		free(node->data);
+		free(node);
+		node = next;
 	}
-	new[i] = 0;
-	return (new);
+	free(set);
 }
