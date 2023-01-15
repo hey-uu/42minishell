@@ -104,6 +104,8 @@ int	execute_simple_command(t_execute_unit *exe_unit, char **envp, int last)
 
 	do_piping(pipe_fd, last);
 	do_redirecting(exe_unit->redir_list);
+	if (put_accessible_command_path(&exe_unit->cmd_name, envp) == FAILURE)
+		printf("(guemzzoki): command not found: %s\n", exe_unit->cmd_name);
 	pid = fork();
 	if (pid == 0)
 	{
