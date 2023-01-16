@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:08:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 01:15:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 08:43:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void	field_split(t_expansion *set, char *value)
 		{
 			node = add_new_word_node_back(set);
 			if (flag)
+			{
 				node->mask |= EXPAND_SPLITTED;
+				set->count++;
+			}
 			node->len = pass_non_field_separators(node, &value[i]);
 			dup_data_to_word(node, &value[i]);
 			i += node->len;
@@ -77,5 +80,6 @@ void	field_split(t_expansion *set, char *value)
 	{
 		add_new_word_node_back(set);
 		node->mask |= EXPAND_SPLITTED;
+		set->count++;
 	}
 }

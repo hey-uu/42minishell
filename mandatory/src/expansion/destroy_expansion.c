@@ -6,25 +6,30 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:00:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 07:03:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:01:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansion.h"
 #include <stdlib.h>
 
-void	destroy_expansion(t_expansion *set)
+void	destroy_words(t_word *word)
 {
-	t_word	*node;
+	t_word	*cur;
 	t_word	*next;
 
-	node = set->first;
-	while (node)
+	cur = word;
+	while (cur)
 	{
-		next = node->next;
-		free(node->data);
-		free(node);
-		node = next;
+		next = cur->next;
+		free(cur->data);
+		free(cur);
+		cur = next;
 	}
+}
+
+void	destroy_expansion(t_expansion *set)
+{
+	destroy_words(set->first);
 	free(set);
 }
