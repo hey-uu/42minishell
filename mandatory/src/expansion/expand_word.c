@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:44:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:19:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:41:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	expand_single_quote(t_expansion *set, char *word)
 	i = 1;
 	while (word[i] && word[i] != '\'')
 		i++;
-	node->len = i + 1;
-	dup_data_to_word(node, word);
+	node->len = i;
+	dup_data_to_word(node, &word[1]);
 	return (i + 1);
 }
 
@@ -47,10 +47,7 @@ int	expand_double_quote_basic(t_expansion *set, char *word)
 	i = 0;
 	while (word[i] && word[i] != '\"' && word[i] != '$')
 		i++;
-	if (word[i] == '\"')
-		concat_node_ndata(node, word, i + 1);
-	else
-		concat_node_ndata(node, word, i);
+	concat_node_ndata(node, word, i);
 	return (i);
 }
 
@@ -61,8 +58,6 @@ int	expand_double_quote(t_expansion *set, char *word)
 
 	node = add_new_word_node_back(set);
 	node->mask |= EXPAND_QUOTED;
-	node->len = 1;
-	dup_data_to_word(node, "\"");
 	i = 1;
 	while (word[i] && word[i] != '\"')
 	{
@@ -71,8 +66,6 @@ int	expand_double_quote(t_expansion *set, char *word)
 		else
 			i += expand_double_quote_basic(set, &word[i]);
 	}
-	if (i == 1)
-		concat_node_ndata(node, "\"", 1);
 	return (i + 1);
 }
 

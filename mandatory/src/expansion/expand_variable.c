@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:02:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:18:18 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:46:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	concat_node_ndata(t_word *node, char *data, int len)
 
 	old_data = node->data;
 	old_len = node->len;
-	if (!data)
+	if (!data || !len)
 		return ;
 	if (!old_data)
 		dup_data_to_word(node, data);
@@ -76,6 +76,7 @@ int	expand_quoted_variable(t_expansion *set, char *word)
 	variable = split_variable(&word[i], &i);
 	printf("expand quoted variable: [%s]...\n", variable);
 	value = env_get(set->envtab, variable);
+	printf("found variable's value: [%s]...\n\n", value);
 	if (value)
 	{
 		concat_node_ndata(set->last, value, ft_strlen(value));

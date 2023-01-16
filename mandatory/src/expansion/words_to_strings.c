@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:41:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:17:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:51:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_word	*fill_string_with_word_data(t_word *cur, char *string)
 		return (NULL);
 	while (cur)
 	{
-		ft_strlcpy(string + i, cur->data, cur->len + 1);
+		if (cur->len)
+			ft_strlcpy(string + i, cur->data, cur->len + 1);
 		printf("filling.... : \n  [%s]\n", string);
 		i += cur->len;
 		if ((!cur->next) || (cur->next->mask & EXPAND_SPLITTED) != 0)
@@ -64,6 +65,7 @@ char	*word_to_string(t_expansion *set)
 	len = determine_string_length(set->first);
 	printf("total len : %d\n", len);
 	string = ft_malloc(sizeof(char) * (len + 1));
+	string[len] = 0;
 	start = set->first;
 	end = fill_string_with_word_data(set->first, string);
 	if (end)
