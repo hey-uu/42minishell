@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 09:38:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:20:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv, char **envp)
 		printf("\n========================\n");
 		printf("\n%dth test case: [%s]\n\n", j + 1, word_case[j]);
 		set = expand_word(word_case[j], table);
-		strings = words_to_strings(set);
+		strings = words_to_strings(set, 0);
 		i = -1;
 		printf("\n");
 		while (strings[++i])

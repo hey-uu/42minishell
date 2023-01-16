@@ -6,13 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 06:51:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:29:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stddef.h>
-#include <stdio.h>
+#include <stdlib.h>
+
 char	*ft_strndup(char *str, int n)
 {
 	char	*new;
@@ -29,4 +29,19 @@ char	*ft_strndup(char *str, int n)
 	}
 	new[i] = 0;
 	return (new);
+}
+
+void	free_double_char_array(char ***array)
+{
+	char	**double_array;
+	int		i;
+
+	double_array = *array;
+	i = -1;
+	while (double_array[++i])
+	{
+		free(double_array[i]);
+	}
+	free(double_array);
+	*array = NULL;
 }

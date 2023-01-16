@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/15 17:14:22 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/16 10:03:06 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,8 @@ QUEUE_FILE		=		queue_create \
 						queue_destroy \
 						queue_pop \
 						queue_push \
-						queue_show
+						queue_show \
+						queue_get
 HASH_FILE		=		hash_function \
 						hash_table_create \
 						hash_table_destroy \

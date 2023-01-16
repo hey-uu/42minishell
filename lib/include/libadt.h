@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 17:48:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:12:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ t_intstr	queue_pop_intstr(t_queue *deq);
 void		queue_push_int(t_queue *queue, int new_data);
 void		queue_push_str(t_queue *queue, char *new_data);
 void		queue_push_intstr(t_queue *queue, int idata, char *sdata);
+void		queue_push_strs(t_queue *queue, char **strs);
 void		queue_show(t_queue *queue);
+int			queue_get_int(t_queue *queue, int i);
+char		*queue_get_str(t_queue *queue, int i);
+t_intstr	queue_get_intstr(t_queue *queue, int i);
 
 #endif

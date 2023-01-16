@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:41:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 09:37:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:18:57 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,18 @@ char	*word_to_string(t_expansion *set)
 	return (string);
 }
 
-char	**words_to_strings(t_expansion *set)
+char	**words_to_strings(t_expansion *set, int count)
 {
 	char	**strings;
 	int		i;
 
-	strings = ft_malloc(sizeof(char *) * (set->count + 1));
-	printf("word count: %d\n", set->count);
-	strings[set->count] = NULL;
+	if (!count)
+		count = set->count;
+	strings = ft_malloc(sizeof(char *) * (count + 1));
+	printf("word count: %d\n", count);
+	strings[count] = NULL;
 	i = -1;
-	while (++i < set->count)
+	while (++i < count)
 	{
 		strings[i] = word_to_string(set);
 	}

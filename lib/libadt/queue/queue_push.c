@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:29:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:10:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ void	queue_push_intstr(t_queue *queue, int idata, char *sdata)
 	queue->iarr[queue->rear] = idata;
 	queue->rear = (queue->rear + 1) % queue->size;
 	queue->used_size++;
+}
+
+void	queue_push_strs(t_queue *queue, char **strs)
+{
+	int	i;
+
+	i = -1;
+	while (strs[++i])
+	{
+		queue_push_str(queue, strs[i]);
+	}
 }

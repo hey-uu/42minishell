@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/13 04:54:25 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:30:45 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "libadt.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
+
+# define AMBIGUOUS_REDIRECT -1
 
 enum e_token_type
 {
