@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:33:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:17:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 #include "env_manager.h"
 #include <stdlib.h>
 
-
 char	*expand_cmd(char *cmd, t_env_tab *envtab)
 {
 	t_expansion	*set;
 	char		**strings;
 	char		*expanded_cmd;
-
 
 	set = expand_word(cmd, envtab);
 	strings = words_to_strings(set, 1);

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:44:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 07:54:32 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:19:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int			expand_quoted_variable(t_expansion *set, char *word);
 int			expand_unquoted_variable(t_expansion *set, char *word);
 void		concat_node_ndata(t_word *node, char *data, int len);
 
-
 int	expand_single_quote(t_expansion *set, char *word)
 {
 	t_word	*node;
 	int		i;
 
 	node = add_new_word_node_back(set);
+	node->mask |= EXPAND_QUOTED;
 	i = 1;
 	while (word[i] && word[i] != '\'')
 		i++;
@@ -60,6 +60,7 @@ int	expand_double_quote(t_expansion *set, char *word)
 	int		i;
 
 	node = add_new_word_node_back(set);
+	node->mask |= EXPAND_QUOTED;
 	node->len = 1;
 	dup_data_to_word(node, "\"");
 	i = 1;

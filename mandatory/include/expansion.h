@@ -6,20 +6,21 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:19:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:19:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPANSION_H
 # define EXPANSION_H
 
-#include "env_manager.h"
+# include "env_manager.h"
 
 enum e_expansion_mask
 {
 	EXPAND_NONE = 0,
 	EXPAND_SPLITTED = (1 << 0),
-	EXPAND_WILDCARD = (1 << 1)
+	EXPAND_WILDCARD = (1 << 1),
+	EXPAND_QUOTED = (1 << 2)
 };
 
 typedef struct s_word

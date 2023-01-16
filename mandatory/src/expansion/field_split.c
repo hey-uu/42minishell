@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:08:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 08:43:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:37:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	dup_data_to_word(t_word *node, char *word);
 t_word	*add_new_word_node_back(t_expansion *set);
-
 
 static int	is_field_separator(char c)
 {
@@ -45,6 +44,23 @@ static int	pass_non_field_separators(t_word *node, char *value)
 	return (i);
 }
 
+t_word	*add_splitted_node(t_expansion *set, char *value, int *idx, int *flag)
+{
+	t_word	*node;
+
+	node = add_new_word_node_back(set);
+	if (*flag)
+	{
+		node->mask |= EXPAND_SPLITTED;
+		set->count++;
+	}
+	node->len = pass_non_field_separators(node, &value[*idx]);
+	dup_data_to_word(node, &value[*idx]);
+	*idx += node->len;
+	*flag = 0;
+	return (node);
+}
+
 void	field_split(t_expansion *set, char *value)
 {
 	t_word	*node;
@@ -63,18 +79,7 @@ void	field_split(t_expansion *set, char *value)
 			flag = 1;
 		}
 		if (value[i] && !is_field_separator(value[i]))
-		{
-			node = add_new_word_node_back(set);
-			if (flag)
-			{
-				node->mask |= EXPAND_SPLITTED;
-				set->count++;
-			}
-			node->len = pass_non_field_separators(node, &value[i]);
-			dup_data_to_word(node, &value[i]);
-			i += node->len;
-			flag = 0;
-		}
+			node = add_splitted_node(set, value, &i, &flag);
 	}
 	if (flag)
 	{

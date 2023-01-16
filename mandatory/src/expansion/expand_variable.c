@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:02:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 08:01:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:18:18 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strndup(char *str, int n);
 t_word	*add_new_word_node_back(t_expansion *set);
 void	dup_data_to_word(t_word *node, char *word);
 void	field_split(t_expansion *set, char *value);
-
 
 static char	*split_variable(char *word, int *idx)
 {
@@ -46,7 +45,7 @@ static char	*split_variable(char *word, int *idx)
 	return (variable);
 }
 
-void concat_node_ndata(t_word *node, char *data, int len)
+void	concat_node_ndata(t_word *node, char *data, int len)
 {
 	char	*old_data;
 	int		old_len;

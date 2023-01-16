@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:41:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:18:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 12:17:33 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 void	destroy_words(t_word *word);
-void 	concat_node_ndata(t_word *node, char *data, int len);
+void	concat_node_ndata(t_word *node, char *data, int len);
 
 static int	determine_string_length(t_word *cur)
 {
