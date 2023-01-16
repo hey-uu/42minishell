@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/16 06:29:32 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/16 12:24:57 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,3 +98,10 @@ $(MODULE_OBJ_PATH)/%.o : $(MODULE_PATH)/%.c
 $(TEST_OBJ_PATH)/%.o : $(TEST_PATH)/%.c $(TEST_INC)
 	mkdir -p $(TEST_OBJ_PATH)
 	$(CC) -c $(CFLAGS) $< $(TEST_INC_FLAG) -o $@
+
+# library
+$(LIBADT) :
+	make -C $(LIBADT_PATH)
+
+$(LIBFT) :
+	make -C $(LIBFT_PATH)
