@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:49:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 13:38:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:01:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	push_redirection(t_queue *redir_list, t_token *token, int offset)
 	const int	type = token[offset].type;
 	char		*str;
 
-	if (token[offset + 1].str)
+	if (type == TOKEN_REDIR_IN_HERE)
+		str = process_heredoc(token[offset + 1].str);
+	else if (token[offset + 1].str)
 		str = ft_strdup(token[offset + 1].str);
 	else
 		return ;

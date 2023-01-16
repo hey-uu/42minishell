@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:30:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:50:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_execute_unit
 	t_queue	*redir_list;
 }	t_execute_unit;
 
-
 typedef struct s_tree_node
 {
 	int					type;
@@ -107,5 +106,6 @@ t_node	*parser(t_token *tokens);
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
+char	*process_heredoc(char *word);
 
 #endif
