@@ -6,14 +6,18 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:19:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:00:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPANSION_H
 # define EXPANSION_H
 
+/*-------------- USER DEFINED HEADERS ------------*/
+
 # include "env_manager.h"
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
 
 enum e_expansion_mask
 {
@@ -22,6 +26,8 @@ enum e_expansion_mask
 	EXPAND_WILDCARD = (1 << 1),
 	EXPAND_QUOTED = (1 << 2)
 };
+
+/*------------- STRUCT DECLARATIONS --------------*/
 
 typedef struct s_word
 {
@@ -40,6 +46,8 @@ typedef struct s_expansion
 	t_word		*last;
 	int			count;
 }	t_expansion;
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
 t_expansion	*expand_word(char *word, t_env_tab *envtab);
 void		destroy_expansion(t_expansion *set);
