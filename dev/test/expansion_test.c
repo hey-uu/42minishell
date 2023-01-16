@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 07:59:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:38:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <assert.h>
 #include "env_manager.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 #define WORD_CASE 4
 char *word_case[] = {
 	"aad\"$PATH\"$LOGNAME\"b\"",
@@ -25,12 +27,23 @@ char *word_case[] = {
 
 void	show_hash_table(t_hash_table *table);
 
+void	destroy_strings(char **strings)
+{
+	int	i;
+
+	i = -1;
+	while (strings[++i])
+	{
+		free(strings[i]);
+	}
+	free(strings);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_env_tab	*table;
-	t_expansion	*word;
-	t_word		*node;
+	t_expansion	*set;
+	char		**strings;
 	int			i, j;
 
 	argc++;
@@ -42,15 +55,17 @@ int	main(int argc, char **argv, char **envp)
 	{
 		printf("\n========================\n");
 		printf("\n%dth test case: [%s]\n\n", j + 1, word_case[j]);
-		word = expand_word(word_case[j], table);
-		node = word->first;
-		i = 0;
-		while (node)
+		set = expand_word(word_case[j], table);
+		strings = words_to_strings(set);
+		i = -1;
+		printf("\n");
+		while (strings[++i])
 		{
-			printf("%d : %s\n", ++i, node->data);
-			node = node->next;
+			printf("%d : %s\n", i + 1, strings[i]);
 		}
-		destroy_expansion(word);
+		destroy_expansion(set);
+		destroy_strings(strings);
+		strings = NULL;
 		printf("\n========================\n");
 	}
 	hash_table_destroy(table);
