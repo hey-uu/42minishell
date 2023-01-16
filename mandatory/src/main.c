@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 23:03:32 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:05:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "prompt.h"
 #include <readline/readline.h>
 #include <readline/history.h>
-#include "env_table.h"
+#include "env_manager.h"
 
 // 처리해야할 것
 // * signal 설정
