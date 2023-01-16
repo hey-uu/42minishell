@@ -6,14 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:08:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:37:15 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 22:51:25 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion.h"
-
-void	dup_data_to_word(t_word *node, char *word);
-t_word	*add_new_word_node_back(t_expansion *set);
+#include "expansion_internal.h"
 
 static int	is_field_separator(char c)
 {

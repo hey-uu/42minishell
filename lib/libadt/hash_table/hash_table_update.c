@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:21:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 23:06:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:35:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	hash_table_update(t_hash_table *hash_table, char *key, void *content)
 {
 	t_hash_content	*target;
 	int				bucket;
-	
+
 	bucket = hash_bucket(key, hash_table->bucket_cnt);
 	target = hash_table_search(hash_table, key, bucket);
 	if (!target)

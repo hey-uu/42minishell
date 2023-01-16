@@ -6,16 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:00:10 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 09:24:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:22:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion.h"
-#include "env_manager.h"
-#include "libft.h"
 #include <stddef.h>
-
-char		*ft_strndup(char *str, int n);
+#include "expansion_internal.h"
+#include "libft.h"
 
 static t_word	*create_word_node(void)
 {
@@ -29,12 +26,11 @@ static t_word	*create_word_node(void)
 	return (new);
 }
 
-t_expansion	*create_expansion_set(char *origin, t_env_tab *envtab)
+t_expansion	*create_expansion_set(char *origin)
 {
 	t_expansion	*new;
 
 	new = ft_malloc(sizeof(t_expansion));
-	new->envtab = envtab;
 	new->origin = origin;
 	new->origin_len = ft_strlen(origin);
 	new->first = NULL;

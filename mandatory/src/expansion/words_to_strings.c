@@ -6,18 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:41:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:51:31 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:22:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion.h"
-#include "libadt.h"
-#include "env_manager.h"
-#include "libft.h"
 #include <stdlib.h>
-
-void	destroy_words(t_word *word);
-void	concat_node_ndata(t_word *node, char *data, int len);
+#include "expansion_internal.h"
+#include "env_manager.h"
+#include "libadt.h"
+#include "libft.h"
 
 static int	determine_string_length(t_word *cur)
 {

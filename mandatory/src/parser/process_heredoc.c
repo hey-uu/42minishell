@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 17:03:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 22:42:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*get_random_temp_file_name(void)
 	return (file_name);
 }
 
-void	get_heredoc_input(int fd, char *delimiter)
+void	get_heredoc_input(int fd, char *delimiter, int quote)
 {
 	char	*line;
 
@@ -67,6 +67,8 @@ void	get_heredoc_input(int fd, char *delimiter)
 			break ;
 		if (!ft_strncmp(line, delimiter, ft_strlen(line) + 1))
 			break ;
+		if (!quote)
+			line = expand_variable(line);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
@@ -74,7 +76,7 @@ void	get_heredoc_input(int fd, char *delimiter)
 	free(line);
 }
 
-char	*generate_here_document(char *delimiter)
+char	*generate_here_document(char *delimiter, int quote)
 {
 	char	*heredoc;
 	int		fd;
@@ -86,34 +88,26 @@ char	*generate_here_document(char *delimiter)
 		printf("failed to make temporary file for heredoc\n");
 		return (NULL);
 	}
-	get_heredoc_input(fd, delimiter);
+	get_heredoc_input(fd, delimiter, quote);
 	close(fd);
 	return (heredoc);
 }
 
 int	get_delimiter_len(char *word)
 {
-	int		quoted;
+	int		quote;
 	int		len;
 
 	len = 0;
-	quoted = QUOTE_NONE;
+	quote = 0;
 	while (*word)
 	{
-		if (((*word == '\'') && (quoted == QUOTE_SINGLE)) || \
-			((*word == '\"') && (quoted == QUOTE_DOUBLE)) || \
-			((*word == '\'') && (quoted == QUOTE_NONE)) || \
-			((*word == '\"') && (quoted == QUOTE_NONE)))
-		{
-			word++;
-			if (quoted == QUOTE_SINGLE || quoted == QUOTE_DOUBLE)
-				quoted = QUOTE_NONE;
-			else if (*word == '\"')
-				quoted = QUOTE_DOUBLE;
-			else
-				quoted = QUOTE_SINGLE;
-		}
-		len++;
+		if (!quote && (*word == '\'' || *word == '\"'))
+			quote = *word;
+		else if (quote && (*word == quote))
+			quote = 0;
+		else
+			len++;
 		word++;
 	}
 	return (len);
@@ -121,39 +115,34 @@ int	get_delimiter_len(char *word)
 
 void	store_delimiter(char *delimiter, char *word)
 {
-	int		quoted;
-	int		j;
+	int		quote;
+	int		i;
 
-	j = 0;
-	quoted = QUOTE_NONE;
+	i = 0;
+	quote = 0;
 	while (*word)
 	{
-		if (((*word == '\'') && (quoted == QUOTE_SINGLE)) || \
-			((*word == '\"') && (quoted == QUOTE_DOUBLE)) || \
-			((*word == '\'') && (quoted == QUOTE_NONE)) || \
-			((*word == '\"') && (quoted == QUOTE_NONE)))
-		{
-			word++;
-			if (quoted == QUOTE_SINGLE || quoted == QUOTE_DOUBLE)
-				quoted = QUOTE_NONE;
-			else if (*word == '\"')
-				quoted = QUOTE_DOUBLE;
-			else
-				quoted = QUOTE_SINGLE;
-		}
-		delimiter[j++] = *word++;
+		if (!quote && (*word == '\'' && *word == '\"'))
+			quote = *word;
+		else if (quote && (*word == quote))
+			quote = 0;
+		else
+			delimiter[i++] = *word;
+		word++;
 	}
-	delimiter[j] = '\0';
+	delimiter[i] = '\0';
 }
 
 char	*process_heredoc(char *word)
 {
 	const int	delimiter_len = get_delimiter_len(word);
+	int			quote;
 	char		*delimiter;
 	char		*heredoc;
 
 	delimiter = ft_malloc(sizeof(char) * (delimiter_len + 1));
 	store_delimiter(delimiter, word);
-	heredoc = generate_here_document(delimiter);
+	quote = (delimiter_len == ft_strlen(word));
+	heredoc = generate_here_document(delimiter, quote);
 	return (heredoc);
 }

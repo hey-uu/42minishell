@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion.h                                        :+:      :+:    :+:   */
+/*   t_env_table.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:18:09 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/16 21:01:55 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/16 23:29:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#ifndef T_ENV_TABLE_H
+# define T_ENV_TABLE_H
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "t_expansion.h"
+# include "libadt.h"
 
-/*-------------- FUNCTION PROTOTYPES -------------*/
+/*------------ DEFINE MACRO CONSTANTS ------------*/
 
-t_expansion	*expand_word(char *word);
-void		destroy_expansion(t_expansion *set);
-char		**words_to_strings(t_expansion *set, int count);
+enum	e_exit_status_manager
+{
+	EXIT_STAT_GET,
+	EXIT_STAT_UPDATE,
+};
+
+enum	e_env_manager
+{
+	ENV_INIT,
+	ENV_GET,
+	ENV_SET,
+	ENV_UNSET,
+	ENV_TAB_TO_ARR
+};
+
+/*------------- STRUCT DECLARATIONS --------------*/
+
+typedef t_hash_table	t_env_tab;
 
 #endif

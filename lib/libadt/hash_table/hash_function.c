@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:00:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 21:49:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:56:35 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 // https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)HashTables.html?highlight=%28CategoryAlgorithmNotes%29
 // https://cseweb.ucsd.edu/~kube/cls/100/Lectures/lec16/lec16-12.html
 // https://www.strchr.com/hash_functions
+// http://www.cse.yorku.ca/~oz/hash.html
 
 #include "hash_table.h"
 #include "libft.h"
 #include <stdio.h>
+
 int	hash_polynomial_31(char *string)
 {
 	const int	len = ft_strlen(string);
@@ -36,7 +38,7 @@ int	hash_polynomial_31(char *string)
 int	hash_bucket(char *string, int bucket_cnt)
 {
 	int	hash_value;
-	
+
 	hash_value = hash_polynomial_31(string);
 	hash_value %= bucket_cnt;
 	if (hash_value < 0)

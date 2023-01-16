@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:10:18 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 23:05:00 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:37:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_hash_content	*hash_table_create_content(char *key, void *content)
 	new->content = content;
 	new->next = NULL;
 	new->prev = NULL;
-	return(new);
+	return (new);
 }
 
 /**
@@ -43,8 +43,7 @@ static t_hash_content	*hash_table_create_content(char *key, void *content)
  * been stored in the hash table previously.
  * Make sure that both hash table and key must not be NULL.
 */
-void	hash_table_insert(\
-		t_hash_table *table, char *key, void *content)
+void	hash_table_insert(t_hash_table *table, char *key, void *content)
 {
 	t_hash_content	*new_entry;
 	int				bucket;

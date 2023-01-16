@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:20:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:36:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,19 @@ int	main(int argc, char **argv, char **envp)
 	t_env_tab	*table;
 	t_expansion	*set;
 	char		**strings;
-	int			i, j;
+	int			i;
+	int			j;
 
 	argc++;
 	argv++;
-	initialize_env_table(&table, envp);
+	table = initialize_env_table(envp);
 	show_hash_table(table);
 	j = -1;
 	while (++j < WORD_CASE)
 	{
 		printf("\n========================\n");
 		printf("\n%dth test case: [%s]\n\n", j + 1, word_case[j]);
-		set = expand_word(word_case[j], table);
+		set = expand_word(word_case[j]);
 		strings = words_to_strings(set, 0);
 		i = -1;
 		printf("\n");
@@ -68,5 +69,5 @@ int	main(int argc, char **argv, char **envp)
 		strings = NULL;
 		printf("\n========================\n");
 	}
-	hash_table_destroy(table);
+	hash_table_flush(table);
 }

@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/16 16:50:38 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/16 21:45:09 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,9 +123,10 @@ TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
 						push_execute_unit_content
-ENV_FILE		=		env_get \
-						env_initialize \
-						env_set
+ENV_FILE		=		env_internal \
+						env_manager \
+						env_utils \
+						exit_status
 EXPAND_FILE		=		expand_variable \
 						expand_word \
 						expansion_allocation \
@@ -215,11 +216,12 @@ HASH_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
 
 ENV_TEST_OBJ	=		$(TEST_OBJ_PATH)/env_table_test.o \
 						$(MODULE_OBJ_PATH)/show_hash_table.o \
-						$(ENV_OBJ)
-ENV_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
+						$(ENV_OBJ) \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o
+ENV_TEST_LIBFLAGS	=	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
 
-EXPAND_TEST_OBJ = 	$(MODULE_OBJ_PATH)/show_hash_table.o \
-					$(ENV_OBJ) \
-					$(EXPAND_OBJ) $(TEST_OBJ_PATH)/expansion_test.o \
-					$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o
+EXPAND_TEST_OBJ	=		$(MODULE_OBJ_PATH)/show_hash_table.o \
+						$(ENV_OBJ) \
+						$(EXPAND_OBJ) $(TEST_OBJ_PATH)/expansion_test.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o
 EXPAND_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)

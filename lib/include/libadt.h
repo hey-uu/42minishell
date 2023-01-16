@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:12:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:28:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_intstr
 	int		num;
 	char	*str;
 }	t_intstr;
-
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

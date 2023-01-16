@@ -6,20 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:02:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:46:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:21:57 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion.h"
-#include "libadt.h"
-#include "env_manager.h"
-#include "libft.h"
 #include <stdlib.h>
-
-char	*ft_strndup(char *str, int n);
-t_word	*add_new_word_node_back(t_expansion *set);
-void	dup_data_to_word(t_word *node, char *word);
-void	field_split(t_expansion *set, char *value);
+#include "expansion_internal.h"
+#include "env_manager.h"
+#include "libadt.h"
+#include "libft.h"
 
 static char	*split_variable(char *word, int *idx)
 {
@@ -75,7 +70,7 @@ int	expand_quoted_variable(t_expansion *set, char *word)
 	i = 1;
 	variable = split_variable(&word[i], &i);
 	printf("expand quoted variable: [%s]...\n", variable);
-	value = env_get(set->envtab, variable);
+	value = env_get(variable);
 	printf("found variable's value: [%s]...\n\n", value);
 	if (value)
 	{
@@ -94,7 +89,7 @@ int	expand_unquoted_variable(t_expansion *set, char *word)
 	i = 1;
 	variable = split_variable(&word[i], &i);
 	printf("expand unquoted variable: [%s]...\n\n", variable);
-	value = env_get(set->envtab, variable);
+	value = env_get(variable);
 	printf("found variable's value: [%s]...\n\n", value);
 	field_split(set, value);
 	free(variable);

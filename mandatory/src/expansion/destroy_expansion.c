@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:00:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:38:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:22:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion.h"
 #include <stdlib.h>
+#include "expansion_internal.h"
 
 void	destroy_words(t_word *word)
 {

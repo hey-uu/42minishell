@@ -6,8 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 09:55:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:30:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cd.html#tag_20_14
+#include "env_manager.h"
+
+
+
+int	cd(t_env_tab *envtab)
+{
+
+}

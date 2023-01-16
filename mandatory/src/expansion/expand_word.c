@@ -6,22 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:44:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:41:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:22:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expansion.h"
+#include <stdlib.h>
+#include "expansion_internal.h"
 #include "libadt.h"
 #include "env_manager.h"
 #include "libft.h"
-#include <stdlib.h>
-
-t_expansion	*create_expansion_set(char *origin, t_env_tab *envtab);
-t_word		*add_new_word_node_back(t_expansion *set);
-void		dup_data_to_word(t_word *node, char *word);
-int			expand_quoted_variable(t_expansion *set, char *word);
-int			expand_unquoted_variable(t_expansion *set, char *word);
-void		concat_node_ndata(t_word *node, char *data, int len);
 
 int	expand_single_quote(t_expansion *set, char *word)
 {
@@ -87,12 +80,12 @@ int	expand_basic(t_expansion *set, char *word)
 	return (i);
 }
 
-t_expansion	*expand_word(char *word, t_env_tab *envtab)
+t_expansion	*expand_word(char *word)
 {
 	t_expansion	*set;
 	int			i;
 
-	set = create_expansion_set(word, envtab);
+	set = create_expansion_set(word);
 	i = 0;
 	while (word[i])
 	{

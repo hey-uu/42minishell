@@ -6,22 +6,21 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 12:17:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:22:05 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "expansion.h"
-#include "env_manager.h"
 #include <stdlib.h>
+#include "expansion_internal.h"
+#include "t_tree_node.h"
 
-char	*expand_cmd(char *cmd, t_env_tab *envtab)
+char	*expand_cmd(char *cmd)
 {
 	t_expansion	*set;
 	char		**strings;
 	char		*expanded_cmd;
 
-	set = expand_word(cmd, envtab);
+	set = expand_word(cmd);
 	strings = words_to_strings(set, 1);
 	expanded_cmd = strings[0];
 	free(strings);
@@ -29,7 +28,7 @@ char	*expand_cmd(char *cmd, t_env_tab *envtab)
 	return (expand_cmd);
 }
 
-void	expand_cmd_argv(t_queue **cmd_argv, t_env_tab *envtab)
+void	expand_cmd_argv(t_queue **cmd_argv)
 {
 	t_expansion	*set;
 	char		**strings;
@@ -40,7 +39,7 @@ void	expand_cmd_argv(t_queue **cmd_argv, t_env_tab *envtab)
 	i = -1;
 	while (++i < (*cmd_argv)->used_size)
 	{
-		set = expand_word(queue_get_str(*cmd_argv, i), envtab);
+		set = expand_word(queue_get_str(*cmd_argv, i));
 		strings = words_to_strings(set, 0);
 		queue_push_strs(new, strings);
 		free(strings);
@@ -50,7 +49,7 @@ void	expand_cmd_argv(t_queue **cmd_argv, t_env_tab *envtab)
 	*cmd_argv = new;
 }
 
-void	expand_redir_list(t_queue **redir_list, t_env_tab *envtab)
+void	expand_redir_list(t_queue **redir_list)
 {
 	t_expansion	*set;
 	char		**strings;
@@ -63,7 +62,7 @@ void	expand_redir_list(t_queue **redir_list, t_env_tab *envtab)
 	while (++i < (*redir_list)->used_size)
 	{
 		qdata = queue_get_intstr(*redir_list, i);
-		set = expand_word(qdata.str, envtab);
+		set = expand_word(qdata.str);
 		strings = words_to_strings(set, 0);
 		if (strings[0] && strings[1])
 		{
@@ -79,9 +78,9 @@ void	expand_redir_list(t_queue **redir_list, t_env_tab *envtab)
 	*redir_list = new;
 }
 
-void	do_expansion(t_execute_unit *exe_unit, t_env_tab *envtab)
+void	do_expansion(t_execute_unit *exe_unit)
 {
-	exe_unit->cmd_name = expand_cmd(exe_unit->cmd_name, envtab);
-	expand_cmd_argv(&exe_unit->cmd_argv, envtab);
-	expand_redir_list(&exe_unit->redir_list, envtab);
+	exe_unit->cmd_name = expand_cmd(exe_unit->cmd_name);
+	expand_cmd_argv(&exe_unit->cmd_argv);
+	expand_redir_list(&exe_unit->redir_list);
 }

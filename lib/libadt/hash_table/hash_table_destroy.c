@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:16:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 07:32:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:49:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,12 @@ void	hash_table_delete(t_hash_table *hash_table, char *key)
 	hash_table_delete_entry(hash_table, target, bucket);
 }
 
-/**
- * @brief
- * Delete every entry of the hash table.
- * Also free the bucket array of the hash table and the hash table itself.
-*/
-void	hash_table_destroy(t_hash_table *hash_table)
+void	hash_table_flush(t_hash_table *hash_table)
 {
 	int				i;
 	t_hash_content	*next;
 	t_hash_content	*target;
-	
+
 	i = -1;
 	while (++i < hash_table->bucket_cnt)
 	{
@@ -78,5 +73,15 @@ void	hash_table_destroy(t_hash_table *hash_table)
 		}
 	}
 	free(hash_table->bucket_arr);
+}
+
+/**
+ * @brief
+ * Delete every entry of the hash table.
+ * Also free the bucket array of the hash table and the hash table itself.
+*/
+void	hash_table_destroy(t_hash_table *hash_table)
+{
+	hash_table_flush(hash_table);
 	free(hash_table);
 }
