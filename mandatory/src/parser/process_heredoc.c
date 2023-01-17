@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:19:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:40:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	get_heredoc_input(int fd, char *delimiter, int quote)
 			break ;
 		if (!ft_strncmp(line, delimiter, ft_strlen(line) + 1))
 			break ;
-		if (!quote)
-			line = expand_variable(line);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
@@ -81,6 +79,7 @@ char	*generate_here_document(char *delimiter, int quote)
 	char	*heredoc;
 	int		fd;
 
+	quote = 0;
 	heredoc = get_random_temp_file_name();
 	fd = open(heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd < 0)
@@ -142,7 +141,7 @@ char	*process_heredoc(char *word)
 
 	delimiter = ft_malloc(sizeof(char) * (delimiter_len + 1));
 	store_delimiter(delimiter, word);
-	quote = (delimiter_len == ft_strlen(word));
+	quote = (delimiter_len == (int)ft_strlen(word));
 	heredoc = generate_here_document(delimiter, quote);
 	return (heredoc);
 }

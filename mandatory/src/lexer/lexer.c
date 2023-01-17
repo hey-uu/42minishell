@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 21:38:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:13:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	do_lexing(char *input, t_token *token_list, int token_cnt)
 			if (!token_list[i].str)
 			{
 				token_list[i].type = TOKEN_NONE;
-				return (FAILURE);
+				return (LEXER_FAILURE);
 			}
 		}
 		else
@@ -65,7 +65,7 @@ static int	do_lexing(char *input, t_token *token_list, int token_cnt)
 		i++;
 	}
 	token_list[token_cnt].type = TOKEN_NONE;
-	return (SUCCESS);
+	return (LEXER_SUCCESS);
 }
 
 t_token	*lexer(char *input)
@@ -80,7 +80,7 @@ t_token	*lexer(char *input)
 		return (NULL);
 	}
 	token_list = malloc(sizeof(t_token) * (token_cnt + 1));
-	if (!token_list || do_lexing(input, token_list, token_cnt) == FAILURE)
+	if (!token_list || do_lexing(input, token_list, token_cnt) == LEXER_FAILURE)
 	{
 		destroy_token_list(token_list);
 		return (NULL);

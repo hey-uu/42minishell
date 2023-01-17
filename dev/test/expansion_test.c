@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:21:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:06:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WORD_CASE 18
+#define WORD_CASE 19
+#define VARIABLE_NUM 5
 
 char	*variables[][2] = {
 	{"var1", "a b c"},
 	{"var2", "$PATH"},
-	{"var3", "AB C D"}
+	{"var3", "AB C D"},
+	{"a", "1 2 3"},
+	{"b", "1 2 3 4"}
 };
 
 char	*word_case[] = {
@@ -43,7 +46,8 @@ char	*word_case[] = {
 	"$", // 15
 	"abc$", // 16
 	"\"$\"", // 17
-	"\'$\'" // 18
+	"\'$\'", // 18
+	"1$a\"$a\"$b\"$b\"$\'$\'" // 19
 };
 
 void	show_hash_table(t_hash_table *table);
@@ -62,9 +66,11 @@ void	destroy_strings(char **strings)
 
 void	set_variables(void)
 {
-	env_set(ft_strdup(variables[0][0]), ft_strdup(variables[0][1]));
-	env_set(ft_strdup(variables[1][0]), ft_strdup(variables[1][1]));
-	env_set(ft_strdup(variables[2][0]), ft_strdup(variables[2][1]));
+	int	i;
+
+	i = -1;
+	while (++i < VARIABLE_NUM)
+		env_set(ft_strdup(variables[i][0]), ft_strdup(variables[i][1]));
 }
 
 int	main(int argc, char **argv, char **envp)
