@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:08:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 22:51:25 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:55:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	field_split(t_expansion *set, char *value)
 	int		flag;
 	int		i;
 
+printf("> split field!\n");
 	if (!value)
 		return ;
 	i = 0;

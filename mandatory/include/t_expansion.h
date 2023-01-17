@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 12:30:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:46:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,19 @@
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 # define AMBIGUOUS_REDIRECT -1
-# define IS_QMARK 1
-# define IS_NOT_QMARK 0
+
+enum e_is_question_mark
+{
+	IS_QMARK,
+	IS_NOT_QMARK
+};
+
+enum e_expansion_result_status
+{
+	EXPAND_AMBIGUOUS_REDIRECT_ERROR= -1,
+	EXPAND_SUCCESS = 0
+};
+
 
 enum e_expansion_mask
 {

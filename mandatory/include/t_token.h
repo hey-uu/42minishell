@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:58:22 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:00:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:28:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ enum e_token_type
 	TOKEN_REDIR_OUT_APP
 };
 
-enum e_success_or_failure
+enum e_lexer_result_status
 {
-	FAILURE = -1,
-	SUCCESS = 0
+	LEXER_FAILURE = -1,
+	LEXER_SUCCESS = 0
 };
 
 /*------------- STRUCT DECLARATIONS --------------*/
