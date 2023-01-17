@@ -3,9 +3,9 @@
 #include "minishell.h"
 #include "parser.h"
 
-static int count_childs_of_pipeline(t_node *node)
+static int	count_childs_of_pipeline(t_node *node)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = 0;
 	while (node)
@@ -19,18 +19,17 @@ static int count_childs_of_pipeline(t_node *node)
 static void	wait_childs_of_pipeline(int child_cnt, int last_child_pid, int *pl_exit_stat)
 {
 	int			i;
-	int			stat_loc;
+	int			stat;
 	int			term_pid;
-	
+
 	i = 0;
 	while (i < child_cnt)
 	{
-		term_pid = wait(&stat_loc);
-		// printf("Child %d is terminated...\n", term_pid);
+		term_pid = wait(&stat);
 		if (term_pid == -1)
 			exit(1);
 		else if (term_pid == last_child_pid)
-			*pl_exit_stat = stat_loc;
+			*pl_exit_stat = stat;
 		i++;
 	}
 }
@@ -45,8 +44,9 @@ int	execute_pipeline(t_node *node, char **envp)
 		return (execute_single_builtin(node->exe_unit, envp));
 	else
 	{
-		pl.pipe_exist = 0;
 		pl.child_cnt = count_childs_of_pipeline(node);
+		dprintf(2, "child count %d\n", pl.child_cnt);
+		pl.pipe_exist = (pl.child_cnt >= 2);
 		nth = 1;
 		while (nth <= pl.child_cnt)
 		{
@@ -57,7 +57,8 @@ int	execute_pipeline(t_node *node, char **envp)
 			node = node->next_sibling;
 			nth++;
 		}
-		wait_childs_of_pipeline(pl.child_cnt, pl.last_child_pid, &pl.exit_status); 
+		wait_childs_of_pipeline(pl.child_cnt, pl.last_child_pid, \
+													&pl.exit_status);
 	}
 	return (pl.exit_status);
 }

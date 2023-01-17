@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:41:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:49:19 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 static void	do_redirecting(t_queue *redir_list)
 {
 	int	fd;
+	int	err;
 	int	i;
 
 	i = 0;
@@ -26,43 +27,47 @@ static void	do_redirecting(t_queue *redir_list)
 		if (redir_list->iarr[i] == TOKEN_REDIR_IN)
 		{
 			fd = open(redir_list->strarr[i], O_RDONLY);
-			dup2(fd, STDIN_FILENO);
+			err = dup2(fd, STDIN_FILENO);
 		}
 		else if (redir_list->iarr[i] == TOKEN_REDIR_OUT)
 		{
-			fd = open(redir_list->strarr[i], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-			dup2(fd, STDOUT_FILENO);
+			fd = open(redir_list->strarr[i], \
+						O_WRONLY | O_CREAT | O_TRUNC, 0644);
+			err = dup2(fd, STDOUT_FILENO);
 		}
+		if (err < 0)
+			exit_by_error("dup2 error");
 		i++;
 	}
 }
 
-static void	do_piping(int old_pipe_fd[2], int new_pipe_fd[2], int nth, int child_cnt)
+static void	do_piping(int old_pipe_fd[2], int new_pipe_fd[2], \
+												int nth, int child_cnt)
 {
-	int duped[2];
+	int	err[2];
 
-	duped[1] = -1;
+	err[1] = 0;
 	if (nth == 1)
 	{
 		close(new_pipe_fd[P_READ]);
-		dup2(new_pipe_fd[P_WRITE], STDOUT_FILENO);
-		duped[0] = new_pipe_fd[P_WRITE];
+		err[0] = dup2(new_pipe_fd[P_WRITE], STDOUT_FILENO);
+		close(new_pipe_fd[P_WRITE]);
 	}
 	else if (nth == child_cnt)
 	{
-		dup2(old_pipe_fd[P_READ], STDIN_FILENO);
-		duped[0] = old_pipe_fd[P_READ];
+		err[0] = dup2(old_pipe_fd[P_READ], STDIN_FILENO);
+		close(old_pipe_fd[P_READ]);
 	}
 	else
 	{
 		close(new_pipe_fd[P_READ]);
-		dup2(old_pipe_fd[P_READ], STDIN_FILENO);
-		dup2(new_pipe_fd[P_WRITE], STDOUT_FILENO);
-		duped[0] = old_pipe_fd[P_READ];
-		duped[1] = new_pipe_fd[P_WRITE];
+		err[0] = dup2(old_pipe_fd[P_READ], STDIN_FILENO);
+		err[1] = dup2(new_pipe_fd[P_WRITE], STDOUT_FILENO);
+		close(old_pipe_fd[P_READ]);
+		close(new_pipe_fd[P_WRITE]);
 	}
-	close(duped[0]);
-	close(duped[1]);
+	if (err[0] < 0 || err[1] < 0)
+		exit_by_error("dup2 error");
 }
 
 void	set_standard_stream(t_pipeline *pl, t_queue *redir_list, int nth)
