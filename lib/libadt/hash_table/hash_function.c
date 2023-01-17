@@ -6,21 +6,21 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:00:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 19:56:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:07:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // https://www.partow.net/programming/hashfunctions/index.html
-// https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)HashTables.html?highlight=%28CategoryAlgorithmNotes%29
+// https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)HashTables.html
+// ?highlight=%28CategoryAlgorithmNotes%29
 // https://cseweb.ucsd.edu/~kube/cls/100/Lectures/lec16/lec16-12.html
 // https://www.strchr.com/hash_functions
 // http://www.cse.yorku.ca/~oz/hash.html
 
-#include "hash_table.h"
+#include "hash_table_internal.h"
 #include "libft.h"
-#include <stdio.h>
 
-int	hash_polynomial_31(char *string)
+static int	hash_polynomial_31(char *string)
 {
 	const int	len = ft_strlen(string);
 	int			i;

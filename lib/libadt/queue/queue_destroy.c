@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:58:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 17:48:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:19:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "queue.h"
+#include "queue_internal.h"
 
 void	queue_flush(t_queue *queue)
 {

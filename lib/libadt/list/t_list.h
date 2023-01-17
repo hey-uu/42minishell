@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   t_list.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:01:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/17 11:09:33 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 11:10:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
-#include <stdlib.h>
+#ifndef T_LIST_H
+# define T_LIST_H
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+/*------------- STRUCT DECLARATIONS --------------*/
+
+typedef struct s_list
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
-}
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+#endif

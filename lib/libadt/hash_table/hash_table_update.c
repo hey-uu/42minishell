@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:21:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 19:35:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:06:50 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hash_table.h"
 #include <stdlib.h>
+#include "hash_table_internal.h"
 
 /**
  * @brief

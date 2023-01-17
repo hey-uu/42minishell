@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   list_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:01:09 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/17 11:40:28 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 11:40:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "list_internal.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -20,4 +20,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 	else
 		ft_lstlast(*lst)->next = new;
+}
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!lst || !new)
+		return ;
+	new->next = (*lst);
+	*lst = new;
 }

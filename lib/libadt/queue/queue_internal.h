@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.h                                             :+:      :+:    :+:   */
+/*   queue_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 19:09:22 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:42:59 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/09 02:10:39 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 11:50:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_H
-# define LIST_H
+#ifndef QUEUE_INTERNAL_H
+# define QUEUE_INTERNAL_H
 
-/*------------- STRUCT DECLARATIONS --------------*/
+/*-------------- USER DEFINED HEADERS ------------*/
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+# include "t_queue.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_list	*ft_lstnew(void *content);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
+char		*queue_pop_str(t_queue *queue);
+int			__queue_double_size__(t_queue *queue);
 
 #endif

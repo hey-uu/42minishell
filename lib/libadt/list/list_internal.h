@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   list_internal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:01:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/10 19:09:22 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 11:46:50 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#ifndef LIST_INTERNAL_H
+# define LIST_INTERNAL_H
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
-{
-	if (!lst || !new)
-		return ;
-	new->next = (*lst);
-	*lst = new;
-}
+/*-------------- USER DEFINED HEADERS ------------*/
+
+# include "t_list.h"
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+t_list	*ft_lstnew(void *content);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+
+#endif

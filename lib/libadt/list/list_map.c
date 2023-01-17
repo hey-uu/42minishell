@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   list_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:01:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/17 11:43:20 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 11:43:26 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "list.h"
+#include <stddef.h>
+#include "list_internal.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

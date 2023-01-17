@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/16 12:30:15 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/17 11:54:37 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,21 +67,6 @@ HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH)
 
 # ******************************* object files ******************************* #
 
-LIST_FILE		=		ft_lstadd_back \
-						ft_lstadd_front \
-						ft_lstclear \
-						ft_lstdelone \
-						ft_lstiter \
-						ft_lstlast \
-						ft_lstmap \
-						ft_lstnew \
-						ft_lstsize
-QUEUE_FILE		=		queue_create \
-						queue_destroy \
-						queue_pop \
-						queue_push \
-						queue_show \
-						queue_get
 HASH_FILE		=		hash_function \
 						hash_table_create \
 						hash_table_destroy \
@@ -89,10 +74,24 @@ HASH_FILE		=		hash_function \
 						hash_table_resize \
 						hash_table_search \
 						hash_table_update
+LIST_FILE		=		list_add \
+						list_create \
+						list_destroy \
+						list_iterate \
+						list_map \
+						list_utils
+QUEUE_FILE		=		queue_create \
+						queue_destroy \
+						queue_get \
+						queue_pop \
+						queue_push \
+						queue_resize \
+						queue_show
+
 LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
 QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
 HASH_OBJ		=		$(addprefix $(OBJ_DIR)/$(HASH_DIR)/, $(addsuffix .o, $(HASH_FILE)))
-OBJ				=		$(LIST_OBJ) $(QUEUE_OBJ) $(HASH_OBJ)
+OBJ				=		$(HASH_OBJ) $(LIST_OBJ) $(QUEUE_OBJ)
 
 # ******************************* basic rules ******************************** #
 

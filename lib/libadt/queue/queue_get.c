@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:59:34 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:04:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:22:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "queue.h"
+#include "t_queue.h"
 
 int	queue_get_int(t_queue *queue, int i)
 {

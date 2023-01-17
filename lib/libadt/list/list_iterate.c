@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   list_iterate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:02:05 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 11:43:29 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/17 11:43:03 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 11:43:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "t_list.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	lstsize;
+	t_list	*tem;
 
-	lstsize = 0;
+	if (!lst || !f)
+		return ;
 	while (lst)
 	{
-		lstsize++;
+		tem = lst;
 		lst = lst->next;
+		f(tem->content);
 	}
-	return (lstsize);
 }

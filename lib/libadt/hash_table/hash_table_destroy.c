@@ -6,17 +6,17 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:16:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 21:49:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:34:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "hash_table.h"
+#include "hash_table_internal.h"
 
-static void	hash_table_delete_entry(\
-	t_hash_table *hash_table, t_hash_content *target, int bucket)
+static void	__hash_table_delete_entry__(\
+			t_hash_table *hash_table, t_hash_content *target, int bucket)
 {
-	// printf("gonna be deleted soon... %s\n", target->key);
+// printf("gonna be deleted soon... %s\n", target->key);
 	if (!target->prev)
 		hash_table->bucket_arr[bucket] = target->next;
 	else
@@ -27,13 +27,13 @@ static void	hash_table_delete_entry(\
 	free(target->content);
 	free(target);
 	hash_table->entry_cnt--;
-	// printf("just deleted... \n");
+// printf("just deleted... \n");
 }
 
 /**
  * @brief
  * First search for the matching entry from hash table.
- * If delete method finds the matching entry, it deletes the content 
+ * If 'delete method' finds the matching entry, it deletes the entry 
  * from the hash table. Otherwise, nothing happens.
  * Make sure that both hash table and key must not be NULL.
 */
@@ -45,16 +45,21 @@ void	hash_table_delete(t_hash_table *hash_table, char *key)
 	if (hash_table->entry_cnt > INITIAL_BUCKET_CNT && \
 		hash_table->entry_cnt <= hash_table->bucket_cnt / (LOAD_FACTOR * 2))
 	{
-		hash_table_shrink(hash_table);
+		__hash_table_shrink__(hash_table);
 	}
-	// printf("want to delete %s\n", key);	
+// printf("want to delete %s\n", key);	
 	bucket = hash_bucket(key, hash_table->bucket_cnt);
 	target = hash_table_search(hash_table, key, bucket);
 	if (!target)
 		return ;
-	hash_table_delete_entry(hash_table, target, bucket);
+	__hash_table_delete_entry__(hash_table, target, bucket);
 }
 
+/**
+ * @brief
+ * Delete every entry of the hash table.
+ * Also free the bucket array of the hash table.
+*/
 void	hash_table_flush(t_hash_table *hash_table)
 {
 	int				i;
@@ -68,11 +73,12 @@ void	hash_table_flush(t_hash_table *hash_table)
 		while (target)
 		{
 			next = target->next;
-			hash_table_delete_entry(hash_table, target, i);
+			__hash_table_delete_entry__(hash_table, target, i);
 			target = next;
 		}
 	}
 	free(hash_table->bucket_arr);
+	hash_table->bucket_arr = NULL;
 }
 
 /**

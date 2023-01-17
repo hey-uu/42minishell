@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 06:16:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 17:44:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:52:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "queue.h"
 #include <stdlib.h>
+#include "t_queue.h"
 #include "libft.h"
 
 t_queue	*create_queue(int initial_size, int type)
@@ -33,48 +33,4 @@ t_queue	*create_queue(int initial_size, int type)
 	else
 		queue->strarr = NULL;
 	return (queue);
-}
-
-void	queue_double_size_iarr(t_queue *queue)
-{
-	int	*new;
-	int	i;
-
-	new = ft_malloc(sizeof(int) * queue->size * 2);
-	if (queue->used_size != 0)
-	{
-		i = -1;
-		while (++i < queue->used_size)
-			new[i] = queue->iarr[(queue->front + i) % queue->size];
-	}
-	free(queue->iarr);
-	queue->iarr = new;
-}
-
-void	queue_double_size_strarr(t_queue *queue)
-{
-	char	**new;
-	int		i;
-
-	new = ft_calloc(queue->size * 2, sizeof(char *));
-	if (queue->used_size != 0)
-	{
-		i = -1;
-		while (++i < queue->used_size)
-			new[i] = queue->strarr[(queue->front + i) % queue->size];
-	}
-	free(queue->strarr);
-	queue->strarr = new;
-}
-
-int	queue_double_size(t_queue *queue)
-{
-	if (queue->type == QUEUE_INT_ONLY || queue->type == QUEUE_INTSTR)
-		queue_double_size_iarr(queue);
-	if (queue->type == QUEUE_STR_ONLY || queue->type == QUEUE_INTSTR)
-		queue_double_size_strarr(queue);
-	queue->front = 0;
-	queue->rear = queue->used_size;
-	queue->size *= 2;
-	return (1);
 }

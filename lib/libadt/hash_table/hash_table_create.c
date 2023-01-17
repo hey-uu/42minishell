@@ -6,15 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 00:38:17 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 21:46:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:52:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stddef.h>
+#include "hash_table_internal.h"
 #include "libft.h"
-#include "hash_table.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 void	hash_table_initialize(t_hash_table *table)
 {
