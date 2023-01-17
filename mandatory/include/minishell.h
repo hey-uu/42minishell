@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:18:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:11:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 # include "libadt.h"
 # include "t_token.h"
 # include "t_tree_node.h"
-
-/*------------ DEFINE MACRO CONSTANTS ------------*/
-
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
