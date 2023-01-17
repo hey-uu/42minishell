@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 17:37:40 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 00:17:17 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	execute_simple_command(t_execute_unit *exe_unit, char **envp, t_pipeline *pl
 int	get_builtin_cmd_idx(char *cmd_name);
 
 void	set_standard_stream(t_pipeline *pl, t_queue *redir_list, int nth);
-
+void	open_new_pipe(int new_pipe_fd[2]);
+void	close_pipe_in_parent(int old_pipe_fd[2], int new_pipe_fd[2], int first, int last);
+int		execute_builtin(t_execute_unit *exe_unit, char **envp);
 
 #endif
