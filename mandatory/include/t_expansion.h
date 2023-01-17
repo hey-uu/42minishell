@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:18:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:30:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 # define AMBIGUOUS_REDIRECT -1
+# define IS_QMARK 1
+# define IS_NOT_QMARK 0
 
 enum e_expansion_mask
 {

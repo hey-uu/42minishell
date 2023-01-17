@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:10:18 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:36:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:26:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	hash_table_insert(t_hash_table *table, char *key, void *content)
 
 printf("inserting...%s, %s\n", key, (char *)content);
 	if (table->entry_cnt >= table->bucket_cnt * LOAD_FACTOR)
-		hash_table_grow(table);
+		__hash_table_grow__(table);
 	bucket = hash_bucket(key, table->bucket_cnt);
 	new_entry = __hash_table_create_content__(key, content);
 	__hash_table_insert_entry__(table->bucket_arr, new_entry, bucket);

@@ -6,14 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:33:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:19:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
 #include "libft.h"
-
-char	*ft_strndup(char *str, int n);
 
 t_env_tab	*__env_table_initialize__(t_env_tab *table, char **envp)
 {
@@ -22,6 +20,8 @@ t_env_tab	*__env_table_initialize__(t_env_tab *table, char **envp)
 	size_t	i;
 	size_t	j;
 
+	if (!envp)
+		return (NULL);
 	hash_table_initialize(table);
 	i = 0;
 	while (envp[i])
@@ -60,8 +60,6 @@ char	*__env_get__(t_env_tab *table, char *variable)
 
 	if (!variable)
 		return (NULL);
-	if (variable[0] == '?' && variable[1] == '\0')
-		return (ft_itoa(exit_stat_manager(EXIT_STAT_GET, 0)));
 	bucket = hash_bucket(variable, table->bucket_cnt);
 	entry = hash_table_search(table, variable, bucket);
 	if (entry)

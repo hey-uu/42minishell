@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:19:48 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 23:25:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:26:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libadt.h"
 
 void	show_hash_table(t_hash_table *table)

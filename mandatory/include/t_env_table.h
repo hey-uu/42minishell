@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:01:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:29:46 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 12:12:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ enum	e_exit_status_manager
 {
 	EXIT_STAT_GET,
 	EXIT_STAT_UPDATE,
+	EXIT_PROGRAM
 };
 
 enum	e_env_manager

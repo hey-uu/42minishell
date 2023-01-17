@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:02:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:21:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:36:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libadt.h"
 #include "libft.h"
 
-static char	*split_variable(char *word, int *idx)
+static char	*split_variable(char *word, int *idx, int *question_mark)
 {
 	char	*variable;
 	int		i;
@@ -27,6 +27,7 @@ static char	*split_variable(char *word, int *idx)
 	{
 		i++;
 		variable = ft_strdup("?");
+		*question_mark = IS_QMARK;
 	}
 	else
 	{
@@ -35,6 +36,7 @@ static char	*split_variable(char *word, int *idx)
 			i++;
 		if (i)
 			variable = ft_strndup(word, i);
+		*question_mark = IS_NOT_QMARK;
 	}
 	(*idx) += i;
 	return (variable);
@@ -65,17 +67,21 @@ int	expand_quoted_variable(t_expansion *set, char *word)
 {
 	char	*variable;
 	char	*value;
+	int		question_mark;
 	int		i;
 
 	i = 1;
-	variable = split_variable(&word[i], &i);
+	variable = split_variable(&word[i], &i, &question_mark);
 	printf("expand quoted variable: [%s]...\n", variable);
-	value = env_get(variable);
+	if (question_mark == IS_QMARK)
+		value = exit_stat_get_str();
+	else
+		value = env_get(variable);
 	printf("found variable's value: [%s]...\n\n", value);
 	if (value)
-	{
 		concat_node_ndata(set->last, value, ft_strlen(value));
-	}
+	if (question_mark == IS_QMARK)
+		free(value);
 	free(variable);
 	return (i);
 }
@@ -84,14 +90,20 @@ int	expand_unquoted_variable(t_expansion *set, char *word)
 {
 	char	*variable;
 	char	*value;
+	int		question_mark;
 	int		i;
 
 	i = 1;
-	variable = split_variable(&word[i], &i);
+	variable = split_variable(&word[i], &i, question_mark);
 	printf("expand unquoted variable: [%s]...\n\n", variable);
-	value = env_get(variable);
+	if (question_mark == IS_QMARK)
+		value = exit_stat_get_str();
+	else
+		value = env_get(variable);
 	printf("found variable's value: [%s]...\n\n", value);
 	field_split(set, value);
+	if (question_mark == IS_QMARK)
+		free(value);
 	free(variable);
 	return (i);
 }

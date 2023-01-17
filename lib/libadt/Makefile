@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/17 11:54:37 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/17 13:25:49 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,9 @@ LIBFLAGS		=		-lft -L./$(LIBFT_PATH)
 
 # ******************************** directory ********************************* #
 
+HASH_DIR		=		hash_table
 LIST_DIR		=		list
 QUEUE_DIR		=		queue
-HASH_DIR		=		hash_table
 
 OBJ_DIR			=		obj
 INC_DIR			=		include
@@ -57,13 +57,25 @@ INC_DIR			=		include
 # ******************************* header files ******************************* #
 
 LIBFT_INC_PATH	=		../$(INC_DIR)
+
+HASH_INC_PATH	=		$(HASH_DIR)
 LIST_INC_PATH	=		$(LIST_DIR)
 QUEUE_INC_PATH	=		$(QUEUE_DIR)
-HASH_INC_PATH	=		$(HASH_DIR)
 
+HASH_INC_FILE	=		hash_table_internal \
+						t_hash_table
+LIST_INC_FILE	=		list_internal \
+						t_list
+QUEUE_INC_FILE	=		queue_internal \
+						t_queue
+HASH_INC		=		$(addprefix $(HASH_DIR)/, $(addsuffix .h, $(HASH_INC_FILE)))
+LIST_INC		=		$(addprefix $(LIST_DIR)/, $(addsuffix .h, $(LIST_INC_FILE)))
+QUEUE_INC		=		$(addprefix $(QUEUE_DIR)/, $(addsuffix .h, $(QUEUE_INC_FILE)))
+
+
+HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH)
 LIST_INC_FLAG	=		-I./$(LIST_DIR) -I./$(LIBFT_INC_PATH)
 QUEUE_INC_FLAG	=		-I./$(QUEUE_DIR) -I./$(LIBFT_INC_PATH)
-HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH)
 
 # ******************************* object files ******************************* #
 
@@ -92,7 +104,7 @@ LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
 QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
 HASH_OBJ		=		$(addprefix $(OBJ_DIR)/$(HASH_DIR)/, $(addsuffix .o, $(HASH_FILE)))
 OBJ				=		$(HASH_OBJ) $(LIST_OBJ) $(QUEUE_OBJ)
-
+ 
 # ******************************* basic rules ******************************** #
 
 .PHONY : all bonus clean fclean re
@@ -115,17 +127,17 @@ re :
 
 # ****************************** compile rules ******************************* #
 
-$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_DIR)/list.h $(LIBFT)
+$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(LIST_DIR)
 	$(CC) -c $(CFLAGS) $< $(LIST_INC_FLAG) -o $@
 
-$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_DIR)/queue.h $(LIBFT)
+$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(QUEUE_DIR)
 	$(CC) -c $(CFLAGS) $< $(QUEUE_INC_FLAG) -o $@
 
-$(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(HASH_DIR)/hash_table.h $(LIBFT)
+$(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(HASH_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(HASH_DIR)
 	$(CC) -c $(CFLAGS) $< $(HASH_INC_FLAG) -o $@

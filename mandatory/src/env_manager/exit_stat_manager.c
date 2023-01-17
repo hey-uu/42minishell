@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_status.c                                      :+:      :+:    :+:   */
+/*   exit_stat_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 13:00:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 23:35:01 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/17 13:33:18 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/17 13:33:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "t_env_table.h"
 
-int	__return_exit_stat__(int exit_stat)
-{
-	return (exit_stat);
-}
-
-int	__update_exit_stat__(int *exit_stat, int new_stat)
-{
-	*exit_stat = new_stat;
-	return (new_stat);
-}
-
-int	exit_stat_manager(int option, int new_stat)
+int	exit_stat_manager(int option, unsigned long new_stat)
 {
 	static int	exit_stat;
 
 	if (option == EXIT_STAT_GET)
-		return (__return_exit_stat__(exit_stat));
+		return (exit_stat);
 	else if (option == EXIT_STAT_UPDATE)
-		return (__update_exit_stat__(&exit_stat, new_stat));
-	return (0);
+		exit_stat = (new_stat) % 256;
+	else if (option == EXIT_PROGRAM)
+		exit(exit_stat);
+	return (exit_stat);
 }

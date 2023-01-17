@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 17:05:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:46:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,24 @@
 // * history 업데이트
 // * executor 함수
 
-int	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char *envp[])
 {
-	char		*lists_of_commands;
-	t_env_tab	*env_table;
+	char		*line;
 
 	argc++;
 	argv++;
-	envp++;
-	initialize_env_table(&env_table, envp);
+	initialize_env_table(envp);
+	set_signal();
 	print_welcome();
 	while (1)
 	{
-		lists_of_commands = readline(PS1_DOLLAR);
-		g_goldsh.token = lexer(lists_of_commands);
+		line = readline(PS1_DOLLAR);
+		g_goldsh.token = lexer(line);
 		g_goldsh.node = parser(g_goldsh.token);
 		show_tree(g_goldsh.node, 0);
 		destroy_tree(g_goldsh.node);
 		// sleep(2);
 		// system("leaks minishell");
-		free(lists_of_commands);
+		free(line);
 	}
 }
