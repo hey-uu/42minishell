@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:06:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:38:50 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,12 @@ void	print_syntax_error_message(int token_type, char *token_str)
 		printf("'%s'\n", token_str);
 	else
 		printf("'%s'\n", type_str[token_type]);
+}
+
+void	exit_by_error(char *msg)
+{
+	ft_putstr_fd("\nError: ", STDERR_FILENO);
+	ft_putstr_fd(msg, STDERR_FILENO);
+	ft_putstr_fd("\n\n", STDERR_FILENO);
+	exit(EXIT_FAILURE);
 }
