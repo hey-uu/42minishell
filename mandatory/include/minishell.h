@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/17 16:11:39 by hyeyukim         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/16 01:24:45 by yona             ###   ########.fr       */
+>>>>>>> origin/executor-yona
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +21,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
