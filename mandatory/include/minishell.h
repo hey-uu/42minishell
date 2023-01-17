@@ -3,10 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
+<<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/01/17 16:11:39 by hyeyukim         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/16 01:24:45 by yona             ###   ########.fr       */
+>>>>>>> origin/executor-yona
+=======
+/*   Updated: 2023/01/17 23:39:11 by yeonhkim         ###   ########.fr       */
+>>>>>>> executor-yona
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +25,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
@@ -27,6 +36,32 @@
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
+<<<<<<< HEAD
+=======
+typedef struct s_token
+{
+	int		type;
+	char	*str;
+}	t_token;
+
+typedef struct s_execute_unit
+{
+	char	*cmd_name;
+	t_queue	*cmd_argv;
+	t_queue	*redir_list;
+}	t_execute_unit;
+
+typedef struct s_tree_node
+{
+	int					type;
+	t_execute_unit		*exe_unit;
+	struct s_tree_node	*first_child;
+	struct s_tree_node	*next_sibling;
+}	t_tree_node;
+
+typedef t_tree_node	t_node;
+
+>>>>>>> executor-yona
 typedef struct s_goldsh
 {
 	char	**envp;
@@ -44,6 +79,10 @@ t_node	*parser(t_token *tokens);
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
+<<<<<<< HEAD
 char	*process_heredoc(char *word);
+=======
+void	exit_by_error(char *msg);
+>>>>>>> executor-yona
 
 #endif
