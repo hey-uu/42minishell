@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_tree_node.h                                      :+:      :+:    :+:   */
+/*   s_tree_node.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:56:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 17:00:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:36:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_TREE_NODE_H
-# define T_TREE_NODE_H
+#ifndef S_TREE_NODE_H
+# define S_TREE_NODE_H
 
 /*-------------- USER DEFINED HEADERS ------------*/
 

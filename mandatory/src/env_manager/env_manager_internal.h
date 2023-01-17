@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_manager_internal.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 12:16:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:35:09 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "t_env_table.h"
+# include "s_env_table.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

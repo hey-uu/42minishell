@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_expansion.h                                      :+:      :+:    :+:   */
+/*   s_expansion.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:34:58 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:36:12 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_EXPANSION_H
-# define T_EXPANSION_H
+#ifndef S_EXPANSION_H
+# define S_EXPANSION_H
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
