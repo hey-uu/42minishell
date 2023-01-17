@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:44:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 15:56:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:55:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ printf("> expand double quote...\n");
 	i = 1;
 	while (word[i] && word[i] != '\"')
 	{
+		if (word[i] == '$' && word[i + 1] == '\"')
+		{
+			concat_node_ndata(node, "$", 1);
+			i += 1;
+		}
 		if (word[i] == '$')
 			i += expand_quoted_variable(set, &word[i]);
 		else
@@ -85,6 +90,16 @@ printf("expand basic...\n");
 	return (i);
 }
 
+int	append_dollar_node(t_expansion *set)
+{
+	t_word	*node;
+
+	node = add_new_word_node_back(set);
+	node->len = 1;
+	dup_data_to_word(node, "$");
+	return (1);
+}
+
 t_expansion	*expand_word(char *word)
 {
 	t_expansion	*set;
@@ -99,6 +114,8 @@ printf("> expand word! so funny!! *^^*\n");
 			i += expand_single_quote(set, &word[i]);
 		else if (word[i] == '\"')
 			i += expand_double_quote(set, &word[i]);
+		else if (word[i] == '$' && word[i + 1] == '\0')
+			i += append_dollar_node(set);
 		else if (word[i] == '$')
 			i += expand_unquoted_variable(set, &word[i]);
 		else

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 15:13:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:21:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WORD_CASE 14
+#define WORD_CASE 18
 
 char	*variables[][2] = {
 	{"var1", "a b c"},
@@ -39,7 +39,11 @@ char	*word_case[] = {
 	"$var1", // 11
 	"\'$var2\'", // 12
 	"start$var3?end", // 13
-	"asdd$?'$PATH'" // 14
+	"asdd$?'$PATH'", // 14
+	"$", // 15
+	"abc$", // 16
+	"\"$\"", // 17
+	"\'$\'" // 18
 };
 
 void	show_hash_table(t_hash_table *table);

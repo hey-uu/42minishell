@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:08:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 15:55:53 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:38:40 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "expansion_internal.h"
 
 static int	is_field_separator(char c)

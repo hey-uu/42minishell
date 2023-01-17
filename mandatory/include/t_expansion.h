@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 15:46:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:34:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 # define AMBIGUOUS_REDIRECT -1
 
-enum e_is_question_mark
+enum e_question_mask
 {
-	IS_QMARK,
-	IS_NOT_QMARK
+	VAR_IS_QMARK,
+	VAR_IS_NOT_QMARK
 };
 
 enum e_expansion_result_status
