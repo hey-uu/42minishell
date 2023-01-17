@@ -14,7 +14,6 @@ int	execute_subshell(t_node *node, char **envp, t_pipeline *pl, int nth)
 	pid = fork();
 	if (pid < 0)
 		exit(1);
-	// set_standard_stream(pl, node->exe_unit->redir_list, nth);
 	else if (pid == 0)
 	{
 		set_standard_stream(pl, node->exe_unit->redir_list, nth);
@@ -26,7 +25,8 @@ int	execute_subshell(t_node *node, char **envp, t_pipeline *pl, int nth)
 	{
 		if (last)
 			pl->last_child_pid = pid;
-		close_pipe_in_parent(pl->old_pipe_fd, pl->new_pipe_fd, \
+		if (pl->pipe_exist)
+			close_pipe_in_parent(pl->old_pipe_fd, pl->new_pipe_fd, \
 													(nth == 1), last);
 		ft_memcpy(pl->old_pipe_fd, pl->new_pipe_fd, sizeof(int[2]));
 	}

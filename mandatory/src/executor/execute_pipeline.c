@@ -26,7 +26,6 @@ static void	wait_childs_of_pipeline(int child_cnt, int last_child_pid, int *pl_e
 	while (i < child_cnt)
 	{
 		term_pid = wait(&stat);
-		// printf("Child %d is terminated...\n", term_pid);
 		if (term_pid == -1)
 			exit(1);
 		else if (term_pid == last_child_pid)
@@ -46,6 +45,7 @@ int	execute_pipeline(t_node *node, char **envp)
 	else
 	{
 		pl.child_cnt = count_childs_of_pipeline(node);
+		dprintf(2, "child count %d\n", pl.child_cnt);
 		pl.pipe_exist = (pl.child_cnt >= 2);
 		nth = 1;
 		while (nth <= pl.child_cnt)

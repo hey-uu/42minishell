@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 00:34:39 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 02:34:32 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,9 @@ int	execute_simple_command(t_execute_unit *exe_unit, char **envp, t_pipeline *pl
 	else
 	{
 		if (last)
-			pl->last_child_pid = pid;	
-		close_pipe_in_parent(pl->old_pipe_fd, pl->new_pipe_fd, (nth == 1), last);
+			pl->last_child_pid = pid;
+		if (pl->child_cnt != 1)
+			close_pipe_in_parent(pl->old_pipe_fd, pl->new_pipe_fd, (nth == 1), last);
 		ft_memcpy(pl->old_pipe_fd, pl->new_pipe_fd, sizeof(int[2]));
 	}
 	return (SUCCESS);
