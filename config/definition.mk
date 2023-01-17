@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/17 13:38:07 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 03:51:10 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,11 +123,15 @@ TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
 						push_execute_unit_content
-ENV_FILE		=		env_internal \
-						env_manager \
-						env_utils \
-						exit_stat_manager \
-						exit_stat_utils
+ENV_FILE		=		env_get \
+						env_initialize \
+						env_set \
+						exit_stat_utils \
+						internal_env_get \
+						internal_env_initialize \
+						internal_env_set \
+						manager_env \
+						manager_exit
 EXPAND_FILE		=		expand_variable \
 						expand_word \
 						expansion_allocation \
