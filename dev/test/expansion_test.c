@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 17:06:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/17 19:24:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "expansion.h"
 #include "libft.h"
 #include <assert.h>
@@ -73,6 +74,12 @@ void	set_variables(void)
 		env_set(ft_strdup(variables[i][0]), ft_strdup(variables[i][1]));
 }
 
+void	check(void)
+{
+	printf("\n\n* check leaks!\n");
+	system("leaks expand_test");
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_env_tab	*table;
@@ -81,6 +88,7 @@ int	main(int argc, char **argv, char **envp)
 	int			i;
 	int			j;
 
+	atexit(check);
 	argc++;
 	argv++;
 	table = initialize_env_table(envp);
