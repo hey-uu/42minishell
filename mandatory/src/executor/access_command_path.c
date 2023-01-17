@@ -1,5 +1,8 @@
 
+#include "tree.h"
+#include "executor.h"
 #include "minishell.h"
+#include "parser.h"
 
 static void	free_paths(char *paths[])
 {
@@ -60,7 +63,7 @@ static int	find_accessible_command_path(char **cmd_path, char *paths[])
 	return (FAILURE);
 }
 
-int	put_accessible_command_path(char **cmd_name, char *envp[])
+int	access_command_path(char **cmd_name, char *envp[])
 {
 	char		**paths;
 	char		*cmd_path;

@@ -1,29 +1,29 @@
-int	echo(char **argv, char **envp)
+int	builtin_echo(char **argv, char **envp)
 {
 	return 0;
 }
 
-int	cd(char **argv, char **envp)
+int	builtin_cd(char **argv, char **envp)
 {
 	return 0;
 }
 
-int	pwd(char **argv, char **envp)
+int	builtin_pwd(char **argv, char **envp)
 {
 	return 0;
 }
 
-int	export(char **argv, char **envp)
+int	builtin_export(char **argv, char **envp)
 {
 	return 0;
 }
 
-int	env(char **argv, char **envp)
+int	builtin_env(char **argv, char **envp)
 {
 	return 0;
 }
 
-int	m_exit(char **argv, char **envp)
+int	builtin_exit(char **argv, char **envp)
 {
 	return 0;
 }
