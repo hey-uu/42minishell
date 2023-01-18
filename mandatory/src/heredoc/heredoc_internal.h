@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 17:21:54 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:58:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
