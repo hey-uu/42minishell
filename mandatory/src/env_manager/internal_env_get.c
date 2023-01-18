@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:53:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:34:10 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*__env_get__(t_env_tab *table, char *variable)
 	t_hash_content	*entry;
 	int				bucket;
 
-	if (!variable)
+	if (!variable || !table->bucket_cnt)
 		return (NULL);
 	bucket = hash_bucket(variable, table->bucket_cnt);
 	entry = hash_table_search(table, variable, bucket);
