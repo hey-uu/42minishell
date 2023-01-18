@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 13:36:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:28:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 int	exit_stat_get(void)
 {
 	return (exit_stat_manager(EXIT_STAT_GET, 0));
+}
+
+char	*exit_stat_get_str(void)
+{
+	return (ft_itoa(exit_stat_manager(EXIT_STAT_GET, 0)));
 }
 
 int	exit_stat_update(int new_stat)
@@ -28,7 +33,3 @@ void	exit_program(void)
 	exit_stat_manager(EXIT_PROGRAM, 0);
 }
 
-char	*exit_stat_get_str(void)
-{
-	return (ft_itoa(exit_stat_manager(EXIT_STAT_GET, 0)));
-}

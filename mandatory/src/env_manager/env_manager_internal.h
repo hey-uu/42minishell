@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_manager_internal.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:35:09 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:26:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ char		**__env_tab_to_arr__(t_env_tab *tab);
 
 // exit_stat_manager
 int			exit_stat_manager(int option, unsigned long new_stat);
+
+// heredoc_manager
+int			heredoc_manager(\
+			int option, int new_stat, char *new_file_name, int new_fd);
+
 
 // string utils
 char		*ft_strndup(char *str, int n);

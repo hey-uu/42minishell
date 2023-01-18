@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_get.c                                          :+:      :+:    :+:   */
+/*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:05:44 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 10:30:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "env_manager_internal.h"
-#include "libft.h"
 
-char	*env_get(char *variable)
+void	heredoc_is_in_process(char *file_name, int fd)
 {
-	return (env_manager(ENV_GET, NULL, variable, NULL));
+	heredoc_manager(HEREDOC_STAT_UPDATE, HEREDOC_IN_PROCESS, file_name, fd);
 }
 
-char	*env_dup_val(char *variable)
+void	heredoc_is_done(void)
 {
-	char	*value;
-
-	value = env_manager(ENV_GET, NULL, variable, NULL);
-	if (!value)
-		return (value);
-	return (ft_strdup(value));
+	heredoc_manager(HEREDOC_STAT_UPDATE, HEREDOC_DONE, NULL, -1);
 }
 
-char	**env_tab_to_arr(void)
+int	heredoc_stat_get(void)
 {
-	return (env_manager(ENV_TAB_TO_ARR, NULL, NULL, NULL));
+	return (heredoc_manager(HEREDOC_STAT_GET, 0, NULL, -1));
 }

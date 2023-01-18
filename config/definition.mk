@@ -6,11 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/01/18 03:51:10 by hyeyukim         ###   ########.fr        #
-=======
-#    Updated: 2023/01/18 08:51:32 by hyeyukim         ###   ########.fr        #
->>>>>>> master
+#    Updated: 2023/01/18 10:32:11 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,11 +127,13 @@ ENV_FILE		=		env_get \
 						env_initialize \
 						env_set \
 						exit_stat_utils \
+						heredoc_utils \
 						internal_env_get \
 						internal_env_initialize \
 						internal_env_set \
 						manager_env \
-						manager_exit_stat
+						manager_exit_stat \
+						manager_heredoc
 EXPAND_FILE		=		expand_variable \
 						expand_word \
 						expansion_allocation \

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_get.c                                          :+:      :+:    :+:   */
+/*   manager_heredoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:05:44 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 10:10:38 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 10:32:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "env_manager_internal.h"
-#include "libft.h"
+#include "s_env_table.h"
 
-char	*env_get(char *variable)
+int	heredoc_manager(int option, int new_stat, char *new_file_name, int new_fd)
 {
-	return (env_manager(ENV_GET, NULL, variable, NULL));
-}
+	static int	heredoc_stat;
+	static char	*heredoc_file_name;
+	static int	heredoc_fd;
 
-char	*env_dup_val(char *variable)
-{
-	char	*value;
-
-	value = env_manager(ENV_GET, NULL, variable, NULL);
-	if (!value)
-		return (value);
-	return (ft_strdup(value));
-}
-
-char	**env_tab_to_arr(void)
-{
-	return (env_manager(ENV_TAB_TO_ARR, NULL, NULL, NULL));
+	if (option == HEREDOC_STAT_UPDATE)
+	{
+		heredoc_stat = new_stat;
+		heredoc_file_name = new_file_name;
+		heredoc_fd = new_fd;
+	}
+	if (option == HEREDOC_STAT_GET)
+		return (heredoc_stat);
+	return (0);
 }
