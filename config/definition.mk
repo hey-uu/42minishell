@@ -6,7 +6,11 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/01/18 03:51:10 by hyeyukim         ###   ########.fr        #
+=======
+#    Updated: 2023/01/18 08:51:32 by hyeyukim         ###   ########.fr        #
+>>>>>>> master
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,7 +135,7 @@ ENV_FILE		=		env_get \
 						internal_env_initialize \
 						internal_env_set \
 						manager_env \
-						manager_exit
+						manager_exit_stat
 EXPAND_FILE		=		expand_variable \
 						expand_word \
 						expansion_allocation \

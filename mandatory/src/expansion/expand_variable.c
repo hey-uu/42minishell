@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:02:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:44:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:22:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "libadt.h"
 #include "libft.h"
 
-static char	*split_variable(char *word, int *idx, int *question_mark)
+char	*split_variable(char *word, int *idx, int *question_mark)
 {
 	char	*variable;
 	int		i;

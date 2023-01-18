@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 17:40:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:42:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,12 @@
 #include <stdlib.h>
 #include <readline/readline.h>
 #include "libft.h"
+#include "expansion.h"
+#include "env_manager.h"
 
 #define CHARSET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-#define INITIAL_TEMP_FILENAME "/tmp/goldsh"
+#define INITIAL_TEMP_FILENAME "/tmp/goldsh_"
 #define PS_HEREDOC "goldsh heredoc > "
-
-enum e_quote
-{
-	QUOTE_NONE,
-	QUOTE_SINGLE,
-	QUOTE_DOUBLE
-};
 
 char	*get_random_temp_file_name(void)
 {
@@ -56,6 +51,52 @@ char	*get_random_temp_file_name(void)
 	return (file_name);
 }
 
+int	expand_variable_in_heredoc(char *line, int fd)
+{
+	char	*variable;
+	char	*value;
+	int		idx;
+	int		question_mark;
+
+	idx = 1;
+	variable = split_variable(&line[idx], &idx, &question_mark);
+	if (!variable && question_mark == VAR_IS_NOT_QMARK)
+		return (idx);
+	if (question_mark == VAR_IS_QMARK)
+		value = exit_stat_get_str();
+	else
+		value = env_get(variable);
+	if (value)
+		write(fd, value, ft_strlen(value));
+	if (question_mark == VAR_IS_QMARK)
+		free(value);
+	free(variable);
+	return (idx);
+}
+
+void	make_heredoc_with_expansion(char *line, int fd)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	while (line[i])
+	{
+		if (line[i] == '$' && (line[i + 1] && line[i + 1] != '$' && \
+							line[i + 1] != '\'' && line[i + 1] != '\"'))
+		{
+			write(fd, line + i - len, len);
+			i += expand_variable_in_heredoc(&line[i], fd);
+			len = 0;
+		}
+		i++;
+		len++;
+	}
+	if (len)
+		write(fd, line + i - len, len);
+}
+
 void	get_heredoc_input(int fd, char *delimiter, int quote)
 {
 	char	*line;
@@ -67,7 +108,10 @@ void	get_heredoc_input(int fd, char *delimiter, int quote)
 			break ;
 		if (!ft_strncmp(line, delimiter, ft_strlen(line) + 1))
 			break ;
-		write(fd, line, ft_strlen(line));
+		if (!quote)
+			make_heredoc_with_expansion(line, fd);
+		else
+			write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
 	}
@@ -79,7 +123,6 @@ char	*generate_here_document(char *delimiter, int quote)
 	char	*heredoc;
 	int		fd;
 
-	quote = 0;
 	heredoc = get_random_temp_file_name();
 	fd = open(heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd < 0)
@@ -121,7 +164,7 @@ void	store_delimiter(char *delimiter, char *word)
 	quote = 0;
 	while (*word)
 	{
-		if (!quote && (*word == '\'' && *word == '\"'))
+		if (!quote && (*word == '\'' || *word == '\"'))
 			quote = *word;
 		else if (quote && (*word == quote))
 			quote = 0;
@@ -141,7 +184,8 @@ char	*process_heredoc(char *word)
 
 	delimiter = ft_malloc(sizeof(char) * (delimiter_len + 1));
 	store_delimiter(delimiter, word);
-	quote = (delimiter_len == (int)ft_strlen(word));
+	quote = (delimiter_len != (int)ft_strlen(word));
+	printf("> is quoted or not? %d\n delimiter len = %d\n word len = %zu\n", quote, delimiter_len, ft_strlen(word));
 	heredoc = generate_here_document(delimiter, quote);
 	return (heredoc);
 }
