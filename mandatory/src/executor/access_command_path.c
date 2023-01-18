@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:45:26 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:12:16 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:30:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ static char	*find_env_path_address(char *envp[])
 
 static char	**get_paths(void)
 {
-	const char	**envp = env_tab_to_arr();
+	const char	**envp = (const char **)env_tab_to_arr();
 	char		**paths;
 	char		*env_path_str;
-	int			i;
 
-	env_path_str = find_env_path_address(envp);
+	env_path_str = find_env_path_address((char **)envp);
 	if (!env_path_str)
 		printf("There's not PATH enviroment variable\n");
 	paths = ft_split(env_path_str, ':');
@@ -80,7 +79,6 @@ int	access_command_path(char **cmd_name)
 {
 	char		**paths;
 	char		*cmd_path;
-	int			i;
 	int			res;
 
 	if (access(*cmd_name, X_OK) == 0)
