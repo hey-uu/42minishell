@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:59:32 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:23:40 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,38 @@
 // * history 업데이트
 // * executor 함수
 
+// void	free_allocated_memory(char)
+// {
+// 	destroy_token_list(token_list);
+// 	destroy_tree(parse_tree);
+// }
+
+void	run_input_commands(char *input)
+{
+	t_token	*token_list;
+	t_node	*parse_tree;
+
+	token_list = lexer(input);
+	parse_tree = parser(token_list);
+	executor(parse_tree);
+	// lexer(input, &token_list);
+	// parser(token_list, &parse_tree);
+	// executor(parse_tree);
+}
+
 int	main(int argc, char **argv, char *envp[])
 {
-	char		*line;
+	char	*input;
 
-	argc++;
-	argv++;
-	init_env_table(envp);
 	// set_signal();
+	init_env_table(envp);
 	print_welcome();
 	while (1)
 	{
-		line = readline(PS1_DOLLAR);
-		// g_goldsh.token = lexer(line);
-		// g_goldsh.node = parser(g_goldsh.token);
-		free(line);
+
+		input = readline(PS1_DOLLAR);
+		add_history(input);
+		run_input_commands(input);
+		free(input);
 	}
 }
