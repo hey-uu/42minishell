@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:49:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:06:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "env_manager.h"
 #include "heredoc_internal.h"
 
 char	*get_random_temp_file_name(void)

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:49:46 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:07:26 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 # define INITIAL_TEMP_FILENAME "/tmp/goldsh_"
 # define PS_HEREDOC "goldsh heredoc > "
 
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+int		get_delimiter_len(char *word);
+void	store_delimiter(char *delimiter, char *word);
+void	make_heredoc_with_expansion(char *line, int fd);
 
 #endif

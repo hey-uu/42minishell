@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_expansion.c                                :+:      :+:    :+:   */
+/*   heredoc_with_expansion.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:40:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:41:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:06:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "env_manager.h"
 #include "expansion.h"
 
-int	expand_variable_in_heredoc(char *line, int fd)
+static int	expand_variable_in_heredoc(char *line, int fd)
 {
 	char	*variable;
 	char	*value;
