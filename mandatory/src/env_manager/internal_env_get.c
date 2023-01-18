@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:49:53 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:54:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,27 @@ char	*__env_get__(t_env_tab *table, char *variable)
 	return (NULL);
 }
 
+char	*__join_variable_and_value__(char *variable, char *value)
+{
+	const int	var_len = ft_strlen(variable);
+	char		*line;
+	int			val_len;
+	int			line_len;
+
+	line_len = var_len + 1;
+	if (value)
+	{
+		val_len = ft_strlen(val_len);
+		line_len += val_len;
+	}
+	line = ft_malloc(sizeof(char) * (line_len + 1));
+	ft_strlcpy(line, variable, var_len + 1);
+	ft_strlcpy(line + var_len, "=", 2);
+	if (value)
+		ft_strlcpy(line + var_len + 1, value, val_len + 1);
+	return (line);
+}
+
 char	**__env_tab_to_arr__(t_env_tab *table)
 {
 	char			**arr;
@@ -43,7 +64,7 @@ char	**__env_tab_to_arr__(t_env_tab *table)
 		cur = table->bucket_arr[i];
 		while (cur)
 		{
-			arr[j++] = cur->content;
+			arr[j] = __join_variable_and_value__(cur->key, cur->content);
 			cur = cur->next;
 		}
 		i++;
