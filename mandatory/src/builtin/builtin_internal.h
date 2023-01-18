@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 00:09:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:51:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,8 @@ enum e_builtin_success
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-
-
 /*------------- STRUCT DECLARATIONS --------------*/
 
-
-
 /*-------------- FUNCTION PROTOTYPES -------------*/
-
 
 #endif

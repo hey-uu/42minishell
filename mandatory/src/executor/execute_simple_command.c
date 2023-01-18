@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 16:44:10 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:53:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	execute_simple_command(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 		if (pl->pipe_exist)
 			close_pipe_in_parent(pl->old_pipe_fd, pl->new_pipe_fd, \
 														(nth == 1), last);
-		ft_memcpy(pl->old_pipe_fd, pl->new_pipe_fd, sizeof(int[2]));
+		ft_memcpy(pl->old_pipe_fd, pl->new_pipe_fd, sizeof(int [2]));
 	}
 	return (SUCCESS);
 }

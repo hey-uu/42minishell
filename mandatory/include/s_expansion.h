@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 22:14:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:51:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ enum e_expansion_result_status
 	EXPAND_AMBIGUOUS_REDIRECT_ERROR= -1,
 	EXPAND_SUCCESS = 0
 };
-
 
 enum e_expansion_mask
 {

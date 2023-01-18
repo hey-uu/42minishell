@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 21:37:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:48:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 void	print_syntax_error_message(int token_type, char *token_str);
-
 
 #endif

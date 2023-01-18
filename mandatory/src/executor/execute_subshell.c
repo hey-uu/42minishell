@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_subshell.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:28:14 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:53:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 	}
 	return (SUCCESS);
 }
-
