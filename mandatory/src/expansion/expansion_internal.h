@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:47:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:35:26 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:23:05 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,22 @@
 
 /*** expansion utils ***/
 // allocation
-t_expansion	*create_expansion_set(char *origin);
+t_expansion	*create_expansion_set(void);
 t_word		*add_new_word_node_back(t_expansion *set);
 void		dup_data_to_word(t_word *node, char *word);
 void		concat_node_ndata(t_word *node, char *data, int len);
+// expand word
+t_expansion	*expand_word(char *word);
 // expand variable
 int			expand_quoted_variable(t_expansion *set, char *word);
 int			expand_unquoted_variable(t_expansion *set, char *word);
 // destroy
 void		destroy_words(t_word *word);
+void		destroy_expansion(t_expansion *set);
 // field_split
 void		field_split(t_expansion *set, char *value);
+// words_to_strings
+char		**words_to_strings(t_expansion *set);
 
 /*** string utils ***/
 char		*ft_strndup(char *str, int n);

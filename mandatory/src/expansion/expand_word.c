@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:44:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 13:05:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:23:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	expand_single_quote(t_expansion *set, char *word)
 	int		i;
 
 // printf("> expand single quote...\n");
+	set->quote_exist = QUOTED_CHAR_EXIST;
 	node = add_new_word_node_back(set);
 	node->mask |= EXPAND_QUOTED;
 	i = 1;
@@ -52,6 +53,7 @@ int	expand_double_quote(t_expansion *set, char *word)
 	t_word	*node;
 	int		i;
 
+	set->quote_exist = QUOTED_CHAR_EXIST;
 // printf("> expand double quote...\n");
 	node = add_new_word_node_back(set);
 	node->mask |= EXPAND_QUOTED;
@@ -106,7 +108,7 @@ t_expansion	*expand_word(char *word)
 	int			i;
 
 // printf("> expand word! so funny!! *^^*\n");
-	set = create_expansion_set(word);
+	set = create_expansion_set();
 	i = 0;
 	while (word[i])
 	{

@@ -6,10 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:38:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:29:32 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "expansion_internal.h"
 #include "s_tree_node.h"
@@ -21,7 +23,7 @@ char	**expand_word_to_strings(char *word)
 
 // printf("> expand word to strings...\n");
 	set = expand_word(word);
-	strings = words_to_strings(word);
+	strings = words_to_strings(set);
 	destroy_expansion(set);
 	return (strings);
 }
@@ -32,6 +34,8 @@ void	expand_cmd(char **cmd)
 	int			i;
 
 // printf("> expand cmd!\n");
+	printf("%p\n", *cmd);
+	assert(*cmd != NULL);
 	strings = expand_word_to_strings(*cmd);
 	free(*cmd);
 	*cmd = strings[0];
@@ -80,7 +84,7 @@ int	expand_redir_list(t_queue **redir_list)
 		{
 			free_double_char_array(&strings);
 //error messge
-			printf("goldsh: %s: ambiguous redirect\n", qdata.str);
+			dprintf(2, "goldsh: %s: ambiguous redirect\n", qdata.str);
 			return (EXPAND_AMBIGUOUS_REDIRECT_ERROR);
 		}
 		else
@@ -94,6 +98,7 @@ int	do_expansion(t_execute_unit *exe_unit)
 {
 	int	res;
 
+	res = 0;
 	expand_cmd(&exe_unit->cmd_name);
 	expand_cmd_argv(&exe_unit->cmd_argv);
 	res = expand_redir_list(&exe_unit->redir_list);
