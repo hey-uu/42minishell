@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   access_command_path.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 03:45:26 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/18 15:12:16 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "tree.h"
 #include "executor.h"
 #include "minishell.h"
 #include "parser.h"
+#include "env_manager.h"
 
 static void	free_paths(char *paths[])
 {
@@ -27,11 +39,12 @@ static char	*find_env_path_address(char *envp[])
 	return (NULL);
 }
 
-static char	**get_paths(char *envp[])
+static char	**get_paths(void)
 {
-	char	**paths;
-	char	*env_path_str;
-	int		i;
+	const char	**envp = env_tab_to_arr();
+	char		**paths;
+	char		*env_path_str;
+	int			i;
 
 	env_path_str = find_env_path_address(envp);
 	if (!env_path_str)
@@ -63,7 +76,7 @@ static int	find_accessible_command_path(char **cmd_path, char *paths[])
 	return (FAILURE);
 }
 
-int	access_command_path(char **cmd_name, char *envp[])
+int	access_command_path(char **cmd_name)
 {
 	char		**paths;
 	char		*cmd_path;
@@ -72,7 +85,7 @@ int	access_command_path(char **cmd_name, char *envp[])
 
 	if (access(*cmd_name, X_OK) == 0)
 		return (SUCCESS);
-	paths = get_paths(envp);
+	paths = get_paths();
 	if (!paths)
 		exit(1);
 	cmd_path = ft_strjoin("/", *cmd_name);

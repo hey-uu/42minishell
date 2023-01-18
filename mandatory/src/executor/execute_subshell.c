@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute_subshell.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/18 15:28:14 by yeonhkim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "tree.h"
 #include "executor.h"
 #include "minishell.h"
 #include "parser.h"
+#include "env_manager.h"
 
-int	execute_subshell(t_node *node, char **envp, t_pipeline *pl, int nth)
+int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 {
 	const int	last = (nth == pl->child_cnt);
 	int			pid;
@@ -17,8 +30,7 @@ int	execute_subshell(t_node *node, char **envp, t_pipeline *pl, int nth)
 	else if (pid == 0)
 	{
 		set_standard_stream(pl, node->exe_unit->redir_list, nth);
-		exit_code = executor(node->first_child, envp);
-		printf("subshell child process status: %d", exit_code);
+		exit_code = executor(node->first_child);
 		exit(0);
 	}
 	else
@@ -28,7 +40,7 @@ int	execute_subshell(t_node *node, char **envp, t_pipeline *pl, int nth)
 		if (pl->pipe_exist)
 			close_pipe_in_parent(pl->old_pipe_fd, pl->new_pipe_fd, \
 													(nth == 1), last);
-		ft_memcpy(pl->old_pipe_fd, pl->new_pipe_fd, sizeof(int[2]));
+		ft_memcpy(pl->old_pipe_fd, pl->new_pipe_fd, sizeof(int) * 2);
 	}
 	return (SUCCESS);
 }

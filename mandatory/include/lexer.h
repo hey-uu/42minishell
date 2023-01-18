@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:49:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 21:38:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:50:58 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 
 # include "minishell.h"
 # include "error.h"
+
+enum e_lexer_result_status
+{
+	LEXER_FAILURE = -1,
+	LEXER_SUCCESS = 0
+};
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
