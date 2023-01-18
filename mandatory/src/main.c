@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:59:32 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,13 @@ int	main(int argc, char **argv, char *envp[])
 	argc++;
 	argv++;
 	init_env_table(envp);
-	set_signal();
+	// set_signal();
 	print_welcome();
 	while (1)
 	{
 		line = readline(PS1_DOLLAR);
-		g_goldsh.token = lexer(line);
-		g_goldsh.node = parser(g_goldsh.token);
-		show_tree(g_goldsh.node, 0);
-		destroy_tree(g_goldsh.node);
-		// sleep(2);
-		// system("leaks minishell");
+		// g_goldsh.token = lexer(line);
+		// g_goldsh.node = parser(g_goldsh.token);
 		free(line);
 	}
 }
