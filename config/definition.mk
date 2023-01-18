@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 10:32:11 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 10:55:39 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,9 @@ PARSER_FILE		=		parse_list \
 						parse_simple_command \
 						parse_subshell \
 						parser \
-						process_heredoc
+						heredoc_generate \
+						heredoc_get_delimiter \
+						heredoc_with_expansion
 TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
