@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 06:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:39:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WORD_CASE 19
-#define VARIABLE_NUM 5
+#define WORD_CASE 26
+#define VARIABLE_NUM 6
 
 char	*variables[][2] = {
 	{"var1", "a b c"},
 	{"var2", "$PATH"},
 	{"var3", "AB C D"},
 	{"a", "1 2 3"},
-	{"b", "1 2 3 4"}
+	{"b", "1 2 3 4"},
+	{"c", ""}
 };
 
 char	*word_case[] = {
@@ -48,7 +49,14 @@ char	*word_case[] = {
 	"abc$", // 16
 	"\"$\"", // 17
 	"\'$\'", // 18
-	"1$a\"$a\"$b\"$b\"$\'$\'" // 19
+	"1$a\"$a\"$b\"$b\"$\'$\'", // 19
+	"$c", // 20
+	"", // 21
+	"\"\"abc", // 22
+	"\"\"\'\'$c", // 23
+	"$c\'\'", // 24
+	"\'$c\'\"\"", // 25
+	"$$$" // 26
 };
 
 void	show_hash_table(t_hash_table *table);
@@ -88,7 +96,9 @@ int	main(int argc, char **argv, char **envp)
 	int			i;
 	int			j;
 
+#ifdef FSANITIZE_FLAG
 	atexit(check);
+#endif
 	argc++;
 	argv++;
 	table = init_env_table(envp);
@@ -100,17 +110,17 @@ int	main(int argc, char **argv, char **envp)
 		printf("\n=======================================\n");
 		printf("\n<<%dth test case: [%s]>>\n\n", j + 1, word_case[j]);
 		set = expand_word(word_case[j]);
-		strings = words_to_strings(set, 0);
+		strings = words_to_strings(set);
 		i = -1;
 		printf("\n");
 		while (strings[++i])
 		{
-			printf("%d : %s\n", i + 1, strings[i]);
+			printf("%d : [%s]\n", i + 1, strings[i]);
 		}
 		destroy_expansion(set);
 		destroy_strings(strings);
 		strings = NULL;
-		printf("\n=======================================n");
+		printf("\n=======================================\n");
 	}
 	hash_table_flush(table);
 }

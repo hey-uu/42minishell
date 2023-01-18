@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/19 12:24:00 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/19 14:04:01 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,18 @@
 
 # compile
 CC				=		cc
-CFLAGS1			=	
-# CFLAGS1			=		-Wall -Wextra -Werror
+# CFLAGS1			=	
+CFLAGS1			=		-Wall -Wextra -Werror
 CFLAGS2			=		-fsanitize=address -g3
 
 ifdef FSANITIZE_FLAG
-	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
-else
-	CFLAGS		=		$(CFLAGS1)
+	CFLAGS		=		$(CFLAGS2)
 endif
+
+ifdef W_FLAG
+	CFLAGS		+=		$(CFLAGS1)
+endif
+
 
 # library archive
 AR				=		ar
@@ -144,11 +147,12 @@ ENV_FILE		=		api_env_get \
 						manager_env \
 						manager_exit_stat \
 						manager_heredoc
-EXPAND_FILE		=		expand_variable \
+EXPAND_FILE		=		destroy_expansion \
+						do_expansion \
+						expand_variable \
 						expand_word \
 						expansion_allocation \
 						field_split \
-						destroy_expansion \
 						words_to_strings
 HEREDOC_FILE	=		heredoc_generate \
 						heredoc_get_delimiter \
@@ -174,6 +178,7 @@ PARSER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(PARSER_DIR)/, $(addsuffix .o, $(PAR
 TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FILE)))
 ENV_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/$(ENV_DIR)/, $(addsuffix .o, $(ENV_FILE)))
 EXPAND_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXPAND_DIR)/, $(addsuffix .o, $(EXPAND_FILE)))
+HEREDOC_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(HEREDOC_DIR)/, $(addsuffix .o, $(HEREDOC_FILE)))
 
 # *********************************** bonus *********************************** #
 
@@ -246,3 +251,21 @@ EXPAND_TEST_OBJ	=		$(MODULE_OBJ_PATH)/show_hash_table.o \
 						$(EXPAND_OBJ) $(TEST_OBJ_PATH)/expansion_test.o \
 						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o
 EXPAND_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
+
+EXPAND_TEST2_OBJ	=	$(MODULE_OBJ_PATH)/show_hash_table.o \
+						$(TEST_OBJ_PATH)/expansion_test2.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/error.o \
+						$(ENV_OBJ) \
+						$(LEXER_OBJ) \
+						$(TREE_OBJ) \
+						$(PARSER_OBJ) \
+						$(HEREDOC_OBJ) \
+						$(EXPAND_OBJ) 
+
+TEST				=	lexer_test \
+						parser_test \
+						hash_test \
+						env_test \
+						expand_test \
+						expand_test2
