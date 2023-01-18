@@ -6,12 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:50:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 08:51:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "env_manager_internal.h"
+#include "libft.h"
 
 char	*env_get(char *variable)
 {
