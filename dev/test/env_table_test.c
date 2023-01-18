@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_table_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:35:09 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,32 @@ void	check(void)
 	system("leaks env_test");
 }
 
+void	test_env_tab_to_arr(void)
+{
+	char	**arr;
+	int		i;
+
+	arr = env_tab_to_arr();
+	i = 0;
+	while (arr[i])
+	{
+		printf("%s\n", arr[i++]);
+	}
+	printf("====> env_tab_to_arr success\n\n");
+}
+
+void	print_initial_envp(char *envp[])
+{
+	int	i;
+
+	i = 0;
+	while (envp[i])
+	{
+		printf("%s\n", envp[i++]);
+	}
+	printf("=====> original envp\n\n");
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
 	t_env_tab	*table;
@@ -76,11 +102,13 @@ int	main(int argc, char *argv[], char *envp[])
 	atexit(check);
 	argc++;
 	argv++;
-	table = initialize_env_table(envp);
+	table = init_env_table(envp);
 	show_hash_table(table);
 	test_env_get();
 	test_env_set();
 	test_env_unset();
+	test_env_tab_to_arr();
+	print_initial_envp(envp);
 	test_exit_manager();
 	hash_table_flush(table);
 }

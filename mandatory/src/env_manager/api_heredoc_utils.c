@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion.h                                        :+:      :+:    :+:   */
+/*   heredoc_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:14 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 10:30:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#include "env_manager_internal.h"
 
-/*-------------- USER DEFINED HEADERS ------------*/
+void	heredoc_is_in_process(char *file_name, int fd)
+{
+	heredoc_manager(HEREDOC_STAT_UPDATE, HEREDOC_IN_PROCESS, file_name, fd);
+}
 
-# include "s_expansion.h"
+void	heredoc_is_done(void)
+{
+	heredoc_manager(HEREDOC_STAT_UPDATE, HEREDOC_DONE, NULL, -1);
+}
 
-/*-------------- FUNCTION PROTOTYPES -------------*/
-
-t_expansion	*expand_word(char *word);
-void		destroy_expansion(t_expansion *set);
-char		**words_to_strings(t_expansion *set, int count);
-char		*split_variable(char *word, int *idx, int *question_mark);
-
-#endif
+int	heredoc_stat_get(void)
+{
+	return (heredoc_manager(HEREDOC_STAT_GET, 0, NULL, -1));
+}

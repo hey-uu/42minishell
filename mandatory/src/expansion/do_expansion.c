@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_expansion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:34:53 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:38:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ char	**expand_word_to_strings(char *word)
 	t_expansion	*set;
 	char		**strings;
 
+// printf("> expand word to strings...\n");
 	set = expand_word(word);
-	strings = word_to_strings(word);
+	strings = words_to_strings(word);
 	destroy_expansion(set);
 	return (strings);
 }
@@ -30,7 +31,7 @@ void	expand_cmd(char **cmd)
 	char		**strings;
 	int			i;
 
-printf("> expand cmd!\n");
+// printf("> expand cmd!\n");
 	strings = expand_word_to_strings(*cmd);
 	free(*cmd);
 	*cmd = strings[0];
@@ -50,7 +51,7 @@ void	expand_cmd_argv(t_queue **cmd_argv)
 	char		**strings;
 	int			i;
 
-printf("> expand cmd argv!\n");
+// printf("> expand cmd argv!\n");
 	i = 0;
 	while (i < old_used_size)
 	{
@@ -69,7 +70,7 @@ int	expand_redir_list(t_queue **redir_list)
 	int			i;
 	t_intstr	qdata;
 
-printf("> expand redirection list!\n");
+// printf("> expand redirection list!\n");
 	i = -1;
 	while (++i < old_used_size)
 	{

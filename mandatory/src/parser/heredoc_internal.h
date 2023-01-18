@@ -1,51 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   heredoc_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:34 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 12:07:26 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef HEREDOC_INTERNAL_H
+# define HEREDOC_INTERNAL_H
 
 /*--------------- STANDARD HEADERS ---------------*/
 
-# include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <readline/readline.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libft.h"
-# include "libadt.h"
-# include "s_token.h"
-# include "s_tree_node.h"
 
-/*------------- STRUCT DECLARATIONS --------------*/
+/*------------ DEFINE MACRO CONSTANTS ------------*/
 
-typedef struct s_goldsh
-{
-	char	**envp;
-	t_token	*token;
-	t_node	*node;
-	int		syntax_error;
-}	t_goldsh;
-
-t_goldsh	g_goldsh;
+# define CHARSET "abcdefghijklmnopqrstuvwxyz\
+ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+# define INITIAL_TEMP_FILENAME "/tmp/goldsh_"
+# define PS_HEREDOC "goldsh heredoc > "
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_token	*lexer(char *input);
-t_node	*parser(t_token *tokens);
-void	destroy_token_list(t_token *token_list);
-void	destroy_tree(t_node *node);
-int		parse_list(t_node **root, t_token *tokens, int *offset);
-char	*process_heredoc(char *word);
-void	exit_by_error(char *msg);
+int		get_delimiter_len(char *word);
+void	store_delimiter(char *delimiter, char *word);
+void	make_heredoc_with_expansion(char *line, int fd);
 
 #endif

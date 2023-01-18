@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion.h                                        :+:      :+:    :+:   */
+/*   exit_stat_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:14 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/17 13:33:08 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 10:28:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#include "env_manager_internal.h"
+#include "libft.h"
 
-/*-------------- USER DEFINED HEADERS ------------*/
+int	exit_stat_get(void)
+{
+	return (exit_stat_manager(EXIT_STAT_GET, 0));
+}
 
-# include "s_expansion.h"
+char	*exit_stat_get_str(void)
+{
+	return (ft_itoa(exit_stat_manager(EXIT_STAT_GET, 0)));
+}
 
-/*-------------- FUNCTION PROTOTYPES -------------*/
+int	exit_stat_update(int new_stat)
+{
+	return (exit_stat_manager(EXIT_STAT_UPDATE, new_stat));
+}
 
-t_expansion	*expand_word(char *word);
-void		destroy_expansion(t_expansion *set);
-char		**words_to_strings(t_expansion *set, int count);
-char		*split_variable(char *word, int *idx, int *question_mark);
+void	exit_program(void)
+{
+	exit_stat_manager(EXIT_PROGRAM, 0);
+}
 
-#endif

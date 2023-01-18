@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_utils.c                                        :+:      :+:    :+:   */
+/*   env_get.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 21:08:45 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 21:32:16 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 10:05:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "env_manager_internal.h"
-
-t_env_tab	*initialize_env_table(char **envp)
-{
-	return (env_manager(ENV_INIT, envp, NULL, NULL));
-}
-
-char	*env_set(char *variable, char *value)
-{
-	return (env_manager(ENV_SET, NULL, variable, value));
-}
-
-char	*env_unset(char *variable)
-{
-	return (env_manager(ENV_UNSET, NULL, variable, NULL));
-}
+#include "libft.h"
 
 char	*env_get(char *variable)
 {
 	return (env_manager(ENV_GET, NULL, variable, NULL));
+}
+
+char	*env_dup_val(char *variable)
+{
+	char	*value;
+
+	value = env_manager(ENV_GET, NULL, variable, NULL);
+	if (!value)
+		return (value);
+	return (ft_strdup(value));
 }
 
 char	**env_tab_to_arr(void)

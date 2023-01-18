@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/17 13:38:07 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,16 +118,24 @@ PARSER_FILE		=		parse_list \
 						parse_simple_command \
 						parse_subshell \
 						parser \
-						process_heredoc
+						heredoc_generate \
+						heredoc_get_delimiter \
+						heredoc_with_expansion
 TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
 						push_execute_unit_content
-ENV_FILE		=		env_internal \
-						env_manager \
-						env_utils \
-						exit_stat_manager \
-						exit_stat_utils
+ENV_FILE		=		api_env_get \
+						api_env_init \
+						api_env_set \
+						api_exit_stat_utils \
+						api_heredoc_utils \
+						internal_env_get \
+						internal_env_init \
+						internal_env_set \
+						manager_env \
+						manager_exit_stat \
+						manager_heredoc
 EXPAND_FILE		=		expand_variable \
 						expand_word \
 						expansion_allocation \

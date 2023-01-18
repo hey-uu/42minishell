@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 23:02:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:44:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:07:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 #include "libadt.h"
 #include "libft.h"
 
-static char	*split_variable(char *word, int *idx, int *question_mark)
+char	*split_variable(char *word, int *idx, int *question_mark)
 {
 	char	*variable;
 	int		i;
 
 	variable = NULL;
 	*question_mark = VAR_IS_NOT_QMARK;
-printf("> split variable...\n");
+// printf("> split variable...\n");
 	if (word[0] == '?')
 	{
-printf(">>> this is question mark...\n");
+// printf(">>> this is question mark...\n");
 		*question_mark = VAR_IS_QMARK;
 		(*idx)++;
 		return (variable);
@@ -38,7 +38,7 @@ printf(">>> this is question mark...\n");
 		i++;
 	if (i)
 		variable = ft_strndup(word, i);
-printf(">>> the variable is : [%s]...\n", variable);
+// printf(">>> the variable is : [%s]...\n", variable);
 	(*idx) += i;
 	return (variable);
 }
@@ -48,7 +48,7 @@ void	concat_node_ndata(t_word *node, char *data, int len)
 	char	*old_data;
 	int		old_len;
 
-printf("> concat node ndata...\n");
+// printf("> concat node ndata...\n");
 	old_data = node->data;
 	old_len = node->len;
 	if (!data || !len)
@@ -65,7 +65,7 @@ printf("> concat node ndata...\n");
 		node->len = old_len + len;
 		free(old_data);
 	}
-printf(">>> current node data: [%s]\n", node->data);
+// printf(">>> current node data: [%s]\n", node->data);
 }
 
 int	expand_quoted_variable(t_expansion *set, char *word)
@@ -75,17 +75,17 @@ int	expand_quoted_variable(t_expansion *set, char *word)
 	int		question_mark;
 	int		i;
 
-printf("> expand quoted variable...\n");
+// printf("> expand quoted variable...\n");
 	i = 1;
 	variable = split_variable(&word[i], &i, &question_mark);
 	if (!variable && question_mark == VAR_IS_NOT_QMARK)
 		return (i);
-printf(">>> expand quoted variable: [%s]...\n", variable);
+// printf(">>> expand quoted variable: [%s]...\n", variable);
 	if (question_mark == VAR_IS_QMARK)
 		value = exit_stat_get_str();
 	else
 		value = env_get(variable);
-printf(">>> found variable's value: [%s]...\n\n", value);
+// printf(">>> found variable's value: [%s]...\n\n", value);
 	if (value)
 		concat_node_ndata(set->last, value, ft_strlen(value));
 	if (question_mark == VAR_IS_QMARK)
@@ -101,17 +101,17 @@ int	expand_unquoted_variable(t_expansion *set, char *word)
 	int		question_mark;
 	int		i;
 
-printf("> expand unquoted variable\n");
+// printf("> expand unquoted variable\n");
 	i = 1;
 	variable = split_variable(&word[i], &i, &question_mark);
 	if (!variable && question_mark == VAR_IS_NOT_QMARK)
 		return (i);
-printf(">>> expand unquoted variable: [%s]...\n\n", variable);
+// printf(">>> expand unquoted variable: [%s]...\n\n", variable);
 	if (question_mark == VAR_IS_QMARK)
 		value = exit_stat_get_str();
 	else
 		value = env_get(variable);
-printf(">>> found variable's value: [%s]...\n\n", value);
+// printf(">>> found variable's value: [%s]...\n\n", value);
 	field_split(set, value);
 	if (question_mark == VAR_IS_QMARK)
 		free(value);

@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion.h                                        :+:      :+:    :+:   */
+/*   api_env_initialize.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:14 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 15:39:27 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 15:39:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#include "env_manager_internal.h"
 
-/*-------------- USER DEFINED HEADERS ------------*/
-
-# include "s_expansion.h"
-
-/*-------------- FUNCTION PROTOTYPES -------------*/
-
-t_expansion	*expand_word(char *word);
-void		destroy_expansion(t_expansion *set);
-char		**words_to_strings(t_expansion *set, int count);
-char		*split_variable(char *word, int *idx, int *question_mark);
-
-#endif
+t_env_tab	*init_env_table(char **envp)
+{
+	return (env_manager(ENV_INIT, envp, NULL, NULL));
+}

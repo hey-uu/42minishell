@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion.h                                        :+:      :+:    :+:   */
+/*   internal_env_set.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:14 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 03:53:28 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 03:53:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#include "env_manager_internal.h"
+#include "libft.h"
 
-/*-------------- USER DEFINED HEADERS ------------*/
+t_env_tab	*__env_set__(t_env_tab *table, char *variable, char *value)
+{
+	if (!variable)
+		return (NULL);
+	hash_table_update(table, variable, value);
+	return (table);
+}
 
-# include "s_expansion.h"
-
-/*-------------- FUNCTION PROTOTYPES -------------*/
-
-t_expansion	*expand_word(char *word);
-void		destroy_expansion(t_expansion *set);
-char		**words_to_strings(t_expansion *set, int count);
-char		*split_variable(char *word, int *idx, int *question_mark);
-
-#endif
+t_env_tab	*__env_unset__(t_env_tab *table, char *variable)
+{
+	if (!variable)
+		return (NULL);
+	hash_table_delete(table, variable);
+	return (table);
+}

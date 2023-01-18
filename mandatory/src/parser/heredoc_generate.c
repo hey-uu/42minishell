@@ -1,32 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process_heredoc.c                                  :+:      :+:    :+:   */
+/*   heredoc_generate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 17:40:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:06:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <readline/readline.h>
-#include "libft.h"
-
-#define CHARSET "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-#define INITIAL_TEMP_FILENAME "/tmp/goldsh"
-#define PS_HEREDOC "goldsh heredoc > "
-
-enum e_quote
-{
-	QUOTE_NONE,
-	QUOTE_SINGLE,
-	QUOTE_DOUBLE
-};
+#include "env_manager.h"
+#include "heredoc_internal.h"
 
 char	*get_random_temp_file_name(void)
 {
@@ -67,7 +52,10 @@ void	get_heredoc_input(int fd, char *delimiter, int quote)
 			break ;
 		if (!ft_strncmp(line, delimiter, ft_strlen(line) + 1))
 			break ;
-		write(fd, line, ft_strlen(line));
+		if (!quote)
+			make_heredoc_with_expansion(line, fd);
+		else
+			write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
 	}
@@ -79,9 +67,9 @@ char	*generate_here_document(char *delimiter, int quote)
 	char	*heredoc;
 	int		fd;
 
-	quote = 0;
 	heredoc = get_random_temp_file_name();
 	fd = open(heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	heredoc_is_in_process(heredoc, fd);
 	if (fd < 0)
 	{
 		printf("failed to make temporary file for heredoc\n");
@@ -89,47 +77,8 @@ char	*generate_here_document(char *delimiter, int quote)
 	}
 	get_heredoc_input(fd, delimiter, quote);
 	close(fd);
+	heredoc_is_done();
 	return (heredoc);
-}
-
-int	get_delimiter_len(char *word)
-{
-	int		quote;
-	int		len;
-
-	len = 0;
-	quote = 0;
-	while (*word)
-	{
-		if (!quote && (*word == '\'' || *word == '\"'))
-			quote = *word;
-		else if (quote && (*word == quote))
-			quote = 0;
-		else
-			len++;
-		word++;
-	}
-	return (len);
-}
-
-void	store_delimiter(char *delimiter, char *word)
-{
-	int		quote;
-	int		i;
-
-	i = 0;
-	quote = 0;
-	while (*word)
-	{
-		if (!quote && (*word == '\'' && *word == '\"'))
-			quote = *word;
-		else if (quote && (*word == quote))
-			quote = 0;
-		else
-			delimiter[i++] = *word;
-		word++;
-	}
-	delimiter[i] = '\0';
 }
 
 char	*process_heredoc(char *word)
@@ -141,7 +90,7 @@ char	*process_heredoc(char *word)
 
 	delimiter = ft_malloc(sizeof(char) * (delimiter_len + 1));
 	store_delimiter(delimiter, word);
-	quote = (delimiter_len == (int)ft_strlen(word));
+	quote = (delimiter_len != (int)ft_strlen(word));
 	heredoc = generate_here_document(delimiter, quote);
 	return (heredoc);
 }

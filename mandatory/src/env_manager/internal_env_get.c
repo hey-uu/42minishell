@@ -1,70 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_internal.c                                     :+:      :+:    :+:   */
+/*   internal_env_get.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 12:19:03 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:42:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
 #include "libft.h"
 
-t_env_tab	*__env_table_initialize__(t_env_tab *table, char **envp)
-{
-	char	*key;
-	char	*value;
-	size_t	i;
-	size_t	j;
-
-	if (!envp)
-		return (NULL);
-	hash_table_initialize(table);
-	i = 0;
-	while (envp[i])
-	{
-		j = 0;
-		while (envp[i][j] && envp[i][j] != '=')
-			j++;
-		key = ft_strndup(envp[i], j);
-		value = ft_strdup(&envp[i][j + 1]);
-		hash_table_insert(table, key, value);
-		i++;
-	}
-	return (table);
-}
-
-t_env_tab	*__env_set__(t_env_tab *table, char *variable, char *value)
-{
-	if (!variable)
-		return (NULL);
-	hash_table_update(table, variable, value);
-	return (table);
-}
-
-t_env_tab	*__env_unset__(t_env_tab *table, char *variable)
-{
-	if (!variable)
-		return (NULL);
-	hash_table_delete(table, variable);
-	return (table);
-}
-
 char	*__env_get__(t_env_tab *table, char *variable)
 {
 	t_hash_content	*entry;
 	int				bucket;
 
-	if (!variable)
+	if (!variable || !table->bucket_cnt)
 		return (NULL);
 	bucket = hash_bucket(variable, table->bucket_cnt);
 	entry = hash_table_search(table, variable, bucket);
 	if (entry)
 		return ((char *)entry->content);
 	return (NULL);
+}
+
+char	*__join_variable_and_value__(char *variable, char *value)
+{
+	const int	var_len = ft_strlen(variable);
+	char		*line;
+	int			val_len;
+	int			line_len;
+
+	line_len = var_len + 1;
+	if (value)
+	{
+		val_len = ft_strlen(value);
+		line_len += val_len;
+	}
+	line = ft_malloc(sizeof(char) * (line_len + 1));
+	ft_strlcpy(line, variable, var_len + 1);
+	ft_strlcpy(line + var_len, "=", 2);
+	if (value)
+		ft_strlcpy(line + var_len + 1, value, val_len + 1);
+	return (line);
 }
 
 char	**__env_tab_to_arr__(t_env_tab *table)
@@ -74,8 +55,8 @@ char	**__env_tab_to_arr__(t_env_tab *table)
 	int				i;
 	int				j;
 
-	arr = ft_malloc(sizeof(char *) * (table->bucket_cnt) + 1);
-	arr[table->bucket_cnt] = NULL;
+	arr = ft_malloc(sizeof(char *) * (table->entry_cnt + 1));
+	arr[table->entry_cnt] = NULL;
 	j = 0;
 	i = 0;
 	while (i < table->bucket_cnt)
@@ -83,8 +64,9 @@ char	**__env_tab_to_arr__(t_env_tab *table)
 		cur = table->bucket_arr[i];
 		while (cur)
 		{
-			arr[j++] = cur->content;
+			arr[j] = __join_variable_and_value__(cur->key, cur->content);
 			cur = cur->next;
+			j++;
 		}
 		i++;
 	}

@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_stat_utils.c                                  :+:      :+:    :+:   */
+/*   env_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:33:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 13:36:37 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/18 03:46:28 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 03:47:45 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
-#include "libft.h"
 
-int	exit_stat_get(void)
+char	*env_set(char *variable, char *value)
 {
-	return (exit_stat_manager(EXIT_STAT_GET, 0));
+	return (env_manager(ENV_SET, NULL, variable, value));
 }
 
-int	exit_stat_update(int new_stat)
+char	*env_unset(char *variable)
 {
-	return (exit_stat_manager(EXIT_STAT_UPDATE, new_stat));
-}
-
-void	exit_program(void)
-{
-	exit_stat_manager(EXIT_PROGRAM, 0);
-}
-
-char	*exit_stat_get_str(void)
-{
-	return (ft_itoa(exit_stat_manager(EXIT_STAT_GET, 0)));
+	return (env_manager(ENV_UNSET, NULL, variable, NULL));
 }
