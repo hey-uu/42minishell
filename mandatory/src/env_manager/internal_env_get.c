@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 12:54:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:25:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*__join_variable_and_value__(char *variable, char *value)
 	line_len = var_len + 1;
 	if (value)
 	{
-		val_len = ft_strlen(val_len);
+		val_len = ft_strlen(value);
 		line_len += val_len;
 	}
 	line = ft_malloc(sizeof(char) * (line_len + 1));
