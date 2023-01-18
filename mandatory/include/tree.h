@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:22:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:36:39 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:02:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ void			push_arguments(t_queue *cmd_argv, t_token *token, int offset);
 void			push_redirection(\
 				t_queue *redir_list, t_token *token, int offset);
 void			show_tree(t_node *tree, int depth);
+
+// heredoc
+char			*process_heredoc(char *word);
 
 #endif
