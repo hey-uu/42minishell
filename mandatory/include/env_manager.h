@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:30:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:59:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_env_tab	*initialize_env_table(char **envp);
 void		*env_set(char *variable, char *value);
 void		*env_unset(char *variable);
 char		*env_get(char *variable);
+char		*env_dup_val(char *variable);
 char		**env_tab_to_arr(void);
 
 // heredoc status manager
