@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 08:50:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:47:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # include "libft.h"
 # include "libadt.h"
-# include "t_token.h"
-# include "t_tree_node.h"
+# include "s_token.h"
+# include "s_tree_node.h"
 
 /*------------- STRUCT DECLARATIONS --------------*/
 

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:43:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:23:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 09:47:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "t_expansion.h"
+# include "s_expansion.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

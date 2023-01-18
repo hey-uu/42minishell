@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exit_stat_manager.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:33:18 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 13:33:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:35:09 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "t_env_table.h"
+#include "s_env_table.h"
 
 int	exit_stat_manager(int option, unsigned long new_stat)
 {

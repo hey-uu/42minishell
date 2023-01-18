@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_table_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 13:44:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:35:09 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <assert.h>
 #include "libft.h"
 #include "libadt.h"
-#include "t_env_table.h"
+#include "s_env_table.h"
 #include "env_manager.h"
 
 #define VARIABLE "PATH"

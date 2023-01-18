@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   do_expansion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:10:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:34:53 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "expansion_internal.h"
-#include "t_tree_node.h"
+#include "s_tree_node.h"
 
 char	**expand_word_to_strings(char *word)
 {

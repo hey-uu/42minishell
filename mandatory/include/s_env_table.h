@@ -1,47 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_token.h                                          :+:      :+:    :+:   */
+/*   s_env_table.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 22:58:22 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 15:28:07 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/16 21:01:55 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/18 03:36:13 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef T_TOKEN_H
-# define T_TOKEN_H
+#ifndef S_ENV_TABLE_H
+# define S_ENV_TABLE_H
+
+/*-------------- USER DEFINED HEADERS ------------*/
+
+# include "libadt.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
-enum e_token_type
+enum	e_exit_status_manager
 {
-	TOKEN_NONE,
-	TOKEN_WORD,
-	TOKEN_LPAREN,
-	TOKEN_RPAREN,
-	TOKEN_AND_IF,
-	TOKEN_OR_IF,
-	TOKEN_PIPE,
-	TOKEN_REDIR_IN,
-	TOKEN_REDIR_OUT,
-	TOKEN_REDIR_IN_HERE,
-	TOKEN_REDIR_OUT_APP
+	EXIT_STAT_GET,
+	EXIT_STAT_UPDATE,
+	EXIT_PROGRAM
 };
 
-enum e_lexer_result_status
+enum	e_env_manager
 {
-	LEXER_FAILURE = -1,
-	LEXER_SUCCESS = 0
+	ENV_INIT,
+	ENV_GET,
+	ENV_SET,
+	ENV_UNSET,
+	ENV_TAB_TO_ARR
 };
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
-typedef struct s_token
-{
-	int		type;
-	char	*str;
-}	t_token;
+typedef t_hash_table	t_env_tab;
 
 #endif

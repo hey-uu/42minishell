@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:47:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 15:53:29 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 03:35:26 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "t_expansion.h"
+# include "s_expansion.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
