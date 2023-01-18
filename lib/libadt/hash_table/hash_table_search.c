@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:17:10 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:36:13 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:01:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_hash_content	*hash_table_search(t_hash_table *table, char *key, int bucket)
 	target = table->bucket_arr[bucket];
 	while (target)
 	{
-debug_print(target);
+// debug_print(target);
 		if (!ft_strncmp(target->key, key, ft_strlen(key) + 1))
 			return (target);
 		target = target->next;
