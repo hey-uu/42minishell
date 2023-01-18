@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 13:44:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 16:55:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:05:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	expand_single_quote(t_expansion *set, char *word)
 	t_word	*node;
 	int		i;
 
-printf("> expand single quote...\n");
+// printf("> expand single quote...\n");
 	node = add_new_word_node_back(set);
 	node->mask |= EXPAND_QUOTED;
 	i = 1;
@@ -38,7 +38,7 @@ int	expand_double_quote_basic(t_expansion *set, char *word)
 	t_word	*node;
 	int		i;
 
-printf("> expand double quote basic...\n");
+// printf("> expand double quote basic...\n");
 	node = set->last;
 	i = 0;
 	while (word[i] && word[i] != '\"' && word[i] != '$')
@@ -52,7 +52,7 @@ int	expand_double_quote(t_expansion *set, char *word)
 	t_word	*node;
 	int		i;
 
-printf("> expand double quote...\n");
+// printf("> expand double quote...\n");
 	node = add_new_word_node_back(set);
 	node->mask |= EXPAND_QUOTED;
 	i = 1;
@@ -76,7 +76,7 @@ int	expand_basic(t_expansion *set, char *word)
 	t_word	*node;
 	int		i;
 
-printf("expand basic...\n");
+// printf("expand basic...\n");
 	node = add_new_word_node_back(set);
 	i = 0;
 	while (word[i] && word[i] != '\'' && word[i] != '\"' && word[i] != '$')
@@ -105,7 +105,7 @@ t_expansion	*expand_word(char *word)
 	t_expansion	*set;
 	int			i;
 
-printf("> expand word! so funny!! *^^*\n");
+// printf("> expand word! so funny!! *^^*\n");
 	set = create_expansion_set(word);
 	i = 0;
 	while (word[i])
@@ -120,7 +120,7 @@ printf("> expand word! so funny!! *^^*\n");
 			i += expand_unquoted_variable(set, &word[i]);
 		else
 			i += expand_basic(set, &word[i]);
-printf("====> current pos: %s\n", word + i);
+// printf("====> current pos: %s\n", word + i);
 	}
 	return (set);
 }
