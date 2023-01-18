@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 16:33:26 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 
 # compile
 CC				=		cc
-CFLAGS1			=		-Wall -Wextra -Werror
+CFLAGS1			=	
+# CFLAGS1			=		-Wall -Wextra -Werror
 CFLAGS2			=		-fsanitize=address -g3
 
 ifdef FSANITIZE_FLAG
@@ -103,7 +104,15 @@ BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 
 # file name
 BUILTIN_FILE	=		
-EXECUTOR_FILE	=		
+EXECUTOR_FILE	=		access_command_path \
+						builtin \
+						execute_builtin \
+						execute_pipeline \
+						execute_simple_command \
+						execute_subshell \
+						executor \
+						pipe_open_close \
+						set_standard_stream
 EXTRA_FILE		=		error \
 						history \
 						prompt \
