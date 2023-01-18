@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 08:41:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 13:05:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:27:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 #include "env_manager.h"
 #include "libadt.h"
 #include "libft.h"
+
+// * t_word가 NULL인 경우
+// 1. ""인 경우 => 빈 문자열("") 반환
+//  ---> command : quote removal 하기 직전이 ""인 경우 ""가 들어감
+//  ---> command arguments : ""가 들어감
+//  ---> heredoc : word가 ""인 경우 delimiter는 "", 즉 enter치면 종료됨
+//  ---> redirection : ""로 들어감
+// 2. 변수 확장 결과 아무 값도 없는 경우 => NULL 반환
+//  ---> command : 아무 일도 안 인얼나고 다음 줄을 받음
+//  ---> command arguments : 그냥 무시됨
+//  ---> herdoc : 그냥 확장이 안 일어나기 때문에 아무 영향이 없음
+//  ---> redirection : ambiguous redirect
 
 static int	determine_string_length(t_word *cur)
 {
@@ -35,7 +47,7 @@ static int	determine_string_length(t_word *cur)
 	return (len);
 }
 
-t_word	*fill_string_with_word_data(t_word *cur, char *string)
+t_word	*fill_string_with_word_data(char *string, t_word *cur)
 {
 	int		i;
 
@@ -66,10 +78,12 @@ char	*word_to_string(t_expansion *set)
 
 // printf("> one word to a string...\n");
 	len = determine_string_length(set->first);
+	if (!len && set->quote_exist == QUOTED_CHAR_NONE)
+		return (NULL);
 	string = ft_malloc(sizeof(char) * (len + 1));
 	string[len] = 0;
 	start = set->first;
-	end = fill_string_with_word_data(set->first, string);
+	end = fill_string_with_word_data(string, set->first);
 	if (end)
 	{
 		set->first = end->next;
@@ -82,14 +96,14 @@ char	*word_to_string(t_expansion *set)
 	return (string);
 }
 
-char	**words_to_strings(t_expansion *set, int count)
+char	**words_to_strings(t_expansion *set)
 {
 	char	**strings;
+	int		count;
 	int		i;
 
 // printf("> words to strings...\n");
-	if (!count)
-		count = set->count;
+	count = set->count;
 	strings = ft_malloc(sizeof(char *) * (count + 1));
 	strings[count] = NULL;
 	i = -1;

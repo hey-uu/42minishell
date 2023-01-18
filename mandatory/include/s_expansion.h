@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_expansion.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:36:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:14:12 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 # define AMBIGUOUS_REDIRECT -1
+# define QUOTED_CHAR_EXIST 1
+# define QUOTED_CHAR_NONE 0
 
 enum e_question_mask
 {
@@ -50,11 +52,10 @@ typedef struct s_word
 
 typedef struct s_expansion
 {
-	char		*origin;
-	int			origin_len;
 	t_word		*first;
 	t_word		*last;
 	int			count;
+	int			quote_exist;
 }	t_expansion;
 
 #endif
