@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 10:46:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv, char *envp[])
 
 	argc++;
 	argv++;
-	initialize_env_table(envp);
+	init_env_table(envp);
 	set_signal();
 	print_welcome();
 	while (1)

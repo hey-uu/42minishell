@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:26:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 // env_manager
 void		*env_manager(int option, char *envp[], char *variable, char *value);
-t_env_tab	*__env_table_initialize__(t_env_tab *table, char **envp);
+t_env_tab	*__env_table_init__(t_env_tab *table, char **envp);
 t_env_tab	*__env_set__(t_env_tab *table, char *variable, char *value);
 t_env_tab	*__env_unset__(t_env_tab *table, char *variable);
 char		*__env_get__(t_env_tab *table, char *variable);

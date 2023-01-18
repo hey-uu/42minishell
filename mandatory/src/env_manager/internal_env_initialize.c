@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   internal_env_initialize.c                          :+:      :+:    :+:   */
+/*   internal_env_init.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "env_manager_internal.h"
 #include "libft.h"
 
-t_env_tab	*__env_table_initialize__(t_env_tab *table, char **envp)
+t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
 {
 	char	*key;
 	char	*value;
@@ -22,7 +22,7 @@ t_env_tab	*__env_table_initialize__(t_env_tab *table, char **envp)
 
 	if (!envp)
 		return (NULL);
-	hash_table_initialize(table);
+	hash_table_init(table);
 	i = 0;
 	while (envp[i])
 	{

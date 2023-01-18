@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 13:06:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:38:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**expand_word_to_strings(char *word)
 
 // printf("> expand word to strings...\n");
 	set = expand_word(word);
-	strings = word_to_strings(word);
+	strings = words_to_strings(word);
 	destroy_expansion(set);
 	return (strings);
 }

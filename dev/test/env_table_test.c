@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 14:51:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	main(int argc, char *argv[], char *envp[])
 	atexit(check);
 	argc++;
 	argv++;
-	table = initialize_env_table(envp);
+	table = init_env_table(envp);
 	show_hash_table(table);
 	test_env_get();
 	test_env_set();

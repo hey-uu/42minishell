@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:52:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 // hash_function.c
 int				hash_bucket(char *string, int bucket_cnt);
 // hash_table_create.c
-void			hash_table_initialize(t_hash_table *table);
+void			hash_table_init(t_hash_table *table);
 t_hash_table	*hash_table_create(void);
 // hash_table_destroy.c
 void			hash_table_delete(t_hash_table *hash_table, char *key);

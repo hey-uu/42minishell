@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 14:52:41 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,12 +126,12 @@ TREE_FILE		=		create_execute_unit \
 						destroy_tree \
 						push_execute_unit_content
 ENV_FILE		=		api_env_get \
-						api_env_initialize \
+						api_env_init \
 						api_env_set \
 						api_exit_stat_utils \
 						api_heredoc_utils \
 						internal_env_get \
-						internal_env_initialize \
+						internal_env_init \
 						internal_env_set \
 						manager_env \
 						manager_exit_stat \

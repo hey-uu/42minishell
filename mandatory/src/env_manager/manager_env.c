@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_manager.c                                      :+:      :+:    :+:   */
+/*   manager_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:34:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 21:36:53 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*env_manager(int option, char *envp[], char *variable, char *value)
 	static t_env_tab	envtab;
 
 	if (option == ENV_INIT)
-		return ((void *)__env_table_initialize__(&envtab, envp));
+		return ((void *)__env_table_init__(&envtab, envp));
 	else if (option == ENV_SET)
 		return ((void *)__env_set__(&envtab, variable, value));
 	else if (option == ENV_UNSET)
