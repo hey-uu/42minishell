@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 13:25:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:42:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ char	**__env_tab_to_arr__(t_env_tab *table)
 	int				i;
 	int				j;
 
-	arr = ft_malloc(sizeof(char *) * (table->bucket_cnt) + 1);
-	arr[table->bucket_cnt] = NULL;
+	arr = ft_malloc(sizeof(char *) * (table->entry_cnt + 1));
+	arr[table->entry_cnt] = NULL;
 	j = 0;
 	i = 0;
 	while (i < table->bucket_cnt)
@@ -66,6 +66,7 @@ char	**__env_tab_to_arr__(t_env_tab *table)
 		{
 			arr[j] = __join_variable_and_value__(cur->key, cur->content);
 			cur = cur->next;
+			j++;
 		}
 		i++;
 	}
