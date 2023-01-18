@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/17 23:49:19 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:30:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ static void	do_redirecting(t_queue *redir_list)
 	int	fd;
 	int	err;
 	int	i;
+	int	idx;
 
 	i = 0;
+	// 원형 큐에 알맞은 인덱스를 구하기
 	while (i < redir_list->used_size)
 	{
-		if (redir_list->iarr[i] == TOKEN_REDIR_IN)
+		if (redir_list->iarr[i] == TOKEN_REDIR_IN \
+				|| redir_list->iarr[i] == TOKEN_REDIR_IN_HERE)
 		{
 			fd = open(redir_list->strarr[i], O_RDONLY);
 			err = dup2(fd, STDIN_FILENO);
+			if (redir_list->iarr[i] == TOKEN_REDIR_IN_HERE)
+				unlink(redir_list->strarr[i]);
 		}
 		else if (redir_list->iarr[i] == TOKEN_REDIR_OUT)
 		{
