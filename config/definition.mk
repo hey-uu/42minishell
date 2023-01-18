@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 17:41:52 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 
 # compile
 CC				=		cc
-CFLAGS1			=		-Wall -Wextra -Werror
+CFLAGS1			=	
+# CFLAGS1			=		-Wall -Wextra -Werror
 CFLAGS2			=		-fsanitize=address -g3
 
 ifdef FSANITIZE_FLAG
@@ -68,6 +69,7 @@ PARSER_DIR		=		parser
 TREE_DIR		=		tree
 ENV_DIR			=		env_manager
 EXPAND_DIR		=		expansion
+HEREDOC_DIR		=		heredoc
 
 DEV_DIR			=		dev
 
@@ -103,7 +105,15 @@ BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 
 # file name
 BUILTIN_FILE	=		
-EXECUTOR_FILE	=		
+EXECUTOR_FILE	=		access_command_path \
+						builtin \
+						execute_builtin \
+						execute_pipeline \
+						execute_simple_command \
+						execute_subshell \
+						executor \
+						pipe_open_close \
+						set_standard_stream
 EXTRA_FILE		=		error \
 						history \
 						prompt \
@@ -117,10 +127,7 @@ PARSER_FILE		=		parse_list \
 						parse_pipeline \
 						parse_simple_command \
 						parse_subshell \
-						parser \
-						heredoc_generate \
-						heredoc_get_delimiter \
-						heredoc_with_expansion
+						parser
 TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
@@ -142,6 +149,9 @@ EXPAND_FILE		=		expand_variable \
 						field_split \
 						destroy_expansion \
 						words_to_strings
+HEREDOC_FILE	=		heredoc_generate \
+						heredoc_get_delimiter \
+						heredoc_with_expansion
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
@@ -149,7 +159,8 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
 						$(addprefix $(ENV_DIR)/, $(ENV_FILE)) \
-						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE))
+						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE)) \
+						$(addprefix $(HEREDOC_DIR)/, $(HEREDOC_FILE))
 
 # file name(absolute path)
 MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))

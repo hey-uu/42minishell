@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:47:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:36:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # include "libadt.h"
 # include "s_token.h"
 # include "s_tree_node.h"
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum e_result_status
+{
+	FAILURE = -1,
+	SUCCESS = 0
+};
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
@@ -47,5 +55,6 @@ void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
 char	*process_heredoc(char *word);
 void	exit_by_error(char *msg);
+int	executor(t_node *node);
 
 #endif

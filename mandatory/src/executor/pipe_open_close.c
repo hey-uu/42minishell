@@ -8,7 +8,8 @@ void	open_new_pipe(int new_pipe_fd[2])
 	pipe(new_pipe_fd);
 }
 
-void	close_pipe_in_parent(int old_pipe_fd[2], int new_pipe_fd[2], int first, int last)
+void	close_pipe_in_parent(int old_pipe_fd[2], int new_pipe_fd[2], \
+														int first, int last)
 {
 	if (first)
 	{

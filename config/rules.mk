@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    rules.mk                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/16 12:24:57 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/18 17:42:24 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,11 @@ $(MAN_OBJ_PATH)/$(ENV_DIR)/%.o : $(MAN_SRC_PATH)/$(ENV_DIR)/%.c $(MAN_INC)
 $(MAN_OBJ_PATH)/$(EXPAND_DIR)/%.o : $(MAN_SRC_PATH)/$(EXPAND_DIR)/%.c $(MAN_INC)
 	@mkdir -p $(MAN_OBJ_PATH)
 	@mkdir -p $(MAN_OBJ_PATH)/$(EXPAND_DIR)
+	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
+$(MAN_OBJ_PATH)/$(HEREDOC_DIR)/%.o : $(MAN_SRC_PATH)/$(HEREDOC_DIR)/%.c $(MAN_INC)
+	@mkdir -p $(MAN_OBJ_PATH)
+	@mkdir -p $(MAN_OBJ_PATH)/$(HEREDOC_DIR)
 	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
 $(MAN_OBJ_PATH)/%.o : $(MAN_SRC_PATH)/%.c $(MAN_INC)
