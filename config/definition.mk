@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 16:33:26 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/18 17:41:52 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ PARSER_DIR		=		parser
 TREE_DIR		=		tree
 ENV_DIR			=		env_manager
 EXPAND_DIR		=		expansion
+HEREDOC_DIR		=		heredoc
 
 DEV_DIR			=		dev
 
@@ -126,10 +127,7 @@ PARSER_FILE		=		parse_list \
 						parse_pipeline \
 						parse_simple_command \
 						parse_subshell \
-						parser \
-						heredoc_generate \
-						heredoc_get_delimiter \
-						heredoc_with_expansion
+						parser
 TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \
@@ -151,6 +149,9 @@ EXPAND_FILE		=		expand_variable \
 						field_split \
 						destroy_expansion \
 						words_to_strings
+HEREDOC_FILE	=		heredoc_generate \
+						heredoc_get_delimiter \
+						heredoc_with_expansion
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
@@ -158,7 +159,8 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(PARSER_DIR)/, $(PARSER_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
 						$(addprefix $(ENV_DIR)/, $(ENV_FILE)) \
-						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE))
+						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE)) \
+						$(addprefix $(HEREDOC_DIR)/, $(HEREDOC_FILE))
 
 # file name(absolute path)
 MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))

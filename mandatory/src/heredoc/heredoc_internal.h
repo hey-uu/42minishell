@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 12:07:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:21:54 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define CHARSET "abcdefghijklmnopqrstuvwxyz\
 ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 # define INITIAL_TEMP_FILENAME "/tmp/goldsh_"
-# define PS_HEREDOC "goldsh heredoc > "
+# define PS_HEREDOC "> "
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
