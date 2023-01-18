@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 09:42:09 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:30:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ char	*generate_here_document(char *delimiter, int quote)
 
 	heredoc = get_random_temp_file_name();
 	fd = open(heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	heredoc_is_in_process(heredoc, fd);
 	if (fd < 0)
 	{
 		printf("failed to make temporary file for heredoc\n");
@@ -132,6 +133,7 @@ char	*generate_here_document(char *delimiter, int quote)
 	}
 	get_heredoc_input(fd, delimiter, quote);
 	close(fd);
+	heredoc_is_done();
 	return (heredoc);
 }
 
