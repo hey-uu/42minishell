@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 17:41:52 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/19 12:24:00 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,6 +109,7 @@ EXECUTOR_FILE	=		access_command_path \
 						builtin \
 						execute_builtin \
 						execute_pipeline \
+						execute_list \
 						execute_simple_command \
 						execute_subshell \
 						executor \

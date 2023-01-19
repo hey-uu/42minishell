@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 16:31:25 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:26:03 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_pipeline {
 
 typedef int	(*t_builtin)(char **argv);
 
-int	executor(t_node *node);
+void	executor(t_node *parse_tree, int *errcode);
 
 int	builtin_echo(char **argv);
 int	builtin_cd(char **argv);
@@ -45,6 +45,7 @@ int	builtin_exit(char **argv);
 
 int	access_command_path(char **cmd_name);
 
+int	execute_list(t_node *node);
 int	execute_pipeline(t_node *node);
 int	execute_single_builtin(t_execute_unit *exe_unit);
 int	execute_subshell(t_node *node, t_pipeline *pl, int nth);
