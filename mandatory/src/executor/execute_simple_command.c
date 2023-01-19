@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/18 16:44:10 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:51:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 {
-	const char	**envp = env_tab_to_arr();
+	const char	**envp = (const char **)env_tab_to_arr();
 	int			stat;
 
 	set_standard_stream(pl, exe_unit->redir_list, nth);
@@ -32,7 +32,7 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 	}
 	else if (access_command_path(&exe_unit->cmd_name) == FAILURE)
 		printf("(guemzzoki): command not found: %s\n", exe_unit->cmd_name);
-	execve(exe_unit->cmd_name, exe_unit->cmd_argv->strarr, envp);
+	execve(exe_unit->cmd_name, exe_unit->cmd_argv->strarr, (char *const *)envp);
 	exit(1);
 }
 
