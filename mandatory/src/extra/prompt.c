@@ -6,13 +6,14 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:24:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/07 20:26:18 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:09:58 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "prompt.h"
 #include "libft.h"
+#include "color.h"
 
 void	get_cmd_line(t_prompt type)
 {
@@ -39,5 +40,6 @@ void	print_welcome(void)
 \n   ==============================================================\
 \n";
 
-	printf("\n%s\n%s\n", shell_name, shell_introduction);
+	printf(YELLO "\n%s" RESET, shell_name);
+	printf(ITAL "%s\n" RESET, shell_introduction);
 }
