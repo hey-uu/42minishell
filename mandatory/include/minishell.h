@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 16:36:01 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:50:05 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "libadt.h"
 # include "s_token.h"
 # include "s_tree_node.h"
+# include "error.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -48,13 +49,16 @@ t_goldsh	g_goldsh;
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_token	*lexer(char *input);
-t_node	*parser(t_token *tokens);
+void	lexer(char *input, t_token **token_list, int *errcode, \
+									t_token *syntax_error_near_token);
+void	parser(t_token *tokens, t_node **parse_tree, int *errcode, \
+									t_token *syntax_error_near_token);
+void	executor(t_node *parse_tree, int *errcode);
+
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
 char	*process_heredoc(char *word);
 void	exit_by_error(char *msg);
-int	executor(t_node *node);
 
 #endif
