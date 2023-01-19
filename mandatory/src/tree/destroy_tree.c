@@ -18,10 +18,11 @@ static void	destroy_execute_unit(t_execute_unit *exe_unit)
 		return ;
 	if (exe_unit->cmd_name)
 		free(exe_unit->cmd_name);
-	if (exe_unit->cmd_argv)
-		destroy_queue(&exe_unit->cmd_argv);
-	if (exe_unit->redir_list)
-		destroy_queue(&exe_unit->redir_list);
+	if (exe_unit->q_cmd_argv)
+		destroy_queue(&exe_unit->q_cmd_argv);
+	if (exe_unit->q_redir_list)
+		destroy_queue(&exe_unit->q_redir_list);
+// exe unit cmd_argv, redir_list 할당 해제 함수  추가
 	free(exe_unit);
 }
 

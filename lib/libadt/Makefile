@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/17 13:25:49 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/19 19:52:16 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ LIST_FILE		=		list_add \
 						list_utils
 QUEUE_FILE		=		queue_create \
 						queue_destroy \
+						queue_get_arr \
 						queue_get \
 						queue_pop \
 						queue_push \
