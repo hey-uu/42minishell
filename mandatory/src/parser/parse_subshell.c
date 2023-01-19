@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/13 04:43:00 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:24:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	subshell_redirect_list(t_node *node, t_token *tokens, int *offset)
 	{
 		(*offset)++;
 		if (tokens[*offset].type == TOKEN_WORD)
-			push_redirection(node->exe_unit->redir_list, tokens, *offset - 1);
+			push_redirection(node->exe_unit->q_redir_list, tokens, *offset - 1);
 		else
 			return (SYNTAX_ERROR);
 		(*offset)++;

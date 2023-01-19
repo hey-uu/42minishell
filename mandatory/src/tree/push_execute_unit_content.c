@@ -6,13 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:49:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 17:01:46 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:24:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tree.h"
 
-void	push_arguments(t_queue *cmd_argv, t_token *token, int offset)
+void	push_arguments(t_queue *q_cmd_argv, t_token *token, int offset)
 {
 	char	*str;
 
@@ -20,10 +20,10 @@ void	push_arguments(t_queue *cmd_argv, t_token *token, int offset)
 		str = ft_strdup(token[offset].str);
 	else
 		return ;
-	queue_push_str(cmd_argv, str);
+	queue_push_str(q_cmd_argv, str);
 }
 
-void	push_redirection(t_queue *redir_list, t_token *token, int offset)
+void	push_redirection(t_queue *q_redir_list, t_token *token, int offset)
 {
 	const int	type = token[offset].type;
 	char		*str;
@@ -34,5 +34,5 @@ void	push_redirection(t_queue *redir_list, t_token *token, int offset)
 		str = ft_strdup(token[offset + 1].str);
 	else
 		return ;
-	queue_push_intstr(redir_list, (int)type, (char *)str);
+	queue_push_intstr(q_redir_list, (int)type, (char *)str);
 }

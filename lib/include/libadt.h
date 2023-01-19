@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:53:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ void			destroy_queue(t_queue **queue);
 int				queue_get_int(t_queue *queue, int i);
 char			*queue_get_str(t_queue *queue, int i);
 t_intstr		queue_get_intstr(t_queue *queue, int i);
+int				*queue_get_int_arr(t_queue *queue);
+char			**queue_get_str_arr(t_queue *queue);
+t_intstr		*queue_get_intstr_arr(t_queue *queue);
+
 // queue_pop.c
 int				queue_pop_int(t_queue *deq);
 char			*queue_pop_str(t_queue *deq);

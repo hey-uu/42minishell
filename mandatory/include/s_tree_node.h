@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_tree_node.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:56:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:36:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 19:31:52 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ enum e_node_type
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
+typedef t_intstr	t_redir;
+
 typedef struct s_execute_unit
 {
 	char	*cmd_name;
-	t_queue	*cmd_argv;
-	t_queue	*redir_list;
+	char	**cmd_argv;
+	t_redir	*redir_list;
+	t_queue	*q_cmd_argv;
+	t_queue	*q_redir_list;
 }	t_execute_unit;
 
 typedef struct s_tree_node
