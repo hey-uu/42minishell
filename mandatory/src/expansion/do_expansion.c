@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 20:27:48 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:44:03 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	do_expansion(t_execute_unit *exe_unit)
 	res = 0;
 	expand_cmd(&exe_unit->cmd_name);
 	expand_cmd_argv(&exe_unit->q_cmd_argv);
-	// exe_unit->cmd_argv = queue_get_str_arr(exe_unit->q_cmd_argv);
+	exe_unit->cmd_argv = queue_get_str_arr(exe_unit->q_cmd_argv);
 	res = expand_redir_list(&exe_unit->q_redir_list);
 	exe_unit->redir_list = queue_get_intstr_arr(exe_unit->q_redir_list);
 	return (res);

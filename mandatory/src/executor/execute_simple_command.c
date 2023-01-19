@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/19 13:57:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:45:46 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 	{
 		if (access_command_path(&exe_unit->cmd_name) == FAILURE)
 			printf("(guemzzoki): command not found: %s\n", exe_unit->cmd_name);
-		execve(exe_unit->cmd_name, exe_unit->cmd_argv->strarr, (char *const *)envp);
+		execve(exe_unit->cmd_name, exe_unit->cmd_argv, (char *const *)envp);
 		exit(1);
 	}
 }

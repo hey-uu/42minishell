@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 12:26:03 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 20:16:19 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth);
 int	execute_simple_command(t_execute_unit *exe_unit, t_pipeline *pl, int nth);
 int	get_builtin_cmd_idx(char *cmd_name);
 
-void	set_standard_stream(t_pipeline *pl, t_queue *redir_list, int nth);
+void	set_standard_stream(t_pipeline *pl, t_redir *redir_list, int nth);
 void	open_new_pipe(int new_pipe_fd[2]);
 void	close_pipe_in_parent(int old_pipe_fd[2], int new_pipe_fd[2], int first, int last);
 int		execute_builtin(t_execute_unit *exe_unit);
