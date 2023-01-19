@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:49:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 16:26:52 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:26:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ enum e_lexer_result_status
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_token	*lexer(char *input);
 void	print_token_list(t_token *list);
 void	destroy_token_list(t_token *token_list);
 t_token	extract_word_token(char **input);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 17:13:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:49:33 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	count_tokens(const char *input)
 		else if (cur_token_type == TOKEN_WORD)
 		{
 			cur_word_length = length_of_word(input);
-			if (cur_word_length == SYNTAX_ERROR)
-				return (SYNTAX_ERROR);
+			if (cur_word_length < 0)
+				return (-1);
 			input += cur_word_length;
 		}
 		else
@@ -57,7 +57,7 @@ static int	do_lexing(char *input, t_token *token_list, int token_cnt)
 			if (!token_list[i].str)
 			{
 				token_list[i].type = TOKEN_NONE;
-				return (LEXER_FAILURE);
+				return (FAILURE);
 			}
 		}
 		else
@@ -65,25 +65,25 @@ static int	do_lexing(char *input, t_token *token_list, int token_cnt)
 		i++;
 	}
 	token_list[token_cnt].type = TOKEN_NONE;
-	return (LEXER_SUCCESS);
+	return (SUCCESS);
 }
 
-t_token	*lexer(char *input)
+void	lexer(char *input, t_token **token_list, int *errcode, \
+								t_token *syntax_error_near_token)
 {
-	t_token	*token_list;
 	int		token_cnt;
 
 	token_cnt = count_tokens(input);
-	if (token_cnt == SYNTAX_ERROR)
+	if (token_cnt == -1)
 	{
-		print_syntax_error_message(TOKEN_NONE, NULL);
-		return (NULL);
+		*errcode = ERROR_IN_SYNTAX;
+		*syntax_error_near_token = (t_token){TOKEN_NONE, NULL};
+		return ;
 	}
-	token_list = malloc(sizeof(t_token) * (token_cnt + 1));
-	if (!token_list || do_lexing(input, token_list, token_cnt) == LEXER_FAILURE)
+	*token_list = malloc(sizeof(t_token) * (token_cnt + 1));
+	if (!*token_list || do_lexing(input, *token_list, token_cnt) == FAILURE)
 	{
-		destroy_token_list(token_list);
-		return (NULL);
+		*errcode = ERROR_MALLOC_FAILED;
+		return ;
 	}
-	return (token_list);
 }
