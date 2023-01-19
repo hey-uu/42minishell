@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:51:51 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int			exit_stat_manager(int option, unsigned long new_stat);
 // heredoc_manager
 int			heredoc_manager(\
 			int option, int new_stat, char *new_file_name, int new_fd);
-
 
 // string utils
 char		*ft_strndup(char *str, int n);

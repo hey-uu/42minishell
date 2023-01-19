@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 00:15:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:51:12 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	__cd_hypen_minus__(void)
 
 	if (!env_set(VAR_OLDPWD, curr_dir))
 		return (BUILTIN_FAIL);
-	if (!)
 }
 
 int	builtin_cd(char	*argv[])

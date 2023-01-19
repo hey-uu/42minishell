@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/19 12:26:15 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 21:06:55 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 	}
 	return (SUCCESS);
 }
-
