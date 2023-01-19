@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 21:06:25 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/20 02:11:32 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ enum e_result_status
 	FAILURE = -1,
 	SUCCESS = 0
 };
+
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
