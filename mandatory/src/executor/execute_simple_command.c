@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/19 13:51:28 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:57:58 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 	const char	**envp = (const char **)env_tab_to_arr();
 	int			stat;
 
+	do_expansion(exe_unit);
 	set_standard_stream(pl, exe_unit->redir_list, nth);
 	if (get_builtin_cmd_idx(exe_unit->cmd_name) >= 0)
 	{
@@ -30,10 +31,13 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 		else
 			exit(stat);
 	}
-	else if (access_command_path(&exe_unit->cmd_name) == FAILURE)
-		printf("(guemzzoki): command not found: %s\n", exe_unit->cmd_name);
-	execve(exe_unit->cmd_name, exe_unit->cmd_argv->strarr, (char *const *)envp);
-	exit(1);
+	else
+	{
+		if (access_command_path(&exe_unit->cmd_name) == FAILURE)
+			printf("(guemzzoki): command not found: %s\n", exe_unit->cmd_name);
+		execve(exe_unit->cmd_name, exe_unit->cmd_argv->strarr, (char *const *)envp);
+		exit(1);
+	}
 }
 
 int	execute_simple_command(t_execute_unit *exe_unit, t_pipeline *pl, int nth)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_expansion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:55:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 23:29:32 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:16:42 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "expansion_internal.h"
 #include "s_tree_node.h"
+#include <stdio.h>
 
 char	**expand_word_to_strings(char *word)
 {
@@ -34,11 +35,11 @@ void	expand_cmd(char **cmd)
 	int			i;
 
 // printf("> expand cmd!\n");
-	printf("%p\n", *cmd);
-	assert(*cmd != NULL);
+// assert(*cmd != NULL);
 	strings = expand_word_to_strings(*cmd);
 	free(*cmd);
 	*cmd = strings[0];
+// printf("cmd: %s\n", *cmd);
 	i = 1;
 	while (strings[i])
 	{

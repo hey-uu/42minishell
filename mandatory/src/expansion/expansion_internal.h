@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:47:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 23:23:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:06:48 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

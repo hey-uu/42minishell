@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 12:50:05 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/19 13:54:19 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	lexer(char *input, t_token **token_list, int *errcode, \
 									t_token *syntax_error_near_token);
 void	parser(t_token *tokens, t_node **parse_tree, int *errcode, \
 									t_token *syntax_error_near_token);
+int	do_expansion(t_execute_unit *exe_unit);
 void	executor(t_node *parse_tree, int *errcode);
 
 void	destroy_token_list(t_token *token_list);
