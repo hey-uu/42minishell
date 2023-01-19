@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libadt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 18:58:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:52:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:23:23 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void			destroy_queue(t_queue **queue);
 int				queue_get_int(t_queue *queue, int i);
 char			*queue_get_str(t_queue *queue, int i);
 t_intstr		queue_get_intstr(t_queue *queue, int i);
+int				queue_get_idx(t_queue *queue, int i);
 // queue_pop.c
 int				queue_pop_int(t_queue *deq);
 char			*queue_pop_str(t_queue *deq);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   queue_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:59:34 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:22:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/19 18:23:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ t_intstr	queue_get_intstr(t_queue *queue, int i)
 
 	idx = (queue->front + i) % queue->size;
 	return ((t_intstr){queue->iarr[idx], queue->strarr[idx]});
+}
+
+int	queue_get_idx(t_queue *queue, int i)
+{
+	return ((queue->front + i) % queue->size);
 }
