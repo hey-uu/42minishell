@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/20 19:11:20 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/20 22:12:32 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,9 @@ MAN_SRC_PATH	=		$(MAN_DIR)/$(SRC_DIR)
 BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 
 # file name
-BUILTIN_FILE	=		builtin_cd
+BUILTIN_FILE	=		builtin_cd \
+						builtin_pwd \
+						builtin_echo
 EXECUTOR_FILE	=		access_command_path \
 						builtin \
 						execute_builtin \
@@ -266,6 +268,13 @@ EXPAND_TEST2_OBJ	=	$(MODULE_OBJ_PATH)/show_hash_table.o \
 BUILTIN_CD_TEST_OBJ	=	$(MODULE_OBJ_PATH)/show_hash_table.o \
 						$(TEST_OBJ_PATH)/builtin_cd_test.o \
 						$(MAN_OBJ_PATH)/$(BUILTIN_DIR)/builtin_cd.o \
+						$(MAN_OBJ_PATH)/$(BUILTIN_DIR)/builtin_pwd.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/error.o \
+						$(ENV_OBJ)
+
+BUILTIN_ECHO_TEST_OBJ =	$(TEST_OBJ_PATH)/builtin_echo_test.o \
+						$(MAN_OBJ_PATH)/$(BUILTIN_DIR)/builtin_echo.o \
 						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o \
 						$(ENV_OBJ)
 
@@ -275,4 +284,5 @@ TEST				=	lexer_test \
 						env_test \
 						expand_test \
 						expand_test2 \
-						builtin_cd_test
+						builtin_cd_test \
+						builtin_echo_test
