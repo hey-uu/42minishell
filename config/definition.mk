@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/21 02:08:54 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/21 02:29:55 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,10 @@ BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 # file name
 BUILTIN_FILE	=		builtin_cd \
 						builtin_pwd \
-						builtin_echo
+						builtin_echo \
+						builtin_env \
+						builtin_exit \
+						builtin_export
 EXECUTOR_FILE	=		access_command_path \
 						builtin \
 						execute_builtin \
