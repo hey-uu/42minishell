@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/19 19:52:16 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/20 19:23:15 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,6 +111,7 @@ OBJ				=		$(HASH_OBJ) $(LIST_OBJ) $(QUEUE_OBJ)
 .PHONY : all bonus clean fclean re
 all : $(NAME)
 $(NAME) : $(LIBFT) $(OBJ)
+	cp $(LIBFT) $@
 	$(AR) $(ARFLAGS) $@ $(OBJ)
 
 bonus : all
