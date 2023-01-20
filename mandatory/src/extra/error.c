@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 20:03:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 01:45:33 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	print_builtin_error_message(int error_number, int builtin_cmd, char *var)
 		printf("goldsh: %s: %s not set\n", cmds[builtin_cmd], var);
 	else if (error_number == ERROR_EXECUTE_FAILED)
 		printf("goldsh: %s: %s execute failed.\n", cmds[builtin_cmd], var);
+	else if (error_number == ERROR_TOO_MANY_ARGUMENTS)
+		printf("goldsh: %s: too many arguments\n", cmds[builtin_cmd]);
+		
 }
 
 void	handle_error(int errcode, t_token syntax_error_near_token)

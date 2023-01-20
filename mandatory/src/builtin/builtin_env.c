@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 01:27:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 01:46:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	builtin_env(char *argv[])
 	{
 		free_double_char_array(&argv);
 		exit_stat_update(1);
-		print_builtin_error_message(ERROR_INVALID_ARGUMENT, BUILTIN_ENV, NULL);
+		print_builtin_error_message(ERROR_TOO_MANY_ARGUMENTS, BUILTIN_ENV, NULL);
 		return (BUILTIN_FAIL);
 	}
 	envp = env_tab_to_arr();
