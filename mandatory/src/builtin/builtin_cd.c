@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 20:05:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 03:10:05 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static int	__cd_check_access__(char *dir)
 // printf("| >>>>>> check permission of directory [%s]\n", dir);
 	if (access(dir, F_OK) == -1)
 	{
-		print_builtin_error_message(ERROR_NOT_EXIST, BUILTIN_CD, VAR_HOME);
+		print_builtin_error_message(ERROR_NOT_EXIST, BUILTIN_CD, dir);
 		return (ACCESS_FAIL);
 	}
 	if (access(dir, X_OK) == -1)
 	{
-		print_builtin_error_message(ERROR_NO_PERMIT, BUILTIN_CD, VAR_HOME);
+		print_builtin_error_message(ERROR_PERMISSION_DENIED, BUILTIN_CD, dir);
 		return (ACCESS_FAIL);
 	}
 // printf("| >>>>>> you have the permission!\n");
@@ -44,7 +44,7 @@ static int	__cd_set_pwd_variables__(char *oldpwd_dir)
 	if (!pwd_dir)
 	{
 		free(oldpwd_dir);
-		exit_stat_update(1);
+		print_builtin_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "getcwd");
 		return (BUILTIN_FAIL);
 	}
 	env_set(ft_strdup(VAR_PWD), pwd_dir);
@@ -64,6 +64,7 @@ static int	__cd_directory_argument__(char *cur_dir, char *new_dir)
 	{
 		free(cur_dir);
 		free(new_dir);
+		print_builtin_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "chdir");
 		return (BUILTIN_FAIL);
 	}
 	free(new_dir);
@@ -128,7 +129,8 @@ int	builtin_cd(char	*argv[])
 		res = __cd_directory_argument__(cur_dir, ft_strdup(argv[1]));
 	if (res == BUILTIN_FAIL)
 		exit_stat_update(1);
+	else
+		exit_stat_update(0);
 	free_double_char_array(&argv);
-	exit_stat_update(0);
 	return (res);	
 }
