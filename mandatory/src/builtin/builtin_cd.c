@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 19:22:13 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:27:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static int	print_builtin_error_message(int error_number, int builtin_cmd, char *
 
 static int	__cd_check_access__(char *dir)
 {
-printf("| >>>> __cd_check_acess__\n");
-printf("| >>>>>> check permission of directory [%s]\n", dir);
+// printf("| >>>> __cd_check_acess__\n");
+// printf("| >>>>>> check permission of directory [%s]\n", dir);
 	if (access(dir, F_OK) == -1)
 	{
 		print_builtin_error_message(ERROR_NOT_EXIST, BUILTIN_CD, VAR_HOME);
@@ -39,7 +39,7 @@ printf("| >>>>>> check permission of directory [%s]\n", dir);
 		print_builtin_error_message(ERROR_NO_PERMIT, BUILTIN_CD, VAR_HOME);
 		return (ACCESS_FAIL);
 	}
-printf("| >>>>>> you have the permission!\n");
+// printf("| >>>>>> you have the permission!\n");
 	return (ACCESS_SUCCESS);
 }
 
