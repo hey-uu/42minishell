@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 01:45:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 03:02:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,23 @@ void	print_syntax_error_message(t_token token)
 		printf("'%s'\n", token_type_str[token.type]);
 }
 
-void	print_builtin_error_message(int error_number, int builtin_cmd, char *var)
+void	print_builtin_error_message(int error_number, int cmd, char *arg)
 {
 	const char	*cmds[6] = {"cd", "echo", "env", "exit", "export", "pwd"};
 
 	if (error_number == ERROR_ENV_UNSET)
-		printf("goldsh: %s: %s not set\n", cmds[builtin_cmd], var);
+		printf("goldsh: %s: %s not set\n", cmds[cmd], arg);
 	else if (error_number == ERROR_EXECUTE_FAILED)
-		printf("goldsh: %s: %s execute failed.\n", cmds[builtin_cmd], var);
+		printf("goldsh: %s: %s execute failed.\n", cmds[cmd], arg);
 	else if (error_number == ERROR_TOO_MANY_ARGUMENTS)
-		printf("goldsh: %s: too many arguments\n", cmds[builtin_cmd]);
+		printf("goldsh: %s: too many arguments\n", cmds[cmd]);
+	else if (error_number == ERROR_NOT_NUMBER)
+		printf("goldsh: %s: %s: numeric argument required\n", cmds[cmd], arg);
+	else if (error_number == ERROR_NOT_EXIST)
+		printf("goldsh: %s: %s: No such file or directory\n", cmds[cmd], arg);
+	else if (error_number == ERROR_PERMISSION_DENIED)
+		printf("goldsh: %s: %s: Permission denied\n", cmds[cmd], arg);
+	
 		
 }
 
