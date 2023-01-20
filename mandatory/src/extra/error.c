@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:52:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:03:44 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	print_syntax_error_message(t_token token)
 		printf("'%s'\n", token.str);
 	else
 		printf("'%s'\n", token_type_str[token.type]);
+}
+
+void	print_builtin_error_message(int error_number, int builtin_cmd, char *var)
+{
+	const char	*cmds[6] = {"cd", "echo", "env", "exit", "export", "pwd"};
+
+	if (error_number == ERROR_ENV_UNSET)
+		printf("goldsh: %s: %s not set\n", cmds[builtin_cmd], var);
+	else if (error_number == ERROR_EXECUTE_FAILED)
+		printf("goldsh: %s: %s execute failed.\n", cmds[builtin_cmd], var);
 }
 
 void	handle_error(int errcode, t_token syntax_error_near_token)
