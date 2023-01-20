@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 01:45:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 03:00:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ enum e_error_code
 	ERROR_IN_SYNTAX = 2,
 	ERROR_EXECUTE_FAILED = 3,
 	ERROR_ENV_UNSET,
-	ERROR_NO_PERMIT,
+	ERROR_PERMISSION_DENIED,
 	ERROR_NOT_EXIST,
-	ERROR_TOO_MANY_ARGUMENTS
+	ERROR_TOO_MANY_ARGUMENTS,
+	ERROR_NOT_NUMBER
 };
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
