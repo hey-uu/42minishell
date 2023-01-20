@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 10:29:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 02:33:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	free_double_char_array(char ***array)
 	char	**double_array;
 	int		i;
 
+	if (!*array)
+		return ;
 	double_array = *array;
 	i = -1;
 	while (double_array[++i])
