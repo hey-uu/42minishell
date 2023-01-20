@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 18:56:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 19:22:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include "env_manager.h"
 #include "libft.h"
 
-static int	__cd_no_argument__(void)
+static int	print_builtin_error_message(int error_number, int builtin_cmd, char *var)
 {
 	const char	*cmds[6] = {"cd", "echo", "env", "exit", "export", "pwd"};
 
-	if (error_number == ENV_UNSET)
+	if (error_number == ERROR_ENV_UNSET)
 		printf("goldsh: %s: %s not set\n", cmds[builtin_cmd], var);
 }
 
@@ -106,32 +106,10 @@ static int	__cd_hyphen_minus__(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		print_builtin_error_message(ENV_UNSET, BUILTIN_CD, VAR_OLDPWD);
+		print_builtin_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_OLDPWD);
 		return (BUILTIN_FAIL);
 	}
-	if (__cd_check_access__(old_pwd_dir) == BUILTIN_FAIL)
-	{
-		free(old_pwd_dir);
-		return (BUILTIN_FAIL);
-	}
-	if (chdir(old_pwd_dir) == -1)
-		return (BUILTIN_FAIL);
-	free(old_pwd_dir);
-	return (__cd_set_pwd_variables__(cur_dir));
-}
-
-static int	__cd_directory_argument__(char *cur_dir, char *new_dir)
-{
-
-printf("| >> __cd_directory_argument__\n");
-printf("| >>>> new directory : [%s]\n", new_dir);
-	if (__cd_check_access__(new_dir) == BUILTIN_FAIL)
-		return (BUILTIN_FAIL);
-	if (chdir(new_dir) == -1)
-		return (BUILTIN_FAIL);
-	free(new_dir);
-printf("| >>>> chdir !! SUCCESS !!\n");
-	return (__cd_set_pwd_variables__(cur_dir));
+	return (__cd_directory_argument__(cur_dir, new_dir));
 }
 
 int	builtin_cd(char	*argv[])
@@ -155,5 +133,6 @@ int	builtin_cd(char	*argv[])
 	if (res == BUILTIN_FAIL)
 		exit_stat_update(1);
 	free_double_char_array(&argv);
+	exit_stat_update(0);
 	return (res);	
 }
