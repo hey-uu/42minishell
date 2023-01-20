@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 19:27:08 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:05:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,8 @@
 #include <unistd.h>
 #include "builtin_internal.h"
 #include "env_manager.h"
+#include "error.h"
 #include "libft.h"
-
-static int	print_builtin_error_message(int error_number, int builtin_cmd, char *var)
-{
-	const char	*cmds[6] = {"cd", "echo", "env", "exit", "export", "pwd"};
-
-	if (error_number == ERROR_ENV_UNSET)
-		printf("goldsh: %s: %s not set\n", cmds[builtin_cmd], var);
-}
 
 static int	__cd_check_access__(char *dir)
 {
@@ -109,7 +102,10 @@ static int	__cd_hyphen_minus__(char *cur_dir)
 		print_builtin_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_OLDPWD);
 		return (BUILTIN_FAIL);
 	}
-	return (__cd_directory_argument__(cur_dir, new_dir));
+	if (__cd_directory_argument__(cur_dir, new_dir) == BUILTIN_FAIL)
+		return (BUILTIN_FAIL);
+	builtin_pwd(NULL);
+	return (BUILTIN_SUCCESS);
 }
 
 int	builtin_cd(char	*argv[])
