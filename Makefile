@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/20 21:47:40 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/21 01:12:40 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,9 @@ builtin_cd_test : $(LIBADT) $(BUILTIN_CD_TEST_OBJ)
 
 builtin_echo_test : $(LIBADT) $(BUILTIN_ECHO_TEST_OBJ)
 	$(CC) $(CFLAGS) $(BUILTIN_ECHO_TEST_OBJ) $(LIBFLAGS) -o builtin_echo_test
+
+builtin_env_test : $(LIBADT) $(BUILTIN_ENV_TEST_OBJ)
+	$(CC) $(CFLAGS) $(BUILTIN_ENV_TEST_OBJ) $(LIBFLAGS) -o builtin_env_test
 
 # remove test program
 .PHONY : test_clean test_fclean
