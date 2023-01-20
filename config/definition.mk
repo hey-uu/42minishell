@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/21 01:29:30 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/21 02:08:54 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -285,6 +285,12 @@ BUILTIN_ENV_TEST_OBJ =	$(MODULE_OBJ_PATH)/show_hash_table.o \
 						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/error.o \
 						$(ENV_OBJ)
 
+BUILTIN_EXIT_TEST_OBJ =	$(MODULE_OBJ_PATH)/show_hash_table.o \
+						$(TEST_OBJ_PATH)/builtin_exit_test.o \
+						$(MAN_OBJ_PATH)/$(BUILTIN_DIR)/builtin_exit.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o \
+						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/error.o \
+						$(ENV_OBJ)
 
 TEST				=	lexer_test \
 						parser_test \
@@ -294,4 +300,5 @@ TEST				=	lexer_test \
 						expand_test2 \
 						builtin_cd_test \
 						builtin_echo_test \
-						builtin_env_test
+						builtin_env_test \
+						builtin_exit_test
