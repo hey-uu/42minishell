@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_get.c                                          :+:      :+:    :+:   */
+/*   api_env_get.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:05:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 06:20:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*env_dup_val(char *variable)
 	return (ft_strdup(value));
 }
 
-char	**env_tab_to_arr(void)
+char	**env_get_variable_list(void)
 {
 	return (env_manager(ENV_TAB_TO_ARR, NULL, NULL, NULL));
 }
