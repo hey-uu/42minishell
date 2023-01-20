@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:08:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 22:09:51 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 02:56:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	__echo_arguments__(char *argument, int is_last_argument)
 {
 	int	res;
 
-	res = write(1, argument, ft_strlen(argument));
+	res = printf("%s", argument);
 	if (res == -1)
 	{
 		exit_stat_update(1);
@@ -46,7 +46,7 @@ static int	__echo_arguments__(char *argument, int is_last_argument)
 	}
 	if (!is_last_argument)
 	{
-		res = write(1, " ", 1);
+		res = printf(" ");
 		if (res == -1)
 		{
 			exit_stat_update(1);
@@ -79,7 +79,8 @@ int	builtin_echo(char *argv[])
 		i++;
 	}
 	if (newline_flag == 1)
-		write(1, "\n", 1);
+		printf("\n");
 	free_double_char_array(&argv);
+	exit_stat_update(0);
 	return (BUILTIN_SUCCESS);
 }
