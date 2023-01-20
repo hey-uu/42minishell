@@ -6,18 +6,18 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:53:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 19:03:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 22:03:32 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	builtin_echo(char **argv)
-{
-	argv++;
-	printf("this is built-in echo\n");
-	return (0);
-}
+// int	builtin_echo(char **argv)
+// {
+// 	argv++;
+// 	printf("this is built-in echo\n");
+// 	return (0);
+// }
 
 // int	builtin_cd(char **argv)
 // {
@@ -26,12 +26,12 @@ int	builtin_echo(char **argv)
 // 	return (0);
 // }
 
-int	builtin_pwd(char **argv)
-{
-	argv++;
-	printf("this is built-in pwd\n");
-	return (0);
-}
+// int	builtin_pwd(char **argv)
+// {
+// 	argv++;
+// 	printf("this is built-in pwd\n");
+// 	return (0);
+// }
 
 int	builtin_export(char **argv)
 {
