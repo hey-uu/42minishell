@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:16:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:34:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 18:32:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	hash_table_flush(t_hash_table *hash_table)
 	}
 	free(hash_table->bucket_arr);
 	hash_table->bucket_arr = NULL;
+	hash_table->bucket_cnt = 0;
+	hash_table->entry_cnt = 0;
 }
 
 /**

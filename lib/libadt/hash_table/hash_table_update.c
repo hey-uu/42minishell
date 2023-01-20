@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:21:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:06:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:41:05 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	hash_table_update(t_hash_table *hash_table, char *key, void *content)
 		hash_table_insert(hash_table, key, content);
 	else
 	{
+		free(key);
 		free(target->content);
 		target->content = content;
 	}
