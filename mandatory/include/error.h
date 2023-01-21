@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 03:00:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ enum e_error_code
 	ERROR_PERMISSION_DENIED,
 	ERROR_NOT_EXIST,
 	ERROR_TOO_MANY_ARGUMENTS,
-	ERROR_NOT_NUMBER
+	ERROR_NOT_NUMBER,
+	ERROR_INVALID_IDENTIFIER
 };
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 void	print_syntax_error_message(t_token token);
 void	handle_error(int errcode, t_token syntax_error_near_token);
-void	print_builtin_error_message(int error_number, int builtin_cmd, char *var);
+void	print_error_message(int error_number, int builtin_cmd, char *var);
 
 #endif
