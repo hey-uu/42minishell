@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:34:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 07:32:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	*env_manager(int option, char *envp[], char *variable, char *value)
 		return ((void *)__env_unset__(&envtab, variable));
 	else if (option == ENV_GET)
 		return ((void *)__env_get__(&envtab, variable));
-	else if (option == ENV_TAB_TO_ARR)
-		return ((void *)__env_tab_to_arr__(&envtab));
+	else if (option == ENV_GET_MARKED_VAR_LIST)
+		return ((void *)__env_get_marked_variable_list__(&envtab));
+	else if (option == ENV_GET_DEFINED_VAR_LIST)
+		return ((void *)__env_get_defined_variable_list__(&envtab));
+	
 	return (NULL);
 }

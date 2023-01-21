@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 06:20:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 09:32:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ char	*env_dup_val(char *variable)
 	return (ft_strdup(value));
 }
 
-char	**env_get_variable_list(void)
+char	**env_get_defined_variable_list(void)
 {
-	return (env_manager(ENV_TAB_TO_ARR, NULL, NULL, NULL));
+	return (env_manager(ENV_GET_DEFINED_VAR_LIST, NULL, NULL, NULL));
+}
+
+char	**env_get_marked_variable_list(void)
+{
+	return (env_manager(ENV_GET_MARKED_VAR_LIST, NULL, NULL, NULL));
 }

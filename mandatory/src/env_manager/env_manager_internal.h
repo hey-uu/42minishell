@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 23:51:51 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 07:37:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,32 @@
 
 # include "s_env_table.h"
 
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum	e_heredoc_manager
+{
+	HEREDOC_STAT_GET,
+	HEREDOC_STAT_UPDATE
+};
+
+enum	e_exit_status_manager
+{
+	EXIT_STAT_GET,
+	EXIT_STAT_UPDATE,
+	EXIT_MODE_UPDATE,
+	EXIT_PROGRAM
+};
+
+enum	e_env_manager
+{
+	ENV_INIT,
+	ENV_GET,
+	ENV_SET,
+	ENV_UNSET,
+	ENV_GET_DEFINED_VAR_LIST,
+	ENV_GET_MARKED_VAR_LIST
+};
+
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 // env_manager
@@ -29,7 +55,8 @@ t_env_tab	*__env_table_init__(t_env_tab *table, char **envp);
 t_env_tab	*__env_set__(t_env_tab *table, char *variable, char *value);
 t_env_tab	*__env_unset__(t_env_tab *table, char *variable);
 char		*__env_get__(t_env_tab *table, char *variable);
-char		**__env_tab_to_arr__(t_env_tab *tab);
+char		**__env_get_marked_variable_list__(t_env_tab *tab);
+char		**__env_get_defined_variable_list__(t_env_tab *tab);
 
 // exit_stat_manager
 int			exit_stat_manager(int option, unsigned long new_stat);
