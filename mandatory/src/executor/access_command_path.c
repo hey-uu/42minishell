@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:45:26 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/21 06:18:17 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 07:33:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*find_env_path_address(char *envp[])
 
 static char	**get_paths(void)
 {
-	const char	**envp = (const char **)env_get_variable_list();
+	const char	**envp = (const char **)env_get_defined_variable_list();
 	char		**paths;
 	char		*env_path_str;
 

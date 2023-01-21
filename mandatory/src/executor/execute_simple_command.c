@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/21 06:18:17 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 07:33:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 {
-	const char	**envp = (const char **)env_get_variable_list();
+	const char	**envp = (const char **)env_get_defined_variable_list();
 	int			stat;
 
 	do_expansion(exe_unit);
