@@ -30,7 +30,10 @@ t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
 		while (envp[i][j] && envp[i][j] != '=')
 			j++;
 		key = ft_strndup(envp[i], j);
-		value = ft_strdup(&envp[i][j + 1]);
+		if (envp[i][j] == '=')
+			value = ft_strdup(&envp[i][j + 1]);
+		else
+			value = NULL;
 		hash_table_insert(table, key, value);
 		i++;
 	}
