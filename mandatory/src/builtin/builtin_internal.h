@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 21:06:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 09:22:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ enum e_builtin_success
 
 int		builtin_pwd(char *argv[]);
 void	free_double_char_array(char ***array);
+char	*ft_strndup(char *str, int n);
 
 #endif
