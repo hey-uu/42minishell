@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 07:33:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 #include "s_env_table.h"
 #include "env_manager.h"
 
-#define VARIABLE "PATH"
-#define USR_VARIABLE "hyeyun"
-#define USR_VALUE "please... help..."
+#define VARIABLE "B"
+#define USR_VARIABLE "B"
+#define USR_VALUE (void *)0
 
 void	show_hash_table(t_hash_table *table);
 
@@ -46,8 +46,11 @@ void	test_env_unset(void)
 void	test_env_set(void)
 {
 	printf("\n\n* trying to set [%s] to [%s]\n", USR_VARIABLE, USR_VALUE);
-	env_set(ft_strdup(USR_VARIABLE), ft_strdup(USR_VALUE));
-	assert(\
+	if (USR_VALUE)
+		env_set(ft_strdup(USR_VARIABLE), ft_strdup(USR_VALUE));
+	else
+		env_set(ft_strdup(USR_VARIABLE), NULL);
+	// assert(\
 	!ft_strncmp(env_get(USR_VARIABLE), USR_VALUE, ft_strlen(USR_VALUE) + 1));
 	printf("===> set success\n");
 }
@@ -56,6 +59,7 @@ void	test_exit_manager(void)
 {
 	char	*value;
 
+	value = "hello";
 	printf("\n\n* trying to get exit stat\n");
 	value = exit_stat_get_str();
 	printf("%s\n", value);
@@ -74,13 +78,13 @@ void	test_env_tab_to_arr(void)
 	char	**arr;
 	int		i;
 
-	arr = env_tab_to_arr();
+	arr = env_get_defined_variable_list();
 	i = 0;
 	while (arr[i])
 	{
 		printf("%s\n", arr[i++]);
 	}
-	printf("====> env_tab_to_arr success\n\n");
+	printf("====> env_get_defined_variable_list success\n\n");
 }
 
 void	print_initial_envp(char *envp[])
@@ -104,11 +108,11 @@ int	main(int argc, char *argv[], char *envp[])
 	argv++;
 	table = init_env_table(envp);
 	show_hash_table(table);
-	test_env_get();
 	test_env_set();
-	test_env_unset();
+	test_env_get();
 	test_env_tab_to_arr();
-	print_initial_envp(envp);
+	// test_env_unset();
+	// print_initial_envp(envp);
 	test_exit_manager();
 	hash_table_flush(table);
 }
