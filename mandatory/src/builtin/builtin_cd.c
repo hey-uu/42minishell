@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 03:10:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static int	__cd_check_access__(char *dir)
 // printf("| >>>>>> check permission of directory [%s]\n", dir);
 	if (access(dir, F_OK) == -1)
 	{
-		print_builtin_error_message(ERROR_NOT_EXIST, BUILTIN_CD, dir);
+		print_error_message(ERROR_NOT_EXIST, BUILTIN_CD, dir);
 		return (ACCESS_FAIL);
 	}
 	if (access(dir, X_OK) == -1)
 	{
-		print_builtin_error_message(ERROR_PERMISSION_DENIED, BUILTIN_CD, dir);
+		print_error_message(ERROR_PERMISSION_DENIED, BUILTIN_CD, dir);
 		return (ACCESS_FAIL);
 	}
 // printf("| >>>>>> you have the permission!\n");
@@ -44,7 +44,7 @@ static int	__cd_set_pwd_variables__(char *oldpwd_dir)
 	if (!pwd_dir)
 	{
 		free(oldpwd_dir);
-		print_builtin_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "getcwd");
+		print_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "getcwd");
 		return (BUILTIN_FAIL);
 	}
 	env_set(ft_strdup(VAR_PWD), pwd_dir);
@@ -64,7 +64,7 @@ static int	__cd_directory_argument__(char *cur_dir, char *new_dir)
 	{
 		free(cur_dir);
 		free(new_dir);
-		print_builtin_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "chdir");
+		print_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "chdir");
 		return (BUILTIN_FAIL);
 	}
 	free(new_dir);
@@ -79,7 +79,7 @@ static int	__cd_no_argument__(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		print_builtin_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_HOME);
+		print_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_HOME);
 		return (BUILTIN_FAIL);
 	}
 	else if (new_dir[0] == '\0')
@@ -100,7 +100,7 @@ static int	__cd_hyphen_minus__(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		print_builtin_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_OLDPWD);
+		print_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_OLDPWD);
 		return (BUILTIN_FAIL);
 	}
 	if (__cd_directory_argument__(cur_dir, new_dir) == BUILTIN_FAIL)

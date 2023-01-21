@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 03:02:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_syntax_error_message(t_token token)
 		printf("'%s'\n", token_type_str[token.type]);
 }
 
-void	print_builtin_error_message(int error_number, int cmd, char *arg)
+void	print_error_message(int error_number, int cmd, char *arg)
 {
 	const char	*cmds[6] = {"cd", "echo", "env", "exit", "export", "pwd"};
 
@@ -38,11 +38,12 @@ void	print_builtin_error_message(int error_number, int cmd, char *arg)
 	else if (error_number == ERROR_NOT_NUMBER)
 		printf("goldsh: %s: %s: numeric argument required\n", cmds[cmd], arg);
 	else if (error_number == ERROR_NOT_EXIST)
-		printf("goldsh: %s: %s: No such file or directory\n", cmds[cmd], arg);
+		printf("goldsh: %s: %s: no such file or directory\n", cmds[cmd], arg);
 	else if (error_number == ERROR_PERMISSION_DENIED)
-		printf("goldsh: %s: %s: Permission denied\n", cmds[cmd], arg);
+		printf("goldsh: %s: %s: permission denied\n", cmds[cmd], arg);
+	else if (error_number == ERROR_INVALID_IDENTIFIER)
+		printf("goldsh: %s: %s: not a valid identifier\n", cmds[cmd], arg);
 	
-		
 }
 
 void	handle_error(int errcode, t_token syntax_error_near_token)
