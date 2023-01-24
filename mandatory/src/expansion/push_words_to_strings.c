@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:02:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:06:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 23:55:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	push_word_to_strings(t_word *word, t_darr *strings)
 	else
 	{
 		str = ft_malloc(sizeof(char) * (len + 1));
+		str[len] = '\0';
 		copy_word_to_string(word->elem_arr, word->elem_cnt, str);
 		darr_push_str(strings, str);
 	}
