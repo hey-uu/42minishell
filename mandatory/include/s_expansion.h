@@ -6,12 +6,20 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:31:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 12:36:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 19:10:43 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_EXPANSION_H
 # define S_EXPANSION_H
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum e_question_mark
+{
+	VAR_IS_QMARK,
+	VAR_IS_NOT_QMARK
+};
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
