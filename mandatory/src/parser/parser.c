@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 12:44:48 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:55:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	parser(t_token *tokens, t_node **parse_tree, int *errcode, \
 	int		offset;
 
 	*parse_tree = create_tree_node();
+	if (tokens[0].type == TOKEN_NONE)
+	{
+		(*parse_tree)->type = NODE_NONE;
+		return ;
+	}
 	offset = 0;
 	res = parse_list(parse_tree, tokens, &offset);
 	if (res == SYNTAX_ERROR || tokens[offset].type != TOKEN_NONE)
