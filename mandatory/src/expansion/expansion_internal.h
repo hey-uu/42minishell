@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 20:12:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 23:14:26 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,38 +45,47 @@ typedef char	t_bool;
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
-// word_array_utils.c
-void	init_word_element_array(t_word *word, int initial_size);
-void	init_word_array(t_words *words, int initial_size);
-void	free_word_array(t_words *words);
-void	__grow_word_array__(t_words *words);
-void	__grow_word_element_array__(t_word *word);
-t_word	*get_cur_word(t_words *words);
-t_word	*get_new_word(t_words *words);
-void	push_elem_to_word(t_word *word, char *str, int len, int type);
-void	push_elem_to_cur_word(t_words *words, char *str, int len, int type);
-void	push_elem_to_new_word(t_words *words, char *str, int len, int type);
-void	mask_cur_word(t_words *words, int mask);
-
-// append_word_to_strings.c
-void	push_words_to_strings(t_words *words, t_darr *strings);
-void	push_word_to_strings(t_word *word, t_darr *strings);
-int		push_wildcard_element(char *str, t_words *words);
-
 // expand_word.c
 void	expand_word_to_strings(char *word, t_darr *strings);
+// push_quoted_element.c
+int		push_single_quote_element(char *str, t_words *words);
+int		push_double_quote_element(char *str, t_words *words);
+int		push_dollar_element(char *str, t_words *words);
+int		push_unquoted_variable_element(char *str, t_words *words);
+int		push_wildcard_element(char *str, t_words *words);
+int		push_basic_element(char *str, t_words *words);
+// push_words_to_strings.c
+void	push_words_to_strings(t_words *words, t_darr *strings);
 
-// expand_wildcard.c
-void	push_wildcard_expansion_to_strings(t_word *word, t_darr *strings);
-
+// get_variable_name.c
+char	*get_variable_name(char *str, int *idx, int *qmark);
 // field_split.c
 void	field_split(char *val, t_words *words);
 
-// expand_variable.c
-char	*split_variable(char *str, int *idx, int *qmark);
-int 	push_quoted_variable_element(char *str, t_words *words);
-int		push_unquoted_variable_element(char *str, t_words *words);
+// get_next_file_name.c
+char	*get_next_file_name(void);
+// get_pattern_features.c
+int		get_pattern_char(t_word *word, int i);
+int		get_pattern_len(t_word *word);
+// match_wildcard_pattern.c
+int		is_matched(t_word *word, char *string);
 
-int		is_valid_character_for_variable_name(char c, int i);
+// words_allocation.c
+void	init_word_element_array(t_word *word, int initial_size);
+void	init_words(t_words *words, int initial_size);
+void	free_words(t_words *words);
+void	grow_word_array(t_words *words);
+void	grow_word_element_array(t_word *word);
+// words_get.c
+t_word	*get_cur_word(t_words *words);
+t_word	*get_new_word(t_words *words);
+
+// words_mask.c
+void	mask_cur_word(t_words *words, int mask);
+// words_push.c
+void	push_elem_to_cur_word(t_words *words, char *str, int len, int type);
+
+// extra
+char	*ft_strndup(char *str, int n);
 
 #endif

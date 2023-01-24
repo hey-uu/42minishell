@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expansion.h                                        :+:      :+:    :+:   */
+/*   words_mask.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 23:59:05 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 22:51:29 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/24 22:49:22 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/24 22:49:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANSION_H
-# define EXPANSION_H
+#include "expansion_internal.h"
 
-/*-------------- USER DEFINED HEADERS ------------*/
+void	mask_cur_word(t_words *words, int mask)
+{
+	t_word	*word;
 
-# include "s_expansion.h"
-# include "tree.h"
-
-/*-------------- FUNCTION PROTOTYPES -------------*/
-
-void	do_expansion(t_execute_unit *exe_unit);
-char	*get_variable_name(char *str, int *idx, int *qmark);
-void	expand_redir_list(t_queue **q_redir_list, t_intstr **redir_list);
-
-#endif
+	word = get_cur_word(words);
+	word->mask |= mask;
+}

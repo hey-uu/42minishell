@@ -6,18 +6,16 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:10:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 15:18:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 22:52:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "expansion_internal.h"
 #include "libft.h"
 #include "libadt.h"
+#include "expansion_internal.h"
 #include "s_tree_node.h"
-
-char	*ft_strndup(char *str, int n);
 
 void	expand_cmd_name(char **cmd)
 {
@@ -45,7 +43,7 @@ void	expand_cmd_argv(t_queue **q_cmd_argv, t_string **cmd_argv)
 
 	init_dynamic_array(&strings, INITIAL_DARR_SIZE, DARR_STR);
 	i = 0;
-	while (i <  (*q_cmd_argv)->used_size)
+	while (i < (*q_cmd_argv)->used_size)
 	{
 		argument = queue_get_str(*q_cmd_argv, i);
 		expand_word_to_strings(argument, &strings);
@@ -78,11 +76,10 @@ void	expand_redir_list(t_queue **q_redir_list, t_intstr **redir_list)
 
 	init_dynamic_array(&strings, INITIAL_DARR_SIZE, DARR_INTSTR);
 	i = 0;
-	while (i <  (*q_redir_list)->used_size)
+	while (i < (*q_redir_list)->used_size)
 	{
 		qdata = queue_get_intstr(*q_redir_list, i);
 		expand_word_to_strings(qdata.str, &strings);
-// printf("string.strarr: %s\n", strings.strarr[i]);
 		if (strings.strarr[i] == NULL || strings.used_size != i + 1)
 		{
 			process_ambiguous_redirect_error(&strings, i, qdata.str);
