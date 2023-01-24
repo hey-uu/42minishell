@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 21:16:53 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 18:32:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:42:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static void	__hash_table_delete_entry__(\
 			t_hash_table *hash_table, t_hash_content *target, int bucket)
 {
-// printf("gonna be deleted soon... %s\n", target->key);
 	if (!target->prev)
 		hash_table->bucket_arr[bucket] = target->next;
 	else
@@ -27,7 +26,6 @@ static void	__hash_table_delete_entry__(\
 	free(target->content);
 	free(target);
 	hash_table->entry_cnt--;
-// printf("just deleted... \n");
 }
 
 /**
@@ -47,7 +45,6 @@ void	hash_table_delete(t_hash_table *hash_table, char *key)
 	{
 		__hash_table_shrink__(hash_table);
 	}
-// printf("want to delete %s\n", key);	
 	bucket = hash_bucket(key, hash_table->bucket_cnt);
 	target = hash_table_search(hash_table, key, bucket);
 	if (!target)

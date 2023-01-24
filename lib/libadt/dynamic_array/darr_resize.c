@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:19:04 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 07:38:00 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:42:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	__darr_double_size_str_arr__(t_darr *darr)
 	new = ft_calloc(darr->size * 2, sizeof(char *));
 	ft_memcpy(new, darr->strarr, sizeof(char *) * darr->used_size);
 	free(darr->strarr);
-	darr->strarr= new;
+	darr->strarr = new;
 }
 
 void	__darr_double_size_intstr_arr__(t_darr *darr)

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:31:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 19:10:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:42:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_word
 {
 	t_word_elem	*elem_arr;
 	int			elem_cnt;
-	int			mask; // existence of quote or wildcard
+	int			mask;
 	int			alloc_size;
 }	t_word;
 
