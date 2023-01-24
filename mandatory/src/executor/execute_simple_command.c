@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/21 07:33:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 04:53:36 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,13 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 	set_standard_stream(pl, exe_unit->redir_list, nth);
 	if (get_builtin_cmd_idx(exe_unit->cmd_name) >= 0)
 	{
-		stat = execute_builtin(exe_unit);
-		if (stat == EXIT_SUCCESS)
-			exit(EXIT_SUCCESS);
-		else
-			exit(stat);
+		execute_builtin(exe_unit);
+		exit_program();
 	}
 	else
 	{
-		if (access_command_path(&exe_unit->cmd_name) == FAILURE)
-			printf("(guemzzoki): command not found: %s\n", exe_unit->cmd_name);
-		execve(exe_unit->cmd_name, exe_unit->cmd_argv, (char *const *)envp);
+		if (access_command(&exe_unit->cmd_name) == SUCCESS)
+			execve(exe_unit->cmd_name, exe_unit->cmd_argv, (char *const *)envp);
 		exit(1);
 	}
 }
