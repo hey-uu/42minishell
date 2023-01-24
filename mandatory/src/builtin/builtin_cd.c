@@ -6,11 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:42:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:08:41 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "builtin_internal.h"

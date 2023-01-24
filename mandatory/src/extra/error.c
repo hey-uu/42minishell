@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:34:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,30 @@ void	print_syntax_error_message(t_token token)
 		printf("'%s'\n", token_type_str[token.type]);
 }
 
-void	print_error_message(int error_number, int cmd, char *arg)
+void	error_print(char *cmd, char *arg, const char *msg)
 {
-	const char	*cmds[6] = {"cd", "echo", "env", "exit", "export", "pwd"};
+	ft_putstr_fd("goldsh: ", STDERR_FILENO);
+	if (cmd)
+		ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	if (arg)
+		ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd((char *)msg, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
+}
 
-	if (error_number == ERROR_ENV_UNSET)
-		printf("goldsh: %s: %s not set\n", cmds[cmd], arg);
-	else if (error_number == ERROR_EXECUTE_FAILED)
-		printf("goldsh: %s: %s execute failed.\n", cmds[cmd], arg);
-	else if (error_number == ERROR_TOO_MANY_ARGUMENTS)
-		printf("goldsh: %s: too many arguments\n", cmds[cmd]);
-	else if (error_number == ERROR_NOT_NUMBER)
-		printf("goldsh: %s: %s: numeric argument required\n", cmds[cmd], arg);
-	else if (error_number == ERROR_NOT_EXIST)
-		printf("goldsh: %s: %s: no such file or directory\n", cmds[cmd], arg);
-	else if (error_number == ERROR_PERMISSION_DENIED)
-		printf("goldsh: %s: %s: permission denied\n", cmds[cmd], arg);
-	else if (error_number == ERROR_INVALID_IDENTIFIER)
-		printf("goldsh: %s: %s: not a valid identifier\n", cmds[cmd], arg);
-	
+void	print_builtin_error_message(int error_number, char *cmd, char *arg)
+{
+	const char	*msg[] = {"not set", \
+						"execute failed", \
+						"too many arguments", \
+						"numeric argument required", \
+						"no such file or directory", \
+						"permission denied", \
+						"not a valid identifier"};
+
+	error_print(cmd, arg, msg[error_number]);
 }
 
 void	handle_error(int errcode, t_token syntax_error_near_token)

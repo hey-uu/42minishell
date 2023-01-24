@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:27:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-#include "s_token.h"
+# include "s_token.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -25,18 +25,23 @@ enum e_error_code
 	ERROR_MALLOC_FAILED = 1,
 	ERROR_IN_SYNTAX = 2,
 	ERROR_EXECUTE_FAILED = 3,
-	ERROR_ENV_UNSET,
-	ERROR_PERMISSION_DENIED,
-	ERROR_NOT_EXIST,
-	ERROR_TOO_MANY_ARGUMENTS,
-	ERROR_NOT_NUMBER,
-	ERROR_INVALID_IDENTIFIER
+};
+
+enum e_builtin_error_code
+{
+	BERR_ENV_UNSET,
+	BERR_EXECUTE_FAILED,
+	BERR_TOO_MANY_ARGUMENTS,
+	BERR_NOT_NUMBER,
+	BERR_NON_EXISTENT,
+	BERR_PERMISSION_DENIED,
+	BERR_INVALID_IDENTIFIER
 };
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 void	print_syntax_error_message(t_token token);
 void	handle_error(int errcode, t_token syntax_error_near_token);
-void	print_error_message(int error_number, int builtin_cmd, char *var);
+void	print_builtin_error_message(int error_number, char *cmd, char *var);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtin_cd_internal.c                              :+:      :+:    :+:   */
+/*   builtin_cd_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 23:40:41 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:41:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:31:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	cd_check_access(char *dir)
 {
 	if (access(dir, F_OK) == -1)
 	{
-		print_error_message(ERROR_NOT_EXIST, BUILTIN_CD, dir);
+		print_builtin_error_message(BERR_NON_EXISTENT, CMD_CD, dir);
 		return (ACCESS_FAIL);
 	}
 	if (access(dir, X_OK) == -1)
 	{
-		print_error_message(ERROR_PERMISSION_DENIED, BUILTIN_CD, dir);
+		print_builtin_error_message(BERR_PERMISSION_DENIED, CMD_CD, dir);
 		return (ACCESS_FAIL);
 	}
 	return (ACCESS_SUCCESS);
@@ -40,7 +40,7 @@ int	cd_set_pwd_variables(char *oldpwd_dir)
 	if (!pwd_dir)
 	{
 		free(oldpwd_dir);
-		print_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "getcwd");
+		print_builtin_error_message(BERR_EXECUTE_FAILED, CMD_CD, "getcwd");
 		return (BUILTIN_FAIL);
 	}
 	env_set(ft_strdup(VAR_PWD), pwd_dir);
@@ -60,7 +60,7 @@ int	cd_directory_argument(char *cur_dir, char *new_dir)
 	{
 		free(cur_dir);
 		free(new_dir);
-		print_error_message(ERROR_EXECUTE_FAILED, BUILTIN_CD, "chdir");
+		print_builtin_error_message(BERR_EXECUTE_FAILED, CMD_CD, "chdir");
 		return (BUILTIN_FAIL);
 	}
 	free(new_dir);
@@ -75,7 +75,7 @@ int	cd_no_argument(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		print_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_HOME);
+		print_builtin_error_message(BERR_ENV_UNSET, CMD_CD, VAR_HOME);
 		return (BUILTIN_FAIL);
 	}
 	else if (new_dir[0] == '\0')
@@ -96,7 +96,7 @@ int	cd_hyphen_minus(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		print_error_message(ERROR_ENV_UNSET, BUILTIN_CD, VAR_OLDPWD);
+		print_builtin_error_message(BERR_ENV_UNSET, CMD_CD, VAR_OLDPWD);
 		return (BUILTIN_FAIL);
 	}
 	if (cd_directory_argument(cur_dir, new_dir) == BUILTIN_FAIL)

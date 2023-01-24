@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:37:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:31:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	builtin_env(char *argv[])
 
 	if (argv[1])
 	{
-		print_error_message(ERROR_TOO_MANY_ARGUMENTS, BUILTIN_ENV, NULL);
+		print_builtin_error_message(BERR_TOO_MANY_ARGUMENTS, CMD_ENV, NULL);
 		env_terminate(&argv, NULL, 1);
 		return ;
 	}

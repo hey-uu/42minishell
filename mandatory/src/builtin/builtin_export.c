@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:38:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:32:43 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,15 @@ int	export_update_marked_variable(char *line)
 	{
 		if (!is_valid_variable_name_character(line[i], i))
 		{
-			print_error_message(ERROR_INVALID_IDENTIFIER, BUILTIN_EXPORT, line);
+			print_builtin_error_message(\
+			BERR_INVALID_IDENTIFIER, CMD_EXPORT, line);
 			return (BUILTIN_FAIL);
 		}
 		i++;
 	}
 	if (line[i] == '+' && line[i + 1] != '=')
 	{
-		print_error_message(ERROR_INVALID_IDENTIFIER, BUILTIN_EXPORT, line);
+		print_builtin_error_message(BERR_INVALID_IDENTIFIER, CMD_EXPORT, line);
 		return (BUILTIN_FAIL);
 	}
 	else if (line[i] == '+')
