@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/21 03:32:52 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/24 13:03:11 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,13 +151,13 @@ ENV_FILE		=		api_env_get \
 						manager_env \
 						manager_exit_stat \
 						manager_heredoc
-EXPAND_FILE		=		destroy_expansion \
+EXPAND_FILE		=		append_word_to_strings \
 						do_expansion \
 						expand_variable \
+						expand_wildcard \
 						expand_word \
-						expansion_allocation \
 						field_split \
-						words_to_strings
+						word_array_utils
 HEREDOC_FILE	=		heredoc_generate \
 						heredoc_get_delimiter \
 						heredoc_with_expansion

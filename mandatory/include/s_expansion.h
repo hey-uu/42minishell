@@ -5,56 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 22:48:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:51:02 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/24 12:31:23 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/24 12:36:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_EXPANSION_H
 # define S_EXPANSION_H
 
-/*------------ DEFINE MACRO CONSTANTS ------------*/
-
-# define AMBIGUOUS_REDIRECT -1
-# define QUOTED_CHAR_EXIST 1
-# define QUOTED_CHAR_NONE 0
-
-enum e_question_mask
-{
-	VAR_IS_QMARK,
-	VAR_IS_NOT_QMARK
-};
-
-enum e_expansion_result_status
-{
-	EXPAND_AMBIGUOUS_REDIRECT_ERROR= -1,
-	EXPAND_SUCCESS = 0
-};
-
-enum e_expansion_mask
-{
-	EXPAND_NONE = 0,
-	EXPAND_SPLITTED = (1 << 0),
-	EXPAND_WILDCARD = (1 << 1),
-	EXPAND_QUOTED = (1 << 2)
-};
-
 /*------------- STRUCT DECLARATIONS --------------*/
 
-typedef struct s_word
+typedef char	*t_string;
+
+typedef struct s_word_elem
 {
 	char			*data;
 	int				len;
-	int				mask;
-	struct s_word	*next;
+	int				type;
+}	t_word_elem;
+
+typedef struct s_word
+{
+	t_word_elem	*elem_arr;
+	int			elem_cnt;
+	int			mask; // existence of quote or wildcard
+	int			alloc_size;
 }	t_word;
 
-typedef struct s_expansion
+typedef struct s_words
 {
-	t_word		*first;
-	t_word		*last;
-	int			count;
-	int			quote_exist;
-}	t_expansion;
+	t_word	*word_arr;
+	int		word_cnt;
+	int		alloc_size;
+}	t_words;
 
 #endif

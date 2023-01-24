@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 23:08:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 13:05:36 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/24 11:33:03 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/24 14:54:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,67 +23,52 @@ static int	pass_field_separators(char *value)
 	int	i;
 
 	i = 1;
-	while (value[i] && is_field_separator(value[i]))
+	while (is_field_separator(value[i]))
 		i++;
 	return (i);
 }
 
-static int	pass_non_field_separators(t_word *node, char *value)
+static int	push_non_field_separator_element(char *str, t_words *words)
 {
 	int	i;
 
-	i = 1;
-	while (value[i] && !is_field_separator(value[i]))
-	{
-		if (value[i] == '*')
-			node->mask |= EXPAND_WILDCARD;
+	i = 0;
+	while (str[i] && !is_field_separator(str[i]))
 		i++;
+	push_elem_to_cur_word(words, str, i, WELEM_NONE);
+	return (i);
+}
+
+static int	push_splitted_element(char *str, t_words *words)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && !is_field_separator(str[i]))
+	{
+		if (str[i] == '*')
+			i += push_wildcard_element(&str[i], words);
+		else
+			i += push_non_field_separator_element(&str[i], words);
 	}
 	return (i);
 }
 
-t_word	*add_splitted_node(t_expansion *set, char *value, int *idx, int *flag)
+void	field_split(char *val, t_words *words)
 {
-	t_word	*node;
+	int	i;
 
-	node = add_new_word_node_back(set);
-	if (*flag)
-	{
-		node->mask |= EXPAND_SPLITTED;
-		set->count++;
-	}
-	node->len = pass_non_field_separators(node, &value[*idx]);
-	dup_data_to_word(node, &value[*idx]);
-	*idx += node->len;
-	*flag = 0;
-	return (node);
-}
-
-void	field_split(t_expansion *set, char *value)
-{
-	t_word	*node;
-	int		flag;
-	int		i;
-
-// printf("> split field!\n");
-	if (!value)
-		return ;
 	i = 0;
-	flag = 0;
-	while (value[i])
+	while (val[i])
 	{
-		if (is_field_separator(value[i]))
+		if (is_field_separator(val[i]))
 		{
-			i += pass_field_separators(&value[i]);
-			flag = 1;
+			i += pass_field_separators(&val[i]);
+			get_new_word(words);
 		}
-		if (value[i] && !is_field_separator(value[i]))
-			node = add_splitted_node(set, value, &i, &flag);
-	}
-	if (flag)
-	{
-		add_new_word_node_back(set);
-		node->mask |= EXPAND_SPLITTED;
-		set->count++;
+		if (val[i])
+		{
+			i += push_splitted_element(&val[i],  words);
+		}
 	}
 }
