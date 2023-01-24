@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/21 03:32:52 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/24 21:23:42 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,7 @@ BUILTIN_FILE	=		builtin_cd \
 						builtin_env \
 						builtin_exit \
 						builtin_export
-EXECUTOR_FILE	=		access_command_path \
+EXECUTOR_FILE	=		access_command \
 						execute_builtin \
 						execute_pipeline \
 						execute_list \
