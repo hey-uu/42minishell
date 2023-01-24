@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/24 23:10:45 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/24 23:50:24 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,8 @@ MAN_SRC_PATH	=		$(MAN_DIR)/$(SRC_DIR)
 BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 
 # file name
-BUILTIN_FILE	=		builtin_cd \
+BUILTIN_FILE	=		builtin_cd_utils \
+						builtin_cd \
 						builtin_pwd \
 						builtin_echo \
 						builtin_env \

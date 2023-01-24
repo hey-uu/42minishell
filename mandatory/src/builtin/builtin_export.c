@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 13:04:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 23:38:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "error.h"
 #include "libft.h"
 
-static int	__export_print_marked_variable_list__(char ***argv)
+static int	export_print_marked_variable_list(char ***argv)
 {
 	char	**variable_list;
 	int		i;
@@ -36,16 +36,7 @@ static int	__export_print_marked_variable_list__(char ***argv)
 	return (BUILTIN_SUCCESS);
 }
 
-int	is_valid_character_for_variable_name(char c, int i)
-{
-	if (i == 0 && !(ft_isalpha(c) || c == '_'))
-		return (0);
-	if (!(ft_isalnum(c) || c == '_'))
-		return (0);
-	return (1);
-}
-
-static void	__export_append_variable_value__(char *line, int i)
+static void	export_append_variable_value(char *line, int i)
 {
 	char	*variable;
 	char	*old_value;
@@ -65,14 +56,14 @@ static void	__export_append_variable_value__(char *line, int i)
 	env_set(variable, new_value);
 }
 
-int	__export_update_marked_variable__(char *line)
+int	export_update_marked_variable(char *line)
 {
 	int	i;
 
 	i = 0;
 	while (line[i] && (line[i] != '+' && line[i] != '='))
 	{
-		if (!is_valid_character_for_variable_name(line[i], i))
+		if (!is_valid_variable_name_character(line[i], i))
 		{
 			print_error_message(ERROR_INVALID_IDENTIFIER, BUILTIN_EXPORT, line);
 			return (BUILTIN_FAIL);
@@ -85,7 +76,7 @@ int	__export_update_marked_variable__(char *line)
 		return (BUILTIN_FAIL);
 	}
 	else if (line[i] == '+')
-		__export_append_variable_value__(line, i);
+		export_append_variable_value(line, i);
 	else if (line[i] == '=')
 		env_set(ft_strndup(line, i), ft_strdup(&line[i + 1]));
 	else
@@ -93,22 +84,22 @@ int	__export_update_marked_variable__(char *line)
 	return (BUILTIN_SUCCESS);
 }
 
-int	builtin_export(char **argv)
+void	builtin_export(char **argv)
 {
-	int	res;
 	int	i;
 
 	if (!argv[1])
-		return (__export_print_marked_variable_list__(&argv));
-	res = BUILTIN_SUCCESS;
+	{
+		export_print_marked_variable_list(&argv);
+		return ;
+	}
 	i = 0;
 	while (argv[i])
 	{
-		if (__export_update_marked_variable__(argv[i]) == BUILTIN_FAIL)
-			res = BUILTIN_FAIL;
+		if (export_update_marked_variable(argv[i]) == BUILTIN_FAIL)
+			exit_stat_update(1);
 		free(argv[i]);
 		i++;
 	}
 	free(argv);
-	return (res);
 }

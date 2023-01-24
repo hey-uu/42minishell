@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 23:37:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,36 @@
 #include "error.h"
 #include "libft.h"
 
-int	builtin_env(char *argv[])
+static void	env_terminate(char ***argv, char ***envp, int exit_stat)
+{
+	if (argv)
+		free_double_char_array(argv);
+	if (envp)
+		free_double_char_array(envp);
+	exit_stat_update(exit_stat);
+}
+
+void	builtin_env(char *argv[])
 {
 	char	**envp;
 	int		i;
-	
+
 	if (argv[1])
 	{
-		free_double_char_array(&argv);
-		exit_stat_update(1);
 		print_error_message(ERROR_TOO_MANY_ARGUMENTS, BUILTIN_ENV, NULL);
-		return (BUILTIN_FAIL);
+		env_terminate(&argv, NULL, 1);
+		return ;
 	}
 	envp = env_get_defined_variable_list();
 	i = 0;
 	while (envp[i])
 	{
-		printf("%s\n", envp[i]);
+		if (printf("%s\n", envp[i]) < 0)
+		{
+			env_terminate(&argv, &envp, 1);
+			return ;
+		}
 		i++;
 	}
-	free_double_char_array(&argv);
-	free_double_char_array(&envp);
-	return (BUILTIN_SUCCESS);
+	env_terminate(&argv, &envp, 0);
 }

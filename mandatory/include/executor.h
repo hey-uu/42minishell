@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:49:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 23:48:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,26 @@ typedef struct s_pipeline {
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
-typedef int	(*t_builtin)(char **argv);
+typedef void	(*t_builtin)(char **argv);
 
 void	executor(t_node *parse_tree, int *errcode);
 
-int		builtin_echo(char **argv);
-int		builtin_cd(char **argv);
-int		builtin_pwd(char **argv);
-int		builtin_export(char **argv);
-int		builtin_env(char **argv);
-int		builtin_exit(char **argv);
+void	builtin_echo(char **argv);
+void	builtin_cd(char **argv);
+void	builtin_pwd(char **argv);
+void	builtin_export(char **argv);
+void	builtin_env(char **argv);
+void	builtin_exit(char **argv);
 
 int		access_command_path(char **cmd_name);
 
-int	execute_list(t_node *node);
-int	execute_pipeline(t_node *node);
-int	execute_single_builtin(t_execute_unit *exe_unit);
-int	execute_subshell(t_node *node, t_pipeline *pl, int nth);
-int	execute_simple_command(t_execute_unit *exe_unit, t_pipeline *pl, int nth);
-int	get_builtin_cmd_idx(char *cmd_name);
+int		execute_list(t_node *node);
+int		execute_pipeline(t_node *node);
+int		execute_single_builtin(t_execute_unit *exe_unit);
+int		execute_subshell(t_node *node, t_pipeline *pl, int nth);
+int		execute_simple_command(\
+		t_execute_unit *exe_unit, t_pipeline *pl, int nth);
+int		get_builtin_cmd_idx(char *cmd_name);
 
 void	set_standard_stream(t_pipeline *pl, t_redir *redir_list, int nth);
 void	open_new_pipe(int new_pipe_fd[2]);

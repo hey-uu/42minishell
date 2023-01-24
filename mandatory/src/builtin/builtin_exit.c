@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 08:49:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 23:38:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "error.h"
 #include "libft.h"
 
-static int	__is_numeric_argument__(char *argument)
+static int	is_numeric_argument(char *argument)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ static int	__is_numeric_argument__(char *argument)
 	return (1);
 }
 
-static int	__exit_error_handler__(int error_number, char ***argv, char *arg)
+static int	exit_error_handler(int error_number, char ***argv, char *arg)
 {
 	print_error_message(error_number, BUILTIN_EXIT, arg);
 	free_double_char_array(argv);
@@ -41,23 +41,15 @@ static int	__exit_error_handler__(int error_number, char ***argv, char *arg)
 	return (BUILTIN_FAIL);
 }
 
-
-int	builtin_exit(char *argv[])
+void	builtin_exit(char *argv[])
 {
 	printf("exit\n");
-	if (argv[1] && (!__is_numeric_argument__(argv[1])))
-	{
-		return (__exit_error_handler__(ERROR_NOT_NUMBER, &argv, argv[1]));
-	}
+	if (argv[1] && (!is_numeric_argument(argv[1])))
+		exit_error_handler(ERROR_NOT_NUMBER, &argv, argv[1]);
 	if (argv[1] && argv[2])
-	{
-		return (__exit_error_handler__(ERROR_TOO_MANY_ARGUMENTS, &argv, NULL));
-	}
+		exit_error_handler(ERROR_TOO_MANY_ARGUMENTS, &argv, NULL);
 	if (argv[1])
-	{
 		exit_stat_update(ft_atoi(argv[1]));
-	}
 	free_double_char_array(&argv);
 	exit_program();
-	return (BUILTIN_SUCCESS);
 }
