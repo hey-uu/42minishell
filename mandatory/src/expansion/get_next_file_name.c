@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:11:29 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 01:01:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_file_name(void)
 	while (file)
 	{
 		file_name = file->d_name;
-		if (ft_strncmp(file_name, ".", 2) && ft_strncmp(file_name, "..", 3))
+		if (file_name[0] != '.')
 			return (file_name);
 		file = readdir(dir_ptr);
 	}
