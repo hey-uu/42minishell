@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 07:35:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:13:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 // exit status manager
 int			exit_stat_get(void);
+char		*exit_stat_get_dup_str(void);
 char		*exit_stat_get_str(void);
 int			exit_stat_update(int new_stat);
 void		exit_program(void);

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 07:33:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:07:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	test_exit_manager(void)
 
 	value = "hello";
 	printf("\n\n* trying to get exit stat\n");
-	value = exit_stat_get_str();
+	value = exit_stat_get_dup_str();
 	printf("%s\n", value);
 	assert(value != NULL);
 	printf("===> get exit stat success\n\n");

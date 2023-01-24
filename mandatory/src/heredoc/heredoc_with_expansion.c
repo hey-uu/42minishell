@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:40:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 01:55:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:07:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	expand_variable_in_heredoc(char *line, int fd)
 	if (!variable && question_mark == VAR_IS_NOT_QMARK)
 		return (idx);
 	if (question_mark == VAR_IS_QMARK)
-		value = exit_stat_get_str();
+		value = exit_stat_get_dup_str();
 	else
 		value = env_get(variable);
 	if (value)
