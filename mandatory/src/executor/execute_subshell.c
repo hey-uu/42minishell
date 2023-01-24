@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:51:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 22:06:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "executor.h"
 #include "minishell.h"
 #include "parser.h"
+#include "expansion.h"
 #include "env_manager.h"
 
 int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
@@ -29,6 +30,8 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 		exit(1);
 	else if (pid == 0)
 	{
+		expand_redir_list(&node->exe_unit->q_redir_list, \
+							&node->exe_unit->redir_list);
 		set_standard_stream(pl, node->exe_unit->redir_list, nth);
 		exit_code = execute_list(node->first_child);
 		exit(0);

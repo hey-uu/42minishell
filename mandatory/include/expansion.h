@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 23:59:05 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 17:43:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 22:06:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 
 void	do_expansion(t_execute_unit *exe_unit);
 char	*split_variable(char *str, int *idx, int *qmark);
+void	expand_redir_list(t_queue **q_redir_list, t_intstr **redir_list);
 
 #endif
