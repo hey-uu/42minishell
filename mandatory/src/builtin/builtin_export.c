@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 09:29:18 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:04:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	__export_print_marked_variable_list__(char ***argv)
 	return (BUILTIN_SUCCESS);
 }
 
-static int	__is_valid_character_for_variable_name__(char c, int i)
+int	is_valid_character_for_variable_name(char c, int i)
 {
 	if (i == 0 && !(ft_isalpha(c) || c == '_'))
 		return (0);
@@ -65,14 +65,14 @@ static void	__export_append_variable_value__(char *line, int i)
 	env_set(variable, new_value);
 }
 
-static int	__export_update_marked_variable__(char *line)
+int	__export_update_marked_variable__(char *line)
 {
 	int	i;
 
 	i = 0;
 	while (line[i] && (line[i] != '+' && line[i] != '='))
 	{
-		if (!__is_valid_character_for_variable_name__(line[i], i))
+		if (!is_valid_character_for_variable_name(line[i], i))
 		{
 			print_error_message(ERROR_INVALID_IDENTIFIER, BUILTIN_EXPORT, line);
 			return (BUILTIN_FAIL);
