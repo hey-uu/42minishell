@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 06:43:59 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 07:02:10 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@ void	error_print(char *cmd, char *arg, const char *msg)
 {
 	ft_putstr_fd("goldsh: ", STDERR_FILENO);
 	if (cmd)
+	{
 		ft_putstr_fd(cmd, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
 	if (arg)
+	{
 		ft_putstr_fd(arg, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
 	ft_putstr_fd((char *)msg, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
