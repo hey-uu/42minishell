@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 05:30:39 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/25 07:31:02 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,14 @@ LIBFT_NAME		=		libft.a
 LIBFT_PATH		=		$(LIB_DIR)/$(LIBFT_DIR)
 LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
+# libprintf
+LIBPRINTF_DIR	=		libprintf
+LIBPRINTF_NAME	=		libprintf.a
+LIBPRINTF_PATH	=		$(LIB_DIR)/$(LIBPRINTF_DIR)
+LIBPRINTF		=		$(LIBPRINTF_PATH)/$(LIBPRINTF_NAME)
+
 # flags
-LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lreadline
+LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lprintf -L./$(LIBPRINTF_PATH) -lreadline
 
 # ******************************** directory ********************************* #
 
