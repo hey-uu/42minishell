@@ -35,7 +35,7 @@ static int	find_reg_file_in_a_dir(char *dir_path, char *look_for_name, \
 	dent = readdir(dir);
 	while (dent)
 	{
-		if (dent->d_type == DT_REG && ft_strcmp(look_for_name, \
+		if (dent->d_type == DT_REG && ft_strncmp(look_for_name, \
 								dent->d_name, ft_strlen(dent->d_name) + 1) == 0)
 		{
 			*found = ft_str3join(dir_path, "/", look_for_name);
