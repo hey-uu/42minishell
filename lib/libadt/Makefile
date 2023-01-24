@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/20 19:28:49 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/24 05:36:02 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ LIBFLAGS		=		-lft -L./$(LIBFT_PATH)
 
 # ******************************** directory ********************************* #
 
+DARR_DIR		=		dynamic_array
 HASH_DIR		=		hash_table
 LIST_DIR		=		list
 QUEUE_DIR		=		queue
@@ -57,28 +58,41 @@ INC_DIR			=		include
 # ******************************* header files ******************************* #
 
 LIBFT_INC_PATH	=		../$(INC_DIR)
-
+LIBADT_INC_PATH	=		.
+DARR_INC_PATH	=		$(DARR_DIR)
 HASH_INC_PATH	=		$(HASH_DIR)
 LIST_INC_PATH	=		$(LIST_DIR)
 QUEUE_INC_PATH	=		$(QUEUE_DIR)
 
+DARR_INC_FILE	=		t_dynamic_array
 HASH_INC_FILE	=		hash_table_internal \
 						t_hash_table
 LIST_INC_FILE	=		list_internal \
 						t_list
 QUEUE_INC_FILE	=		queue_internal \
 						t_queue
+
+DARR_INC		=		$(addprefix $(DARR_DIR)/, $(addsuffix .h, $(DARR_INC_FILE)))
 HASH_INC		=		$(addprefix $(HASH_DIR)/, $(addsuffix .h, $(HASH_INC_FILE)))
 LIST_INC		=		$(addprefix $(LIST_DIR)/, $(addsuffix .h, $(LIST_INC_FILE)))
 QUEUE_INC		=		$(addprefix $(QUEUE_DIR)/, $(addsuffix .h, $(QUEUE_INC_FILE)))
 
-
-HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH)
-LIST_INC_FLAG	=		-I./$(LIST_DIR) -I./$(LIBFT_INC_PATH)
-QUEUE_INC_FLAG	=		-I./$(QUEUE_DIR) -I./$(LIBFT_INC_PATH)
+DARR_INC_FLAG	=		-I./$(DARR_DIR) -I./$(LIBFT_INC_PATH) -I./$(LIBADT_INC_PATH)
+HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH) -I./$(LIBADT_INC_PATH)
+LIST_INC_FLAG	=		-I./$(LIST_DIR) -I./$(LIBFT_INC_PATH) -I./$(LIBADT_INC_PATH)
+QUEUE_INC_FLAG	=		-I./$(QUEUE_DIR) -I./$(LIBFT_INC_PATH) -I./$(LIBADT_INC_PATH)
 
 # ******************************* object files ******************************* #
 
+DARR_FILE		=		darr_create \
+						darr_destroy \
+						darr_get_arr \
+						darr_push \
+						darr_resize \
+						darr_pop \
+						darr_push \
+						darr_resize \
+						darr_show
 HASH_FILE		=		hash_function \
 						hash_table_create \
 						hash_table_destroy \
@@ -101,10 +115,11 @@ QUEUE_FILE		=		queue_create \
 						queue_resize \
 						queue_show
 
+DARR_OBJ		=		$(addprefix $(OBJ_DIR)/$(DARR_DIR)/, $(addsuffix .o, $(DARR_FILE)))
 LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
 QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
 HASH_OBJ		=		$(addprefix $(OBJ_DIR)/$(HASH_DIR)/, $(addsuffix .o, $(HASH_FILE)))
-OBJ				=		$(HASH_OBJ) $(LIST_OBJ) $(QUEUE_OBJ)
+OBJ				=		$(DARR_OBJ) $(HASH_OBJ) $(LIST_OBJ) $(QUEUE_OBJ)
  
 # ******************************* basic rules ******************************** #
 
@@ -129,20 +144,25 @@ re :
 
 # ****************************** compile rules ******************************* #
 
+$(OBJ_DIR)/$(DARR_DIR)/%.o : $(DARR_DIR)/%.c $(DARR_INC) $(LIBFT)
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/$(DARR_DIR)
+	$(CC) -c $(CFLAGS) $< $(DARR_INC_FLAG) -o $@
+
 $(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(LIST_DIR)
-	$(CC) -c $(CFLAGS) $< $(LIBFLAGS) $(LIST_INC_FLAG) -o $@
+	$(CC) -c $(CFLAGS) $< $(LIST_INC_FLAG) -o $@
 
 $(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(QUEUE_DIR)
-	$(CC) -c $(CFLAGS) $< $(LIBFLAGS) $(QUEUE_INC_FLAG) -o $@
+	$(CC) -c $(CFLAGS) $< $(QUEUE_INC_FLAG) -o $@
 
 $(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(HASH_INC) $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(HASH_DIR)
-	$(CC) -c $(CFLAGS) $< $(LIBFLAGS) $(HASH_INC_FLAG) -o $@
+	$(CC) -c $(CFLAGS) $< $(HASH_INC_FLAG) -o $@
 
 $(LIBFT) :
 	make -C $(LIBFT_PATH) $(FSAN_OPT) all
