@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:07:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:04:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:38:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	fill_lookup_table(t_bool **lookup, t_word *word, char *str, int len[2])
 	int	j;
 	int	c;
 
-	fill_initial_conditions(lookup, word, len[1]);
+	fill_initial_conditions(lookup, word, len[0]);
 	i = 1;
 	while (i <= len[1])
 	{
