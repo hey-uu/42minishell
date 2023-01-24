@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/18 17:42:24 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/25 07:30:20 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ $(MAN_OBJ_PATH)/$(BUILTIN_DIR)/%.o : $(MAN_SRC_PATH)/$(BUILTIN_DIR)/%.c $(MAN_IN
 	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
 $(MAN_OBJ_PATH)/$(EXECUTOR_DIR)/%.o : $(MAN_SRC_PATH)/$(EXECUTOR_DIR)/%.c $(MAN_INC)
-	@mkdir -p $(MAN_OBJ_PATH)
+	@mkdir -p $(MAN_OBJ_PATH)F$(LIBADT)
 	@mkdir -p $(MAN_OBJ_PATH)/$(EXECUTOR_DIR)
 	@$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
@@ -110,3 +110,6 @@ $(LIBADT) :
 
 $(LIBFT) :
 	make -C $(LIBFT_PATH)
+
+$(LIBPRINTF) :
+	make -C $(LIBPRINTF_PATH)

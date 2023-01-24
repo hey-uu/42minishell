@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipeline.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:06 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/21 02:30:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 05:12:02 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ static void	wait_childs_of_pipeline(int child_cnt, int last_child_pid, \
 		if (term_pid == -1)
 			exit(1);
 		else if (term_pid == last_child_pid)
-			*pl_exit_stat = stat;
+		{
+			if (WIFSIGNALED(stat))
+				*pl_exit_stat = WTERMSIG(stat) + 128;
+			else
+				*pl_exit_stat = WEXITSTATUS(stat);
+		}
 		i++;
 	}
 }

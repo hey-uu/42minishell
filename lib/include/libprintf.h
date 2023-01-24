@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 05:42:40 by hyeyukim          #+#    #+#             */
-/*   Updated: 2022/11/14 23:19:20 by hyeyukim         ###   ########.fr       */
+/*   Created: 2022/08/29 14:16:43 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/25 07:20:56 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+int		ft_printf(const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
+
+#endif

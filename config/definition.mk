@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 02:18:25 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/25 07:31:02 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,14 @@ LIBFT_NAME		=		libft.a
 LIBFT_PATH		=		$(LIB_DIR)/$(LIBFT_DIR)
 LIBFT			=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
+# libprintf
+LIBPRINTF_DIR	=		libprintf
+LIBPRINTF_NAME	=		libprintf.a
+LIBPRINTF_PATH	=		$(LIB_DIR)/$(LIBPRINTF_DIR)
+LIBPRINTF		=		$(LIBPRINTF_PATH)/$(LIBPRINTF_NAME)
+
 # flags
-LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lreadline
+LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lprintf -L./$(LIBPRINTF_PATH) -lreadline
 
 # ******************************** directory ********************************* #
 
@@ -115,7 +121,7 @@ BUILTIN_FILE	=		builtin_cd_utils \
 						builtin_exit \
 						builtin_export \
 						builtin_unset
-EXECUTOR_FILE	=		access_command_path \
+EXECUTOR_FILE	=		access_command \
 						execute_builtin \
 						execute_pipeline \
 						execute_list \

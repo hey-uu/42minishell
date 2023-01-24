@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 00:27:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 06:37:19 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,20 @@ enum e_builtin_error_code
 	BERR_INVALID_IDENTIFIER
 };
 
+enum e_access_command_error_code
+{
+	NO_SUCH_FILE_OR_DIR,
+	IS_A_DIR,
+	PERMISSION_DENIED,
+	COMMAND_NOT_FOUND
+};
+
+
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 void	print_syntax_error_message(t_token token);
 void	handle_error(int errcode, t_token syntax_error_near_token);
 void	print_builtin_error_message(int error_number, char *cmd, char *var);
+void	handle_access_command_error(int errcode, char *cmd);
 
 #endif
