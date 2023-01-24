@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:33:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 14:54:09 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:43:22 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	field_split(char *val, t_words *words)
 		}
 		if (val[i])
 		{
-			i += push_splitted_element(&val[i],  words);
+			i += push_splitted_element(&val[i], words);
 		}
 	}
 }
