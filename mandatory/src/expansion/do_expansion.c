@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:10:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 22:52:55 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 01:17:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	expand_cmd_name(char **cmd)
 	free(*cmd);
 	*cmd = strings.strarr[0];
 	i = 1;
-	while (strings.strarr[i])
+	while (i < strings.used_size)
 	{
 		free(strings.strarr[i]);
 		i++;
