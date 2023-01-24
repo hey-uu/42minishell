@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 00:32:43 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 02:16:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	export_update_marked_variable(char *line)
 	return (BUILTIN_SUCCESS);
 }
 
-void	builtin_export(char **argv)
+void	builtin_export(char *argv[])
 {
 	int	i;
 

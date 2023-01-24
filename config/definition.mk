@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/24 23:50:24 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/25 02:18:25 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,8 @@ BUILTIN_FILE	=		builtin_cd_utils \
 						builtin_echo \
 						builtin_env \
 						builtin_exit \
-						builtin_export
+						builtin_export \
+						builtin_unset
 EXECUTOR_FILE	=		access_command_path \
 						execute_builtin \
 						execute_pipeline \

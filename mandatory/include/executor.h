@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:48:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 02:15:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ typedef void	(*t_builtin)(char **argv);
 
 void	executor(t_node *parse_tree, int *errcode);
 
-void	builtin_echo(char **argv);
-void	builtin_cd(char **argv);
-void	builtin_pwd(char **argv);
-void	builtin_export(char **argv);
-void	builtin_env(char **argv);
-void	builtin_exit(char **argv);
+void	builtin_echo(char *argv[]);
+void	builtin_cd(char *argv[]);
+void	builtin_pwd(char *argv[]);
+void	builtin_export(char *argv[]);
+void	builtin_env(char *argv[]);
+void	builtin_exit(char *argv[]);
+void	builtin_unset(char *argv[]);
 
 int		access_command_path(char **cmd_name);
 

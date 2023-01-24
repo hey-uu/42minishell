@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/20 02:06:33 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 02:22:35 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,23 @@ static void	restore_standard_stream(int fd[2])
 	int	res[2];
 
 	res[0] = dup2(fd[IN], STDIN_FILENO);
+	close(fd[IN]);
 	res[1] = dup2(fd[OUT], STDOUT_FILENO);
+	close(fd[OUT]);
 	if (res[0] < 0 || res[1] < 0)
 		exit_by_error("dup2 failed");
 }
 
 int	get_builtin_cmd_idx(char *cmd_name)
 {
-	const char	*builtin[6] = {"echo", "cd", "pwd", "export", "env", "exit"};
+	const char	*builtin[7] = {"echo", "cd", "pwd", "export", \
+								"env", "exit", "unset"};
 	int			i;
 
 	if (!cmd_name)
 		return (FAILURE);
 	i = 0;
-	while (i < 6)
+	while (i < 7)
 	{
 		if (ft_strncmp(builtin[i], cmd_name, ft_strlen(cmd_name) + 1) == 0)
 			return (i);
@@ -53,9 +56,9 @@ int	get_builtin_cmd_idx(char *cmd_name)
 
 int	execute_builtin(t_execute_unit *exe_unit)
 {
-	const t_builtin	cmd_arr[6] = {
+	const t_builtin	cmd_arr[7] = {
 		builtin_echo, builtin_cd, builtin_pwd, \
-		builtin_export, builtin_env, builtin_exit	
+		builtin_export, builtin_env, builtin_exit, builtin_unset	
 	};
 	const int		cmd_idx = get_builtin_cmd_idx(exe_unit->cmd_name);
 
