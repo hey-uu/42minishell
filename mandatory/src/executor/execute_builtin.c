@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/20 02:06:33 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 05:19:35 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_builtin_cmd_idx(char *cmd_name)
 	int			i;
 
 	if (!cmd_name)
-		return (FAILURE);
+		return (-1);
 	i = 0;
 	while (i < 6)
 	{
@@ -48,10 +48,10 @@ int	get_builtin_cmd_idx(char *cmd_name)
 			return (i);
 		i++;
 	}
-	return (FAILURE);
+	return (-1);
 }
 
-int	execute_builtin(t_execute_unit *exe_unit)
+void	execute_builtin(t_execute_unit *exe_unit)
 {
 	const t_builtin	cmd_arr[6] = {
 		builtin_echo, builtin_cd, builtin_pwd, \
@@ -60,7 +60,6 @@ int	execute_builtin(t_execute_unit *exe_unit)
 	const int		cmd_idx = get_builtin_cmd_idx(exe_unit->cmd_name);
 
 	cmd_arr[cmd_idx](exe_unit->cmd_argv);
-	return (EXIT_SUCCESS);
 }
 
 int	execute_single_builtin(t_execute_unit *exe_unit)

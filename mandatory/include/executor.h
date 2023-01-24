@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:49:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 05:20:10 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		builtin_export(char **argv);
 int		builtin_env(char **argv);
 int		builtin_exit(char **argv);
 
-int		access_command_path(char **cmd_name);
+int		access_command(char **cmd_name);
 
 int	execute_list(t_node *node);
 int	execute_pipeline(t_node *node);
@@ -60,7 +60,7 @@ int	get_builtin_cmd_idx(char *cmd_name);
 void	set_standard_stream(t_pipeline *pl, t_redir *redir_list, int nth);
 void	open_new_pipe(int new_pipe_fd[2]);
 void	close_pipe_in_parent(\
-		int old_pipe_fd[2], int new_pipe_fd[2], int first, int last);
-int		execute_builtin(t_execute_unit *exe_unit);
+int		old_pipe_fd[2], int new_pipe_fd[2], int first, int last);
+void	execute_builtin(t_execute_unit *exe_unit);
 
 #endif
