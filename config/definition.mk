@@ -95,8 +95,8 @@ MAN_INC			=		$(addprefix $(MAN_INC_PATH)/, $(addsuffix .h, $(INC_FILE)))
 BON_INC			=		$(addprefix $(BON_INC_PATH)/, $(addsuffix _bonus.h, $(INC_FILE)))
 
 # flags
-MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH)
-BON_INC_FLAG	=		-I./$(BON_INC_PATH) -I./$(LIB_INC_PATH)
+MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)
+BON_INC_FLAG	=		-I./$(BON_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)
 
 # ******************************* object files ******************************* #
 
