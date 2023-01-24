@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 04:53:36 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 06:18:47 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 	{
 		if (access_command(&exe_unit->cmd_name) == SUCCESS)
 			execve(exe_unit->cmd_name, exe_unit->cmd_argv, (char *const *)envp);
+		else
+			exit_program();
 		exit(1);
 	}
 }

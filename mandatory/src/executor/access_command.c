@@ -17,6 +17,7 @@
 #include "minishell.h"
 #include "parser.h"
 #include "env_manager.h"
+#include "error.h"
 
 void	free_double_char_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
@@ -34,7 +35,7 @@ static int	find_reg_file_in_a_dir(char *dir_path, char *look_for_name, \
 	dent = readdir(dir);
 	while (dent)
 	{
-		if (dent->d_type == DT_REG && ft_strncmp(look_for_name, \
+		if (dent->d_type == DT_REG && ft_strcmp(look_for_name, \
 								dent->d_name, ft_strlen(dent->d_name) + 1) == 0)
 		{
 			*found = ft_str3join(dir_path, "/", look_for_name);
@@ -53,11 +54,11 @@ static int	check_given_command_path(char **cmd_path)
 
 	stat(*cmd_path, &f_stat);
 	if (access(*cmd_path, F_OK) == -1)
-		printf("goldsh: No such file or directory\n");
+		handle_access_command_error(NO_SUCH_FILE_OR_DIR, *cmd_path);
 	else if (S_ISDIR(f_stat.st_mode))
-		printf("goldsh: is a directory\n");
+		handle_access_command_error(IS_A_DIR, *cmd_path);
 	else if (access(*cmd_path, X_OK) == -1)
-		printf("goldsh: Permission denied\n");
+		handle_access_command_error(PERMISSION_DENIED, *cmd_path);
 	else
 		return (SUCCESS);
 	return (FAILURE);
@@ -72,10 +73,9 @@ static int	check_path_dir_have_cmd(char **cmd_name)
 	paths = ft_split(env_get("PATH"), ':');
 	if (!paths)
 	{
-		printf("goldsh: No such file or directory\n");
+		handle_access_command_error(NO_SUCH_FILE_OR_DIR, *cmd_name);
 		return (FAILURE);
 	}
-	found = NULL;
 	i = 0;
 	while (paths[i])
 		if (find_reg_file_in_a_dir(paths[i++], *cmd_name, &found) == SUCCESS)
@@ -88,7 +88,7 @@ static int	check_path_dir_have_cmd(char **cmd_name)
 		return (SUCCESS);
 	}
 	else
-		printf("goldsh: command not found\n");
+		handle_access_command_error(COMMAND_NOT_FOUND, *cmd_name);
 	return (FAILURE);
 }
 
