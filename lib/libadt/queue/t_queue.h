@@ -6,12 +6,14 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 11:15:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/17 11:16:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:01:40 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef T_QUEUE_H
 # define T_QUEUE_H
+
+# include "libadt_type.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -34,11 +36,5 @@ typedef struct s_queue
 	int				size;
 	int				used_size;
 }	t_queue;
-
-typedef struct s_intstr
-{
-	int		num;
-	char	*str;
-}	t_intstr;
 
 #endif
