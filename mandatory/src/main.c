@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 17:50:45 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:53:16 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	init_shell(char *envp[])
 int	main(int argc, char **argv, char *envp[])
 {
 	char			*input;
-	struct termios	ori_term;
+	// struct termios	ori_term;
 
 	init_shell(envp);
 	while (1)
