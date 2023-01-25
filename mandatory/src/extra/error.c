@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:21:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:25:57 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ void	handle_syntax_error(t_token token)
 		"'newline'", 0, "'('", "')'", "'&&'",
 		"'||'", "'|'", "'<'", "'>'", "'<<'", "'>>'"
 	};
-	char		*arg;
 
 	if (token.type == TOKEN_WORD)
-		arg = token.str;
+		error_print(NULL, NULL, ERR_MSG_IN_SYNTAX, token.str);
 	else
-		arg = token_type_str[token.type];
-	error_print(NULL, NULL, ERR_MSG_IN_SYNTAX, arg);
+		error_print(NULL, NULL, ERR_MSG_IN_SYNTAX, token_type_str[token.type]);
 	exit_stat_update(258);
 }
 
