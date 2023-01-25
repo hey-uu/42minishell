@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:25:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:47:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	handle_builtin_error(int errcode, char *cmd, char *arg)
 void	handle_access_command_error(int errcode, char *cmd)
 {
 	const char	*msg[] = {
-		ERR_MSG_NONE, ERR_MSG_NO_SUCH_FILE_OR_DIR, ERR_MSG_IS_A_DIR,
+		ERR_MSG_NO_SUCH_FILE_OR_DIR, ERR_MSG_IS_A_DIR,
 		ERR_MSG_PERMISSION_DENIED, ERR_MSG_COMMAND_NOT_FOUND
 	};
-	const int	exit_stat[] = {0, 127, 126, 126, 127};
+	const int	exit_stat[] = {127, 126, 126, 127};
 
 	error_print(cmd, NULL, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
