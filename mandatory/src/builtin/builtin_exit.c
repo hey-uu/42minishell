@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:05:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:19:29 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	is_numeric_argument(char *argument)
 	return (1);
 }
 
-static void	exit_terminate_with_no_error(char ***argv, char *arg, int exit_stat)
+static void	exit_terminate_with_no_error(char ***argv, int exit_stat)
 {
 	free_double_char_array(argv);
 	if (exit_stat >= 0)
@@ -58,7 +58,7 @@ void	builtin_exit(char *argv[])
 	else if (argv[1] && argv[2])
 		exit_terminate_with_error(&argv, NULL, ERR_B_TOO_MANY_ARGUMENTS);
 	else if (argv[1])
-		exit_terminate_with_no_error(&argv, NULL, ft_atoi(argv[1]));
+		exit_terminate_with_no_error(&argv, ft_atoi(argv[1]));
 	else
-		exit_terminate_with_no_error(&argv, NULL, -1);
+		exit_terminate_with_no_error(&argv, -1);
 }
