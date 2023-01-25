@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 14:40:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:21:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ERR_MSG_IS_A_DIR "Is a directory"
 # define ERR_MSG_COMMAND_NOT_FOUND "Command not found"
 # define ERR_MSG_AMBIGUOUS_REDIRECT "Ambiguous redirect"
+# define ERR_MSG_SYSCALL_FAILED "System call failed"
 # define BUILTIN_ERROR_NUMBER 8
 
 enum e_error_code
@@ -61,11 +62,20 @@ enum e_access_command_error_code
 	COMMAND_NOT_FOUND
 };
 
+enum e_execute_error_code
+{
+	ERR_EXE_NONE,
+	ERR_EXE_SYSCALL_FAILED,
+	ERR_EXE_AMBIGUOUS_REDIR,
+};
+
+
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 void	handle_syntax_error(t_token token);
 void	handle_error(int errcode, t_token syntax_error_near_token);
 void	handle_builtin_error(int errcode, char *cmd, char *var);
 void	handle_access_command_error(int errcode, char *cmd);
+void	handle_execute_error(int errcode, char *cmd, char *arg);
 
 #endif

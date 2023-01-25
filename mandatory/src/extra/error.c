@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:47:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:24:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,20 @@ void	handle_access_command_error(int errcode, char *cmd)
 
 	error_print(cmd, NULL, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
+}
+
+void	handle_execute_error(int errcode, char *cmd, char *arg)
+{
+	const char	*msg[] = {
+		ERR_MSG_NONE, ERR_MSG_SYSCALL_FAILED, ERR_MSG_AMBIGUOUS_REDIRECT,
+	};
+	const int	exit_stat[] = {
+		0, 1, 1
+	};
+
+	error_print(cmd, arg, msg[errcode], NULL);
+	exit_stat_update(exit_stat[errcode]);
+	// exit_program();
 }
 
 void	handle_error(int errcode, t_token syntax_error_near_token)
