@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:51:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:00:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	run_input_commands(char *input)
 
 	errcode = 0;
 	lexer(input, &token_list, &errcode, &syntax_error_near_token);
-	if (errcode == 0)
+	// if (errcode == 0)
 		parser(token_list, &parse_tree, &errcode, &syntax_error_near_token);
-	if (errcode == 0)
+	// if (errcode == 0)
 		executor(parse_tree, &errcode);
 	handle_error(errcode, syntax_error_near_token);
 	free_allocated_memory(token_list, parse_tree);
@@ -51,6 +51,8 @@ int	main(int argc, char **argv, char *envp[])
 {
 	char	*input;
 
+	argc++;
+	argv++;
 	// set_signal();
 	init_env_table(envp);
 	print_welcome();
