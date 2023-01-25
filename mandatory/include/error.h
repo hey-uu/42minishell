@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:22:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:40:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 # define ERR_MSG_NONE NULL
-# define ERR_MSG_IN_SYNTAX "syntax error near unexpected token"
-# define ERR_MSG_NOT_SET "not set"
-# define ERR_MSG_EXECUTE_FAILED "execute failed"
-# define ERR_MSG_TOO_MANY_ARGUMENTS "too many arguments"
-# define ERR_MSG_NOT_NUMBER "numeric argument required"
-# define ERR_MSG_NO_SUCH_FILE_OR_DIR "no such file or directory"
-# define ERR_MSG_PERMISSION_DENIED "permission denied"
-# define ERR_MSG_INVALID_IDENTIFIER "not a valid identifier"
-# define ERR_MSG_IS_A_DIR "is a directory"
-# define ERR_MSG_COMMAND_NOT_FOUND "command not found"
+# define ERR_MSG_IN_SYNTAX "Syntax error near unexpected token"
+# define ERR_MSG_NOT_SET "Not set"
+# define ERR_MSG_EXECUTE_FAILED "Execute failed"
+# define ERR_MSG_TOO_MANY_ARGUMENTS "Too many arguments"
+# define ERR_MSG_NOT_NUMBER "Numeric argument required"
+# define ERR_MSG_NO_SUCH_FILE_OR_DIR "No such file or directory"
+# define ERR_MSG_PERMISSION_DENIED "Permission denied"
+# define ERR_MSG_INVALID_IDENTIFIER "Not a valid identifier"
+# define ERR_MSG_IS_A_DIR "Is a directory"
+# define ERR_MSG_COMMAND_NOT_FOUND "Command not found"
+# define ERR_MSG_AMBIGUOUS_REDIRECT "Ambiguous redirect"
 # define BUILTIN_ERROR_NUMBER 8
 
 enum e_error_code
