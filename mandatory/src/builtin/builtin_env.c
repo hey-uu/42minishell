@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:01:47 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:22:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 #include "error.h"
 #include "libft.h"
 
-static void	env_terminate(char ***argv, char ***envp, int errcode)
+static void	env_terminate(char ***envp, int errcode)
 {
-	if (argv)
-		free_double_char_array(argv);
 	if (envp)
 		free_double_char_array(envp);
 	if (!errcode)
@@ -39,7 +37,7 @@ void	builtin_env(char *argv[])
 
 	if (argv[1])
 	{
-		env_terminate(&argv, NULL, ERR_B_TOO_MANY_ARGUMENTS);
+		env_terminate(NULL, ERR_B_TOO_MANY_ARGUMENTS);
 		return ;
 	}
 	envp = env_get_defined_variable_list();
@@ -48,10 +46,10 @@ void	builtin_env(char *argv[])
 	{
 		if (printf("%s\n", envp[i]) < 0)
 		{
-			env_terminate(&argv, &envp, ERR_B_EXECUTE_FAILED);
+			env_terminate(&envp, ERR_B_EXECUTE_FAILED);
 			return ;
 		}
 		i++;
 	}
-	env_terminate(&argv, &envp, ERR_B_NONE);
+	env_terminate(&envp, ERR_B_NONE);
 }

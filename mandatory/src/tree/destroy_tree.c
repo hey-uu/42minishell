@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:41:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 19:45:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:24:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	destroy_execute_unit(t_execute_unit *exe_unit)
 	if (exe_unit->cmd_argv)
 		free_double_char_array(&exe_unit->cmd_argv);
 	if (exe_unit->redir_list)
-		free_redir_array(&exe_unit->q_redir_list);
+		free_redir_array(&exe_unit->redir_list);
 // exe unit cmd_argv, redir_list 할당 해제 함수  추가
 	free(exe_unit);
 }

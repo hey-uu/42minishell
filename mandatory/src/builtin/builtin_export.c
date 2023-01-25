@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:02:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:23:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	export_print_marked_variable_list(char ***argv)
 	char	**variable_list;
 	int		i;
 
-	free_double_char_array(argv);
 	variable_list = env_get_marked_variable_list();
 	i = 0;
 	while (variable_list[i])
@@ -98,17 +97,14 @@ void	builtin_export(char *argv[])
 		export_print_marked_variable_list(&argv);
 		return ;
 	}
-	free(argv[0]);
 	res = BUILTIN_SUCCESS;
 	i = 1;
 	while (argv[i])
 	{
 		if (export_update_marked_variable(argv[i]) == BUILTIN_FAIL)
 			res = BUILTIN_FAIL;
-		free(argv[i]);
 		i++;
 	}
-	free(argv);
 	if (res == BUILTIN_SUCCESS)
 		exit_stat_update(0);
 }

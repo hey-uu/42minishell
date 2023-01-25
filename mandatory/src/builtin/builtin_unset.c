@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 02:06:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:02:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:23:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ void	builtin_unset(char *argv[])
 			handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_UNSET, argv[i]);
 			res = BUILTIN_FAIL;
 		}
-		free(argv[i]);
 		i++;
 	}
-	free(argv);
 	if (res == BUILTIN_SUCCESS)
 		exit_stat_update(0);
 }

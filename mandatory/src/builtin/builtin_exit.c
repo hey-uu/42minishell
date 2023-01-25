@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 19:43:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:22:26 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,16 @@ static int	is_numeric_argument(char *argument)
 	return (1);
 }
 
-static void	exit_terminate_with_no_error(char ***argv, int exit_stat)
+static void	exit_terminate_with_no_error(int exit_stat)
 {
-	free_double_char_array(argv);
 	if (exit_stat >= 0)
 		exit_stat_update(exit_stat);
 	exit_program();
 }
 
-static void	exit_terminate_with_error(char ***argv, char *arg, int errcode)
+static void	exit_terminate_with_error(char *arg, int errcode)
 {
 	handle_builtin_error(errcode, CMD_EXIT, arg);
-	free_double_char_array(argv);
 	if (errcode == ERR_B_NOT_NUMBER)
 		exit_program();
 }
@@ -54,11 +52,11 @@ void	builtin_exit(char *argv[])
 	if (!argv)
 		exit_program();
 	if (argv[1] && (!is_numeric_argument(argv[1])))
-		exit_terminate_with_error(&argv, argv[1], ERR_B_NOT_NUMBER);
+		exit_terminate_with_error(argv[1], ERR_B_NOT_NUMBER);
 	else if (argv[1] && argv[2])
-		exit_terminate_with_error(&argv, NULL, ERR_B_TOO_MANY_ARGUMENTS);
+		exit_terminate_with_error(NULL, ERR_B_TOO_MANY_ARGUMENTS);
 	else if (argv[1])
-		exit_terminate_with_no_error(&argv, ft_atoi(argv[1]));
+		exit_terminate_with_no_error(ft_atoi(argv[1]));
 	else
-		exit_terminate_with_no_error(&argv, -1);
+		exit_terminate_with_no_error(-1);
 }
