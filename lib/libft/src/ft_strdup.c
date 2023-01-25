@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:03:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:43:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:25:18 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 #include "libft_internal.h"
 
 char	*ft_strdup(const char *s1)

@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 10:03:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:46:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:25:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdlib.h>
 #include "libft_internal.h"
 
 static size_t	get_wordcount(char const *s, char c)
