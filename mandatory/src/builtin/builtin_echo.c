@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:08:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:42:31 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 08:52:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static int	echo_arguments(char *argument, int is_last_argument)
 
 	res = printf("%s", argument);
 	if (res == -1)
-		return (BUILTIN_FAIL);
+		return (PRINTF_FAIL);
 	if (!is_last_argument)
 	{
 		res = printf(" ");
 		if (res == -1)
-			return (BUILTIN_FAIL);
+			return (PRINTF_FAIL);
 	}
-	return (BUILTIN_SUCCESS);
+	return (PRINTF_SUCCESS);
 }
 
 static int	pass_n_option(char *argv[], int *newline_flag)
@@ -67,7 +67,11 @@ static int	pass_n_option(char *argv[], int *newline_flag)
 static void	echo_terminate(char ***argv, int exit_stat)
 {
 	free_double_char_array(argv);
-	exit_stat_update(exit_stat);
+	if (exit_stat)
+		handle_builtin_error(\
+		BERR_EXECUTE_FAILED, CMD_ECHO, "printf", exit_stat);
+	else
+		exit_stat_update(exit_stat);
 }
 
 void	builtin_echo(char *argv[])
@@ -78,7 +82,7 @@ void	builtin_echo(char *argv[])
 	i = pass_n_option(argv, &newline_flag);
 	while (argv[i])
 	{
-		if (echo_arguments(argv[i], (argv[i + 1] == NULL)) == BUILTIN_FAIL)
+		if (echo_arguments(argv[i], (argv[i + 1] == NULL)) == PRINTF_FAIL)
 		{
 			echo_terminate(&argv, 1);
 			return ;
