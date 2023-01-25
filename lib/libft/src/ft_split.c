@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 14:03:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 20:43:06 by hyeyukim         ###   ########.fr       */
+/*   Created: 2022/07/09 10:03:28 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/25 15:46:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 #include "libft_internal.h"
 
 static size_t	get_wordcount(char const *s, char c)
@@ -39,6 +39,16 @@ static size_t	ft_getlen(char const *s, char c)
 	return (len);
 }
 
+static void	ft_free_all(char **res, size_t pos)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < pos)
+		free(res[i++]);
+	free(res);
+}
+
 static t_bool	is_fill_split_ok(char **res, char const *s, char c)
 {
 	size_t	len;
@@ -52,7 +62,12 @@ static t_bool	is_fill_split_ok(char **res, char const *s, char c)
 		if (s[i] != c)
 		{
 			len = ft_getlen(&s[i], c);
-			res[res_idx] = ft_malloc(len + 1);
+			res[res_idx] = malloc(len + 1);
+			if (!res[res_idx])
+			{
+				ft_free_all(res, res_idx);
+				return (FALSE);
+			}
 			ft_strlcpy(res[res_idx], &s[i], len + 1);
 			i += (len - 1);
 			res_idx++;
@@ -71,8 +86,8 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	word_count = get_wordcount(s, c);
-	res = ft_malloc(sizeof(char *) * (word_count + 1));
-	if (is_fill_split_ok(res, s, c))
+	res = malloc(sizeof(char *) * (word_count + 1));
+	if (res && is_fill_split_ok(res, s, c))
 		return (res);
 	return (NULL);
 }

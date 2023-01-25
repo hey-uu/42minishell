@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:03:46 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/10 20:44:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:43:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	if (len1 >= FT_SIZE_MAX - len2)
-		ft_exit(NULL, OVERSIZE);
-	new_str = ft_malloc(len1 + len2 + 1);
+		return (NULL);
+	new_str = malloc(len1 + len2 + 1);
+	if (!new_str)
+		return (NULL);
 	ft_strlcpy(new_str, s1, len1 + 1);
 	ft_strlcpy(new_str + len1, s2, len2 + 1);
 	return (new_str);
