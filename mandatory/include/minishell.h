@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 07:26:06 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:47:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ enum e_result_status
 	FAILURE = -1,
 	SUCCESS = 0
 };
-
-
-/*------------- STRUCT DECLARATIONS --------------*/
-
-typedef struct s_goldsh
-{
-	char	**envp;
-	t_token	*token;
-	t_node	*node;
-	int		syntax_error;
-}	t_goldsh;
-
-t_goldsh	g_goldsh;
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
