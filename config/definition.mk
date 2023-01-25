@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 11:21:42 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/25 18:21:25 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ TREE_DIR		=		tree
 ENV_DIR			=		env_manager
 EXPAND_DIR		=		expansion
 HEREDOC_DIR		=		heredoc
+WRAPPED_DIR		=		wrapped_syscall
 
 DEV_DIR			=		dev
 
@@ -164,6 +165,9 @@ EXPAND_FILE		=		do_expansion \
 HEREDOC_FILE	=		heredoc_generate \
 						heredoc_get_delimiter \
 						heredoc_with_expansion
+WRAPPED_FILE	=		w_dup \
+						w_fork \
+						w_wait
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \
@@ -172,7 +176,9 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(TREE_DIR)/, $(TREE_FILE)) \
 						$(addprefix $(ENV_DIR)/, $(ENV_FILE)) \
 						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE)) \
-						$(addprefix $(HEREDOC_DIR)/, $(HEREDOC_FILE))
+						$(addprefix $(HEREDOC_DIR)/, $(HEREDOC_FILE)) \
+						$(addprefix $(WRAPPED_DIR)/, $(WRAPPED_FILE)) \
+
 
 # file name(absolute path)
 MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))

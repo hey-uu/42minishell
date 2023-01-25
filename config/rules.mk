@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 11:14:56 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/25 16:39:01 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,12 @@ $(MAN_OBJ_PATH)/$(HEREDOC_DIR)/%.o : $(MAN_SRC_PATH)/$(HEREDOC_DIR)/%.c
 	@mkdir -p $(MAN_OBJ_PATH)
 	@mkdir -p $(MAN_OBJ_PATH)/$(HEREDOC_DIR)
 	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
+$(MAN_OBJ_PATH)/$(WRAPPED_DIR)/%.o : $(MAN_SRC_PATH)/$(WRAPPED_DIR)/%.c
+	@mkdir -p $(MAN_OBJ_PATH)
+	@mkdir -p $(MAN_OBJ_PATH)/$(WRAPPED_DIR)
+	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
 
 $(MAN_OBJ_PATH)/%.o : $(MAN_SRC_PATH)/%.c
 	@mkdir -p $(MAN_OBJ_PATH)
