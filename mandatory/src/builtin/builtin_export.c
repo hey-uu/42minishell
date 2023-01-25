@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:41:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:02:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	export_print_marked_variable_list(char ***argv)
 	{
 		if (printf("declare -x %s\n", variable_list[i]) < 0)
 		{
-			handle_builtin_error(BERR_EXECUTE_FAILED, CMD_EXPORT, "printf", 1);
+			handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_EXPORT, "printf");
 			free_double_char_array(&variable_list);
 			return ;
 		}
@@ -60,7 +60,7 @@ static void	export_append_variable_value(char *arg, int i)
 	env_set(variable, new_value);
 }
 
-int	export_update_marked_variable(char *arg)
+static int	export_update_marked_variable(char *arg)
 {
 	int	i;
 
@@ -69,14 +69,14 @@ int	export_update_marked_variable(char *arg)
 	{
 		if (!is_valid_variable_name_character(arg[i], i))
 		{
-			handle_builtin_error(BERR_INVALID_IDENTIFIER, CMD_EXPORT, arg, 1);
+			handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_EXPORT, arg);
 			return (BUILTIN_FAIL);
 		}
 		i++;
 	}
 	if (arg[i] == '+' && arg[i + 1] != '=')
 	{
-		handle_builtin_error(BERR_INVALID_IDENTIFIER, CMD_EXPORT, arg, 1);
+		handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_EXPORT, arg);
 		return (BUILTIN_FAIL);
 	}
 	else if (arg[i] == '+')

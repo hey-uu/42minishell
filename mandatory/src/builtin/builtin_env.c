@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:33:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:01:47 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,18 @@
 #include "error.h"
 #include "libft.h"
 
-static void	env_terminate(\
-			char ***argv, char ***envp, int errcode, int exit_stat)
+static void	env_terminate(char ***argv, char ***envp, int errcode)
 {
 	if (argv)
 		free_double_char_array(argv);
 	if (envp)
 		free_double_char_array(envp);
 	if (!errcode)
-		exit_stat_update(exit_stat);
-	else if (errcode == BERR_TOO_MANY_ARGUMENTS)
-		handle_builtin_error(BERR_TOO_MANY_ARGUMENTS, CMD_ENV, NULL, exit_stat);
-	else if (errcode == BERR_EXECUTE_FAILED)
-		handle_builtin_error(BERR_EXECUTE_FAILED, CMD_ENV, "printf", exit_stat);
+		exit_stat_update(0);
+	else if (errcode == ERR_B_TOO_MANY_ARGUMENTS)
+		handle_builtin_error(ERR_B_TOO_MANY_ARGUMENTS, CMD_ENV, NULL);
+	else if (errcode == ERR_B_EXECUTE_FAILED)
+		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_ENV, "printf");
 }
 
 void	builtin_env(char *argv[])
@@ -40,7 +39,7 @@ void	builtin_env(char *argv[])
 
 	if (argv[1])
 	{
-		env_terminate(&argv, NULL, BERR_TOO_MANY_ARGUMENTS, 1);
+		env_terminate(&argv, NULL, ERR_B_TOO_MANY_ARGUMENTS);
 		return ;
 	}
 	envp = env_get_defined_variable_list();
@@ -49,10 +48,10 @@ void	builtin_env(char *argv[])
 	{
 		if (printf("%s\n", envp[i]) < 0)
 		{
-			env_terminate(&argv, &envp, BERR_EXECUTE_FAILED, 1);
+			env_terminate(&argv, &envp, ERR_B_EXECUTE_FAILED);
 			return ;
 		}
 		i++;
 	}
-	env_terminate(&argv, &envp, BERR_NONE, 0);
+	env_terminate(&argv, &envp, ERR_B_NONE);
 }

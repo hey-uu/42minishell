@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 23:40:41 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:31:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:49:17 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	cd_check_access(char *dir)
 {
 	if (access(dir, F_OK) == -1)
 	{
-		handle_builtin_error(BERR_NON_EXISTENT, CMD_CD, dir, 1);
+		handle_builtin_error(ERR_B_NO_SUCH_FILE_OR_DIR, CMD_CD, dir);
 		return (ACCESS_FAIL);
 	}
 	if (access(dir, X_OK) == -1)
 	{
-		handle_builtin_error(BERR_PERMISSION_DENIED, CMD_CD, dir, 1);
+		handle_builtin_error(ERR_B_PERMISSION_DENIED, CMD_CD, dir);
 		return (ACCESS_FAIL);
 	}
 	return (ACCESS_SUCCESS);
@@ -40,7 +40,7 @@ int	cd_set_pwd_variables(char *oldpwd_dir)
 	if (!pwd_dir)
 	{
 		free(oldpwd_dir);
-		handle_builtin_error(BERR_EXECUTE_FAILED, CMD_CD, "getcwd", 1);
+		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_CD, "getcwd");
 		return (BUILTIN_FAIL);
 	}
 	env_set(ft_strdup(VAR_PWD), pwd_dir);
@@ -60,7 +60,7 @@ int	cd_directory_argument(char *cur_dir, char *new_dir)
 	{
 		free(cur_dir);
 		free(new_dir);
-		handle_builtin_error(BERR_EXECUTE_FAILED, CMD_CD, "chdir", 1);
+		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_CD, "chdir");
 		return (BUILTIN_FAIL);
 	}
 	free(new_dir);
@@ -78,7 +78,7 @@ void	cd_no_argument(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		handle_builtin_error(BERR_ENV_UNSET, CMD_CD, VAR_HOME, 1);
+		handle_builtin_error(ERR_B_NOT_SET, CMD_CD, VAR_HOME);
 		return ;
 	}
 	else if (new_dir[0] == '\0')
@@ -100,7 +100,7 @@ void	cd_hyphen_minus(char *cur_dir)
 	if (!new_dir)
 	{
 		free(cur_dir);
-		handle_builtin_error(BERR_ENV_UNSET, CMD_CD, VAR_OLDPWD, 1);
+		handle_builtin_error(ERR_B_NOT_SET, CMD_CD, VAR_OLDPWD);
 		return ;
 	}
 	if (cd_directory_argument(cur_dir, new_dir) == BUILTIN_FAIL)

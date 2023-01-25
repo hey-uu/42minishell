@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:08:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 08:52:28 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:54:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,13 @@ static int	pass_n_option(char *argv[], int *newline_flag)
 	return (i);
 }
 
-static void	echo_terminate(char ***argv, int exit_stat)
+static void	echo_terminate(char ***argv, int errcode, char *arg)
 {
 	free_double_char_array(argv);
-	if (exit_stat)
-		handle_builtin_error(\
-		BERR_EXECUTE_FAILED, CMD_ECHO, "printf", exit_stat);
+	if (errcode)
+		handle_builtin_error(errcode, CMD_ECHO, arg);
 	else
-		exit_stat_update(exit_stat);
+		exit_stat_update(0);
 }
 
 void	builtin_echo(char *argv[])
@@ -84,13 +83,13 @@ void	builtin_echo(char *argv[])
 	{
 		if (echo_arguments(argv[i], (argv[i + 1] == NULL)) == PRINTF_FAIL)
 		{
-			echo_terminate(&argv, 1);
+			echo_terminate(&argv, ERR_B_EXECUTE_FAILED, "printf");
 			return ;
 		}
 		i++;
 	}
 	if (newline_flag == 1 && printf("\n") < 0)
-		echo_terminate(&argv, 1);
+		echo_terminate(&argv, ERR_B_EXECUTE_FAILED, "printf");
 	else
-		echo_terminate(&argv, 0);
+		echo_terminate(&argv, ERR_B_NONE, NULL);
 }

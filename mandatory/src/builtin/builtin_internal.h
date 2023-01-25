@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:50:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:49:29 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ enum e_builtin_success
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-void		builtin_pwd(char *argv[]);
+void	builtin_pwd(char *argv[]);
 void	free_double_char_array(char ***array);
 char	*ft_strndup(char *str, int n);
 int		is_valid_variable_name_character(char c, int i);

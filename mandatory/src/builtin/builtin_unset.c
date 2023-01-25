@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 02:06:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:53:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:02:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "error.h"
 #include "libft.h"
 
-int	is_valid_variable_name(char *name)
+static int	is_valid_variable_name(char *name)
 {
 	int	i;
 
@@ -44,8 +44,7 @@ void	builtin_unset(char *argv[])
 			env_unset(argv[i]);
 		else
 		{
-			handle_builtin_error(\
-			BERR_INVALID_IDENTIFIER, CMD_UNSET, argv[i], 1);
+			handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_UNSET, argv[i]);
 			res = BUILTIN_FAIL;
 		}
 		free(argv[i]);

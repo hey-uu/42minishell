@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 08:58:13 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:49:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
+# define ERR_MSG_NONE NULL
+# define ERR_MSG_NOT_SET "not set"
+# define ERR_MSG_EXECUTE_FAILED "execute failed"
+# define ERR_MSG_TOO_MANY_ARGUMENTS "too many arguments"
+# define ERR_MSG_NOT_NUMBER "numeric argument required"
+# define ERR_MSG_NO_SUCH_FILE_OR_DIR "no such file or directory"
+# define ERR_MSG_PERMISSION_DENIED "permission denied"
+# define ERR_MSG_INVALID_IDENTIFIER "not a valid identifier"
+
 enum e_error_code
 {
 	NONE_ERROR = 0,
@@ -29,14 +38,14 @@ enum e_error_code
 
 enum e_builtin_error_code
 {
-	BERR_NONE,
-	BERR_ENV_UNSET,
-	BERR_EXECUTE_FAILED,
-	BERR_TOO_MANY_ARGUMENTS,
-	BERR_NOT_NUMBER,
-	BERR_NON_EXISTENT,
-	BERR_PERMISSION_DENIED,
-	BERR_INVALID_IDENTIFIER
+	ERR_B_NONE,
+	ERR_B_NOT_SET,
+	ERR_B_EXECUTE_FAILED,
+	ERR_B_TOO_MANY_ARGUMENTS,
+	ERR_B_NOT_NUMBER,
+	ERR_B_NO_SUCH_FILE_OR_DIR,
+	ERR_B_PERMISSION_DENIED,
+	ERR_B_INVALID_IDENTIFIER
 };
 
 enum e_access_command_error_code
@@ -47,12 +56,11 @@ enum e_access_command_error_code
 	COMMAND_NOT_FOUND
 };
 
-
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 void	handle_syntax_error(t_token token);
 void	handle_error(int errcode, t_token syntax_error_near_token);
-void	handle_builtin_error(int errcode, char *cmd, char *var, int exit_stat);
+void	handle_builtin_error(int errcode, char *cmd, char *var);
 void	handle_access_command_error(int errcode, char *cmd);
 
 #endif

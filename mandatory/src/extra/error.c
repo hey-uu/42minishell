@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:58:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:48:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	handle_syntax_error(t_token token)
 	exit_stat_update(258);
 }
 
-void	handle_builtin_error(int errcode, char *cmd, char *arg, int exit_stat)
+void	handle_builtin_error(int errcode, char *cmd, char *arg)
 {
-	const char	*msg[] = {"not set", \
-						"execute failed", \
-						"too many arguments", \
-						"numeric argument required", \
-						"no such file or directory", \
-						"permission denied", \
-						"not a valid identifier"};
+	const char	*msg[] = {
+		ERR_MSG_NONE, ERR_MSG_NOT_SET, ERR_MSG_EXECUTE_FAILED,
+		ERR_MSG_TOO_MANY_ARGUMENTS, ERR_MSG_NOT_NUMBER,
+		ERR_MSG_NO_SUCH_FILE_OR_DIR, ERR_MSG_PERMISSION_DENIED,
+		ERR_MSG_INVALID_IDENTIFIER
+	};
+	const int	exit_stat[] = {0, 1, 1, 1, 255, 1, 1, 1};
 
-	error_print(cmd, arg, msg[errcode - 1], NULL);
-	exit_stat_update(exit_stat);
+	error_print(cmd, arg, msg[errcode], NULL);
+	exit_stat_update(exit_stat[errcode]);
 }
 
 void	handle_access_command_error(int errcode, char *cmd)

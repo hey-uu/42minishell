@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:38:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:44:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:01:12 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	builtin_pwd(char *argv[])
 	cur_dir = getcwd(NULL, 0);
 	if (!cur_dir)
 	{
-		handle_builtin_error(ERROR_EXECUTE_FAILED, CMD_PWD, "getcwd", 1);
+		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_PWD, "getcwd");
 		return ;
 	}
 	if (printf("%s\n", cur_dir) < 0)
 	{
-		handle_builtin_error(ERROR_EXECUTE_FAILED, CMD_PWD, "printf", 1);
+		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_PWD, "printf");
 		free(cur_dir);
 		return ;
 	}

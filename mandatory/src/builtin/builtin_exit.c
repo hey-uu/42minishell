@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 09:54:40 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:00:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,33 @@ static int	is_numeric_argument(char *argument)
 	return (1);
 }
 
-static void	exit_terminate(\
-			char ***argv, char *arg, int errcode, int exit_stat)
+static void	exit_terminate_with_no_error(char ***argv, char *arg, int exit_stat)
 {
 	free_double_char_array(argv);
-	if (!errcode && exit_stat >= 0)
+	if (exit_stat >= 0)
 		exit_stat_update(exit_stat);
-	else if (errcode > 0)
-		handle_builtin_error(errcode, CMD_EXIT, arg, exit_stat);
-	if (!errcode | (errcode == BERR_NOT_NUMBER))
+	exit_program();
+}
+
+static void	exit_terminate_with_error(char ***argv, char *arg, int errcode)
+{
+	free_double_char_array(argv);
+	handle_builtin_error(errcode, CMD_EXIT, arg);
+	if (errcode == ERR_B_NOT_NUMBER)
 		exit_program();
 }
 
 void	builtin_exit(char *argv[])
 {
 	printf("exit\n");
+	if (!argv)
+		exit_program();
 	if (argv[1] && (!is_numeric_argument(argv[1])))
-		exit_terminate(&argv, argv[1], BERR_NOT_NUMBER, 255);
+		exit_terminate_with_error(&argv, argv[1], ERR_B_NOT_NUMBER);
 	else if (argv[1] && argv[2])
-		exit_terminate(&argv, NULL, BERR_TOO_MANY_ARGUMENTS, 1);
+		exit_terminate_with_error(&argv, NULL, ERR_B_TOO_MANY_ARGUMENTS);
 	else if (argv[1])
-		exit_terminate(&argv, NULL, BERR_NONE, ft_atoi(argv[1]));
+		exit_terminate_with_no_error(&argv, NULL, ft_atoi(argv[1]));
 	else
-		exit_terminate(&argv, NULL, BERR_NONE, -1);
+		exit_terminate_with_no_error(&argv, NULL, -1);
 }
