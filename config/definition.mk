@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 07:31:02 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/25 11:21:42 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,17 @@
 
 # compile
 CC				=		cc
-# CFLAGS1			=	
+CFLAGS			=		-MMD -MP
 CFLAGS1			=		-Wall -Wextra -Werror
 CFLAGS2			=		-fsanitize=address -g3
-
-ifdef FSANITIZE_FLAG
-	CFLAGS		=		$(CFLAGS2)
-endif
 
 ifdef W_FLAG
 	CFLAGS		+=		$(CFLAGS1)
 endif
 
+ifdef FSANITIZE_FLAG
+	CFLAGS		=		$(CFLAGS2)
+endif
 
 # library archive
 AR				=		ar
@@ -88,17 +87,6 @@ DEV_DIR			=		dev
 LIB_INC_PATH	=		$(LIB_DIR)/$(INC_DIR)
 MAN_INC_PATH	=		$(MAN_DIR)/$(INC_DIR)
 BON_INC_PATH	=		$(BON_DIR)/$(INC_DIR)
-
-# file name
-INC_FILE		=		lexer \
-						minishell \
-						parser \
-						prompt \
-						signal
-
-# file name(absolute path)
-MAN_INC			=		$(addprefix $(MAN_INC_PATH)/, $(addsuffix .h, $(INC_FILE)))
-BON_INC			=		$(addprefix $(BON_INC_PATH)/, $(addsuffix _bonus.h, $(INC_FILE)))
 
 # flags
 MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)
@@ -198,6 +186,11 @@ TREE_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(TREE_DIR)/, $(addsuffix .o, $(TREE_FI
 ENV_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/$(ENV_DIR)/, $(addsuffix .o, $(ENV_FILE)))
 EXPAND_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXPAND_DIR)/, $(addsuffix .o, $(EXPAND_FILE)))
 HEREDOC_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(HEREDOC_DIR)/, $(addsuffix .o, $(HEREDOC_FILE)))
+
+# ****************************** dependency files ***************************** #
+
+MAN_DEP			=		$(MAN_OBJ:.o=.d)
+BON_DEP			=		$(BON_OBJ:.o=.d)
 
 # *********************************** bonus *********************************** #
 
@@ -319,3 +312,4 @@ TEST				=	lexer_test \
 						builtin_echo_test \
 						builtin_env_test \
 						builtin_exit_test
+

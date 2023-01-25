@@ -3,26 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 11:46:51 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 07:33:45 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/25 11:23:20 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+.DEFAULT_GOAL := all
 
 # **************************** command and flags ***************************** #
 
 # compile
 CC				=		cc
 CFLAGS1			=		-Wall -Wextra -Werror
-CFLAGS2			=		-fsanitize=address -g3
+CFLAGS2			=		-MMD -MP
+CFLAGS3			=		-fsanitize=address -g3
 
 ifdef FSANITIZE_FLAG
-	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
+	CFLAGS		=		$(CFLAGS1) $(CFLAGS2) $(CFLAGS3)
 else
-	CFLAGS		=		$(CFLAGS1)
+	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
 endif
 
 # library archive
@@ -42,7 +44,6 @@ INC_DIR			=		.
 # ******************************* header files ******************************* #
 
 INC_PATH		=		$(INC_DIR)
-INC				=		libft_internal.h
 INC_FLAG		=		-I./$(INC_PATH)
 
 # ******************************* object files ******************************* #
@@ -87,6 +88,10 @@ SRC_FILE		=		ft_exit \
 
 OBJ				=		$(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILE)))
 
+# ****************************** dependency files ***************************** #
+
+DEP				=		$(OBJ:.o=.d)
+
 # ******************************* basic rules ******************************** #
 
 .PHONY : all bonus clean fclean re
@@ -106,18 +111,16 @@ re :
 	make fclean
 	make all
 
+# **************************** dependency rules ****************************** #
+
+ifeq ($(MAKECMDGOALS), fclean)
+else ifeq ($(MAKECMDGOALS), clean)
+else
+	-include $(DEP)
+endif
+
 # ****************************** compile rules ******************************* #
 
-$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(INC_DIR)/libft_internal.h
-	mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
 	$(CC) -c $(CFLAGS) $< $(INC_FLAG) -o $@
-
-# ******************************* assist rules ******************************* #
-
-# build program with flag "-fsanitize=address -g3"
-.PHONY: fsanitize_all fsanitize_bonus
-fsanitize_all :
-	make FSANITIZE_FLAG=1 all
-
-fsanitize_bonus :
-	make FSANITIZE_FLAG=1 bonus

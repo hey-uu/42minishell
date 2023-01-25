@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 07:30:45 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/25 11:27:27 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
+.DEFAULT_GOAL := all
 
 include config/definition.mk
 
@@ -18,7 +19,7 @@ include config/definition.mk
 
 .PHONY : all bonus
 all : $(NAME)
-$(NAME) : $(INC) $(OBJ)
+$(NAME) : $(OBJ)
 	$(RM) $(RMFLAGS) $(RM_OBJ_DIR)
 	make -C $(LIBADT_PATH)
 	make -C $(LIBPRINTF_PATH)
@@ -31,8 +32,9 @@ include config/rules.mk
 
 .PHONY : clean fclean re
 clean :
-	$(RM) $(RMFLAGS) $(MAN_OBJ_PATH) $(BON_OBJ_PATH)
+	$(RM) $(RMFLAGS) $(MAN_OBJ_PATH) $(BON_OBJ_PATH) $(MAN_DIR)/objFlib
 	make -C $(LIBADT_PATH) fclean
+	make -C $(LIBPRINTF_PATH) fclean
 	make test_fclean
 
 fclean : clean
@@ -43,14 +45,6 @@ re :
 	make all
 
 # ******************************* assist rules ******************************* #
-
-# build program with flag "-fsanitize=address -g3"
-.PHONY: fsanitize_all fsanitize_bonus
-fsanitize_all :
-	make FSANITIZE_FLAG=1 all
-
-fsanitize_bonus :
-	make FSANITIZE_FLAG=1 bonus
 
 # build test program
 lexer_test : $(LIBADT) $(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
@@ -90,3 +84,4 @@ test_clean :
 
 test_fclean : test_clean
 	$(RM) $(RMFLAGS) $(TEST)
+
