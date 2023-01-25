@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 13:12:56 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/25 19:42:02 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,17 @@
 
 # compile
 CC				=		cc
-# CFLAGS1			=	
+CFLAGS			=		-MMD -MP
 CFLAGS1			=		-Wall -Wextra -Werror
 CFLAGS2			=		-fsanitize=address -g3
-
-ifdef FSANITIZE_FLAG
-	CFLAGS		=		$(CFLAGS2)
-endif
 
 ifdef W_FLAG
 	CFLAGS		+=		$(CFLAGS1)
 endif
 
+ifdef FSANITIZE_FLAG
+	CFLAGS		=		$(CFLAGS2)
+endif
 
 # library archive
 AR				=		ar
@@ -202,6 +201,11 @@ ENV_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/$(ENV_DIR)/, $(addsuffix .o, $(ENV_FILE
 EXPAND_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXPAND_DIR)/, $(addsuffix .o, $(EXPAND_FILE)))
 HEREDOC_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(HEREDOC_DIR)/, $(addsuffix .o, $(HEREDOC_FILE)))
 
+# ****************************** dependency files ***************************** #
+
+MAN_DEP			=		$(MAN_OBJ:.o=.d)
+BON_DEP			=		$(BON_OBJ:.o=.d)
+
 # *********************************** bonus *********************************** #
 
 # bonus flag
@@ -322,3 +326,4 @@ TEST				=	lexer_test \
 						builtin_echo_test \
 						builtin_env_test \
 						builtin_exit_test
+

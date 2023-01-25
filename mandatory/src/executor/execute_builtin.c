@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 05:30:55 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:49:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	execute_single_builtin(t_execute_unit *exe_unit)
 
 	do_expansion(exe_unit);
 	backup_standard_stream(ori_fd);
-	set_standard_stream(NULL, exe_unit->redir_list, 0);
+	do_redirecting(exe_unit->redir_list);
 	execute_builtin(exe_unit);
 	restore_standard_stream(ori_fd);
 	return (EXIT_SUCCESS);

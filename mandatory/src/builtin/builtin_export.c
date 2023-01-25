@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 02:16:02 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:02:14 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "error.h"
 #include "libft.h"
 
-static int	export_print_marked_variable_list(char ***argv)
+static void	export_print_marked_variable_list(char ***argv)
 {
 	char	**variable_list;
 	int		i;
@@ -28,24 +28,28 @@ static int	export_print_marked_variable_list(char ***argv)
 	i = 0;
 	while (variable_list[i])
 	{
-		printf("declare -x %s\n", variable_list[i]);
-		free(variable_list[i]);
+		if (printf("declare -x %s\n", variable_list[i]) < 0)
+		{
+			handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_EXPORT, "printf");
+			free_double_char_array(&variable_list);
+			return ;
+		}
 		i++;
 	}
-	free(variable_list);
-	return (BUILTIN_SUCCESS);
+	free_double_char_array(&variable_list);
+	exit_stat_update(0);
 }
 
-static void	export_append_variable_value(char *line, int i)
+static void	export_append_variable_value(char *arg, int i)
 {
 	char	*variable;
 	char	*old_value;
 	char	*appending_value;
 	char	*new_value;
 
-	variable = ft_strndup(line, i);
+	variable = ft_strndup(arg, i);
 	old_value = env_get(variable);
-	appending_value = ft_strdup(&line[i + 2]);
+	appending_value = ft_strdup(&arg[i + 2]);
 	if (!old_value)
 		new_value = appending_value;
 	else
@@ -56,51 +60,55 @@ static void	export_append_variable_value(char *line, int i)
 	env_set(variable, new_value);
 }
 
-int	export_update_marked_variable(char *line)
+static int	export_update_marked_variable(char *arg)
 {
 	int	i;
 
 	i = 0;
-	while (line[i] && (line[i] != '+' && line[i] != '='))
+	while (arg[i] && (arg[i] != '+' && arg[i] != '='))
 	{
-		if (!is_valid_variable_name_character(line[i], i))
+		if (!is_valid_variable_name_character(arg[i], i))
 		{
-			print_builtin_error_message(\
-			BERR_INVALID_IDENTIFIER, CMD_EXPORT, line);
+			handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_EXPORT, arg);
 			return (BUILTIN_FAIL);
 		}
 		i++;
 	}
-	if (line[i] == '+' && line[i + 1] != '=')
+	if (arg[i] == '+' && arg[i + 1] != '=')
 	{
-		print_builtin_error_message(BERR_INVALID_IDENTIFIER, CMD_EXPORT, line);
+		handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_EXPORT, arg);
 		return (BUILTIN_FAIL);
 	}
-	else if (line[i] == '+')
-		export_append_variable_value(line, i);
-	else if (line[i] == '=')
-		env_set(ft_strndup(line, i), ft_strdup(&line[i + 1]));
+	else if (arg[i] == '+')
+		export_append_variable_value(arg, i);
+	else if (arg[i] == '=')
+		env_set(ft_strndup(arg, i), ft_strdup(&arg[i + 1]));
 	else
-		env_set(ft_strndup(line, i), NULL);
+		env_set(ft_strndup(arg, i), NULL);
 	return (BUILTIN_SUCCESS);
 }
 
 void	builtin_export(char *argv[])
 {
 	int	i;
+	int	res;
 
 	if (!argv[1])
 	{
 		export_print_marked_variable_list(&argv);
 		return ;
 	}
-	i = 0;
+	free(argv[0]);
+	res = BUILTIN_SUCCESS;
+	i = 1;
 	while (argv[i])
 	{
 		if (export_update_marked_variable(argv[i]) == BUILTIN_FAIL)
-			exit_stat_update(1);
+			res = BUILTIN_FAIL;
 		free(argv[i]);
 		i++;
 	}
 	free(argv);
+	if (res == BUILTIN_SUCCESS)
+		exit_stat_update(0);
 }

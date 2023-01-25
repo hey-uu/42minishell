@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:10:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 01:17:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:20:35 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 #include "libft.h"
 #include "libadt.h"
 #include "expansion_internal.h"
+#include "error.h"
 #include "s_tree_node.h"
+#include "s_token.h"
 
 void	expand_cmd_name(char **cmd)
 {
@@ -57,7 +59,7 @@ void	process_ambiguous_redirect_error(t_darr *strings, int i, char *arg)
 {
 	int	j;
 
-	printf("goldsh: %s: ambiguous redirect\n", arg);
+	strings->istrarr[i] = (t_intstr){ERR_EXE_AMBIGUOUS_REDIR, ft_strdup(arg)};
 	j = i;
 	while (j < strings->used_size)
 	{
@@ -65,7 +67,6 @@ void	process_ambiguous_redirect_error(t_darr *strings, int i, char *arg)
 		strings->strarr[j] = NULL;
 		j++;
 	}
-	strings->istrarr[i] = (t_intstr){AMBIGUOUS_REDIRECT, NULL};
 }
 
 void	expand_redir_list(t_queue **q_redir_list, t_intstr **redir_list)
@@ -88,6 +89,7 @@ void	expand_redir_list(t_queue **q_redir_list, t_intstr **redir_list)
 		strings.istrarr[i] = (t_intstr){qdata.num, strings.strarr[i]};
 		i++;
 	}
+	darr_push_intstr(&strings, TOKEN_NONE, NULL);
 	destroy_queue(q_redir_list);
 	free(strings.iarr);
 	free(strings.strarr);

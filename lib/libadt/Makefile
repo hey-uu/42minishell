@@ -6,24 +6,25 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 19:19:22 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/24 05:36:02 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/25 11:23:43 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libadt.a
+.DEFAULT_GOAL := all
 
 # **************************** command and flags ***************************** #
 
 # compile
 CC				=		cc
 CFLAGS1			=		-Wall -Wextra -Werror
-CFLAGS2			=		-fsanitize=address -g3
+CFLAGS2			=		-MMD -MP
+CFLAGS3			=		-fsanitize=address -g3
 
 ifdef FSANITIZE_FLAG
-	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
-	FSAN_OPT	=		fsanitize_all
+	CFLAGS		=		$(CFLAGS1) $(CFLAGS2) $(CFLAGS3)
 else
-	CFLAGS		=		$(CFLAGS1)
+	CFLAGS		=		$(CFLAGS1) $(CFLAGS2)
 endif
 
 # library archive
@@ -63,19 +64,6 @@ DARR_INC_PATH	=		$(DARR_DIR)
 HASH_INC_PATH	=		$(HASH_DIR)
 LIST_INC_PATH	=		$(LIST_DIR)
 QUEUE_INC_PATH	=		$(QUEUE_DIR)
-
-DARR_INC_FILE	=		t_dynamic_array
-HASH_INC_FILE	=		hash_table_internal \
-						t_hash_table
-LIST_INC_FILE	=		list_internal \
-						t_list
-QUEUE_INC_FILE	=		queue_internal \
-						t_queue
-
-DARR_INC		=		$(addprefix $(DARR_DIR)/, $(addsuffix .h, $(DARR_INC_FILE)))
-HASH_INC		=		$(addprefix $(HASH_DIR)/, $(addsuffix .h, $(HASH_INC_FILE)))
-LIST_INC		=		$(addprefix $(LIST_DIR)/, $(addsuffix .h, $(LIST_INC_FILE)))
-QUEUE_INC		=		$(addprefix $(QUEUE_DIR)/, $(addsuffix .h, $(QUEUE_INC_FILE)))
 
 DARR_INC_FLAG	=		-I./$(DARR_DIR) -I./$(LIBFT_INC_PATH) -I./$(LIBADT_INC_PATH)
 HASH_INC_FLAG	=		-I./$(HASH_DIR) -I./$(LIBFT_INC_PATH) -I./$(LIBADT_INC_PATH)
@@ -120,7 +108,11 @@ LIST_OBJ		=		$(addprefix $(OBJ_DIR)/$(LIST_DIR)/, $(addsuffix .o, $(LIST_FILE)))
 QUEUE_OBJ		=		$(addprefix $(OBJ_DIR)/$(QUEUE_DIR)/, $(addsuffix .o, $(QUEUE_FILE)))
 HASH_OBJ		=		$(addprefix $(OBJ_DIR)/$(HASH_DIR)/, $(addsuffix .o, $(HASH_FILE)))
 OBJ				=		$(DARR_OBJ) $(HASH_OBJ) $(LIST_OBJ) $(QUEUE_OBJ)
- 
+
+# ***************************** dependency files ***************************** #
+
+DEP				=		$(OBJ:.o=.d)
+
 # ******************************* basic rules ******************************** #
 
 .PHONY : all bonus clean fclean re
@@ -142,24 +134,32 @@ re :
 	make fclean
 	make all
 
+# **************************** dependency rules ****************************** #
+
+ifeq ($(MAKECMDGOALS), fclean)
+else ifeq ($(MAKECMDGOALS), clean)
+else
+	-include $(DEP)
+endif
+
 # ****************************** compile rules ******************************* #
 
-$(OBJ_DIR)/$(DARR_DIR)/%.o : $(DARR_DIR)/%.c $(DARR_INC) $(LIBFT)
+$(OBJ_DIR)/$(DARR_DIR)/%.o : $(DARR_DIR)/%.c $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(DARR_DIR)
 	$(CC) -c $(CFLAGS) $< $(DARR_INC_FLAG) -o $@
 
-$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIST_INC) $(LIBFT)
+$(OBJ_DIR)/$(LIST_DIR)/%.o : $(LIST_DIR)/%.c $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(LIST_DIR)
 	$(CC) -c $(CFLAGS) $< $(LIST_INC_FLAG) -o $@
 
-$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(QUEUE_INC) $(LIBFT)
+$(OBJ_DIR)/$(QUEUE_DIR)/%.o : $(QUEUE_DIR)/%.c $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(QUEUE_DIR)
 	$(CC) -c $(CFLAGS) $< $(QUEUE_INC_FLAG) -o $@
 
-$(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(HASH_INC) $(LIBFT)
+$(OBJ_DIR)/$(HASH_DIR)/%.o : $(HASH_DIR)/%.c $(LIBFT)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/$(HASH_DIR)
 	$(CC) -c $(CFLAGS) $< $(HASH_INC_FLAG) -o $@

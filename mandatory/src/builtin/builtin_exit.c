@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 12:53:59 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:43:47 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,33 @@ static int	is_numeric_argument(char *argument)
 	return (1);
 }
 
-static int	exit_error_handler(int error_number, char ***argv, char *arg)
+static void	exit_terminate_with_no_error(char ***argv, int exit_stat)
 {
-	print_builtin_error_message(error_number, CMD_EXIT, arg);
 	free_double_char_array(argv);
-	exit_stat_update(2);
+	if (exit_stat >= 0)
+		exit_stat_update(exit_stat);
 	exit_program();
-	return (BUILTIN_FAIL);
+}
+
+static void	exit_terminate_with_error(char ***argv, char *arg, int errcode)
+{
+	handle_builtin_error(errcode, CMD_EXIT, arg);
+	free_double_char_array(argv);
+	if (errcode == ERR_B_NOT_NUMBER)
+		exit_program();
 }
 
 void	builtin_exit(char *argv[])
 {
 	printf("exit\n");
 	if (!argv)
-		;
-	else if (argv[1] && (!is_numeric_argument(argv[1])))
-		exit_error_handler(BERR_NOT_NUMBER, &argv, argv[1]);
+		exit_program();
+	if (argv[1] && (!is_numeric_argument(argv[1])))
+		exit_terminate_with_error(&argv, argv[1], ERR_B_NOT_NUMBER);
 	else if (argv[1] && argv[2])
-		exit_error_handler(BERR_TOO_MANY_ARGUMENTS, &argv, NULL);
+		exit_terminate_with_error(&argv, NULL, ERR_B_TOO_MANY_ARGUMENTS);
 	else if (argv[1])
-		exit_stat_update(ft_atoi(argv[1]));
-	free_double_char_array(&argv);
-	exit_program();
+		exit_terminate_with_no_error(&argv, ft_atoi(argv[1]));
+	else
+		exit_terminate_with_no_error(&argv, -1);
 }

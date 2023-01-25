@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:24:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 13:09:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:56:51 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	print_welcome(void)
  ╚═════╝  ╚═════╝ ╚══════╝╚═════╝     ╚═════╝ ╚═╝  ╚═╝╚═════╝    ╚═╝   \n\n";
 	static char	*shell_introduction = \
 "\n /\\                                                                /\\\
-\n   ==============================================================\
-\n     welcome to yonazang and meyunkim's shell....\
-\n     this is crazy...\
-\n     let me introduce my baby... my gold baby.... GEUMJJOKI...\
-\n   ==============================================================\
+\n    ==============================================================\
+\n      welcome to yonazang and meyunkim's shell....\
+\n      this is crazy...\
+\n      let me introduce my baby... my gold baby.... GEUMJJOKI...\
+\n    ==============================================================\
 \n";
 
 	printf(YELLO "\n%s" RESET, shell_name);
