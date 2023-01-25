@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_tree.c                               :+:      :+:    :+:   */
+/*   destroy_tree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 15:36:35 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/10 15:37:15 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/25 19:41:20 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/25 19:45:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tree.h"
+
+void	free_double_char_array(char ***array);
+
+void	free_redir_array(t_redir **redir_list)
+{
+	int	i;
+
+	i = 0;
+	while ((*redir_list)[i].num != TOKEN_NONE)
+	{
+		free((*redir_list)[i].str);
+		i++;
+	}
+	free(*redir_list);
+	*redir_list = NULL;
+}
 
 static void	destroy_execute_unit(t_execute_unit *exe_unit)
 {
@@ -22,6 +38,10 @@ static void	destroy_execute_unit(t_execute_unit *exe_unit)
 		destroy_queue(&exe_unit->q_cmd_argv);
 	if (exe_unit->q_redir_list)
 		destroy_queue(&exe_unit->q_redir_list);
+	if (exe_unit->cmd_argv)
+		free_double_char_array(&exe_unit->cmd_argv);
+	if (exe_unit->redir_list)
+		free_redir_array(&exe_unit->q_redir_list);
 // exe unit cmd_argv, redir_list 할당 해제 함수  추가
 	free(exe_unit);
 }
