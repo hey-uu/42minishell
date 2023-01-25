@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:39:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:21:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	*lists_of_commands;
+	char		*lists_of_commands;
+	t_token		*tokens;
+	t_token		syntax_error_near_token;
+	t_tree_node	*parse_tree;
+	int			err_code;
 
 	argc++;
 	argv++;
@@ -32,11 +36,12 @@ int	main(int argc, char **argv, char **envp)
 	print_welcome();
 	while (1)
 	{
+		err_code = 0;
 		lists_of_commands = readline(PS1_DOLLAR);
-		g_goldsh.token = lexer(lists_of_commands);
-		g_goldsh.node = parser(g_goldsh.token);
-		show_tree(g_goldsh.node, 0);
-		destroy_tree(g_goldsh.node);
+		lexer(lists_of_commands, &tokens, &err_code, &syntax_error_near_token);
+		parser(tokens, &parse_tree, &err_code, &syntax_error_near_token);
+		show_tree(parse_tree, 0);
+		destroy_tree(parse_tree);
 		// sleep(2);
 		// system("leaks minishell");
 		free(lists_of_commands);
