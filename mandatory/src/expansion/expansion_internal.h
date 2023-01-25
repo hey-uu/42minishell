@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:14:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:45:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define INITIAL_WORD_ARR_SIZE 3
 # define INITIAL_WORDELEM_ARR_SIZE 10
 
-# define AMBIGUOUS_REDIRECT -1
 # define IS_WILDCARD -1
 
 enum e_word_elem_type
