@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 12:06:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:27:47 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ char	*process_heredoc(char *word)
 	store_delimiter(delimiter, word);
 	quote = (delimiter_len != (int)ft_strlen(word));
 	heredoc = generate_here_document(delimiter, quote);
+	free(delimiter);
 	return (heredoc);
 }
