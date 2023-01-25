@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 06:18:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:52:45 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "minishell.h"
 #include "parser.h"
 #include "env_manager.h"
+#include "signal_handle.h"
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 {
@@ -23,6 +24,7 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 
 	do_expansion(exe_unit);
 	set_standard_stream(pl, exe_unit->redir_list, nth);
+	set_signal(DEFAULT, DEFAULT);
 	if (get_builtin_cmd_idx(exe_unit->cmd_name) >= 0)
 	{
 		execute_builtin(exe_unit);
