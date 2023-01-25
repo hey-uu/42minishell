@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:23:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:29:50 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		execute_simple_command(\
 		t_execute_unit *exe_unit, t_pipeline *pl, int nth);
 int		get_builtin_cmd_idx(char *cmd_name);
 
+int		do_redirecting(t_redir *redir_list);
 void	set_standard_stream(t_pipeline *pl, t_redir *redir_list, int nth);
 void	open_new_pipe(int new_pipe_fd[2]);
 void	close_pipe_in_parent(\
