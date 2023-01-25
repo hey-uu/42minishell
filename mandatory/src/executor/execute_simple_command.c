@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 14:43:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:43:57 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "minishell.h"
 #include "parser.h"
 #include "env_manager.h"
+#include "signal_handle.h"
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 {
@@ -22,6 +23,7 @@ static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 
 	do_expansion(exe_unit);
 	set_standard_stream(pl, exe_unit->redir_list, nth);
+	set_signal(DEFAULT, DEFAULT);
 	if (get_builtin_cmd_idx(exe_unit->cmd_name) >= 0)
 	{
 		execute_builtin(exe_unit);

@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:06 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 05:12:02 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:49:15 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "parser.h"
 #include "env_manager.h"
 #include <sys/wait.h>
+#include "signal_handle.h"
 
 static int	count_childs_of_pipeline(t_node *node)
 {
@@ -37,6 +38,7 @@ static void	wait_childs_of_pipeline(int child_cnt, int last_child_pid, \
 	int			stat;
 	int			term_pid;
 
+	set_signal(IGNORE, IGNORE);
 	i = 0;
 	while (i < child_cnt)
 	{
@@ -52,6 +54,7 @@ static void	wait_childs_of_pipeline(int child_cnt, int last_child_pid, \
 		}
 		i++;
 	}
+	set_signal(CATCH, CATCH);
 }
 
 int	execute_pipeline(t_node *node)

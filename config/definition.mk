@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 18:21:25 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/25 19:52:24 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ LIBPRINTF_PATH	=		$(LIB_DIR)/$(LIBPRINTF_DIR)
 LIBPRINTF		=		$(LIBPRINTF_PATH)/$(LIBPRINTF_NAME)
 
 # flags
-LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lprintf -L./$(LIBPRINTF_PATH) -lreadline
+LIBFLAGS		=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) \
+						-lprintf -L./$(LIBPRINTF_PATH) \
+						-lreadline -L $(shell brew --prefix readline)/lib/
 
 # ******************************** directory ********************************* #
 
@@ -89,9 +91,21 @@ LIB_INC_PATH	=		$(LIB_DIR)/$(INC_DIR)
 MAN_INC_PATH	=		$(MAN_DIR)/$(INC_DIR)
 BON_INC_PATH	=		$(BON_DIR)/$(INC_DIR)
 
+# file name
+INC_FILE		=		lexer \
+						minishell \
+						parser \
+						prompt \
+
+# file name(absolute path)
+MAN_INC			=		$(addprefix $(MAN_INC_PATH)/, $(addsuffix .h, $(INC_FILE)))
+BON_INC			=		$(addprefix $(BON_INC_PATH)/, $(addsuffix _bonus.h, $(INC_FILE)))
+
 # flags
-MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)
-BON_INC_FLAG	=		-I./$(BON_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)
+MAN_INC_FLAG	=		-I./$(MAN_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)\
+						-I$(shell brew --prefix readline)/include/
+BON_INC_FLAG	=		-I./$(BON_INC_PATH) -I./$(LIB_INC_PATH) -I./$(LIBADT_PATH)\
+						-I$(shell brew --prefix readline)/include/
 
 # ******************************* object files ******************************* #
 
