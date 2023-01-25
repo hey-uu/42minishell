@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:15:52 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:22:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@
 # define ERR_MSG_NO_SUCH_FILE_OR_DIR "no such file or directory"
 # define ERR_MSG_PERMISSION_DENIED "permission denied"
 # define ERR_MSG_INVALID_IDENTIFIER "not a valid identifier"
-
 # define ERR_MSG_IS_A_DIR "is a directory"
 # define ERR_MSG_COMMAND_NOT_FOUND "command not found"
-
 # define BUILTIN_ERROR_NUMBER 8
 
 enum e_error_code
