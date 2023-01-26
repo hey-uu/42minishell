@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   w_dir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:43:24 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:33:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include "error_handle.h"
-#include "env_manager.h"
 
 DIR	*w_opendir(const char *filename)
 {
@@ -23,7 +21,7 @@ DIR	*w_opendir(const char *filename)
 	res = opendir(filename);
 	if (res == NULL)
 	{
-		handle_execute_error(ERR_EXE_SYSCALL_FAILED, "opendir", NULL);
+		perror("goldsh: opendir");
 		exit_program();
 	}
 	return (res);

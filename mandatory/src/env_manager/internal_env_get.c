@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:07:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 07:25:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:14:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*__env_get__(t_env_tab *table, char *variable)
 	return (NULL);
 }
 
-char	*__join_defined_variable_and_value__(char *variable, char *value)
+static char	*__join_defined_variable__(char *variable, char *value)
 {
 	const int	var_len = ft_strlen(variable);
 	int			val_len;
@@ -61,8 +61,7 @@ char	**__env_get_defined_variable_list__(t_env_tab *table)
 		{
 			if (cur->content)
 			{
-				arr[j] = __join_defined_variable_and_value__(\
-						cur->key, cur->content);
+				arr[j] = __join_defined_variable__(cur->key, cur->content);
 				j++;
 			}
 			cur = cur->next;
@@ -73,8 +72,7 @@ char	**__env_get_defined_variable_list__(t_env_tab *table)
 	return (arr);
 }
 
-
-char	*__join_marked_variable_and_value__(char *variable, char *value)
+static char	*__join_marked_variable__(char *variable, char *value)
 {
 	const int	var_len = ft_strlen(variable);
 	int			val_len;
@@ -113,7 +111,7 @@ char	**__env_get_marked_variable_list__(t_env_tab *table)
 		cur = table->bucket_arr[i];
 		while (cur)
 		{
-			arr[j] = __join_marked_variable_and_value__(cur->key, cur->content);
+			arr[j] = __join_marked_variable__(cur->key, cur->content);
 			j++;
 			cur = cur->next;
 		}

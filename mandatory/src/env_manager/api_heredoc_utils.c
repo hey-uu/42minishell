@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   api_heredoc_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:56:54 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:27:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,8 @@
 #include "s_tree_node.h"
 #include "s_token.h"
 #include "wrapped_syscall.h"
-#include <unistd.h>
-#include <stdio.h>
 
-void	heredoc_init(t_node *root)
-{
-	heredoc_manager(HEREDOC_INIT, 0, root, NULL);
-}
-
-int	heredoc_stat_get(void)
-{
-	return (heredoc_manager(HEREDOC_STAT_GET, 0, NULL, NULL));
-}
-
-void	__unlink_heredoc_files__(t_queue *q_redir_list)
+static void	__unlink_heredoc_files__(t_queue *q_redir_list)
 {
 	int		i;
 	char	*filename;
@@ -44,7 +32,7 @@ void	__unlink_heredoc_files__(t_queue *q_redir_list)
 	}
 }
 
-void	__unlink_all_heredoc_files__(t_node *node)
+static void	__unlink_all_heredoc_files__(t_node *node)
 {
 	if (!node)
 		return ;
@@ -53,6 +41,17 @@ void	__unlink_all_heredoc_files__(t_node *node)
 	if (node->exe_unit && node->exe_unit->q_redir_list)
 		__unlink_heredoc_files__(node->exe_unit->q_redir_list);
 }
+
+void	heredoc_init(t_node *root)
+{
+	heredoc_manager(HEREDOC_INIT, 0, root, NULL);
+}
+
+int	heredoc_stat_get(void)
+{
+	return (heredoc_manager(HEREDOC_STAT_GET, 0, NULL, NULL));
+}
+
 
 void	heredoc_interupted(char *cur_heredoc_file)
 {

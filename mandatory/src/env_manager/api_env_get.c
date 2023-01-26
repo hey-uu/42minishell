@@ -6,11 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:45:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 13:23:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:01:56 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "env_manager_internal.h"
 #include "libft.h"
 
