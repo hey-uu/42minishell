@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:57:56 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:11:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	main(int argc, char **argv, char *envp[])
 	char			*input;
 	// struct termios	ori_term;
 
+	argc = 0;
+	argv = NULL;
 	init_shell(envp);
 	while (1)
 	{
@@ -81,7 +83,7 @@ int	main(int argc, char **argv, char *envp[])
 		add_history(input);
 		run_commands(input);
 		free(input);
-		// system("leaks minishell");
+		system("leaks minishell");
 	}
 	// set_terminal(CANONICAL);
 }

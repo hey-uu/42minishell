@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:58:52 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:10:40 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		do_expansion(t_execute_unit *exe_unit);
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
-char	*process_heredoc(t_queue *q_redir_list, char *word);
+char	*process_heredoc(char *word);
 void	exit_by_error(char *msg);
 
 #endif

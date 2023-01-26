@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 08:46:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 17:44:34 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:08:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	signal_handler(int signo)
 
 static void	signal_ignore(int signo)
 {
+	signo = 0;
 	printf("\n");
 }
 

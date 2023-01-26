@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/25 23:47:33 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:10:51 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ void			destroy_tree(t_node *node);
 t_execute_unit	*create_execute_unit(int node_type);
 void			push_arguments(t_queue *q_cmd_argv, t_token *token, int offset);
 void			push_arguments(t_queue *q_cmd_argv, t_token *token, int offset);
-void			push_redirection(\
-				t_queue *q_redir_list, t_token *token, int offset);
+void			push_redirection(t_queue *q_redir_list, t_token *token, int offset);
 void			show_tree(t_node *tree, int depth);
 
 // heredoc
-char			*process_heredoc(t_queue *q_redir_list, char *word);
+char			*process_heredoc(char *word);
 
 
 #endif

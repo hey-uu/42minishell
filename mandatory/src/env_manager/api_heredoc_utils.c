@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 19:57:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:09:17 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	heredoc_init(t_node *root)
 {
-	heredoc_manager(HEREDOC_INIT, 0, NULL, NULL);
+	heredoc_manager(HEREDOC_INIT, 0, root, NULL);
 }
 
 int	heredoc_stat_get(void)
