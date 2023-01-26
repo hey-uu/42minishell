@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:29:50 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:52:35 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_pipeline {
 
 typedef void	(*t_builtin)(char **argv);
 
-void	executor(t_node *parse_tree, int *errcode);
+int	executor(t_node *parse_tree);
 
 void	builtin_echo(char *argv[]);
 void	builtin_cd(char *argv[]);

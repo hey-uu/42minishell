@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:08:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:57:56 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,6 @@
 // * history 업데이트
 // * executor 함수
 
-void	free_allocated_memory(t_token *token_list, t_node *parse_tree)
-{
-	destroy_token_list(token_list);
-	destroy_tree(parse_tree);
-}
-
-void	run_input_commands(char *input)
-{
-	t_token	*token_list;
-	t_node	*parse_tree;
-	int		errcode;
-	t_token	syntax_error_near_token;
-
-	errcode = 0;
-	lexer(input, &token_list, &errcode, &syntax_error_near_token);
-	parser(token_list, &parse_tree, &errcode, &syntax_error_near_token);
-	executor(parse_tree, &errcode);
-	handle_error(errcode, syntax_error_near_token);
-	free_allocated_memory(token_list, parse_tree);
-}
 
 // #include <termios.h>
 
@@ -99,7 +79,7 @@ int	main(int argc, char **argv, char *envp[])
 		if (!input)
 			builtin_exit(NULL);
 		add_history(input);
-		run_input_commands(input);
+		run_commands(input);
 		free(input);
 		// system("leaks minishell");
 	}
