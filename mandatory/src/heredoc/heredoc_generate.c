@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:12:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:08:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "heredoc_internal.h"
 #include "wrap.h"
 #include "sys/wait.h"
+#include <stdio.h>
 
 static void	get_random_temp_file_name(char **file_name)
 {
@@ -34,7 +35,7 @@ static void	get_random_temp_file_name(char **file_name)
 			(*file_name) = ft_strdup(INITIAL_TEMP_FILENAME);
 		}
 		w_read(fd, buf, 1);
-		buf[0] = charset[(buf[0] + 255) % 63];
+		buf[0] = charset[(buf[0] + 128) % 63];
 		new_file_name = ft_strjoin((*file_name), buf);
 		free((*file_name));
 		(*file_name) = new_file_name;
@@ -45,9 +46,7 @@ static void	get_random_temp_file_name(char **file_name)
 static void	get_heredoc_input(int fd, char *delimiter, int quote)
 {
 	char		*line;
-	// extern int	rl_catch_signals;
 
-	// rl_catch_signals = 1;
 	while (1)
 	{
 		line = readline(PS_HEREDOC);
