@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:49:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 02:06:06 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:56:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 
 # include "minishell.h"
 # include "error.h"
-
-/*------------ DEFINE MACRO CONSTANTS ------------*/
-
-enum e_lexer_result_status
-{
-	LEXER_FAILURE = -1,
-	LEXER_SUCCESS = 0
-};
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
