@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:39:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	parser(t_token *tokens, t_node **parse_tree)
 		(*parse_tree)->type = NODE_NONE;
 		return (SUCCESS);
 	}
-	heredoc_init(*parse_tree);
 	offset = 0;
+	heredoc_init(*parse_tree);
 	res = parse_list(parse_tree, tokens, &offset);
 	if (heredoc_stat_get() == HEREDOC_INTSIG)
 	{

@@ -6,11 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:27:08 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 00:40:12 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env_manager_internal.h"
+#include "heredoc_manager_internal.h"
+#include "exit_stat_manager.h"
 #include "s_tree_node.h"
 #include "s_token.h"
 #include "wrapped_syscall.h"
@@ -51,7 +52,6 @@ int	heredoc_stat_get(void)
 {
 	return (heredoc_manager(HEREDOC_STAT_GET, 0, NULL, NULL));
 }
-
 
 void	heredoc_interupted(char *cur_heredoc_file)
 {

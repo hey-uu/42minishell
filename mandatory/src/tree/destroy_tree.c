@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_tree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:41:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:42:15 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:38:25 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	destroy_execute_unit(t_execute_unit *exe_unit)
 		free_double_char_array(&exe_unit->cmd_argv);
 	if (exe_unit->redir_list)
 		free_redir_array(&exe_unit->redir_list);
-// exe unit cmd_argv, redir_list 할당 해제 함수  추가
 	free(exe_unit);
 }
 

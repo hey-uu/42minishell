@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manager_exit_stat.c                                :+:      :+:    :+:   */
+/*   exit_stat_manager.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:33:18 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:25:21 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/27 00:40:36 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 00:42:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "env_manager_internal.h"
+#ifndef EXIT_STAT_MANAGER_H
+# define EXIT_STAT_MANAGER_H
 
-int	exit_stat_manager(int option, unsigned long new_stat)
-{
-	static int	exit_stat;
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
-	if (option == EXIT_STAT_GET)
-	{
-		return (exit_stat);
-	}
-	else if (option == EXIT_STAT_UPDATE)
-	{
-		exit_stat = (new_stat) % 300;
-	}
-	else if (option == EXIT_PROGRAM)
-	{
-		exit(exit_stat);
-	}
-	return (exit_stat);
-}
+// exit status manager
+int		exit_stat_get(void);
+char	*exit_stat_get_dup_str(void);
+char	*exit_stat_get_str(void);
+int		exit_stat_update(int new_stat);
+void	exit_program(void);
+
+#endif

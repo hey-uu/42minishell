@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 00:26:43 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static int	subshell_parenthesis(t_node *node, t_token *tokens, int *offset)
 
 static int	subshell_redirect_list(t_node *node, t_token *tokens, int *offset)
 {
+	t_queue	*q_redir_list;
+
 	node->exe_unit = create_execute_unit(node->type);
+	q_redir_list = node->exe_unit->q_redir_list;
 	while (is_redirection(tokens[*offset].type))
 	{
 		(*offset)++;
-		if (tokens[*offset].type == TOKEN_WORD)
-			push_redirection(node->exe_unit->q_redir_list, tokens, *offset - 1);
-		else
-			return (FAILURE);
-		if (heredoc_stat_get() == HEREDOC_INTSIG)
+		if (!((tokens[*offset].type == TOKEN_WORD)
+				&& push_redirect(q_redir_list, tokens, *offset - 1) == SUCCESS))
 			return (FAILURE);
 		(*offset)++;
 	}
