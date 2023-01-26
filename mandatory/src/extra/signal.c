@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 08:46:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:08:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:51:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+
+static void	print_newline(int signo)
+{
+	(void)signo;
+	write(1, "\n", 1);
+}
 
 static void	signal_handler(int signo)
 {
@@ -32,11 +38,6 @@ static void	signal_handler(int signo)
 	}
 }
 
-static void	signal_ignore(int signo)
-{
-	signo = 0;
-	printf("\n");
-}
 
 void	set_signal(int sig_int, int sig_quit)
 {
@@ -44,7 +45,7 @@ void	set_signal(int sig_int, int sig_quit)
 		if (sig_int == DEFAULT)
 			signal(SIGINT, SIG_DFL);
 		else if (sig_int == IGNORE)
-			signal(SIGINT, signal_ignore);
+			signal(SIGINT, print_newline);
 		else if (sig_int == CATCH)
 			signal(SIGINT, signal_handler);
 	}
