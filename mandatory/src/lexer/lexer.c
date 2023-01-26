@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/15 23:52:13 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:38:08 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,20 @@ static int	do_lexing(char *input, t_token *token_list, int token_cnt)
 	return (SUCCESS);
 }
 
-void	lexer(char *input, t_token **token_list, int *errcode, \
-								t_token *syntax_error_near_token)
+int	lexer(char *input, t_token **token_list)
 {
 	int		token_cnt;
 
 	token_cnt = count_tokens(input);
 	if (token_cnt == -1)
 	{
-		*errcode = ERROR_IN_SYNTAX;
-		*syntax_error_near_token = (t_token){TOKEN_NONE, NULL};
-		return ;
+		handle_syntax_error((t_token){TOKEN_NONE, NULL});
+		return (FAILURE);
 	}
 	*token_list = malloc(sizeof(t_token) * (token_cnt + 1));
 	if (!*token_list || do_lexing(input, *token_list, token_cnt) == FAILURE)
 	{
-		*errcode = ERROR_MALLOC_FAILED;
-		return ;
+		return (FAILURE);
 	}
+	return (SUCCESS);
 }

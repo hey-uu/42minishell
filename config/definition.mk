@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 19:52:24 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/26 17:49:17 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,8 @@ MAN_SRC_PATH	=		$(MAN_DIR)/$(SRC_DIR)
 BON_SRC_PATH	=		$(BON_DIR)/$(SRC_DIR)
 
 # file name
+MAIN_FILE		=		main \
+						run_commands
 BUILTIN_FILE	=		builtin_cd_utils \
 						builtin_cd \
 						builtin_pwd \
@@ -192,12 +194,11 @@ SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXPAND_DIR)/, $(EXPAND_FILE)) \
 						$(addprefix $(HEREDOC_DIR)/, $(HEREDOC_FILE)) \
 						$(addprefix $(WRAPPED_DIR)/, $(WRAPPED_FILE)) \
-
+						$(MAIN_FILE)
 
 # file name(absolute path)
-MAN_NO_MAIN_OBJ	=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
-MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE))) $(MAN_OBJ_PATH)/main.o
-BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE))) $(BON_OBJ_PATH)/main.o
+MAN_OBJ			=		$(addprefix $(MAN_OBJ_PATH)/, $(addsuffix .o, $(SRC_FILE)))
+BON_OBJ			=		$(addprefix $(BON_OBJ_PATH)/, $(addsuffix _bonus.o, $(SRC_FILE)))
 
 ERROR_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(EXTRA_DIR)/, error.o)
 LEXER_OBJ		=		$(addprefix $(MAN_OBJ_PATH)/$(LEXER_DIR)/, $(addsuffix .o, $(LEXER_FILE)))

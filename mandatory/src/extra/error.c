@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:24:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:46:52 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ void	handle_access_command_error(int errcode, char *cmd)
 void	handle_execute_error(int errcode, char *cmd, char *arg)
 {
 	const char	*msg[] = {
-		ERR_MSG_NONE, ERR_MSG_SYSCALL_FAILED, ERR_MSG_AMBIGUOUS_REDIRECT,
+		ERR_MSG_NONE,
+		ERR_MSG_SYSCALL_FAILED,
+		ERR_MSG_AMBIGUOUS_REDIRECT,
 	};
 	const int	exit_stat[] = {
 		0, 1, 1
@@ -89,16 +91,6 @@ void	handle_execute_error(int errcode, char *cmd, char *arg)
 	error_print(cmd, arg, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
 	// exit_program();
-}
-
-void	handle_error(int errcode, t_token syntax_error_near_token)
-{
-	if (errcode == 0)
-		return ;
-	else if (errcode == ERROR_IN_SYNTAX)
-		handle_syntax_error(syntax_error_near_token);
-	dprintf(2, "Error! This errorcode is... %d\n", errcode);
-	exit(1);
 }
 
 void	exit_by_error(char *msg)

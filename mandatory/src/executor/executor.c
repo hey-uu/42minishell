@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 21:11:58 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:53:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include "parser.h"
 #include "env_manager.h"
 
-void	executor(t_node *parse_tree, int *errcode)
+int	executor(t_node *parse_tree)
 {
-	if (*errcode)
-		return ;
-	if (execute_list(parse_tree) == FAILURE)
-		*errcode = ERROR_EXECUTE_FAILED;
+	if (execute_list(parse_tree) == SUCCESS)
+		return (SUCCESS);
+	else
+		return (FAILURE);
 }
