@@ -40,4 +40,3 @@ void	run_commands(char *input)
 	execute(parse_tree, &errcode);
 	free_allocated_memory(token_list, parse_tree);
 }
-e
