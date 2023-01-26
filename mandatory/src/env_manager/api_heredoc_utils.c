@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   api_heredoc_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:09:17 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:14:39 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
 #include "s_tree_node.h"
 #include "s_token.h"
-#include "wrap.h"
+#include "wrapped_syscall.h"
 #include <unistd.h>
 
 void	heredoc_init(t_node *root)

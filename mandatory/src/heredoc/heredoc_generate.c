@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_generate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:12:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:14:39 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "signal_handle.h"
 #include "env_manager.h"
 #include "heredoc_internal.h"
-#include "wrap.h"
+#include "wrapped_syscall.h"
 #include "sys/wait.h"
 
 static void	get_random_temp_file_name(char **file_name)
