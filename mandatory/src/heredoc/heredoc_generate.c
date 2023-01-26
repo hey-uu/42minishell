@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:09:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:12:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	generate_here_document(char **heredoc, char *delimiter, int quote)
 	int		pid;
 	int		stat;
 
+	set_signal(IGNORE, IGNORE);
 	pid = w_fork();
 	if (pid == 0)
 	{
@@ -81,6 +82,7 @@ void	generate_here_document(char **heredoc, char *delimiter, int quote)
 		exit_program();
 	}
 	w_wait(&stat);
+	set_signal(CATCH, CATCH);
 	if (WIFSIGNALED(stat) && WTERMSIG(stat) == SIGINT)
 	{
 		heredoc_interupted(*heredoc);
