@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 13:13:53 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:48:01 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ char		**env_get_defined_variable_list(void);
 char		**env_get_marked_variable_list(void);
 
 // heredoc status manager
-void		heredoc_is_in_process(char *file_name, int fd);
-void		heredoc_is_done(void);
+void		heredoc_init(void);
+void		heredoc_in_process(t_queue *new_redir_list);
+void		heredoc_done(void);
+void		heredoc_interupted(char *cur_heredoc_file);
 int			heredoc_stat_get(void);
 
 #endif

@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:52:43 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/13 04:52:22 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "env_manager.h"
 #include "parser.h"
 
 int	parse_list(t_node **root, t_token *tokens, int *offset)
@@ -18,8 +19,8 @@ int	parse_list(t_node **root, t_token *tokens, int *offset)
 
 	node = *root;
 	node->first_child = create_tree_node();
-	if (parse_pipeline(node->first_child, tokens, offset) == SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
+	if (parse_pipeline(node->first_child, tokens, offset) == FAILURE)
+		return (FAILURE);
 	if (tokens[*offset].type == TOKEN_AND_IF)
 		node->type = NODE_AND_IF;
 	else if (tokens[*offset].type == TOKEN_OR_IF)
@@ -28,12 +29,12 @@ int	parse_list(t_node **root, t_token *tokens, int *offset)
 	{
 		*root = node->first_child;
 		free(node);
-		return (SYNTAX_OK);
+		return (SUCCESS);
 	}
 	(*offset)++;
 	node->first_child->next_sibling = create_tree_node();
 	if (parse_list(&(node->first_child->next_sibling), tokens, offset) \
-															== SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
-	return (SYNTAX_OK);
+															== FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
 }

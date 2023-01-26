@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:24:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:46:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,10 @@ void	handle_error(int errcode, t_token syntax_error_near_token)
 		return ;
 	else if (errcode == ERROR_IN_SYNTAX)
 		handle_syntax_error(syntax_error_near_token);
-	dprintf(2, "Error! This errorcode is... %d\n", errcode);
-	exit(1);
+	else if (errcode == ERROR_HEREDOC_INTERUPTED)
+		exit_stat_update(1);
+	// ft_dprintf(2, "Error! This errorcode is... %d\n", errcode);
+	// exit(1);
 }
 
 void	exit_by_error(char *msg)

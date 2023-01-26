@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:21:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:43:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ enum e_error_code
 	ERROR_MALLOC_FAILED = 1,
 	ERROR_IN_SYNTAX = 2,
 	ERROR_EXECUTE_FAILED = 3,
+	ERROR_HEREDOC_INTERUPTED
 };
 
 enum e_builtin_error_code

@@ -6,11 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/19 19:24:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include "env_manager.h"
 
 static int	parse_prefix(t_execute_unit *exe_unit, t_token *tokens, int *offset)
 {
@@ -20,10 +21,12 @@ static int	parse_prefix(t_execute_unit *exe_unit, t_token *tokens, int *offset)
 		if (tokens[*offset].type == TOKEN_WORD)
 			push_redirection(exe_unit->q_redir_list, tokens, *offset - 1);
 		else
-			return (SYNTAX_ERROR);
+			return (FAILURE);
 		(*offset)++;
+		if (heredoc_stat_get() == HEREDOC_INTSIG)
+			return (FAILURE);
 	}
-	return (SYNTAX_OK);
+	return (SUCCESS);
 }
 
 static int	parse_command_name(\
@@ -35,7 +38,7 @@ static int	parse_command_name(\
 		push_arguments(exe_unit->q_cmd_argv, tokens, *offset);
 		(*offset)++;
 	}
-	return (SYNTAX_OK);
+	return (SUCCESS);
 }
 
 static int	parse_suffix(t_execute_unit *exe_unit, t_token *tokens, int *offset)
@@ -53,13 +56,15 @@ static int	parse_suffix(t_execute_unit *exe_unit, t_token *tokens, int *offset)
 			if (tokens[*offset].type == TOKEN_WORD)
 				push_redirection(exe_unit->q_redir_list, tokens, *offset - 1);
 			else
-				return (SYNTAX_ERROR);
+				return (FAILURE);
+			if (heredoc_stat_get() == HEREDOC_INTSIG)
+				return (FAILURE);
 			(*offset)++;
 		}
 		else
 			break ;
 	}
-	return (SYNTAX_OK);
+	return (SUCCESS);
 }
 
 int	parse_simple_command(t_node *node, t_token *tokens, int *offset)
@@ -68,12 +73,12 @@ int	parse_simple_command(t_node *node, t_token *tokens, int *offset)
 
 	node->type = NODE_SIMPLE_CMD;
 	node->exe_unit = create_execute_unit(node->type);
-	if (parse_prefix(node->exe_unit, tokens, offset) == SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
+	if (parse_prefix(node->exe_unit, tokens, offset) == FAILURE)
+		return (FAILURE);
 	parse_command_name(node->exe_unit, tokens, offset);
-	if (parse_suffix(node->exe_unit, tokens, offset) == SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
+	if (parse_suffix(node->exe_unit, tokens, offset) == FAILURE)
+		return (FAILURE);
 	if (*offset == initial_offset)
-		return (SYNTAX_ERROR);
-	return (SYNTAX_OK);
+		return (FAILURE);
+	return (SUCCESS);
 }

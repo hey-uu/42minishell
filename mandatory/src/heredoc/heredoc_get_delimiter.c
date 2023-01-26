@@ -6,23 +6,25 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:38:22 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 10:38:41 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:50:31 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	get_delimiter_len(char *word)
 {
-	int		quote;
+	int		is_quote;
 	int		len;
 
 	len = 0;
-	quote = 0;
+	is_quote = 0;
 	while (*word)
 	{
-		if (!quote && (*word == '\'' || *word == '\"'))
-			quote = *word;
-		else if (quote && (*word == quote))
-			quote = 0;
+		if (!is_quote && (*word == '\'' || *word == '\"'))
+			is_quote = *word;
+		else if (is_quote && (*word == is_quote))
+			is_quote = 0;
 		else
 			len++;
 		word++;
@@ -30,22 +32,24 @@ int	get_delimiter_len(char *word)
 	return (len);
 }
 
-void	store_delimiter(char *delimiter, char *word)
+void	get_delimiter(char **delimiter, int *quote, int dlen, char *word)
 {
-	int		quote;
+	int		is_quote;
 	int		i;
 
+	*delimiter = ft_malloc(sizeof(char) * (dlen + 1));
+	*quote = (dlen != (int)ft_strlen(word));
 	i = 0;
-	quote = 0;
+	is_quote = 0;
 	while (*word)
 	{
-		if (!quote && (*word == '\'' || *word == '\"'))
-			quote = *word;
-		else if (quote && (*word == quote))
-			quote = 0;
+		if (!is_quote && (*word == '\'' || *word == '\"'))
+			is_quote = *word;
+		else if (is_quote && (*word == is_quote))
+			is_quote = 0;
 		else
-			delimiter[i++] = *word;
+			(*delimiter)[i++] = *word;
 		word++;
 	}
-	delimiter[i] = '\0';
+	(*delimiter)[i] = '\0';
 }

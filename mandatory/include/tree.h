@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/16 00:55:04 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:47:33 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			push_redirection(\
 void			show_tree(t_node *tree, int depth);
 
 // heredoc
-char			*process_heredoc(char *word);
+char			*process_heredoc(t_queue *q_redir_list, char *word);
+
 
 #endif

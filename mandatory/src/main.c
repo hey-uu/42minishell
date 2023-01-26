@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 21:12:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:08:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(int argc, char **argv, char *envp[])
 		add_history(input);
 		run_input_commands(input);
 		free(input);
-		system("leaks minishell");
+		// system("leaks minishell");
 	}
 	// set_terminal(CANONICAL);
 }
