@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:40:13 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 22:51:29 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:19:18 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "env_manager.h"
+#include "exit_stat_manager.h"
+#include "heredoc_manager.h"
 #include "expansion.h"
 
 static int	expand_variable_in_heredoc(char *line, int fd)

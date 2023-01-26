@@ -1,4 +1,4 @@
-#include "exit_stat_internal.h"
+#include "exit_stat_manager_internal.h"
 
 void	exit_program(void)
 {

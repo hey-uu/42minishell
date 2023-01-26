@@ -1,4 +1,4 @@
-#include "exit_stat_internal.h"
+#include "exit_stat_manager_internal.h"
 
 int	exit_stat_update(int new_stat)
 {

@@ -6,10 +6,9 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/27 00:05:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:36:12 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef TREE_H
 # define TREE_H
@@ -31,6 +30,5 @@ void			show_tree(t_node *tree, int depth);
 
 // heredoc
 char			*process_heredoc(char *word);
-
 
 #endif

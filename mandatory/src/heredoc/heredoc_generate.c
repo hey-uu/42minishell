@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_generate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:56:54 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:18:57 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "signal_handle.h"
 #include "env_manager.h"
+#include "exit_stat_manager.h"
+#include "heredoc_manager.h"
 #include "heredoc_internal.h"
 #include "wrapped_syscall.h"
 #include "sys/wait.h"

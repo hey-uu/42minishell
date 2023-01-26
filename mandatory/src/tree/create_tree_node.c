@@ -6,11 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:18:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/12 14:03:40 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:07:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
+#include <stddef.h>
+#include "tree_internal.h"
+#include "libft.h"
 
 t_node	*create_tree_node(void)
 {

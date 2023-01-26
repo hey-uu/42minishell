@@ -1,5 +1,5 @@
 #include "minishell.h"
-#include "parser.h"
+#include "parser_internal.h"
 #include "error_handle.h"
 #include "env_manager.h"
 

@@ -6,14 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:39:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:07:17 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "parser.h"
+#include "parser_internal.h"
 #include "error_handle.h"
 #include "env_manager.h"
+#include "heredoc_manager.h"
 
 int	parser(t_token *tokens, t_node **parse_tree)
 {

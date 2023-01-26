@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:36 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 01:09:03 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 05:33:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "parser_internal.h"
 #include "env_manager.h"
 
 static int	parse_prefix(t_queue *q_redir_list, t_token *tokens, int *offset)

@@ -6,11 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:30:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:56:26 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:07:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
+#include <stddef.h>
+#include "tree_internal.h"
+#include "libft.h"
 
 t_execute_unit	*create_execute_unit(int node_type)
 {

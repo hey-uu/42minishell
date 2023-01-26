@@ -1,5 +1,4 @@
 #include "minishell.h"
-#include "parser.h"
 #include "error_handle.h"
 
 static void	execute(t_node *parse_tree, int *errcode)
@@ -41,3 +40,4 @@ void	run_commands(char *input)
 	execute(parse_tree, &errcode);
 	free_allocated_memory(token_list, parse_tree);
 }
+e

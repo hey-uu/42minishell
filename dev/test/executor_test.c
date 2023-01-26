@@ -2,7 +2,7 @@
 #include "tree.h"
 #include "executor.h"
 #include "minishell.h"
-#include "parser.h"
+#include "parser_internal.h"
 
 int main(int argc, char **argv, char **envp)
 {

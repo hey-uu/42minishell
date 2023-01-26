@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 02:19:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 02:20:09 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ extern char	**environ;
 
 void	show_hash_table(t_hash_table *table);
 int		builtin_exit(char *argv[]);
-void	free_double_char_array(char ***array);
+void	free_strs_array(char ***array);
 
 
 void	leak_check(void)
@@ -71,7 +71,7 @@ void	execute_builtin_exit(char **argvs)
 	{
 		if (WIFEXITED(stat))
 			printf("the exit status is : %d\n", WEXITSTATUS(stat));
-		free_double_char_array(&argvs);
+		free_strs_array(&argvs);
 	}
 }
 

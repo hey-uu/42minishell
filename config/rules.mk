@@ -1,14 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    rules.mk                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/05 11:45:44 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 16:39:01 by hyeyukim         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 # **************************** dependency rules ****************************** #
 
@@ -53,9 +42,22 @@ $(MAN_OBJ_PATH)/$(TREE_DIR)/%.o : $(MAN_SRC_PATH)/$(TREE_DIR)/%.c
 	@mkdir -p $(MAN_OBJ_PATH)/$(TREE_DIR)
 	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
-$(MAN_OBJ_PATH)/$(ENV_DIR)/%.o : $(MAN_SRC_PATH)/$(ENV_DIR)/%.c
+$(MAN_OBJ_PATH)/$(MANAGER_DIR)/$(ENV_MANAGER_DIR)/%.o : $(MAN_SRC_PATH)/$(MANAGER_DIR)/$(ENV_MANAGER_DIR)/%.c
 	@mkdir -p $(MAN_OBJ_PATH)
-	@mkdir -p $(MAN_OBJ_PATH)/$(ENV_DIR)
+	@mkdir -p $(MAN_OBJ_PATH)/$(MANAGER_DIR)
+	@mkdir -p $(MAN_OBJ_PATH)/$(MANAGER_DIR)/$(ENV_MANAGER_DIR)
+	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
+$(MAN_OBJ_PATH)/$(MANAGER_DIR)/$(EXIT_MANAGER_DIR)/%.o : $(MAN_SRC_PATH)/$(MANAGER_DIR)/$(EXIT_MANAGER_DIR)/%.c
+	@mkdir -p $(MAN_OBJ_PATH)
+	@mkdir -p $(MAN_OBJ_PATH)/$(MANAGER_DIR)
+	@mkdir -p $(MAN_OBJ_PATH)/$(MANAGER_DIR)/$(EXIT_MANAGER_DIR)
+	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
+
+$(MAN_OBJ_PATH)/$(MANAGER_DIR)/$(HEREDOC_MANAGER_DIR)/%.o : $(MAN_SRC_PATH)/$(MANAGER_DIR)/$(HEREDOC_MANAGER_DIR)/%.c
+	@mkdir -p $(MAN_OBJ_PATH)
+	@mkdir -p $(MAN_OBJ_PATH)/$(MANAGER_DIR)
+	@mkdir -p $(MAN_OBJ_PATH)/$(MANAGER_DIR)/$(HEREDOC_MANAGER_DIR)
 	$(CC) -c $(CFLAGS) $< $(MAN_INC_FLAG) -o $@
 
 $(MAN_OBJ_PATH)/$(EXPAND_DIR)/%.o : $(MAN_SRC_PATH)/$(EXPAND_DIR)/%.c
