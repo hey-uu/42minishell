@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 02:08:54 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/25 21:11:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 void	executor(t_node *parse_tree, int *errcode)
 {
+	if (*errcode)
+		return ;
 	if (execute_list(parse_tree) == FAILURE)
 		*errcode = ERROR_EXECUTE_FAILED;
 }
