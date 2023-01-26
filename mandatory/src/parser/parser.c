@@ -28,6 +28,8 @@ void	parser(t_token *tokens, t_node **parse_tree, int *errcode, \
 	int		res;
 	int		offset;
 
+	if (*errcode)
+		return ;
 	*parse_tree = create_tree_node();
 	if (tokens[0].type == TOKEN_NONE)
 	{
