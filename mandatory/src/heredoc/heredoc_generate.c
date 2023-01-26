@@ -6,45 +6,48 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 20:27:47 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:08:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "signal_handle.h"
 #include "env_manager.h"
 #include "heredoc_internal.h"
+#include "wrap.h"
+#include "sys/wait.h"
 
-char	*get_random_temp_file_name(void)
+void	get_random_temp_file_name(char **file_name)
 {
 	static char	*charset = CHARSET;
 	int			fd;
-	char		*file_name;
 	char		*new_file_name;
 	char		buf[2];
 
-	fd = open("/dev/urandom", O_RDONLY);
-	file_name = ft_strdup(INITIAL_TEMP_FILENAME);
+	fd = w_open("/dev/urandom", O_RDONLY, OPEN_MODE_NONE);
+	(*file_name) = ft_strdup(INITIAL_TEMP_FILENAME);
 	buf[1] = 0;
-	while (!access(file_name, F_OK))
+	while (!access((*file_name), F_OK))
 	{
-		if (ft_strlen(file_name) == 255)
+		if (ft_strlen((*file_name)) == 255)
 		{
-			free(file_name);
-			file_name = ft_strdup(INITIAL_TEMP_FILENAME);
+			free((*file_name));
+			(*file_name) = ft_strdup(INITIAL_TEMP_FILENAME);
 		}
-		read(fd, buf, 1);
+		w_read(fd, buf, 1);
 		buf[0] = charset[(buf[0] + 255) % 63];
-		new_file_name = ft_strjoin(file_name, buf);
-		free(file_name);
-		file_name = new_file_name;
+		new_file_name = ft_strjoin((*file_name), buf);
+		free((*file_name));
+		(*file_name) = new_file_name;
 	}
-	close(fd);
-	return (file_name);
+	w_close(fd);
 }
 
 void	get_heredoc_input(int fd, char *delimiter, int quote)
 {
-	char	*line;
+	char		*line;
+	// extern int	rl_catch_signals;
 
+	// rl_catch_signals = 1;
 	while (1)
 	{
 		line = readline(PS_HEREDOC);
@@ -62,36 +65,43 @@ void	get_heredoc_input(int fd, char *delimiter, int quote)
 	free(line);
 }
 
-char	*generate_here_document(char *delimiter, int quote)
+void	generate_here_document(char **heredoc, char *delimiter, int quote)
 {
-	char	*heredoc;
 	int		fd;
+	int		pid;
+	int		stat;
 
-	heredoc = get_random_temp_file_name();
-	fd = open(heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
-	heredoc_is_in_process(heredoc, fd);
-	if (fd < 0)
+	pid = w_fork();
+	if (pid == 0)
 	{
-		printf("failed to make temporary file for heredoc\n");
-		return (NULL);
+		set_signal(DEFAULT, IGNORE);
+		fd = w_open(*heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		get_heredoc_input(fd, delimiter, quote);
+		w_close(fd);
+		exit_program();
 	}
-	get_heredoc_input(fd, delimiter, quote);
-	close(fd);
-	heredoc_is_done();
-	return (heredoc);
+	w_wait(&stat);
+	if (WIFSIGNALED(stat) && WTERMSIG(stat) == SIGINT)
+	{
+		heredoc_interupted(*heredoc);
+		free(*heredoc);
+		*heredoc = NULL;
+	}
+	else
+		heredoc_done();
 }
 
-char	*process_heredoc(char *word)
+char	*process_heredoc(t_queue *q_redir_list, char *word)
 {
 	const int	delimiter_len = get_delimiter_len(word);
 	int			quote;
 	char		*delimiter;
 	char		*heredoc;
 
-	delimiter = ft_malloc(sizeof(char) * (delimiter_len + 1));
-	store_delimiter(delimiter, word);
-	quote = (delimiter_len != (int)ft_strlen(word));
-	heredoc = generate_here_document(delimiter, quote);
+	heredoc_in_process(q_redir_list);
+	get_delimiter(&delimiter, &quote, delimiter_len, word);
+	get_random_temp_file_name(&heredoc);
+	generate_here_document(&heredoc, delimiter, quote);
 	free(delimiter);
 	return (heredoc);
 }

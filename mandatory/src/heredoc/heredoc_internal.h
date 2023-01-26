@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/16 00:58:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:37:09 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 int		get_delimiter_len(char *word);
-void	store_delimiter(char *delimiter, char *word);
+void	get_delimiter(char **delimiter, int *quote, int dlen, char *word);
 void	make_heredoc_with_expansion(char *line, int fd);
 
 #endif

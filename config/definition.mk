@@ -6,7 +6,7 @@
 #    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/26 17:49:17 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/26 17:57:34 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -181,9 +181,15 @@ EXPAND_FILE		=		do_expansion \
 HEREDOC_FILE	=		heredoc_generate \
 						heredoc_get_delimiter \
 						heredoc_with_expansion
-WRAPPED_FILE	=		w_dup \
+WRAPPED_FILE	=		w_dir \
+						w_dup \
+						w_file \
 						w_fork \
-						w_wait
+						w_read \
+						w_wait \
+						w_write \
+						w_unlink
+
 SRC_FILE		=		$(addprefix $(BUILTIN_DIR)/, $(BUILTIN_FILE)) \
 						$(addprefix $(EXECUTOR_DIR)/, $(EXECUTOR_FILE)) \
 						$(addprefix $(EXTRA_DIR)/, $(EXTRA_FILE)) \

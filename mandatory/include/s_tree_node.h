@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:56:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/19 19:31:52 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 enum e_syntax_status
 {
-	SYNTAX_ERROR = -1,
-	SYNTAX_OK = 1
+	FAILURE = -1,
+	SUCCESS = 1
 };
 
 enum e_node_type

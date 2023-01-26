@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:52:35 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:58:52 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ enum e_result_status
 void	run_commands(char *input);
 int		lexer(char *input, t_token **token_list);
 int		parser(t_token *tokens, t_node **parse_tree);
-int	executor(t_node *parse_tree);
+int		executor(t_node *parse_tree);
 
 // int	do_expansion(t_execute_unit *exe_unit);
 void		do_expansion(t_execute_unit *exe_unit);
@@ -49,7 +49,7 @@ void		do_expansion(t_execute_unit *exe_unit);
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 int		parse_list(t_node **root, t_token *tokens, int *offset);
-char	*process_heredoc(char *word);
+char	*process_heredoc(t_queue *q_redir_list, char *word);
 void	exit_by_error(char *msg);
 
 #endif

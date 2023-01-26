@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/21 07:37:53 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:41:34 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@
 
 enum	e_heredoc_manager
 {
+	HEREDOC_INIT,
 	HEREDOC_STAT_GET,
-	HEREDOC_STAT_UPDATE
+	HEREDOC_STAT_UPDATE,
+	HEREDOC_GET_REDIR_LIST
 };
 
 enum	e_exit_status_manager
@@ -59,11 +61,13 @@ char		**__env_get_marked_variable_list__(t_env_tab *tab);
 char		**__env_get_defined_variable_list__(t_env_tab *tab);
 
 // exit_stat_manager
+int			exit_stat_update(int new_stat);
 int			exit_stat_manager(int option, unsigned long new_stat);
 
 // heredoc_manager
 int			heredoc_manager(\
-			int option, int new_stat, char *new_file_name, int new_fd);
+			int option, int new_stat, \
+			t_queue *new_redir_list, t_queue **cur_redir_list);
 
 // string utils
 char		*ft_strndup(char *str, int n);

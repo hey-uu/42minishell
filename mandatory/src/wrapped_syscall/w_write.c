@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   w_wait.c                                           :+:      :+:    :+:   */
+/*   w_write.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 16:14:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 22:21:56 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/25 22:44:12 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/25 22:44:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/wait.h>
+#include <unistd.h>
 
-int	w_wait(int *stat_loc)
+ssize_t	w_write(int fildes, const void *buf, size_t nbyte)
 {
-	int	pid;
+	ssize_t	res;
 
-	pid = wait(stat_loc);
-	if (pid == -1)
+	res = write(fildes, buf, nbyte);
+	if (res == -1)
 	{
-		perror("goldsh: wait");
+		perror("goldsh: write");
 		exit(2);
 	}
-	return (pid);
+	return (res);
 }

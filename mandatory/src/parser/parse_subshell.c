@@ -6,24 +6,25 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/19 19:24:55 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "env_manager.h"
 #include "parser.h"
 
 static int	subshell_parenthesis(t_node *node, t_token *tokens, int *offset)
 {
 	if (tokens[*offset].type != TOKEN_LPAREN)
-		return (SYNTAX_ERROR);
+		return (FAILURE);
 	(*offset)++;
 	node->first_child = create_tree_node();
-	if (parse_list(&node->first_child, tokens, offset) == SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
+	if (parse_list(&node->first_child, tokens, offset) == FAILURE)
+		return (FAILURE);
 	if (tokens[*offset].type != TOKEN_RPAREN)
-		return (SYNTAX_ERROR);
+		return (FAILURE);
 	(*offset)++;
-	return (SYNTAX_OK);
+	return (SUCCESS);
 }
 
 static int	subshell_redirect_list(t_node *node, t_token *tokens, int *offset)
@@ -35,18 +36,20 @@ static int	subshell_redirect_list(t_node *node, t_token *tokens, int *offset)
 		if (tokens[*offset].type == TOKEN_WORD)
 			push_redirection(node->exe_unit->q_redir_list, tokens, *offset - 1);
 		else
-			return (SYNTAX_ERROR);
+			return (FAILURE);
+		if (heredoc_stat_get() == HEREDOC_INTSIG)
+			return (FAILURE);
 		(*offset)++;
 	}
-	return (SYNTAX_OK);
+	return (SUCCESS);
 }
 
 int	parse_subshell(t_node *node, t_token *tokens, int *offset)
 {
 	node->type = NODE_SUBSHELL;
-	if (subshell_parenthesis(node, tokens, offset) == SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
-	if (subshell_redirect_list(node, tokens, offset) == SYNTAX_ERROR)
-		return (SYNTAX_ERROR);
-	return (SYNTAX_OK);
+	if (subshell_parenthesis(node, tokens, offset) == FAILURE)
+		return (FAILURE);
+	if (subshell_redirect_list(node, tokens, offset) == FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
 }
