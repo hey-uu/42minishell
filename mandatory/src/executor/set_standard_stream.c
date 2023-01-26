@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:23:41 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:42:48 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,59 @@
 #include "env_manager.h"
 #include "wrapped_syscall.h"
 
-int	do_redirecting(t_redir *redir_list)
+static int	input_redirect(char *filename, int redir_type)
 {
 	int	fd;
-	int	i;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		handle_execute_error(ERR_EXE_NO_SUCH_FILE_OR_DIR, NULL, filename);
+		return (FAILURE);
+	}
+	w_dup2(fd, STDIN_FILENO);
+	if (redir_type == REDIR_IN_HERE)
+		unlink(filename);
+	return (SUCCESS);
+}
+
+static int	output_redirect(char *filename, int redir_type)
+{
+	int	fd;
+
+	(void)redir_type;
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd < 0)
+	{
+		handle_execute_error(ERR_EXE_NO_SUCH_FILE_OR_DIR, NULL, filename);
+		return (FAILURE);
+	}
+	w_dup2(fd, STDOUT_FILENO);
+	return (SUCCESS);
+}
+
+int	do_redirecting(t_redir *redir_list)
+{
+	const t_redirect	redir_func[] = {
+	[REDIR_IN] = input_redirect,
+	[REDIR_OUT] = output_redirect,
+	[REDIR_IN_HERE] = input_redirect
+	};
+	int					i;
 
 	i = 0;
-	while (redir_list[i].num != TOKEN_NONE)
+	while (redir_list[i].num != REDIR_NONE)
 	{
-		if (redir_list[i].num == TOKEN_REDIR_IN \
-				|| redir_list[i].num == TOKEN_REDIR_IN_HERE)
-		{
-			fd = open(redir_list[i].str, O_RDONLY);
-			if (fd < 0)
-			{
-				handle_execute_error(ERR_EXE_NO_SUCH_FILE_OR_DIR, \
-												NULL, redir_list[i].str);
-				return (FAILURE);
-			}
-			w_dup2(fd, STDIN_FILENO);
-			if (redir_list[i].num == TOKEN_REDIR_IN_HERE)
-				unlink(redir_list[i].str);
-		}
-		else if (redir_list[i].num == TOKEN_REDIR_OUT)
-		{
-			fd = open(redir_list[i].str, \
-						O_WRONLY | O_CREAT | O_TRUNC, 0644);
-			if (fd < 0)
-			{
-				handle_execute_error(ERR_EXE_NO_SUCH_FILE_OR_DIR, \
-												NULL, redir_list[i].str);
-				return (FAILURE);
-			}
-			w_dup2(fd, STDOUT_FILENO);
-		}
-		else if (redir_list[i].num == ERR_EXE_AMBIGUOUS_REDIR)
+		if (redir_list[i].num == ERR_EXE_AMBIGUOUS_REDIR)
 		{
 			handle_execute_error(\
 				ERR_EXE_AMBIGUOUS_REDIR, NULL, redir_list[i].str);
 			return (FAILURE);
 		}
+		else
+			if (redir_func[redir_list[i].num]\
+					(redir_list[i].str, redir_list[i].num) == FAILURE)
+				return (FAILURE);
 		i++;
 	}
 	return (SUCCESS);

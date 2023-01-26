@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:52:35 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:41:16 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "s_token.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -25,6 +26,13 @@
 # define P_WRITE 1
 # define IN 0
 # define OUT 1
+
+enum e_redirect_type {
+	REDIR_NONE = TOKEN_NONE,
+	REDIR_IN = TOKEN_REDIR_IN,
+	REDIR_IN_HERE = TOKEN_REDIR_IN_HERE,
+	REDIR_OUT = TOKEN_REDIR_OUT,
+};
 
 typedef struct s_pipeline {
 	int	pipe_exist;
@@ -34,6 +42,8 @@ typedef struct s_pipeline {
 	int	last_child_pid;
 	int	exit_status;
 }	t_pipeline;
+
+typedef int	(*t_redirect)(char *, int);
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
