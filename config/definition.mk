@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/26 17:57:34 by yeonhkim         ###   ########.fr        #
+#    Updated: 2023/01/26 20:06:46 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,10 @@
 
 # compile
 CC				=		cc
-CFLAGS			=		-MMD -MP
-CFLAGS1			=		-Wall -Wextra -Werror
-CFLAGS2			=		-fsanitize=address -g3
-
-ifdef W_FLAG
-	CFLAGS		+=		$(CFLAGS1)
-endif
+CFLAGS1			=		-MMD -MP
+CFLAGS2			=		-Wall -Wextra -Werror
+CFLAGS3			=		-fsanitize=address -g3
+CFLAGS			=		$(CFLAGS1) $(CFLAGS2)
 
 ifdef FSANITIZE_FLAG
 	CFLAGS		=		$(CFLAGS2)
