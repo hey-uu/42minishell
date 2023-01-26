@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 20:23:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:04:40 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "error.h"
 #include "libft.h"
 
-static void	export_print_marked_variable_list(char ***argv)
+static void	export_print_marked_variable_list(void)
 {
 	char	**variable_list;
 	int		i;
@@ -94,7 +94,7 @@ void	builtin_export(char *argv[])
 
 	if (!argv[1])
 	{
-		export_print_marked_variable_list(&argv);
+		export_print_marked_variable_list();
 		return ;
 	}
 	res = BUILTIN_SUCCESS;

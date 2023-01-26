@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:07:32 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:09:23 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "wrap.h"
 #include "sys/wait.h"
 
-void	get_random_temp_file_name(char **file_name)
+static void	get_random_temp_file_name(char **file_name)
 {
 	static char	*charset = CHARSET;
 	int			fd;
@@ -42,7 +42,7 @@ void	get_random_temp_file_name(char **file_name)
 	w_close(fd);
 }
 
-void	get_heredoc_input(int fd, char *delimiter, int quote)
+static void	get_heredoc_input(int fd, char *delimiter, int quote)
 {
 	char		*line;
 	// extern int	rl_catch_signals;
