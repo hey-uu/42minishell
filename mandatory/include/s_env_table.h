@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 21:01:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 23:40:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:53:48 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 enum	e_heredoc_stat
 {
 	HEREDOC_NONE,
-	HEREDOC_IN_PROCESS,
-	HEREDOC_DONE,
 	HEREDOC_INTSIG
 };
 

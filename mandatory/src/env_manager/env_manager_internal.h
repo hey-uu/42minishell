@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 23:41:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:55:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ enum	e_heredoc_manager
 	HEREDOC_INIT,
 	HEREDOC_STAT_GET,
 	HEREDOC_STAT_UPDATE,
-	HEREDOC_GET_REDIR_LIST
+	HEREDOC_GET_PARSE_TREE
 };
 
 enum	e_exit_status_manager

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 17:47:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,28 @@ int	is_redirection(int token_type)
 	return (0);
 }
 
-void	parser(t_token *tokens, t_node **parse_tree, int *errcode, \
-									t_token *syntax_error_near_token)
+int	parser(t_token *tokens, t_node **parse_tree)
 {
 	int		res;
 	int		offset;
 
-	if (*errcode)
-		return ;
-	heredoc_init();
 	*parse_tree = create_tree_node();
+	heredoc_init(*parse_tree);
 	if (tokens[0].type == TOKEN_NONE)
 	{
 		(*parse_tree)->type = NODE_NONE;
-		return ;
+		return (SUCCESS);
 	}
 	offset = 0;
 	res = parse_list(parse_tree, tokens, &offset);
 	if (heredoc_stat_get() == HEREDOC_INTSIG)
 	{
-		*errcode = ERROR_HEREDOC_INTERUPTED;
-		return ;
+		return (FAILURE);
 	}
 	if (res == FAILURE || tokens[offset].type != TOKEN_NONE)
 	{
-		*syntax_error_near_token = tokens[offset];
-		*errcode = ERROR_IN_SYNTAX;
+		handle_syntax_error(tokens[offset]);
+		return (FAILURE);
 	}
+	return (SUCCESS);
 }
