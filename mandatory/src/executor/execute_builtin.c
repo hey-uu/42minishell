@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:49:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:15:09 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,22 @@
 #include "minishell.h"
 #include "parser.h"
 #include "env_manager.h"
+#include "wrapped_syscall.h"
 
 static void	backup_standard_stream(int fd[2])
 {
-	fd[IN] = dup(STDIN_FILENO);
-	fd[OUT] = dup(STDOUT_FILENO);
-	if (fd[IN] < 0 || fd[OUT] < 0)
-		exit_by_error("dup2 failed");
+	fd[IN] = w_dup(STDIN_FILENO);
+	fd[OUT] = w_dup(STDOUT_FILENO);
 }
 
 static void	restore_standard_stream(int fd[2])
 {
 	int	res[2];
 
-	res[0] = dup2(fd[IN], STDIN_FILENO);
+	res[0] = w_dup2(fd[IN], STDIN_FILENO);
 	close(fd[IN]);
-	res[1] = dup2(fd[OUT], STDOUT_FILENO);
+	res[1] = w_dup2(fd[OUT], STDOUT_FILENO);
 	close(fd[OUT]);
-	if (res[0] < 0 || res[1] < 0)
-		exit_by_error("dup2 failed");
 }
 
 int	get_builtin_cmd_idx(char *cmd_name)
@@ -74,5 +71,5 @@ int	execute_single_builtin(t_execute_unit *exe_unit)
 	do_redirecting(exe_unit->redir_list);
 	execute_builtin(exe_unit);
 	restore_standard_stream(ori_fd);
-	return (EXIT_SUCCESS);
+	return (SUCCESS);
 }
