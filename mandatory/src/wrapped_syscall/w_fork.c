@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   w_fork.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:07:17 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:35:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env_manager.h"
-#include "error_handle.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 int	w_fork(void)
@@ -21,8 +21,8 @@ int	w_fork(void)
 	pid = fork();
 	if (pid < 0)
 	{
-		handle_execute_error(ERR_EXE_SYSCALL_FAILED, "fork", NULL);
-		exit_program();
+		perror("goldsh: fork");
+		exit(2);
 	}
 	return (pid);
 }

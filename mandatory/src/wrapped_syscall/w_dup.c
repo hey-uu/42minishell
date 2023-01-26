@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   w_dup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:10:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:34:25 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include "error_handle.h"
-#include "env_manager.h"
 
 int	w_dup(int filedes)
 {
@@ -21,8 +21,8 @@ int	w_dup(int filedes)
 	res = dup(filedes);
 	if (res == -1)
 	{
-		handle_execute_error(ERR_EXE_SYSCALL_FAILED, "dup", NULL);
-		exit_program();
+		perror("goldsh: dup");
+		exit(2);
 	}
 	return (res);
 }
@@ -34,8 +34,8 @@ int	w_dup2(int filedes, int filedes2)
 	res = dup2(filedes, filedes2);
 	if (res == -1)
 	{
-		handle_execute_error(ERR_EXE_SYSCALL_FAILED, "dup2", NULL);
-		exit_program();
+		perror("goldsh: dup2");
+		exit(2);
 	}
 	return (res);
 }
