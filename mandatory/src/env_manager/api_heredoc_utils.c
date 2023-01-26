@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 21:14:39 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:56:54 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "s_token.h"
 #include "wrapped_syscall.h"
 #include <unistd.h>
+#include <stdio.h>
 
 void	heredoc_init(t_node *root)
 {
@@ -32,7 +33,7 @@ void	__unlink_heredoc_files__(t_queue *q_redir_list)
 	char	*filename;
 
 	i = 0;
-	while (q_redir_list->used_size)
+	while (i < q_redir_list->used_size)
 	{
 		if (queue_get_int(q_redir_list, i) == TOKEN_REDIR_IN_HERE)
 		{
