@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 18:08:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:57:05 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "wrap.h"
 #include <unistd.h>
 
-void	heredoc_init(t_tree_node *root)
+void	heredoc_init(t_node *root)
 {
 	heredoc_manager(HEREDOC_INIT, 0, NULL, NULL);
 }
@@ -25,7 +25,6 @@ int	heredoc_stat_get(void)
 {
 	return (heredoc_manager(HEREDOC_STAT_GET, 0, NULL, NULL));
 }
-
 
 void	__unlink_heredoc_files__(t_queue *q_redir_list)
 {
@@ -61,6 +60,6 @@ void	heredoc_interupted(char *cur_heredoc_file)
 	exit_stat_update(1);
 	heredoc_manager(HEREDOC_STAT_UPDATE, HEREDOC_INTSIG, NULL, NULL);
 	w_unlink(cur_heredoc_file);
-	heredoc_manager(HEREDOC_GET_PARSE_TREE, 0, NULL, root);
+	heredoc_manager(HEREDOC_GET_PARSE_TREE, 0, NULL, &root);
 	__unlink_all_heredoc_files__(root);
 }

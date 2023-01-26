@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 23:48:01 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:57:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
-
+# include "s_tree_node.h"
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 // exit status manager
@@ -36,10 +36,8 @@ char		**env_get_defined_variable_list(void);
 char		**env_get_marked_variable_list(void);
 
 // heredoc status manager
-void		heredoc_init(void);
-void		heredoc_in_process(t_queue *new_redir_list);
-void		heredoc_done(void);
-void		heredoc_interupted(char *cur_heredoc_file);
+void		heredoc_init(t_node *root);
 int			heredoc_stat_get(void);
+void		heredoc_interupted(char *cur_heredoc_file);
 
 #endif

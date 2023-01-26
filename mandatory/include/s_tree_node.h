@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:56:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:54:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include "libadt.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
-
-enum e_syntax_status
-{
-	FAILURE = -1,
-	SUCCESS = 1
-};
 
 enum e_node_type
 {

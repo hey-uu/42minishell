@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:55:03 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:58:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
+# include "s_tree_node.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -66,8 +67,7 @@ int			exit_stat_manager(int option, unsigned long new_stat);
 
 // heredoc_manager
 int			heredoc_manager(\
-			int option, int new_stat, \
-			t_queue *new_redir_list, t_queue **cur_redir_list);
+			int option, int new_stat, t_node *cur_root, t_node **root_ptr);
 
 // string utils
 char		*ft_strndup(char *str, int n);
