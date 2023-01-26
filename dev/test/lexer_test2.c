@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_test2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:00:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/14 17:59:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "lexer.h"
-#include "error.h"
+#include "error_handle.h"
 
 static int	count_tokens(const char *input)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:58:12 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:20 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "error_handle.h"
 #include "minishell.h"
 #include "env_manager.h"
 
@@ -40,7 +40,7 @@ void	error_print(\
 void	handle_syntax_error(t_token token)
 {
 	const char	*token_type_str[11] = {
-		"'newline'", 0, "'('", "')'", "'&&'",
+		"'newline'", NULL, "'('", "')'", "'&&'",
 		"'||'", "'|'", "'<'", "'>'", "'<<'", "'>>'"
 	};
 
@@ -54,9 +54,13 @@ void	handle_syntax_error(t_token token)
 void	handle_builtin_error(int errcode, char *cmd, char *arg)
 {
 	const char	*msg[BUILTIN_ERROR_NUMBER] = {
-		ERR_MSG_NONE, ERR_MSG_NOT_SET, ERR_MSG_EXECUTE_FAILED,
-		ERR_MSG_TOO_MANY_ARGUMENTS, ERR_MSG_NOT_NUMBER,
-		ERR_MSG_NO_SUCH_FILE_OR_DIR, ERR_MSG_PERMISSION_DENIED,
+		ERR_MSG_NONE,
+		ERR_MSG_NOT_SET,
+		ERR_MSG_EXECUTE_FAILED,
+		ERR_MSG_TOO_MANY_ARGUMENTS,
+		ERR_MSG_NOT_NUMBER,
+		ERR_MSG_NO_SUCH_FILE_OR_DIR,
+		ERR_MSG_PERMISSION_DENIED,
 		ERR_MSG_INVALID_IDENTIFIER
 	};
 	const int	exit_stat[BUILTIN_ERROR_NUMBER] = {0, 1, 1, 1, 255, 1, 1, 1};
@@ -68,10 +72,14 @@ void	handle_builtin_error(int errcode, char *cmd, char *arg)
 void	handle_access_command_error(int errcode, char *cmd)
 {
 	const char	*msg[] = {
-		ERR_MSG_NO_SUCH_FILE_OR_DIR, ERR_MSG_IS_A_DIR,
-		ERR_MSG_PERMISSION_DENIED, ERR_MSG_COMMAND_NOT_FOUND
+		ERR_MSG_NO_SUCH_FILE_OR_DIR,
+		ERR_MSG_IS_A_DIR,
+		ERR_MSG_PERMISSION_DENIED,
+		ERR_MSG_COMMAND_NOT_FOUND
 	};
-	const int	exit_stat[] = {127, 126, 126, 127};
+	const int	exit_stat[] = {
+		127, 126, 126, 127
+	};
 
 	error_print(cmd, NULL, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
@@ -83,14 +91,14 @@ void	handle_execute_error(int errcode, char *cmd, char *arg)
 		ERR_MSG_NONE,
 		ERR_MSG_SYSCALL_FAILED,
 		ERR_MSG_AMBIGUOUS_REDIRECT,
+		ERR_MSG_NO_SUCH_FILE_OR_DIR
 	};
 	const int	exit_stat[] = {
-		0, 1, 1
+		0, 1, 1, 1
 	};
 
 	error_print(cmd, arg, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
-	// exit_program();
 }
 
 void	exit_by_error(char *msg)

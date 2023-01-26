@@ -6,14 +6,14 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:04:57 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:27:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
 #include "s_tree_node.h"
 #include "s_token.h"
-#include "wrap.h"
+#include "wrapped_syscall.h"
 
 static void	__unlink_heredoc_files__(t_queue *q_redir_list)
 {

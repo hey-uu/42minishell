@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   w_dup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:10:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 16:14:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "error.h"
+#include "error_handle.h"
 #include "env_manager.h"
 
 int	w_dup(int filedes)

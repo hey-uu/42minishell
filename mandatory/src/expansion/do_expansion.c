@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_expansion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:10:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 15:20:35 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "libadt.h"
 #include "expansion_internal.h"
-#include "error.h"
+#include "error_handle.h"
 #include "s_tree_node.h"
 #include "s_token.h"
 
@@ -24,6 +24,8 @@ void	expand_cmd_name(char **cmd)
 	t_darr	strings;
 	int		i;
 
+	if (!*cmd)
+		return ;
 	init_dynamic_array(&strings, INITIAL_DARR_SIZE, DARR_STR);
 	expand_word_to_strings(*cmd, &strings);
 	free(*cmd);

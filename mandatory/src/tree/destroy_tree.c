@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_tree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:41:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 20:24:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:42:15 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_double_char_array(char ***array);
 
-void	free_redir_array(t_redir **redir_list)
+static void	free_redir_array(t_redir **redir_list)
 {
 	int	i;
 

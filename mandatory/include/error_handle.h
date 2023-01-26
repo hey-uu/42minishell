@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   error_handle.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 23:43:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:08:00 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,6 @@
 # define ERR_MSG_SYSCALL_FAILED "System call failed"
 # define BUILTIN_ERROR_NUMBER 8
 
-enum e_error_code
-{
-	NONE_ERROR = 0,
-	ERROR_MALLOC_FAILED = 1,
-	ERROR_IN_SYNTAX = 2,
-	ERROR_EXECUTE_FAILED = 3,
-	ERROR_HEREDOC_INTERUPTED
-};
-
 enum e_builtin_error_code
 {
 	ERR_B_NONE,
@@ -68,6 +59,7 @@ enum e_execute_error_code
 	ERR_EXE_NONE,
 	ERR_EXE_SYSCALL_FAILED,
 	ERR_EXE_AMBIGUOUS_REDIR,
+	ERR_EXE_NO_SUCH_FILE_OR_DIR
 };
 
 
