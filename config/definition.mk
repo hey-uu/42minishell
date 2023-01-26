@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/26 20:06:46 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/26 22:58:51 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # compile
 CC				=		cc
 CFLAGS1			=		-MMD -MP
-CFLAGS2			=		-Wall -Wextra -Werror
+CFLAGS2			=		-Wall -Wextra -Werror -g3
 CFLAGS3			=		-fsanitize=address -g3
 CFLAGS			=		$(CFLAGS1) $(CFLAGS2)
 
@@ -153,7 +153,9 @@ TREE_FILE		=		create_execute_unit \
 ENV_FILE		=		api_env_get \
 						api_env_init \
 						api_env_set \
-						api_exit_stat_utils \
+						api_exit_program \
+						api_exit_stat_get \
+						api_exit_stat_update \
 						api_heredoc_utils \
 						internal_env_get \
 						internal_env_init \

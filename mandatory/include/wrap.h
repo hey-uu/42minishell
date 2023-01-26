@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 17:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:13:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:59:35 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		w_open(const char *path, int oflag, int mode);
 void	w_close(int fildes);
 ssize_t	w_read(int fildes, void *buf, size_t nbyte);
 ssize_t	w_write(int fildes, const void *buf, size_t nbyte);
+void	*w_malloc(size_t size_of);
 
 
 #endif

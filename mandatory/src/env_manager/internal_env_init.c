@@ -13,16 +13,13 @@
 #include "env_manager_internal.h"
 #include "libft.h"
 
-t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
+static void	__initialize_with_envp__(t_env_tab *table, char **envp)
 {
 	char	*key;
 	char	*value;
 	size_t	i;
 	size_t	j;
 
-	if (!envp)
-		return (NULL);
-	hash_table_init(table);
 	i = 0;
 	while (envp[i])
 	{
@@ -37,5 +34,28 @@ t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
 		hash_table_insert(table, key, value);
 		i++;
 	}
+}
+
+static void	__update_shell_level__(t_env_tab *table)
+{
+	char	*value;
+	int		num;
+
+	value = __env_get__(table, "SHLVL");
+	if (!value)
+		num = 1;
+	else
+		num = ft_atoi(value) + 1;
+	value = ft_itoa(num);
+	__env_set__(table, ft_strdup("SHLVL"), value);
+}
+
+t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
+{
+	if (!envp)
+		return (NULL);
+	hash_table_init(table);
+	__initialize_with_envp__(table, envp);
+	__update_shell_level__(table);
 	return (table);
 }
