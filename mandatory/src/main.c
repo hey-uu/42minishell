@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:43:53 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 21:15:47 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@
 
 void	init_shell(char *envp[])
 {
-	print_welcome();
-	set_signal(CATCH, CATCH);
 	init_env_table(envp);
+	set_signal(CATCH, CATCH);
+	print_welcome();
 }
 
 int	main(int argc, char **argv, char *envp[])
 {
 	char			*input;
 
-	argc = 0;
-	argv = NULL;
+	(void)argc;
+	(void)argv;
 	init_shell(envp);
 	while (1)
 	{

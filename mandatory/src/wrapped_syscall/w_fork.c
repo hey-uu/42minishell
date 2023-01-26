@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wfork.c                                            :+:      :+:    :+:   */
+/*   w_fork.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:07:17 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 16:09:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager.h"
-#include "error.h"
+#include "error_handle.h"
 #include <unistd.h>
 
 int	w_fork(void)

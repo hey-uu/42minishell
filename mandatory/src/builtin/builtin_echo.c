@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:08:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 20:21:40 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include "builtin_internal.h"
 #include "env_manager.h"
-#include "error.h"
+#include "error_handle.h"
 #include "libft.h"
 
 static int	echo_is_n_option(char *argument, int *newline_flag)

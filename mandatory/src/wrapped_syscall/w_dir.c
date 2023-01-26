@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   w_dir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:43:24 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 22:20:58 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include "error.h"
+#include "error_handle.h"
 #include "env_manager.h"
 
 DIR	*w_opendir(const char *filename)

@@ -17,7 +17,7 @@
 #include "minishell.h"
 #include "parser.h"
 #include "env_manager.h"
-#include "error.h"
+#include "error_handle.h"
 
 void	free_double_char_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
@@ -94,13 +94,10 @@ static int	check_path_dir_have_cmd(char **cmd_name)
 
 int	access_command(char **cmd)
 {
-	int			res;
-
 	if (!*cmd)
 		exit(0);
 	else if (ft_strchr(*cmd, '/'))
-		res = check_given_command_path(cmd);
+		return (check_given_command_path(cmd));
 	else
-		res = check_path_dir_have_cmd(cmd);
-	return (res);
+		return (check_path_dir_have_cmd(cmd));
 }

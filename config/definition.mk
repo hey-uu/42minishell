@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    definition.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:38 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/26 20:06:46 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/26 22:55:02 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,20 +132,23 @@ EXECUTOR_FILE	=		access_command \
 						executor \
 						pipe_open_close \
 						set_standard_stream
-EXTRA_FILE		=		error \
+EXTRA_FILE		=		error_handle \
 						history \
 						prompt \
 						signal \
 						utils
 LEXER_FILE		=		destroy_token_list \
 						extract_token \
-						lexer_utils \
-						lexer
+						get_token_type \
+						length_of_token_str \
+						lexer \
+						lexer_utils
 PARSER_FILE		=		parse_list \
 						parse_pipeline \
 						parse_simple_command \
 						parse_subshell \
-						parser
+						parser \
+						parser_utils
 TREE_FILE		=		create_execute_unit \
 						create_tree_node \
 						destroy_tree \

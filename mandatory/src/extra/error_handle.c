@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 21:15:41 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:20 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "error_handle.h"
 #include "minishell.h"
 #include "env_manager.h"
 
@@ -99,7 +99,6 @@ void	handle_execute_error(int errcode, char *cmd, char *arg)
 
 	error_print(cmd, arg, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
-	// exit_program();
 }
 
 void	exit_by_error(char *msg)

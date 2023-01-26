@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 21:49:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:56:28 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "minishell.h"
-# include "error.h"
+# include "error_handle.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

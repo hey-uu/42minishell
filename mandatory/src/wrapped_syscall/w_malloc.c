@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   w_malloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:32:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 17:45:56 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "error.h"
+#include "error_handle.h"
 
 void	*w_malloc(size_t size_of)
 {
