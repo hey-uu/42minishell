@@ -1,31 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_manager.h                                      :+:      :+:    :+:   */
+/*   exit_stat_manager_internal.h                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
+/*   Created: 2023/01/27 00:35:42 by hyeyukim          #+#    #+#             */
 /*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_MANAGER_H
-# define ENV_MANAGER_H
+#ifndef EXIT_STAT_MANAGER_INTERNAL_H
+# define EXIT_STAT_MANAGER_INTERNAL_H
+
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <stddef.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
+# include "s_tree_node.h"
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum	e_exit_status_manager
+{
+	EXIT_STAT_GET,
+	EXIT_STAT_UPDATE,
+	EXIT_MODE_UPDATE,
+	EXIT_PROGRAM
+};
+
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-// environment variable table
-t_env_tab	*init_env_table(char **envp);
-void		*env_set(char *variable, char *value);
-void		*env_unset(char *variable);
-char		*env_get(char *variable);
-char		*env_dup_val(char *variable);
-char		**env_get_defined_variable_list(void);
-char		**env_get_marked_variable_list(void);
+int			exit_stat_manager(int option, unsigned long new_stat);
+
+// heredoc_manager
+int			heredoc_manager(\
+			int option, int new_stat, t_node *root, t_node **root_ptr);
+
+// string utils
+char		*ft_strndup(char *str, int n);
 
 #endif
+

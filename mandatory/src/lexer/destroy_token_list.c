@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_token_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 01:43:44 by yona              #+#    #+#             */
-/*   Updated: 2023/01/12 01:58:27 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/27 07:35:38 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "lexer.h"
+#include "lexer_internal.h"
 
 void	destroy_token_list(t_token *token_list)
 {

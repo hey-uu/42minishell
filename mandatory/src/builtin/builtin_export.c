@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:47:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include "builtin_internal.h"
 #include "env_manager.h"
+#include "exit_stat_manager.h"
 #include "error_handle.h"
 #include "libft.h"
 
@@ -30,12 +31,12 @@ static void	export_print_marked_variable_list(void)
 		if (printf("declare -x %s\n", variable_list[i]) < 0)
 		{
 			handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_EXPORT, "printf");
-			free_double_char_array(&variable_list);
+			free_strs_array(&variable_list);
 			return ;
 		}
 		i++;
 	}
-	free_double_char_array(&variable_list);
+	free_strs_array(&variable_list);
 	exit_stat_update(0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 05:30:55 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strndup(char *str, int n)
 	return (new);
 }
 
-void	free_double_char_array(char ***array)
+void	free_strs_array(char ***array)
 {
 	char	**double_array;
 	int		i;

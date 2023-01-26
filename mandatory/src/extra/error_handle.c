@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:20 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:05:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_handle.h"
 #include "minishell.h"
 #include "env_manager.h"
+#include "exit_stat_manager.h"
 
 void	error_print(\
 		const char *cmd, const char *arg1, const char *msg, const char *arg2)

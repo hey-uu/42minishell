@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_utils.c                                      :+:      :+:    :+:   */
+/*   tree_internal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 02:15:17 by yona              #+#    #+#             */
-/*   Updated: 2023/01/27 07:35:38 by hyeyukim         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2023/01/27 07:44:03 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "lexer_internal.h"
+#ifndef TREE_INTERNAL_H
+# define TREE_INTERNAL_H
 
-int	is_blank(const char c)
-{
-	return (c == ' ' || c == '\t');
-}
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <stddef.h>
+
+/*-------------- USER DEFINED HEADERS ------------*/
+
+# include "s_tree_node.h"
+# include "s_token.h"
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+// heredoc
+char			*process_heredoc(char *word);
+
+// utils
+void			free_strs_array(char ***array);
+
+#endif

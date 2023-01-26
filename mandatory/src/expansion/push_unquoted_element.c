@@ -6,12 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:28:10 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:03:22 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:18:17 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "env_manager.h"
+#include "exit_stat_manager.h"
 #include "expansion_internal.h"
 
 int	push_dollar_element(char *str, t_words *words)

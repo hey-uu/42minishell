@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:43:24 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:33:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:44:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ DIR	*w_opendir(const char *filename)
 	if (res == NULL)
 	{
 		perror("goldsh: opendir");
-		exit_program();
+		exit(2);
 	}
 	return (res);
 }

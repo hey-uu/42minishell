@@ -15,11 +15,10 @@
 #include "tree.h"
 #include "executor.h"
 #include "minishell.h"
-#include "parser.h"
 #include "env_manager.h"
 #include "error_handle.h"
 
-void	free_double_char_array(char ***array);
+void	free_strs_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
 
 static int	find_reg_file_in_a_dir(char *dir_path, char *look_for_name, \
@@ -80,7 +79,7 @@ static int	check_path_dir_have_cmd(char **cmd_name)
 	while (paths[i])
 		if (find_reg_file_in_a_dir(paths[i++], *cmd_name, &found) == SUCCESS)
 			break ;
-	free_double_char_array(&paths);
+	free_strs_array(&paths);
 	if (found)
 	{
 		free(*cmd_name);

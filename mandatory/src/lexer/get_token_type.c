@@ -1,4 +1,4 @@
-#include "lexer.h"
+#include "lexer_internal.h"
 
 int	get_token_type(const char *input)
 {

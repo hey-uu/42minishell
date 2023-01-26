@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 21:47:52 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/20 22:08:17 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 extern char	**environ;
 
 int		builtin_echo(char	*argv[]);
-void	free_double_char_array(char ***array);
+void	free_strs_array(char ***array);
 
 
 void	leak_check(void)

@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_tree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 19:41:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:42:15 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
+#include <stdlib.h>
+#include "tree_internal.h"
 
-void	free_double_char_array(char ***array);
+void	free_strs_array(char ***array);
 
 static void	free_redir_array(t_redir **redir_list)
 {
@@ -39,10 +40,9 @@ static void	destroy_execute_unit(t_execute_unit *exe_unit)
 	if (exe_unit->q_redir_list)
 		destroy_queue(&exe_unit->q_redir_list);
 	if (exe_unit->cmd_argv)
-		free_double_char_array(&exe_unit->cmd_argv);
+		free_strs_array(&exe_unit->cmd_argv);
 	if (exe_unit->redir_list)
 		free_redir_array(&exe_unit->redir_list);
-// exe unit cmd_argv, redir_list 할당 해제 함수  추가
 	free(exe_unit);
 }
 

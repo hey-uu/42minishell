@@ -1,5 +1,5 @@
 
-#include "lexer.h"
+#include "lexer_internal.h"
 
 int	length_of_operator(const int token_type)
 {

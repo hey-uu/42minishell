@@ -6,14 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/24 22:06:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:03:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tree.h"
 #include "executor.h"
 #include "minishell.h"
-#include "parser.h"
 #include "expansion.h"
 #include "env_manager.h"
 

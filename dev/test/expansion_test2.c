@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 22:28:35 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 23:34:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 05:33:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <readline/history.h>
 #include "libft.h"
 #include "lexer.h"
-#include "parser.h"
+#include "parser_internal.h"
 #include "expansion.h"
 #include "env_manager.h"
 

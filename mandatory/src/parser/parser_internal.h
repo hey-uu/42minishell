@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_manager.h                                      :+:      :+:    :+:   */
+/*   parser_internal.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/10 22:20:50 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 08:06:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_MANAGER_H
-# define ENV_MANAGER_H
+#ifndef PARSER_INTERNAL_H
+# define PARSER_INTERNAL_H
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "s_env_table.h"
+# include "tree.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-// environment variable table
-t_env_tab	*init_env_table(char **envp);
-void		*env_set(char *variable, char *value);
-void		*env_unset(char *variable);
-char		*env_get(char *variable);
-char		*env_dup_val(char *variable);
-char		**env_get_defined_variable_list(void);
-char		**env_get_marked_variable_list(void);
+int	is_redirection(int type);
+int	parse_list(t_node **root, t_token *tokens, int *offset);
+int	parse_pipeline(t_node *node, t_token *tokens, int *offset);
+int	parse_simple_command(t_node *node, t_token *token, int *offset);
+int	parse_subshell(t_node *node, t_token *tokens, int *offset);
 
 #endif

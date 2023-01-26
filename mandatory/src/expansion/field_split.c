@@ -6,11 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:33:03 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 00:43:22 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:24:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "expansion_internal.h"
 
 static int	is_field_separator(char c)
@@ -64,7 +63,8 @@ void	field_split(char *val, t_words *words)
 		if (is_field_separator(val[i]))
 		{
 			i += pass_field_separators(&val[i]);
-			get_new_word(words);
+			if (!(words->word_cnt == 1 && words->word_arr->elem_cnt == 0))
+				get_new_word(words);
 		}
 		if (val[i])
 		{

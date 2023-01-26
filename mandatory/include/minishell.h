@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:02:25 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,19 @@ enum e_result_status
 	SUCCESS = 0
 };
 
+enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+};
+
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 void	run_commands(char *input);
 int		lexer(char *input, t_token **token_list);
 int		parser(t_token *tokens, t_node **parse_tree);
 int		executor(t_node *parse_tree);
-
-// int	do_expansion(t_execute_unit *exe_unit);
-void		do_expansion(t_execute_unit *exe_unit);
+void	do_expansion(t_execute_unit *exe_unit);
 
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);

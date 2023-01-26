@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/25 19:43:57 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:03:41 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tree.h"
 #include "executor.h"
 #include "minishell.h"
-#include "parser.h"
 #include "env_manager.h"
+#include "exit_stat_manager.h"
 #include "signal_handle.h"
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)

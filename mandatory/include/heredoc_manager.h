@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_utils.c                                      :+:      :+:    :+:   */
+/*   heredoc_manager.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 02:15:17 by yona              #+#    #+#             */
-/*   Updated: 2023/01/27 07:35:38 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/27 00:41:04 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "lexer_internal.h"
+#ifndef HEREDOC_MANAGER_H
+# define HEREDOC_MANAGER_H
 
-int	is_blank(const char c)
-{
-	return (c == ' ' || c == '\t');
-}
+/*-------------- USER DEFINED HEADERS ------------*/
+
+# include "s_tree_node.h"
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+void	heredoc_init(t_node *root);
+int		heredoc_stat_get(void);
+void	heredoc_interupted(char *cur_heredoc_file);
+
+#endif

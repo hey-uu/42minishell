@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:58:04 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 08:04:08 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tree.h"
 #include "executor.h"
-#include "minishell.h"
-#include "parser.h"
-#include "env_manager.h"
 
 int	executor(t_node *parse_tree)
 {

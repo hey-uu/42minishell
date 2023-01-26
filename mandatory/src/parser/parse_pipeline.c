@@ -6,11 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:54:11 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:33:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 05:33:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "parser_internal.h"
 #include "env_manager.h"
 
 static int	parse_command(t_node *node, t_token *tokens, int *offset)
