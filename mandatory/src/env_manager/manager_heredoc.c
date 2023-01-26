@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:10:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 17:52:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/26 20:02:22 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	heredoc_manager(\
 		heredoc_stat = new_stat;
 	else if (option == HEREDOC_STAT_GET)
 		return (heredoc_stat);
-	else if (option == HEREDOC_STAT_GET)
-		*root_ptr = cur_root;
+	else if (option == HEREDOC_GET_PARSE_TREE)
+		*root_ptr = root;
 	return (0);
 }
