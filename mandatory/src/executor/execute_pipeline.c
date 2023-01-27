@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipeline.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:06 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:03:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "minishell.h"
 #include "env_manager.h"
 #include "exit_stat_manager.h"
-#include "signal_handle.h"
+#include "handle_signal.h"
 
 static int	count_childs_of_pipeline(t_node *node)
 {

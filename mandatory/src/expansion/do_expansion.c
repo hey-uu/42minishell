@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:10:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "libadt.h"
 #include "expansion_internal.h"
-#include "error_handle.h"
+#include "handle_error.h"
 #include "s_tree_node.h"
 #include "s_token.h"
 

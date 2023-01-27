@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:02:25 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "libprintf.h"
 # include "s_token.h"
 # include "s_tree_node.h"
-# include "error_handle.h"
+# include "handle_error.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 

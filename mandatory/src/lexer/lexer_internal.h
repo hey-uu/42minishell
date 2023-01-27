@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_internal.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 08:05:41 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:05:42 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "minishell.h"
-# include "error_handle.h"
+# include "handle_error.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

@@ -19,10 +19,10 @@ EXECUTOR_FILE			=		access_command \
 								executor \
 								pipe_open_close \
 								set_standard_stream
-EXTRA_FILE				=		error_handle \
+EXTRA_FILE				=		handle_error \
+								handle_signal \
 								history \
 								prompt \
-								signal \
 								utils
 LEXER_FILE				=		destroy_token_list \
 								extract_token \

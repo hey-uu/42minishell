@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:03:41 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "minishell.h"
 #include "env_manager.h"
 #include "exit_stat_manager.h"
-#include "signal_handle.h"
+#include "handle_signal.h"
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 {

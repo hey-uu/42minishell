@@ -16,7 +16,7 @@
 #include "executor.h"
 #include "minishell.h"
 #include "env_manager.h"
-#include "error_handle.h"
+#include "handle_error.h"
 
 void	free_strs_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
