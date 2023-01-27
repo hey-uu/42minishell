@@ -17,6 +17,7 @@
 #include "prompt.h"
 #include <readline/readline.h>
 #include <readline/history.h>
+#include "builtin.h"
 #include "env_manager.h"
 #include "executor.h"
 #include "signal_handle.h"
