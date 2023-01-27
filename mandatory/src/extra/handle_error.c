@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:16:52 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,4 @@ void	handle_execute_error(int errcode, char *cmd, char *arg)
 
 	error_print(cmd, arg, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);
-}
-
-void	exit_by_error(char *msg)
-{
-	ft_putstr_fd("\nError: ", STDERR_FILENO);
-	ft_putstr_fd(msg, STDERR_FILENO);
-	ft_putstr_fd("\n\n", STDERR_FILENO);
-	exit(EXIT_FAILURE);
 }
