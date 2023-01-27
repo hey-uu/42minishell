@@ -8,7 +8,7 @@ CFLAGS3					=		-fsanitize=address -g3
 CFLAGS					=		$(CFLAGS1) $(CFLAGS2)
 
 ifdef FSANITIZE_FLAG
-	CFLAGS				=		$(CFLAGS2)
+	CFLAGS				+=		$(CFLAGS3)
 endif
 
 # library archive
@@ -65,7 +65,7 @@ PARSER_DIR				=		parser
 TREE_DIR				=		tree
 MANAGER_DIR				=		manager
 ENV_MANAGER_DIR			=		env_manager
-EXIT_MANAGER_DIR			=		exit_stat_manager
+EXIT_MANAGER_DIR		=		exit_stat_manager
 HEREDOC_MANAGER_DIR		=		heredoc_manager
 EXPAND_DIR				=		expansion
 HEREDOC_DIR				=		heredoc
