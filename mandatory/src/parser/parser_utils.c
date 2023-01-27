@@ -1,6 +1,6 @@
 #include "minishell.h"
 #include "parser_internal.h"
-#include "error_handle.h"
+#include "handle_error.h"
 #include "env_manager.h"
 
 int	is_redirection(int token_type)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   handle_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 08:46:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 20:51:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "signal_handle.h"
+#include "handle_signal.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <readline/readline.h>

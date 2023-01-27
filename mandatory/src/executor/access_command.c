@@ -16,7 +16,7 @@
 #include "executor.h"
 #include "minishell.h"
 #include "env_manager.h"
-#include "error_handle.h"
+#include "handle_error.h"
 
 void	free_strs_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
@@ -47,47 +47,58 @@ static int	find_reg_file_in_a_dir(char *dir_path, char *look_for_name, \
 	return (FAILURE);
 }
 
-static int	check_given_command_path(char **cmd_path)
+static int	check_found_command_path(char *cmd_path, char *cmd_name)
 {
-	struct stat	f_stat;
-
-	stat(*cmd_path, &f_stat);
-	if (access(*cmd_path, F_OK) == -1)
-		handle_access_command_error(NO_SUCH_FILE_OR_DIR, *cmd_path);
-	else if (S_ISDIR(f_stat.st_mode))
-		handle_access_command_error(IS_A_DIR, *cmd_path);
-	else if (access(*cmd_path, X_OK) == -1)
-		handle_access_command_error(PERMISSION_DENIED, *cmd_path);
+	if (!cmd_path)
+		handle_access_command_error(COMMAND_NOT_FOUND, cmd_name);
+	else if (access(cmd_path, X_OK) == -1)
+		handle_access_command_error(PERMISSION_DENIED, cmd_path);
 	else
 		return (SUCCESS);
 	return (FAILURE);
 }
 
-static int	check_path_dir_have_cmd(char **cmd_name)
+static int	check_given_command_name(char **cmd_name)
 {
 	char			**paths;
 	char			*found;
 	int				i;
 
+	i = 0;
 	paths = ft_split(env_get("PATH"), ':');
 	if (!paths)
 	{
 		handle_access_command_error(NO_SUCH_FILE_OR_DIR, *cmd_name);
 		return (FAILURE);
 	}
-	i = 0;
+	if (!paths)
+		return (FAILURE);
 	while (paths[i])
 		if (find_reg_file_in_a_dir(paths[i++], *cmd_name, &found) == SUCCESS)
 			break ;
 	free_strs_array(&paths);
-	if (found)
+	if (check_found_command_path(found, *cmd_name) == SUCCESS)
 	{
 		free(*cmd_name);
 		*cmd_name = found;
 		return (SUCCESS);
 	}
+	return (FAILURE);
+}
+
+static int	check_given_command_path(char *cmd_path)
+{
+	struct stat	f_stat;
+
+	stat(cmd_path, &f_stat);
+	if (access(cmd_path, F_OK) == -1)
+		handle_access_command_error(NO_SUCH_FILE_OR_DIR, cmd_path);
+	else if (S_ISDIR(f_stat.st_mode))
+		handle_access_command_error(IS_A_DIR, cmd_path);
+	else if (access(cmd_path, X_OK) == -1)
+		handle_access_command_error(PERMISSION_DENIED, cmd_path);
 	else
-		handle_access_command_error(COMMAND_NOT_FOUND, *cmd_name);
+		return (SUCCESS);
 	return (FAILURE);
 }
 
@@ -96,7 +107,7 @@ int	access_command(char **cmd)
 	if (!*cmd)
 		exit(0);
 	else if (ft_strchr(*cmd, '/'))
-		return (check_given_command_path(cmd));
+		return (check_given_command_path(*cmd));
 	else
-		return (check_path_dir_have_cmd(cmd));
+		return (check_given_command_name(cmd));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_standard_stream.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:56:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:46:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	input_redirect(char *filename, int redir_type)
 		return (FAILURE);
 	}
 	w_dup2(fd, STDIN_FILENO);
-	if (redir_type == REDIR_IN_HERE)
+	if (redir_type == REDIR_HEREDOC)
 		unlink(filename);
 	return (SUCCESS);
 }
@@ -38,7 +38,10 @@ static int	output_redirect(char *filename, int redir_type)
 	int	fd;
 
 	(void)redir_type;
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (redir_type == REDIR_APPEND)
+		fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	else
+		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 	{
 		handle_execute_error(ERR_EXE_NO_SUCH_FILE_OR_DIR, NULL, filename);
@@ -53,7 +56,8 @@ int	do_redirecting(t_redir *redir_list)
 	const t_redirect	redir_func[] = {
 	[REDIR_IN] = input_redirect,
 	[REDIR_OUT] = output_redirect,
-	[REDIR_IN_HERE] = input_redirect
+	[REDIR_APPEND] = output_redirect,
+	[REDIR_HEREDOC] = input_redirect,
 	};
 	int					i;
 
@@ -67,7 +71,7 @@ int	do_redirecting(t_redir *redir_list)
 			return (FAILURE);
 		}
 		else
-			if (redir_func[redir_list[i].num]\
+			if (redir_func[redir_list[i].num] \
 					(redir_list[i].str, redir_list[i].num) == FAILURE)
 				return (FAILURE);
 		i++;

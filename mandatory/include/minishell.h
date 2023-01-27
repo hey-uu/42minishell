@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:35:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:42:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "libprintf.h"
 # include "s_token.h"
 # include "s_tree_node.h"
-# include "error_handle.h"
+# include "handle_error.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 

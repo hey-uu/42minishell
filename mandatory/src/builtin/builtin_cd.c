@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 07:47:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "builtin_internal.h"
 #include "env_manager.h"
 #include "exit_stat_manager.h"
-#include "error_handle.h"
+#include "handle_error.h"
 #include "libft.h"
 
 void	builtin_cd(char	*argv[])

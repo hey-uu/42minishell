@@ -6,13 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 11:33:26 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:10:30 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:43:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser_internal.h"
-#include "error_handle.h"
+#include "handle_error.h"
 #include "env_manager.h"
 #include "heredoc_manager.h"
 

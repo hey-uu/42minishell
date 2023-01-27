@@ -6,13 +6,13 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:00:37 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:54:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.h"
 #include "lexer.h"
-#include "error_handle.h"
+#include "handle_error.h"
 
 static int	count_tokens(const char *input)
 {
