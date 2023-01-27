@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wrapped_syscall.h                                             :+:      :+:    :+:   */
+/*   wrapped_syscall.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 17:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 22:59:35 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/27 18:50:36 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 18:50:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRAP_H
-# define WRAP_H
+#ifndef WRAPPED_SYSCALL_H
+# define WRAPPED_SYSCALL_H
 
 /*--------------- STANDARD HEADERS ---------------*/
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:13:35 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:03:21 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 /*--------------- STANDARD HEADERS ---------------*/
 
 # include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
 # include <stdlib.h>
-# include <readline/readline.h>
-# include "constants.h"
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
+# include "expansion.h"
+# include "env_manager.h"
+# include "heredoc_manager.h"
+# include "exit_stat_manager.h"
 # include "libft.h"
+# include "constants.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -38,5 +39,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 int		get_delimiter_len(char *word);
 void	get_delimiter(char **delimiter, int *quote, int dlen, char *word);
 void	make_heredoc_with_expansion(char *line, int fd);
+
+// heredoc manager
+void	heredoc_interupted(char *cur_heredoc_file);
 
 #endif

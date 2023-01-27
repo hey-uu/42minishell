@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_manager_internal.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:13:45 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:33:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,10 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
+# include "libft.h"
 # include "s_env_table.h"
-# include "s_tree_node.h"
-# include "constants.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
-
-enum	e_heredoc_manager
-{
-	HEREDOC_INIT,
-	HEREDOC_STAT_GET,
-	HEREDOC_STAT_UPDATE,
-	HEREDOC_GET_PARSE_TREE
-};
-
-enum	e_exit_status_manager
-{
-	EXIT_STAT_GET,
-	EXIT_STAT_UPDATE,
-	EXIT_MODE_UPDATE,
-	EXIT_PROGRAM
-};
 
 enum	e_env_manager
 {
@@ -61,14 +44,6 @@ t_env_tab	*__env_unset__(t_env_tab *table, char *variable);
 char		*__env_get__(t_env_tab *table, char *variable);
 char		**__env_get_marked_variable_list__(t_env_tab *tab);
 char		**__env_get_defined_variable_list__(t_env_tab *tab);
-
-// exit_stat_manager
-int			exit_stat_update(int new_stat);
-int			exit_stat_manager(int option, unsigned long new_stat);
-
-// heredoc_manager
-int			heredoc_manager(\
-			int option, int new_stat, t_node *root, t_node **root_ptr);
 
 // string utils
 char		*ft_strndup(char *str, int n);

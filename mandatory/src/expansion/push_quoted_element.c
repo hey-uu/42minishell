@@ -6,15 +6,15 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:29:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 13:42:59 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:40:25 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "expansion_internal.h"
+#include "libft.h"
 #include "env_manager.h"
 #include "exit_stat_manager.h"
-#include "libft.h"
+#include "expansion_internal.h"
 
 int	push_single_quote_element(char *str, t_words *words)
 {

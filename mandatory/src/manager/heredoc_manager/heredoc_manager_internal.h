@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:29:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "s_env_table.h"
+# include "constants.h"
+# include "libadt.h"
+# include "s_token.h"
 # include "s_tree_node.h"
+# include "wrapped_syscall.h"
+# include "exit_stat_manager.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 

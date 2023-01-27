@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:45:22 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:54:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ static int	export_update_marked_variable(char *arg)
 		if (!is_valid_variable_name_character(arg[i], i))
 		{
 			handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_EXPORT, arg);
-			return (BUILTIN_FAIL);
+			return (FAILURE);
 		}
 		i++;
 	}
 	if (arg[i] == '+' && arg[i + 1] != '=')
 	{
 		handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_EXPORT, arg);
-		return (BUILTIN_FAIL);
+		return (FAILURE);
 	}
 	else if (arg[i] == '+')
 		export_append_variable_value(arg, i);
@@ -78,7 +78,7 @@ static int	export_update_marked_variable(char *arg)
 		env_set(ft_strndup(arg, i), ft_strdup(&arg[i + 1]));
 	else
 		env_set(ft_strndup(arg, i), NULL);
-	return (BUILTIN_SUCCESS);
+	return (SUCCESS);
 }
 
 void	builtin_export(char *argv[])
@@ -91,14 +91,14 @@ void	builtin_export(char *argv[])
 		export_print_marked_variable_list();
 		return ;
 	}
-	res = BUILTIN_SUCCESS;
+	res = SUCCESS;
 	i = 1;
 	while (argv[i])
 	{
-		if (export_update_marked_variable(argv[i]) == BUILTIN_FAIL)
-			res = BUILTIN_FAIL;
+		if (export_update_marked_variable(argv[i]) == FAILURE)
+			res = FAILURE;
 		i++;
 	}
-	if (res == BUILTIN_SUCCESS)
+	if (res == SUCCESS)
 		exit_stat_update(0);
 }

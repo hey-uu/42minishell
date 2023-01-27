@@ -6,14 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:46:04 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 22:48:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:41:32 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include "expansion_internal.h"
 #include "libft.h"
+#include "expansion_internal.h"
 
 void	init_word_element_array(t_word *word, int initial_size)
 {

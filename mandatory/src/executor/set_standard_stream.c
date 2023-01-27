@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   set_standard_stream.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:01:33 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:02:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include "executor_internal.h"
 #include "wrapped_syscall.h"
-#include "exit_stat_manager.h"
+#include "executor_internal.h"
 
 static int	input_redirect(char *filename, int redir_type)
 {

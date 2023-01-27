@@ -21,8 +21,7 @@ EXECUTOR_FILE			=		access_command \
 								set_standard_stream
 EXTRA_FILE				=		handle_error \
 								handle_signal \
-								history \
-								prompt \
+								print_welcome \
 								utils
 LEXER_FILE				=		destroy_token_list \
 								extract_token \

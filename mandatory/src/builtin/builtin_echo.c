@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:08:20 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:45:50 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:52:35 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ static int	echo_arguments(char *argument, int is_last_argument)
 
 	res = ft_printf("%s", argument);
 	if (res == -1)
-		return (PRINTF_FAIL);
+		return (FAILURE);
 	if (!is_last_argument)
 	{
 		res = ft_printf(" ");
 		if (res == -1)
-			return (PRINTF_FAIL);
+			return (FAILURE);
 	}
-	return (PRINTF_SUCCESS);
+	return (SUCCESS);
 }
 
 static int	pass_n_option(char *argv[], int *newline_flag)
@@ -66,7 +66,7 @@ void	builtin_echo(char *argv[])
 	i = pass_n_option(argv, &newline_flag);
 	while (argv[i])
 	{
-		if (echo_arguments(argv[i], (argv[i + 1] == NULL)) == PRINTF_FAIL)
+		if (echo_arguments(argv[i], (argv[i + 1] == NULL)) == FAILURE)
 		{
 			handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_ECHO, "printf");
 			return ;

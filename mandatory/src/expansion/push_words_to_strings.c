@@ -6,14 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:02:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 09:15:21 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:41:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "expansion_internal.h"
 #include "libft.h"
-#include "libadt.h"
+#include "expansion_internal.h"
 
 static int	get_string_length_of_word(t_word *word)
 {

@@ -6,11 +6,10 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:15:39 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:17:28 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env_manager.h"
 #include "parser_internal.h"
 
 static int	subshell_parenthesis(t_node *node, t_token *tokens, int *offset)

@@ -1,7 +1,16 @@
-#include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 20:17:32 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 20:17:46 by hyeyukim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "parser_internal.h"
-#include "handle_error.h"
-#include "env_manager.h"
 
 int	is_redirection(int token_type)
 {

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execute_subshell.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:56:29 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:04:20 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor_internal.h"
-#include "expansion.h"
+
+void	expand_redir_list(t_queue **q_redir_list, t_intstr **redir_list);
 
 int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 {

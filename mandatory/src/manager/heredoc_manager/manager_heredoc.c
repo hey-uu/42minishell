@@ -6,12 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:10:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 00:40:05 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:12:53 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc_manager_internal.h"
-#include "s_tree_node.h"
 
 int	heredoc_manager(int option, int new_stat, t_node *root, t_node **root_ptr)
 {

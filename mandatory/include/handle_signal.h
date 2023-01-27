@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   handle_signal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:05:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:50:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNAL_HANDLE_H
-# define SIGNAL_HANDLE_H
+#ifndef HANDLE_SIGNAL_H
+# define HANDLE_SIGNAL_H
 
 # include <signal.h>
 

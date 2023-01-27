@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 02:06:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:46:29 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:54:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	builtin_unset(char *argv[])
 	int	res;
 
 	i = 1;
-	res = BUILTIN_SUCCESS;
+	res = SUCCESS;
 	while (argv[i])
 	{
 		if (is_valid_variable_name(argv[i]))
@@ -40,10 +40,10 @@ void	builtin_unset(char *argv[])
 		else
 		{
 			handle_builtin_error(ERR_B_INVALID_IDENTIFIER, CMD_UNSET, argv[i]);
-			res = BUILTIN_FAIL;
+			res = FAILURE;
 		}
 		i++;
 	}
-	if (res == BUILTIN_SUCCESS)
+	if (res == SUCCESS)
 		exit_stat_update(0);
 }

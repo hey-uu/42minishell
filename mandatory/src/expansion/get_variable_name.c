@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include "expansion_internal.h"
 #include "libft.h"
+#include "expansion_internal.h"
 
 int	is_valid_variable_name_character(char c, int i)
 {

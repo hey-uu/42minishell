@@ -6,12 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 20:43:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:51:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strndup(char *str, int n)
 {

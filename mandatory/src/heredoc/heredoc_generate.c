@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_generate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:50:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:02:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "handle_signal.h"
-#include "env_manager.h"
-#include "exit_stat_manager.h"
-#include "heredoc_manager.h"
-#include "heredoc_internal.h"
-#include "wrapped_syscall.h"
-#include "sys/wait.h"
 #include <stdio.h>
+#include <fcntl.h>
+#include <readline/readline.h>
+#include "handle_signal.h"
+#include "wrapped_syscall.h"
+#include "heredoc_internal.h"
 
 static void	get_random_temp_file_name(char **file_name)
 {
@@ -80,7 +78,7 @@ void	generate_here_document(char **heredoc, char *delimiter, int quote)
 		fd = w_open(*heredoc, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		get_heredoc_input(fd, delimiter, quote);
 		w_close(fd);
-		exit_program();
+		exit(0);
 	}
 	w_wait(&stat);
 	set_signal(CATCH, CATCH);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_stat_manager_internal.h                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 00:35:42 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:13:52 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/27 20:08:58 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 20:10:10 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
-# include "constants.h"
-# include "s_tree_node.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -33,17 +31,11 @@ enum	e_exit_status_manager
 	EXIT_PROGRAM
 };
 
-
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-int			exit_stat_manager(int option, unsigned long new_stat);
-
-// heredoc_manager
-int			heredoc_manager(\
-			int option, int new_stat, t_node *root, t_node **root_ptr);
+int		exit_stat_manager(int option, unsigned long new_stat);
 
 // string utils
-char		*ft_strndup(char *str, int n);
+char	*ft_strndup(char *str, int n);
 
 #endif
-

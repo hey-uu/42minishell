@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree_internal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/27 18:31:53 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:31:11 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
-# include "s_tree_node.h"
-# include "s_token.h"
 # include "constants.h"
+# include "s_token.h"
+# include "s_tree_node.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

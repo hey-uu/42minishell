@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:47:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:37:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,11 @@ int	main(int argc, char **argv, char *envp[])
 	init_shell(envp);
 	while (1)
 	{
-		input = readline(PS1_DOLLAR);
+		input = readline("goldsh $");
 		if (!input)
-			exit(1);
-			// builtin_exit(NULL);
+			builtin_exit(NULL);
 		add_history(input);
 		run_commands(input);
 		free(input);
-		// system("leaks minishell");
 	}
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   handle_signal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 08:46:06 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:45:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "handle_signal.h"
-#include <unistd.h>
 #include <stdio.h>
-#include <readline/readline.h>
+#include <unistd.h>
 #include <readline/history.h>
+#include <readline/readline.h>
+#include "handle_signal.h"
 
 static void	print_newline(int signo)
 {
@@ -37,7 +37,6 @@ static void	signal_handler(int signo)
 		rl_redisplay();
 	}
 }
-
 
 void	set_signal(int sig_int, int sig_quit)
 {

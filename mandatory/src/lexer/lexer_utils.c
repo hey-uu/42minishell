@@ -6,12 +6,9 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 02:15:17 by yona              #+#    #+#             */
-/*   Updated: 2023/01/27 07:35:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:05:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
-#include "lexer_internal.h"
 
 int	is_blank(const char c)
 {

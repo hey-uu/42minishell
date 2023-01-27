@@ -6,12 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 03:53:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/18 03:53:31 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:06:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
-#include "libft.h"
 
 t_env_tab	*__env_set__(t_env_tab *table, char *variable, char *value)
 {

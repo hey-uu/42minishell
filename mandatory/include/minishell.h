@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:47:07 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:37:24 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,20 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libadt.h"
 # include "libprintf.h"
+# include "prompt.h"
+# include "constants.h"
 # include "s_token.h"
 # include "s_tree_node.h"
-# include "handle_error.h"
-# include "prompt.h"
-# include "handle_signal.h"
 # include "env_manager.h"
-
-/*------------ DEFINE MACRO CONSTANTS ------------*/
-
+# include "handle_error.h"
+# include "handle_signal.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

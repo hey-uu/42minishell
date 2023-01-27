@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   execute_pipeline.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:06 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:58:43 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:01:46 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/wait.h>
 #include "executor_internal.h"
-#include "exit_stat_manager.h"
-#include "handle_signal.h"
 
 static int	count_childs_of_pipeline(t_node *node)
 {

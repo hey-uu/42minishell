@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error.h                                            :+:      :+:    :+:   */
+/*   handle_error.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 13:48:21 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 21:08:00 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/27 18:49:52 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 18:50:07 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef HANDLE_ERROR_H
+# define HANDLE_ERROR_H
 
 /*-------------- USER DEFINED HEADERS ------------*/
 

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 23:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 11:07:14 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:20:29 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <assert.h>
 #include "libft.h"
 #include "libadt.h"
-#include "s_env_table.h"
 #include "env_manager.h"
 
 #define VARIABLE "B"

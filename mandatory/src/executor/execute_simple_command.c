@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execute_simple_command.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:34 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:01:10 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:03:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor_internal.h"
-#include "handle_signal.h"
-#include "exit_stat_manager.h"
-#include "env_manager.h"
+
+void	do_expansion(t_execute_unit *exe_unit);
 
 static void	run_child(t_execute_unit *exe_unit, t_pipeline *pl, int nth)
 {

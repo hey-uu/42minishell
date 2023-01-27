@@ -6,13 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:20:28 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 21:57:45 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:38:15 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expansion_internal.h"
-#include "libft.h"
-#include "libadt.h"
 
 void	expand_word_to_words(char *word, t_words *words)
 {

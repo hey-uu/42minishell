@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/27 18:46:39 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:14:27 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libadt.h"
-# include "s_tree_node.h"
 # include "s_token.h"
+# include "s_tree_node.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

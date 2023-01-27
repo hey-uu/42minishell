@@ -6,14 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:47:57 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 22:48:19 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:42:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "expansion_internal.h"
-#include "libft.h"
 
 void	push_elem_to_word(t_word *word, char *str, int len, int type)
 {

@@ -6,15 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:07:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 00:38:34 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:40:04 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include "expansion_internal.h"
 #include "libft.h"
-#include "libadt.h"
+#include "expansion_internal.h"
 
 void	init_lookup_table(t_bool ***table, int pattern_len, int string_len)
 {

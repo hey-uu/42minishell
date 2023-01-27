@@ -1,5 +1,17 @@
-#include "exit_stat_manager_internal.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   api_exit_stat_get.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 20:10:15 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 20:34:15 by hyeyukim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+#include "exit_stat_manager_internal.h"
 
 static void	__get_exit_stat_str__(char exit_stat_str[4], int exit_stat)
 {

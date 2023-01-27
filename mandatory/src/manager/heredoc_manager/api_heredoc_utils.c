@@ -6,15 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:21:19 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 00:40:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:21:13 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc_manager_internal.h"
-#include "exit_stat_manager.h"
-#include "s_tree_node.h"
-#include "s_token.h"
-#include "wrapped_syscall.h"
 
 static void	__unlink_heredoc_files__(t_queue *q_redir_list)
 {

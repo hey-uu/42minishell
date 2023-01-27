@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "env_manager_internal.h"
-#include "libft.h"
 
 static void	__initialize_with_envp__(t_env_tab *table, char **envp)
 {

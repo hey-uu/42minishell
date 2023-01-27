@@ -6,14 +6,13 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:13:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 01:01:06 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:38:42 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <sys/types.h>
 #include <dirent.h>
-#include "libft.h"
 
 char	*get_next_file_name(void)
 {

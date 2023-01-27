@@ -6,14 +6,12 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 22:40:25 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:28:32 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_MANAGER_H
 # define ENV_MANAGER_H
-
-/*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
 

@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   do_expansion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:10:33 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:35:19 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
-#include "libadt.h"
-#include "expansion_internal.h"
-#include "handle_error.h"
-#include "s_tree_node.h"
 #include "s_token.h"
+#include "s_tree_node.h"
+#include "handle_error.h"
+#include "expansion_internal.h"
 
 void	expand_cmd_name(char **cmd)
 {

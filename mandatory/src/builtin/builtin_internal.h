@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:13:23 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:55:02 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_INTERNAL_H
 # define BUILTIN_INTERNAL_H
 
+/*--------------- STANDARD HEADERS ---------------*/
+
 # include <stdlib.h>
 # include <unistd.h>
+
+/*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libft.h"
 # include "libprintf.h"
@@ -36,24 +40,6 @@
 # define CMD_EXPORT "export"
 # define CMD_UNSET "unset"
 # define CMD_PWD "pwd"
-
-enum e_printf_success
-{
-	PRINTF_SUCCESS,
-	PRINTF_FAIL
-};
-
-enum e_access_success
-{
-	ACCESS_SUCCESS,
-	ACCESS_FAIL
-};
-
-enum e_builtin_success
-{
-	BUILTIN_SUCCESS = 0,
-	BUILTIN_FAIL = -1
-};
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

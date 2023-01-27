@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:56:44 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:35:23 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor_internal.h"
 #include "wrapped_syscall.h"
+
+void	do_expansion(t_execute_unit *exe_unit);
 
 static void	backup_standard_stream(int fd[2])
 {

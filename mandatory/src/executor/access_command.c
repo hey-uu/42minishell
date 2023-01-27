@@ -13,8 +13,6 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include "executor_internal.h"
-#include "exit_stat_manager.h"
-#include "env_manager.h"
 
 void	free_strs_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
@@ -69,8 +67,6 @@ static int	check_given_command_name(char **cmd_name)
 		handle_access_command_error(NO_SUCH_FILE_OR_DIR, *cmd_name);
 		return (FAILURE);
 	}
-	if (!paths)
-		return (FAILURE);
 	while (paths[i])
 		if (find_reg_file_in_a_dir(paths[i++], *cmd_name, &found) == SUCCESS)
 			break ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 23:40:41 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:46:02 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:54:36 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int	cd_check_access(char *dir)
 	if (access(dir, F_OK) == -1)
 	{
 		handle_builtin_error(ERR_B_NO_SUCH_FILE_OR_DIR, CMD_CD, dir);
-		return (ACCESS_FAIL);
+		return (FAILURE);
 	}
 	if (access(dir, X_OK) == -1)
 	{
 		handle_builtin_error(ERR_B_PERMISSION_DENIED, CMD_CD, dir);
-		return (ACCESS_FAIL);
+		return (FAILURE);
 	}
-	return (ACCESS_SUCCESS);
+	return (SUCCESS);
 }
 
 int	cd_set_pwd_variables(char *oldpwd_dir)
@@ -36,33 +36,33 @@ int	cd_set_pwd_variables(char *oldpwd_dir)
 	{
 		free(oldpwd_dir);
 		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_CD, "getcwd");
-		return (BUILTIN_FAIL);
+		return (FAILURE);
 	}
 	env_set(ft_strdup(VAR_PWD), pwd_dir);
 	env_set(ft_strdup(VAR_OLDPWD), oldpwd_dir);
-	return (BUILTIN_SUCCESS);
+	return (SUCCESS);
 }
 
 int	cd_directory_argument(char *cur_dir, char *new_dir)
 {
-	if (cd_check_access(new_dir) == ACCESS_FAIL)
+	if (cd_check_access(new_dir) == FAILURE)
 	{
 		free(cur_dir);
 		free(new_dir);
-		return (BUILTIN_FAIL);
+		return (FAILURE);
 	}
 	if (chdir(new_dir) == -1)
 	{
 		free(cur_dir);
 		free(new_dir);
 		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_CD, "chdir");
-		return (BUILTIN_FAIL);
+		return (FAILURE);
 	}
 	free(new_dir);
-	if (cd_set_pwd_variables(cur_dir) == BUILTIN_FAIL)
-		return (BUILTIN_FAIL);
+	if (cd_set_pwd_variables(cur_dir) == FAILURE)
+		return (FAILURE);
 	exit_stat_update(0);
-	return (BUILTIN_SUCCESS);
+	return (SUCCESS);
 }
 
 void	cd_no_argument(char *cur_dir)
@@ -82,7 +82,7 @@ void	cd_no_argument(char *cur_dir)
 		env_set(ft_strdup(VAR_OLDPWD), cur_dir);
 		return ;
 	}
-	else if (cd_directory_argument(cur_dir, new_dir) == BUILTIN_FAIL)
+	else if (cd_directory_argument(cur_dir, new_dir) == FAILURE)
 		return ;
 	exit_stat_update(0);
 }
@@ -98,7 +98,7 @@ void	cd_hyphen_minus(char *cur_dir)
 		handle_builtin_error(ERR_B_NOT_SET, CMD_CD, VAR_OLDPWD);
 		return ;
 	}
-	if (cd_directory_argument(cur_dir, new_dir) == BUILTIN_FAIL)
+	if (cd_directory_argument(cur_dir, new_dir) == FAILURE)
 		return ;
 	exit_stat_update(0);
 	builtin_pwd(NULL);

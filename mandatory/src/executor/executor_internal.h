@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor_internal.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:13:15 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:34:37 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 
 /*--------------- STANDARD HEADERS ---------------*/
 
+# include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
 # include "tree.h"
 # include "constants.h"
-# include "minishell.h"
 # include "handle_error.h"
+# include "handle_signal.h"
+# include "env_manager.h"
+# include "exit_stat_manager.h"
+
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -46,11 +50,12 @@ typedef struct s_pipeline {
 	int	exit_status;
 }	t_pipeline;
 
-typedef int	(*t_redirect)(char *, int);
-
 /*------------- STRUCT DECLARATIONS --------------*/
 
+typedef int		(*t_redirect)(char *, int);
 typedef void	(*t_builtin)(char **argv);
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
 int		executor(t_node *parse_tree);
 
@@ -78,6 +83,5 @@ void	open_new_pipe(int new_pipe_fd[2]);
 void	close_pipe_in_parent(\
 		int old_pipe_fd[2], int new_pipe_fd[2], int first, int last);
 void	execute_builtin(t_execute_unit *exe_unit);
-void	do_expansion(t_execute_unit *exe_unit);
 
 #endif
