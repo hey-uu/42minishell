@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "lexer.h"
+#include "s_token.h"
 
 void	print_token_list(t_token *list)
 {

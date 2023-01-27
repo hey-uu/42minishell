@@ -87,7 +87,7 @@ $(BON_OBJ_PATH)/$(BUILTIN_DIR)/%.o : $(BON_SRC_PATH)/$(BUILTIN_DIR)/%.c
 	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
 $(BON_OBJ_PATH)/$(EXECUTOR_DIR)/%.o : $(BON_SRC_PATH)/$(EXECUTOR_DIR)/%.c
-	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)F$(LIBADT)
 	@mkdir -p $(BON_OBJ_PATH)/$(EXECUTOR_DIR)
 	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
@@ -111,7 +111,40 @@ $(BON_OBJ_PATH)/$(TREE_DIR)/%.o : $(BON_SRC_PATH)/$(TREE_DIR)/%.c
 	@mkdir -p $(BON_OBJ_PATH)/$(TREE_DIR)
 	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
-$(BON_OBJ_PATH)/%.o : $(BON_SRC_PATH)/%.c 
+$(BON_OBJ_PATH)/$(MANAGER_DIR)/$(ENV_MANAGER_DIR)/%.o : $(BON_SRC_PATH)/$(MANAGER_DIR)/$(ENV_MANAGER_DIR)/%.c
+	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)/$(MANAGER_DIR)
+	@mkdir -p $(BON_OBJ_PATH)/$(MANAGER_DIR)/$(ENV_MANAGER_DIR)
+	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/$(MANAGER_DIR)/$(EXIT_MANAGER_DIR)/%.o : $(BON_SRC_PATH)/$(MANAGER_DIR)/$(EXIT_MANAGER_DIR)/%.c
+	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)/$(MANAGER_DIR)
+	@mkdir -p $(BON_OBJ_PATH)/$(MANAGER_DIR)/$(EXIT_MANAGER_DIR)
+	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/$(MANAGER_DIR)/$(HEREDOC_MANAGER_DIR)/%.o : $(BON_SRC_PATH)/$(MANAGER_DIR)/$(HEREDOC_MANAGER_DIR)/%.c
+	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)/$(MANAGER_DIR)
+	@mkdir -p $(BON_OBJ_PATH)/$(MANAGER_DIR)/$(HEREDOC_MANAGER_DIR)
+	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/$(EXPAND_DIR)/%.o : $(BON_SRC_PATH)/$(EXPAND_DIR)/%.c
+	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)/$(EXPAND_DIR)
+	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/$(HEREDOC_DIR)/%.o : $(BON_SRC_PATH)/$(HEREDOC_DIR)/%.c
+	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)/$(HEREDOC_DIR)
+	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/$(WRAPPED_DIR)/%.o : $(BON_SRC_PATH)/$(WRAPPED_DIR)/%.c
+	@mkdir -p $(BON_OBJ_PATH)
+	@mkdir -p $(BON_OBJ_PATH)/$(WRAPPED_DIR)
+	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
+
+$(BON_OBJ_PATH)/%.o : $(BON_SRC_PATH)/%.c
 	@mkdir -p $(BON_OBJ_PATH)
 	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
