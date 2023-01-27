@@ -6,10 +6,11 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:02:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/24 23:55:58 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:08:48 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stddef.h>
 #include "expansion_internal.h"
 #include "libft.h"
@@ -91,9 +92,10 @@ void	push_words_to_strings(t_words *words, t_darr *strings)
 	i = 0;
 	while (i < words->word_cnt)
 	{
+dprintf(2, "elemcnt: %d\n", words->word_arr[i].elem_cnt);
 		if ((words->word_arr[i].mask & EXP_WORD_WILDCARD))
 			expand_wildcard_to_strings(&words->word_arr[i], strings);
-		else
+		else if (words->word_arr[i].elem_cnt > 0)
 			push_word_to_strings(&words->word_arr[i], strings);
 		i++;
 	}

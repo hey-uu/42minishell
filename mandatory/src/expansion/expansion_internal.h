@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 14:45:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:11:06 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
+# include <stdio.h>
 # include "s_expansion.h"
 # include "libadt.h"
 
