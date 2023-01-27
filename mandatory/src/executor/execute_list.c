@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:23:03 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:03:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:53:27 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
-#include "env_manager.h"
+#include "executor_internal.h"
 
 int	execute_list(t_node *node)
 {

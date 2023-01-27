@@ -12,11 +12,9 @@
 
 #include <sys/stat.h>
 #include <dirent.h>
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
+#include "executor_internal.h"
+#include "exit_stat_manager.h"
 #include "env_manager.h"
-#include "handle_error.h"
 
 void	free_strs_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);

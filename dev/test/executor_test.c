@@ -1,6 +1,6 @@
 
 #include "tree.h"
-#include "executor.h"
+#include "executor_internal.h"
 #include "minishell.h"
 #include "parser_internal.h"
 

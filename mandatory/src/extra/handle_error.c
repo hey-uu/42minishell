@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:16:52 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:20:22 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "minishell.h"
 #include "env_manager.h"
 #include "exit_stat_manager.h"
+#include "libft.h"
 
 void	error_print(\
 		const char *cmd, const char *arg1, const char *msg, const char *arg2)

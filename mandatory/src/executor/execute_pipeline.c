@@ -6,15 +6,12 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:06 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:58:43 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/wait.h>
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
-#include "env_manager.h"
+#include "executor_internal.h"
 #include "exit_stat_manager.h"
 #include "handle_signal.h"
 

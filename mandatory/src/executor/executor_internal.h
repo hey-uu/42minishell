@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   executor_internal.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 14:39:44 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:13:15 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#ifndef EXECUTOR_INTERNAL_H
+# define EXECUTOR_INTERNAL_H
 
 /*--------------- STANDARD HEADERS ---------------*/
 
-# include <string.h>
 # include <unistd.h>
-# include <fcntl.h>
-# include "s_token.h"
+# include "libft.h"
+# include "tree.h"
+# include "constants.h"
+# include "minishell.h"
+# include "handle_error.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -50,7 +52,7 @@ typedef int	(*t_redirect)(char *, int);
 
 typedef void	(*t_builtin)(char **argv);
 
-int	executor(t_node *parse_tree);
+int		executor(t_node *parse_tree);
 
 void	builtin_echo(char *argv[]);
 void	builtin_cd(char *argv[]);
@@ -76,5 +78,6 @@ void	open_new_pipe(int new_pipe_fd[2]);
 void	close_pipe_in_parent(\
 		int old_pipe_fd[2], int new_pipe_fd[2], int first, int last);
 void	execute_builtin(t_execute_unit *exe_unit);
+void	do_expansion(t_execute_unit *exe_unit);
 
 #endif

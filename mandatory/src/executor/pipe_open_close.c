@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_open_close.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:53:51 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:04:17 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:53:05 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
+#include "executor_internal.h"
 
 void	open_new_pipe(int new_pipe_fd[2])
 {

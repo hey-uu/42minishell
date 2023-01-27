@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_stat_manager_internal.h                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 00:35:42 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:13:52 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
+# include "constants.h"
 # include "s_tree_node.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/

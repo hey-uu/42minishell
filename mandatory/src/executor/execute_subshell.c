@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   execute_subshell.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:03:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:56:29 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
+#include "executor_internal.h"
 #include "expansion.h"
-#include "env_manager.h"
 
 int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 {

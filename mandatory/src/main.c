@@ -6,20 +6,11 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 01:49:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:58 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:07:54 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "minishell.h"
-#include "prompt.h"
-#include <readline/readline.h>
-#include <readline/history.h>
-#include "env_manager.h"
-#include "executor.h"
-#include "handle_signal.h"
 
 void	init_shell(char *envp[])
 {

@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:01:55 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:56:44 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
-#include "env_manager.h"
+#include "executor_internal.h"
 #include "wrapped_syscall.h"
 
 static void	backup_standard_stream(int fd[2])

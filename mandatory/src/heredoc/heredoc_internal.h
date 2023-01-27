@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 10:42:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 00:52:51 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:13:35 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <readline/readline.h>
+# include "constants.h"
 
 /*-------------- USER DEFINED HEADERS ------------*/
 

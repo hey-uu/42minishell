@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_internal.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:20:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:06:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:30:11 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
+# include "constants.h"
+# include "s_token.h"
+# include "s_tree_node.h"
 # include "tree.h"
+# include "libft.h"
+# include <stdlib.h>
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

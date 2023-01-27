@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:48:00 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:13:23 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "handle_error.h"
 # include "env_manager.h"
 # include "exit_stat_manager.h"
+# include "constants.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 

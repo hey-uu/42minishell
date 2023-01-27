@@ -6,16 +6,14 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:24:28 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 14:46:01 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:01:33 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tree.h"
-#include "executor.h"
-#include "minishell.h"
-#include "env_manager.h"
-#include "exit_stat_manager.h"
+#include <fcntl.h>
+#include "executor_internal.h"
 #include "wrapped_syscall.h"
+#include "exit_stat_manager.h"
 
 static int	input_redirect(char *filename, int redir_type)
 {

@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_execute_unit_content.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:49:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 07:43:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:32:24 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "tree_internal.h"
 
 void	push_arguments(t_queue *q_cmd_argv, t_token *token, int offset)
