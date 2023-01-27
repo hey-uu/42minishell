@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:48:00 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_INTERNAL_H
 # define BUILTIN_INTERNAL_H
+
+# include <stdlib.h>
+# include <unistd.h>
+
+# include "libft.h"
+# include "libprintf.h"
+# include "handle_error.h"
+# include "env_manager.h"
+# include "exit_stat_manager.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 

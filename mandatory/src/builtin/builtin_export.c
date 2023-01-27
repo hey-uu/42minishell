@@ -6,18 +6,11 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:45:22 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "builtin_internal.h"
-#include "env_manager.h"
-#include "exit_stat_manager.h"
-#include "handle_error.h"
-#include "libft.h"
 
 static void	export_print_marked_variable_list(void)
 {
@@ -28,7 +21,7 @@ static void	export_print_marked_variable_list(void)
 	i = 0;
 	while (variable_list[i])
 	{
-		if (printf("declare -x %s\n", variable_list[i]) < 0)
+		if (ft_printf("declare -x %s\n", variable_list[i]) < 0)
 		{
 			handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_EXPORT, "printf");
 			free_strs_array(&variable_list);

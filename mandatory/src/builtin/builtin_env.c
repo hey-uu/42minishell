@@ -6,18 +6,11 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:46:50 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "builtin_internal.h"
-#include "env_manager.h"
-#include "exit_stat_manager.h"
-#include "handle_error.h"
-#include "libft.h"
 
 static void	env_terminate(char ***envp, int errcode)
 {
@@ -45,7 +38,7 @@ void	builtin_env(char *argv[])
 	i = 0;
 	while (envp[i])
 	{
-		if (printf("%s\n", envp[i]) < 0)
+		if (ft_printf("%s\n", envp[i]) < 0)
 		{
 			env_terminate(&envp, ERR_B_EXECUTE_FAILED);
 			return ;

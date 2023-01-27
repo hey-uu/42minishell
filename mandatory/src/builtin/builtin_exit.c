@@ -6,18 +6,11 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:46:18 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "builtin_internal.h"
-#include "env_manager.h"
-#include "exit_stat_manager.h"
-#include "handle_error.h"
-#include "libft.h"
 
 static int	is_numeric_argument(char *argument)
 {
@@ -49,7 +42,7 @@ static void	exit_terminate_with_error(char *arg, int errcode)
 
 void	builtin_exit(char *argv[])
 {
-	printf("exit\n");
+	ft_printf("exit\n");
 	if (!argv)
 		exit_program();
 	if (argv[1] && (!is_numeric_argument(argv[1])))

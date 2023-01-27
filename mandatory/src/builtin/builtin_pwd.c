@@ -6,18 +6,11 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:38:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 16:22:49 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:48:56 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "builtin_internal.h"
-#include "env_manager.h"
-#include "exit_stat_manager.h"
-#include "handle_error.h"
-#include "libft.h"
 
 void	builtin_pwd(char *argv[])
 {
@@ -30,7 +23,7 @@ void	builtin_pwd(char *argv[])
 		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_PWD, "getcwd");
 		return ;
 	}
-	if (printf("%s\n", cur_dir) < 0)
+	if (ft_printf("%s\n", cur_dir) < 0)
 	{
 		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_PWD, "printf");
 		free(cur_dir);
