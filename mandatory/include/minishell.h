@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:02:25 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:35:49 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	do_expansion(t_execute_unit *exe_unit);
 
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
-int		parse_list(t_node **root, t_token *tokens, int *offset);
 char	*process_heredoc(char *word);
 void	exit_by_error(char *msg);
 

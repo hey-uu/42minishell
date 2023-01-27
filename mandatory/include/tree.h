@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/27 07:36:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:09:58 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "minishell.h"
+# include "s_token.h"
+# include "s_tree_node.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_node			*create_tree_node(void);
+t_node			*create_tree_node(t_node **root);
 void			destroy_tree(t_node *node);
 t_execute_unit	*create_execute_unit(int node_type);
 void			push_arguments(t_queue *q_cmd_argv, t_token *token, int offset);
