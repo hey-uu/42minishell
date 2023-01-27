@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 19:38:43 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:48:56 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:15:51 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	builtin_pwd(char *argv[])
 {
 	char	*cur_dir;
 
-	argv = NULL;
+	(void)argv;
 	cur_dir = getcwd(NULL, 0);
 	if (!cur_dir)
 	{

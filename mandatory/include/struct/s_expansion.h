@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_expansion.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:31:23 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/25 00:42:55 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:02:42 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ enum e_question_mark
 	VAR_IS_NOT_QMARK
 };
 
-/*------------- STRUCT DECLARATIONS --------------*/
+/*------------------ TYPE DEFINE -----------------*/
 
 typedef char	*t_string;
+
+/*------------- STRUCT DECLARATIONS --------------*/
 
 typedef struct s_word_elem
 {

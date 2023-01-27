@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_subshell.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:14 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 19:04:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:17:06 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 {
 	const int	last = (nth == pl->child_cnt);
 	int			pid;
-	int			exit_code;
+	// int			exit_code;
 
 	if (pl->child_cnt != 1 && !last)
 		open_new_pipe(pl->new_pipe_fd);
@@ -30,7 +30,7 @@ int	execute_subshell(t_node *node, t_pipeline *pl, int nth)
 		expand_redir_list(&node->exe_unit->q_redir_list, \
 							&node->exe_unit->redir_list);
 		set_standard_stream(pl, node->exe_unit->redir_list, nth);
-		exit_code = execute_list(node->first_child);
+		// exit_code = execute_list(node->first_child);
 		exit(0);
 	}
 	else

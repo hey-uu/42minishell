@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 19:35:23 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:08:15 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "wrapped_syscall.h"
 
 void	do_expansion(t_execute_unit *exe_unit);
+int		do_redirecting(t_redir *redir_list);
 
 static void	backup_standard_stream(int fd[2])
 {

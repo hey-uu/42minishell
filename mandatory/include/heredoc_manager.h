@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_manager.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 00:41:04 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:29:17 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:42:02 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_tree_node.h"
-
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 

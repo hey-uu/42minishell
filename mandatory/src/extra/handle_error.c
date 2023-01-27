@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 19:44:29 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:39:25 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	handle_syntax_error(t_token token)
 
 void	handle_builtin_error(int errcode, char *cmd, char *arg)
 {
-	const char	*msg[BUILTIN_ERROR_NUMBER] = {
+	const char	*msg[] = {
 		ERR_MSG_NONE,
 		ERR_MSG_NOT_SET,
 		ERR_MSG_EXECUTE_FAILED,
@@ -64,7 +64,7 @@ void	handle_builtin_error(int errcode, char *cmd, char *arg)
 		ERR_MSG_PERMISSION_DENIED,
 		ERR_MSG_INVALID_IDENTIFIER
 	};
-	const int	exit_stat[BUILTIN_ERROR_NUMBER] = {0, 1, 1, 1, 255, 1, 1, 1};
+	const int	exit_stat[] = {0, 1, 1, 1, 255, 1, 1, 1};
 
 	error_print(cmd, arg, msg[errcode], NULL);
 	exit_stat_update(exit_stat[errcode]);

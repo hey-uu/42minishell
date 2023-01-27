@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_tree_node.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:56:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:24:48 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:11:46 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,19 @@ enum e_node_type
 	NODE_OR_IF
 };
 
-/*------------- STRUCT DECLARATIONS --------------*/
+/*------------------ TYPE DEFINE -----------------*/
 
 typedef t_intstr	t_redir;
 
+/*------------- STRUCT DECLARATIONS --------------*/
+
 typedef struct s_execute_unit
 {
-	char	*cmd_name;
-	char	**cmd_argv;
-	t_redir	*redir_list;
-	t_queue	*q_cmd_argv;
-	t_queue	*q_redir_list;
+	char				*cmd_name;
+	char				**cmd_argv;
+	t_redir				*redir_list;
+	t_queue				*q_cmd_argv;
+	t_queue				*q_redir_list;
 }	t_execute_unit;
 
 typedef struct s_tree_node

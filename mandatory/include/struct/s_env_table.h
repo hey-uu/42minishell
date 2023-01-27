@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   s_env_table.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 20:27:30 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:28:11 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:46:48 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_ENV_TABLE_H
 # define S_ENV_TABLE_H
 
+/*-------------- USER DEFINED HEADERS ------------*/
+
 # include "libadt.h"
+
+/*------------------ TYPE DEFINE -----------------*/
 
 typedef t_hash_table	t_env_tab;
 

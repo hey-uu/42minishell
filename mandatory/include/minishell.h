@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:37:24 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:29:22 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,23 @@
 
 # include "libadt.h"
 # include "libprintf.h"
-# include "prompt.h"
 # include "constants.h"
 # include "s_token.h"
 # include "s_tree_node.h"
 # include "env_manager.h"
 # include "handle_error.h"
 # include "handle_signal.h"
+# include "prompt.h"
+# include "builtin.h"
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 void	run_commands(char *input);
-// run commands
+
+/* for run commands */
 int		lexer(char *input, t_token **token_list);
 int		parser(t_token *tokens, t_node **parse_tree);
 int		executor(t_node *parse_tree);
-
 void	destroy_token_list(t_token *token_list);
 void	destroy_tree(t_node *node);
 

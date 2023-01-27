@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:49:39 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:29:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:43:44 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
 
 enum e_result_status
 {

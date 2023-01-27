@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_stat_manager.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 00:40:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 08:16:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:36:05 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-// exit status manager
 int		exit_stat_get(void);
 char	*exit_stat_get_dup_str(void);
 char	*exit_stat_get_str(void);

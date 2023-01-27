@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_error.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:49:52 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:50:07 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:40:30 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,18 @@
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
 # define ERR_MSG_NONE NULL
-# define ERR_MSG_IN_SYNTAX "Syntax error near unexpected token"
-# define ERR_MSG_NOT_SET "Not set"
-# define ERR_MSG_EXECUTE_FAILED "Execute failed"
-# define ERR_MSG_TOO_MANY_ARGUMENTS "Too many arguments"
-# define ERR_MSG_NOT_NUMBER "Numeric argument required"
-# define ERR_MSG_NO_SUCH_FILE_OR_DIR "No such file or directory"
-# define ERR_MSG_PERMISSION_DENIED "Permission denied"
-# define ERR_MSG_INVALID_IDENTIFIER "Not a valid identifier"
-# define ERR_MSG_IS_A_DIR "Is a directory"
-# define ERR_MSG_COMMAND_NOT_FOUND "Command not found"
-# define ERR_MSG_AMBIGUOUS_REDIRECT "Ambiguous redirect"
-# define ERR_MSG_SYSCALL_FAILED "System call failed"
-# define BUILTIN_ERROR_NUMBER 8
+# define ERR_MSG_IN_SYNTAX 					"Syntax error near unexpected token"
+# define ERR_MSG_NOT_SET 					"Not set"
+# define ERR_MSG_EXECUTE_FAILED 			"Execute failed"
+# define ERR_MSG_TOO_MANY_ARGUMENTS 		"Too many arguments"
+# define ERR_MSG_NOT_NUMBER 				"Numeric argument required"
+# define ERR_MSG_NO_SUCH_FILE_OR_DIR 		"No such file or directory"
+# define ERR_MSG_PERMISSION_DENIED 			"Permission denied"
+# define ERR_MSG_INVALID_IDENTIFIER 		"Not a valid identifier"
+# define ERR_MSG_IS_A_DIR 					"Is a directory"
+# define ERR_MSG_COMMAND_NOT_FOUND 			"Command not found"
+# define ERR_MSG_AMBIGUOUS_REDIRECT			"Ambiguous redirect"
+# define ERR_MSG_SYSCALL_FAILED 			"System call failed"
 
 enum e_builtin_error_code
 {
@@ -62,8 +61,7 @@ enum e_execute_error_code
 	ERR_EXE_NO_SUCH_FILE_OR_DIR
 };
 
-
-/*------------ DEFINE MACRO CONSTANTS ------------*/
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
 void	handle_syntax_error(t_token token);
 void	handle_error(int errcode, t_token syntax_error_near_token);

@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 13:05:53 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/19 13:08:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:12:33 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	COLOR_H
-# define COLOR_H
+#ifndef	STYLE_H
+# define STYLE_H
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
 
 /* ANSI Escape codes defines print style */
 # define RESET		"\x1B[0m"

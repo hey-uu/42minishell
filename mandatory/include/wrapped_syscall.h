@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrapped_syscall.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:50:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:50:55 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:59:26 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,34 @@
 # include <dirent.h>
 # include <sys/types.h>
 
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
 # define OPEN_MODE_NONE -1
 
-int		w_unlink(const char *path);
-DIR		*w_opendir(const char *filename);
-int		w_closedir(DIR *dirp);
-int		w_dup(int filedes);
-int		w_dup2(int filedes, int filedes2);
-int		w_fork(void);
-int		w_wait(int *stat_loc);
-int		w_open(const char *path, int oflag, int mode);
-void	w_close(int fildes);
-ssize_t	w_read(int fildes, void *buf, size_t nbyte);
-ssize_t	w_write(int fildes, const void *buf, size_t nbyte);
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+/* memory allocation */
 void	*w_malloc(size_t size_of);
 
+/* process */
+int		w_fork(void);
+int		w_wait(int *stat_loc);
+
+/* directory operations */
+DIR		*w_opendir(const char *filename);
+int		w_closedir(DIR *dirp);
+
+/* file open & close & unlink */
+int		w_open(const char *path, int oflag, int mode);
+void	w_close(int fildes);
+int		w_unlink(const char *path);
+
+/* input & output */
+ssize_t	w_read(int fildes, void *buf, size_t nbyte);
+ssize_t	w_write(int fildes, const void *buf, size_t nbyte);
+
+/* duplicate file descriptor */
+int		w_dup(int filedes);
+int		w_dup2(int filedes, int filedes2);
 
 #endif

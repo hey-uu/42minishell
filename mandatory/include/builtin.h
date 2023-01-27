@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:52:47 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 11:53:12 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:35:18 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-// builtin
 void	builtin_echo(char *argv[]);
 void	builtin_cd(char *argv[]);
 void	builtin_pwd(char *argv[]);

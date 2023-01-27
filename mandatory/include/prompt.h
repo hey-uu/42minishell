@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:28:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:35:52 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 02:42:41 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROMPT_H
 # define PROMPT_H
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
 void	print_welcome(void);
 

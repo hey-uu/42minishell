@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 23:40:41 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:54:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 03:33:24 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin_internal.h"
+
+void	builtin_pwd(char *argv[]);
 
 int	cd_check_access(char *dir)
 {
