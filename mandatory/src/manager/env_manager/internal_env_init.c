@@ -50,6 +50,11 @@ static void	__update_shell_level__(t_env_tab *table)
 	__env_set__(table, ft_strdup("SHLVL"), value);
 }
 
+static void	__update_oldpwd__(t_env_tab *table)
+{
+	__env_unset__(table, "OLDPWD");
+}
+
 t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
 {
 	if (!envp)
@@ -57,5 +62,6 @@ t_env_tab	*__env_table_init__(t_env_tab *table, char **envp)
 	hash_table_init(table);
 	__initialize_with_envp__(table, envp);
 	__update_shell_level__(table);
+	__update_oldpwd__(table);
 	return (table);
 }
