@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:29:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 09:13:49 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:42:59 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	push_double_quote_element(char *str, t_words *words)
 		else
 			i += push_double_quote_basic_element(&str[i], words);
 	}
-	if (i == 1)
+	if (get_cur_word(words)->elem_cnt == 0)
 		push_elem_to_cur_word(words, &str[1], 0, WELEM_QUOTED);
 	return (i + 1);
 }
