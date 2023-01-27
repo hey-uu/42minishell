@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_tree_node.c                                 :+:      :+:    :+:   */
+/*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 22:18:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:09:05 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/27 11:52:47 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/27 11:53:12 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "tree_internal.h"
-#include "libft.h"
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
-t_node	*create_tree_node(t_node **root)
-{
-	t_node	*new;
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
-	new = ft_malloc(sizeof(t_node));
-	new->type = NODE_NONE;
-	new->exe_unit = NULL;
-	new->root = root;
-	new->first_child = NULL;
-	new->next_sibling = NULL;
-	return (new);
-}
+// builtin
+void	builtin_echo(char *argv[]);
+void	builtin_cd(char *argv[]);
+void	builtin_pwd(char *argv[]);
+void	builtin_export(char *argv[]);
+void	builtin_env(char *argv[]);
+void	builtin_exit(char *argv[]);
+void	builtin_unset(char *argv[]);
+
+#endif

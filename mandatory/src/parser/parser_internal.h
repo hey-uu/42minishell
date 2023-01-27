@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:20:50 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:30:11 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:47:07 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 int	is_redirection(int type);
-int	parse_list(t_node **root, t_token *tokens, int *offset);
+int	parse_list(t_node *node, t_token *tokens, int *offset);
 int	parse_pipeline(t_node *node, t_token *tokens, int *offset);
 int	parse_simple_command(t_node *node, t_token *token, int *offset);
 int	parse_subshell(t_node *node, t_token *tokens, int *offset);

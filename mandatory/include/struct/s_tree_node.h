@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:56:54 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 19:54:37 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:07:30 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_tree_node
 {
 	int					type;
 	t_execute_unit		*exe_unit;
+	struct s_tree_node	**root;
 	struct s_tree_node	*first_child;
 	struct s_tree_node	*next_sibling;
 }	t_tree_node;

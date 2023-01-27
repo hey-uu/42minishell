@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/27 18:16:35 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:46:39 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-t_node			*create_tree_node(void);
+t_node			*create_tree_node(t_node **root);
 void			destroy_tree(t_node *node);
 t_execute_unit	*create_execute_unit(int node_type);
 void			push_arguments(t_queue *q_cmd_argv, t_token *token, int offset);

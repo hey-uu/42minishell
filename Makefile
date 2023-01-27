@@ -6,7 +6,7 @@
 #    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/25 11:27:27 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/27 18:17:50 by hyeyukim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ include config/rules.mk
 
 .PHONY : clean fclean re
 clean :
-	$(RM) $(RMFLAGS) $(MAN_OBJ_PATH) $(BON_OBJ_PATH) $(MAN_DIR)/objFlib
+	$(RM) $(RMFLAGS) $(MAN_OBJ_PATH) $(BON_OBJ_PATH) 
+	$(RM) $(RMFLAGS) $(MAN_DIR)/objFlib $(BON_DIR)/objFlib
 	make -C $(LIBADT_PATH) fclean
 	make -C $(LIBPRINTF_PATH) fclean
 	make test_fclean
@@ -50,8 +51,9 @@ re :
 lexer_test : $(LIBADT) $(LEXER_TEST_OBJ) $(LEXER_TEST_INC)
 	$(CC) $(CFLAGS) $(LEXER_TEST_OBJ) $(LIBFLAGS) -o lexer_test
 
-parser_test : $(LIBADT)  $(PARSER_TEST_OBJ) $(PARSER_TEST_INC)
-	$(CC) $(CFLAGS) $(PARSER_TEST_OBJ) $(LIBFLAGS) -o parser_test
+parser_test : $(LIBADT)  $(PARSER_TEST_OBJ)
+	$(CC) $(CFLAGS) $(PARSER_TEST_OBJ) \
+	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) -lreadline -L $(shell brew --prefix readline)/lib/ -o parser_test
 
 hash_test : $(LIBADT) $(HASH_TEST_OBJ) $(HASH_TEST_INC)
 	$(CC) $(CFLAGS) $(HASH_TEST_OBJ) $(HASH_TEST_LIBFLAGS) -o hash_test

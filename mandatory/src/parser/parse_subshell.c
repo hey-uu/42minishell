@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:56:31 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/27 05:33:27 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:15:39 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	subshell_parenthesis(t_node *node, t_token *tokens, int *offset)
 	if (tokens[*offset].type != TOKEN_LPAREN)
 		return (FAILURE);
 	(*offset)++;
-	node->first_child = create_tree_node();
-	if (parse_list(&node->first_child, tokens, offset) == FAILURE)
+	node->first_child = create_tree_node(node->root);
+	if (parse_list(node->first_child, tokens, offset) == FAILURE)
 		return (FAILURE);
 	if (tokens[*offset].type != TOKEN_RPAREN)
 		return (FAILURE);
