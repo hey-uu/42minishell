@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/26 23:41:16 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:39:44 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@
 enum e_redirect_type {
 	REDIR_NONE = TOKEN_NONE,
 	REDIR_IN = TOKEN_REDIR_IN,
-	REDIR_IN_HERE = TOKEN_REDIR_IN_HERE,
+	REDIR_HEREDOC = TOKEN_REDIR_IN_HERE,
 	REDIR_OUT = TOKEN_REDIR_OUT,
+	REDIR_APPEND = TOKEN_REDIR_OUT_APP,
 };
 
 typedef struct s_pipeline {
