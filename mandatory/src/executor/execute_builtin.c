@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 12:57:15 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:46:38 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int	execute_single_builtin(t_execute_unit *exe_unit)
 
 	do_expansion(exe_unit);
 	backup_standard_stream(ori_fd);
-	do_redirecting(exe_unit->redir_list);
+	if (do_redirecting(exe_unit->redir_list) == FAILURE)
+		return (FAILURE);
 	execute_builtin(exe_unit);
 	restore_standard_stream(ori_fd);
 	return (SUCCESS);
