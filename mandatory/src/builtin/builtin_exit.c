@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 18:57:44 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:16:52 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	builtin_exit(char *argv[])
 {
 	int	exit_stat;
 
-	ft_printf("exit\n");
+	printf("exit\n");
 	if (!argv)
 		exit_program();
 	if (argv[1])

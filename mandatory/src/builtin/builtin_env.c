@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 15:39:43 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:40:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	builtin_env(char *argv[])
 	i = 0;
 	while (envp[i])
 	{
-		if (ft_printf("%s\n", envp[i]) < 0)
+		if (printf("%s\n", envp[i]) < 0)
 		{
 			env_terminate(&envp, ERR_B_EXECUTE_FAILED);
 			return ;

@@ -36,15 +36,8 @@ LIBFT_NAME				=		libft.a
 LIBFT_PATH				=		$(LIB_DIR)/$(LIBFT_DIR)
 LIBFT					=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
-# libftprintf
-LIBFTPRINTF_DIR			=		libftprintf
-LIBFTPRINTF_NAME			=		libftprintf.a
-LIBFTPRINTF_PATH			=		$(LIB_DIR)/$(LIBFTPRINTF_DIR)
-LIBFTPRINTF				=		$(LIBFTPRINTF_PATH)/$(LIBFTPRINTF_NAME)
-
 # flags
 LIBFLAGS				=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) \
-								-lftprintf -L./$(LIBFTPRINTF_PATH) \
 								-lreadline -L $(shell brew --prefix readline)/lib/
 
 # ******************************** directory ********************************* #

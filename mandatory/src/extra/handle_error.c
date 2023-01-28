@@ -6,28 +6,36 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 13:52:43 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:43:00 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
-#include "libftprintf.h"
 #include "handle_error.h"
 #include "exit_stat_manager.h"
 
 void	error_print(\
 		const char *cmd, const char *arg1, const char *msg, const char *arg2)
 {
-	ft_dprintf(STDERR_FILENO, "goldsh: ");
+	ft_putstr_fd("goldsh: ", STDERR_FILENO);
 	if (cmd)
-		ft_dprintf(STDERR_FILENO, "%s: ", cmd);
+	{
+		ft_putstr_fd(cmd, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
 	if (arg1)
-		ft_dprintf(STDERR_FILENO, "%s: ", arg1);
-	ft_dprintf(STDERR_FILENO, (char *)msg);
+	{
+		ft_putstr_fd(arg1, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
+	ft_putstr_fd((char *)msg, STDERR_FILENO);
 	if (arg2)
-		ft_dprintf(STDERR_FILENO, " %s", arg2);
-	ft_dprintf(STDERR_FILENO, "\n");
+	{
+		ft_putstr_fd(" ", STDERR_FILENO);
+		ft_putstr_fd(arg2, STDERR_FILENO);
+	}
+	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
 void	handle_syntax_error(t_token token)
