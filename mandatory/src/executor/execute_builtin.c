@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_builtin.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:15:38 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 03:08:15 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/28 12:57:15 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ static void	backup_standard_stream(int fd[2])
 
 static void	restore_standard_stream(int fd[2])
 {
-	int	res[2];
-
-	res[0] = w_dup2(fd[IN], STDIN_FILENO);
+	w_dup2(fd[IN], STDIN_FILENO);
 	close(fd[IN]);
-	res[1] = w_dup2(fd[OUT], STDOUT_FILENO);
+	w_dup2(fd[OUT], STDOUT_FILENO);
 	close(fd[OUT]);
 }
 
