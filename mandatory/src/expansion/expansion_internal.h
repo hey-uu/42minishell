@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:04:30 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:10:16 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	push_words_to_strings(t_words *words, t_darr *strings);
 char	*get_variable_name(char *str, int *idx, int *qmark);
 void	field_split(char *val, t_words *words);
 
-char	*get_next_file_name(void);
+char	*get_next_file_name(int is_dot);
 
 int		get_pattern_char(t_word *word, int i);
 int		get_pattern_len(t_word *word);
