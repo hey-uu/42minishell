@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_internal.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 03:29:25 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/28 13:35:38 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libft.h"
-# include "libprintf.h"
+# include "libftprintf.h"
 # include "handle_error.h"
 # include "env_manager.h"
 # include "exit_stat_manager.h"

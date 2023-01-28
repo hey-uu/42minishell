@@ -6,13 +6,13 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 13:34:17 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:35:57 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
-#include "libprintf.h"
+#include "libftprintf.h"
 #include "handle_error.h"
 #include "exit_stat_manager.h"
 

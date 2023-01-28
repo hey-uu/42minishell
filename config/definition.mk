@@ -5,7 +5,7 @@ CC						=		cc
 CFLAGS1					=		-MMD -MP
 CFLAGS2					=		-Wall -Wextra -Werror -g3
 CFLAGS3					=		-fsanitize=address -g3
-CFLAGS					=		$(CFLAGS1) $(CFLAGS2)
+CFLAGS					=		$(CFLAGS1) $(CFLAGS2) $(CFLAGS3)
 
 ifdef FSANITIZE_FLAG
 	CFLAGS				+=		$(CFLAGS3)
@@ -36,15 +36,15 @@ LIBFT_NAME				=		libft.a
 LIBFT_PATH				=		$(LIB_DIR)/$(LIBFT_DIR)
 LIBFT					=		$(LIBFT_PATH)/$(LIBFT_NAME)
 
-# libprintf
-LIBPRINTF_DIR			=		libprintf
-LIBPRINTF_NAME			=		libprintf.a
-LIBPRINTF_PATH			=		$(LIB_DIR)/$(LIBPRINTF_DIR)
-LIBPRINTF				=		$(LIBPRINTF_PATH)/$(LIBPRINTF_NAME)
+# libftprintf
+LIBFTPRINTF_DIR			=		libftprintf
+LIBFTPRINTF_NAME			=		libftprintf.a
+LIBFTPRINTF_PATH			=		$(LIB_DIR)/$(LIBFTPRINTF_DIR)
+LIBFTPRINTF				=		$(LIBFTPRINTF_PATH)/$(LIBFTPRINTF_NAME)
 
 # flags
 LIBFLAGS				=		-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH) \
-								-lprintf -L./$(LIBPRINTF_PATH) \
+								-lprintf -L./$(LIBFTPRINTF_PATH) \
 								-lreadline -L $(shell brew --prefix readline)/lib/
 
 # ******************************** directory ********************************* #

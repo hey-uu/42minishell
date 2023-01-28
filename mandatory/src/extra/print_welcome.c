@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   print_welcome.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:24:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 03:17:18 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/28 13:35:38 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "style.h"
 #include "prompt.h"
-#include "libprintf.h"
+#include "libftprintf.h"
 
 void	print_welcome(void)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 04:10:17 by yona              #+#    #+#              #
-#    Updated: 2023/01/25 11:25:24 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/28 13:35:38 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM				= rm -f
 
 # ******************************** FT_PRINTF ********************************* #
 
-FTPRINTF 		= libprintf.a
+FTPRINTF 		= libftprintf.a
 FILE 			=  \
 					printf\
 					f_info\

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 11:45:28 by hyeyukim          #+#    #+#              #
-#    Updated: 2023/01/27 18:17:50 by hyeyukim         ###   ########.fr        #
+#    Updated: 2023/01/28 13:35:55 by yeonhkim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(RM) $(RMFLAGS) $(RM_OBJ_DIR)
 	make -C $(LIBADT_PATH)
-	make -C $(LIBPRINTF_PATH)
+	make -C $(LIBFTPRINTF_PATH)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFLAGS) -o $@
 
 bonus :
@@ -35,7 +35,7 @@ clean :
 	$(RM) $(RMFLAGS) $(MAN_OBJ_PATH) $(BON_OBJ_PATH) 
 	$(RM) $(RMFLAGS) $(MAN_DIR)/objFlib $(BON_DIR)/objFlib
 	make -C $(LIBADT_PATH) fclean
-	make -C $(LIBPRINTF_PATH) fclean
+	make -C $(LIBFTPRINTF_PATH) fclean
 	make test_fclean
 
 fclean : clean

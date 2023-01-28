@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 03:29:22 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/28 13:35:38 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libadt.h"
-# include "libprintf.h"
+# include "libftprintf.h"
 # include "constants.h"
 # include "s_token.h"
 # include "s_tree_node.h"

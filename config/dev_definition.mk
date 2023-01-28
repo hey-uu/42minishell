@@ -50,18 +50,18 @@ WRAPPED_OBJ				=		$(addprefix $(MAN_OBJ_PATH)/$(WRAPPED_DIR)/, $(addsuffix .o, $
 
 MODULE_OBJ		=		$(addprefix $(MODULE_OBJ_PATH)/, $(addsuffix .o, $(MODULE_FILE)))
 
-LEXER_TEST_OBJ	=		$(ERROR_OBJ) $(LEXER_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/lexer_test2.o
-LEXER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(TEST_INC)
+LEXER_TEST_OBJ		=		$(ERROR_OBJ) $(LEXER_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/lexer_test2.o
+LEXER_TEST_INC		=		$(MAN_INC_PATH)/lexer.h $(TEST_INC)
 
-PARSER_TEST_OBJ	=		$(MAN_NO_MAIN_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/parser_test.o \
+PARSER_TEST_OBJ		=		$(MAN_NO_MAIN_OBJ) $(MODULE_OBJ) $(TEST_OBJ_PATH)/parser_test.o \
 						$(TREE_OBJ) $(ENV_MANAGER_OBJ) $(EXIT_MANAGER_OBJ) $(HEREDOC_MANAGER_OBJ) \
 						$(EXTRA_OBJ) $(LEXER_OBJ) $(PARSER_OBJ) $(HEREDOC_OBJ) $(WRAPPED_OBJ) $(EXPAND_OBJ)
-PARSER_TEST_INC	=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser_internal.h $(TEST_INC)
+PARSER_TEST_INC		=		$(MAN_INC_PATH)/lexer.h $(MAN_INC_PATH)/parser_internal.h $(TEST_INC)
 
-HASH_TEST_OBJ	=		$(TEST_OBJ_PATH)/hash_table_test2.o $(MODULE_OBJ_PATH)/show_hash_table.o
-HASH_TEST_LIBFLAGS =	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
+HASH_TEST_OBJ		=		$(TEST_OBJ_PATH)/hash_table_test2.o $(MODULE_OBJ_PATH)/show_hash_table.o
+HASH_TEST_LIBFLAGS 	=	-lft -L./$(LIBFT_PATH) -ladt -L./$(LIBADT_PATH)
 
-ENV_TEST_OBJ	=		$(TEST_OBJ_PATH)/env_table_test.o \
+ENV_TEST_OBJ		=		$(TEST_OBJ_PATH)/env_table_test.o \
 						$(MODULE_OBJ_PATH)/show_hash_table.o \
 						$(ENV_OBJ) \
 						$(MAN_OBJ_PATH)/$(EXTRA_DIR)/utils.o

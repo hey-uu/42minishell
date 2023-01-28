@@ -164,6 +164,6 @@ $(LIBADT) :
 $(LIBFT) :
 	make -C $(LIBFT_PATH)
 
-$(LIBPRINTF) :
-	make -C $(LIBPRINTF_PATH)
+$(LIBFTPRINTF) :
+	make -C $(LIBFTPRINTF_PATH)
 
