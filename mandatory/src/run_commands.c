@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 20:37:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:37:38 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:50:00 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ static void	tokenizing(char *input, t_token **token_list, int *errcode)
 
 static void	free_allocated_memory(t_token *token_list, t_node *parse_tree)
 {
-	destroy_token_list(token_list);
-	destroy_tree(parse_tree);
+	if (token_list)
+		destroy_token_list(token_list);
+	if (parse_tree)
+		destroy_tree(parse_tree);
 	return ;
 }
 
@@ -47,6 +49,8 @@ void	run_commands(char *input)
 	int		errcode;
 
 	errcode = 0;
+	token_list = NULL;
+	parse_tree = NULL;
 	tokenizing(input, &token_list, &errcode);
 	make_parse_tree(token_list, &parse_tree, &errcode);
 	execute(parse_tree, &errcode);
