@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   tree_internal_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/28 12:59:09 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:17:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef TREE_INTERNAL_BONUS_H
+# define TREE_INTERNAL_BONUS_H
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <stddef.h>
+
+/*-------------- USER DEFINED HEADERS ------------*/
+
+# include "constants_bonus.h"
+# include "s_token_bonus.h"
+# include "s_tree_node_bonus.h"
+# include "str_utils_bonus.h"
 
 #endif

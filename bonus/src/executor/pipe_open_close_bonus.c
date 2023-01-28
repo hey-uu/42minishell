@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   pipe_open_close_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/18 23:53:51 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:17:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "executor_internal_bonus.h"
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+void	open_new_pipe(int new_pipe_fd[2])
+{
+	pipe(new_pipe_fd);
+}
 
-#endif
+void	close_pipe_in_parent(int old_pipe_fd[2], int new_pipe_fd[2], \
+														int first, int last)
+{
+	if (first)
+	{
+		close(new_pipe_fd[P_WRITE]);
+	}
+	else if (last)
+	{
+		close(old_pipe_fd[P_READ]);
+	}
+	else
+	{
+		close(old_pipe_fd[P_READ]);
+		close(new_pipe_fd[P_WRITE]);
+	}
+}

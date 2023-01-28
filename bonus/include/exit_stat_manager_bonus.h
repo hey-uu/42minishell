@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   exit_stat_manager_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/27 00:40:36 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:16:32 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef EXIT_STAT_MANAGER_BONUS_H
+# define EXIT_STAT_MANAGER_BONUS_H
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+int		exit_stat_get(void);
+char	*exit_stat_get_dup_str(void);
+char	*exit_stat_get_str(void);
+int		exit_stat_update(int new_stat);
+void	exit_program(void);
 
 #endif

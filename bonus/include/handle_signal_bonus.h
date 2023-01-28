@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   handle_signal_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/25 13:05:14 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:16:32 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef HANDLE_SIGNAL_BONUS_H
+# define HANDLE_SIGNAL_BONUS_H
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+/*--------------- STANDARD HEADERS ---------------*/
+
+# include <signal.h>
+
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum e_signal_handle_type {
+	DEFAULT,
+	IGNORE,
+	CATCH
+};
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+void	set_signal(int sig_int, int sig_quit);
 
 #endif

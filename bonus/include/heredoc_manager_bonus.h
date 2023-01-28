@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   heredoc_manager_bonus.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/27 00:41:04 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:17:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef HEREDOC_MANAGER_BONUS_H
+# define HEREDOC_MANAGER_BONUS_H
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+/*-------------- USER DEFINED HEADERS ------------*/
+
+# include "s_tree_node_bonus.h"
+
+/*-------------- FUNCTION PROTOTYPES -------------*/
+
+void	heredoc_init(t_node *root);
+int		heredoc_stat_get(void);
+void	heredoc_interupted(char *cur_heredoc_file);
 
 #endif

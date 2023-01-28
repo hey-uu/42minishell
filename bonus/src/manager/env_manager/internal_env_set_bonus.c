@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   internal_env_set_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/18 03:53:28 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:17:01 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "env_manager_internal_bonus.h"
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+t_env_tab	*__env_set__(t_env_tab *table, char *variable, char *value)
+{
+	if (!variable)
+		return (NULL);
+	hash_table_update(table, variable, value);
+	return (table);
+}
 
-#endif
+t_env_tab	*__env_unset__(t_env_tab *table, char *variable)
+{
+	if (!variable)
+		return (NULL);
+	hash_table_delete(table, variable);
+	return (table);
+}

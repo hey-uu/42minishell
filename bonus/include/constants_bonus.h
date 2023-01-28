@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   constants_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 16:21:42 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:21:44 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/27 18:49:39 by hyeyukim          #+#    #+#             */
+/*   Updated: 2023/01/28 16:16:32 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef CONSTANTS_BONUS_H
+# define CONSTANTS_BONUS_H
 
-int		ft_printf(const char *format, ...);
-int		ft_dprintf(int fd, const char *format, ...);
+/*------------ DEFINE MACRO CONSTANTS ------------*/
+
+enum e_result_status
+{
+	FAILURE = -1,
+	SUCCESS = 0
+};
+
+enum e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+};
+
+enum	e_heredoc_stat
+{
+	HEREDOC_NONE,
+	HEREDOC_INTSIG
+};
 
 #endif
