@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree_internal.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2023/01/27 20:31:11 by hyeyukim         ###   ########.fr       */
+/*   Created: 2023/01/28 12:59:09 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/28 12:59:09 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

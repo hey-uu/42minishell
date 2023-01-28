@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   expansion_internal.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 03:36:04 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/28 12:59:26 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPANSION_INTERNAL_H
 # define EXPANSION_INTERNAL_H
-
 
 /*-------------- USER DEFINED HEADERS ------------*/
 

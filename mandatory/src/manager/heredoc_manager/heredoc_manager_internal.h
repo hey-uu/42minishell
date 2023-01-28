@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_manager_internal.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:29:54 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 12:59:35 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ enum	e_heredoc_manager
 	HEREDOC_STAT_UPDATE,
 	HEREDOC_GET_PARSE_TREE
 };
-
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
