@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 15:55:16 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:04:30 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ enum e_word_mask
 
 /*------------------ TYPE DEFINE -----------------*/
 
-typedef char	t_bool;
+typedef int	t_bool;
 
 /*------------- STRUCT DECLARATIONS --------------*/
 
@@ -58,39 +58,29 @@ int		push_unquoted_variable_element(char *str, t_words *words);
 int		push_wildcard_element(char *str, t_words *words);
 int		push_basic_element(char *str, t_words *words);
 
-// push_words_to_strings.c
-
 void	push_words_to_strings(t_words *words, t_darr *strings);
 
-// get_variable_name.c
 char	*get_variable_name(char *str, int *idx, int *qmark);
-// field_split.c
 void	field_split(char *val, t_words *words);
 
-// get_next_file_name.c
 char	*get_next_file_name(void);
 
-// get_pattern_features.c
 int		get_pattern_char(t_word *word, int i);
 int		get_pattern_len(t_word *word);
 
-int		is_matched(t_word *word, char *string);
-
-// words_allocation.c
-void	init_word_element_array(t_word *word, int initial_size);
-void	init_words(t_words *words, int initial_size);
-void	free_words(t_words *words);
-void	grow_word_array(t_words *words);
-void	grow_word_element_array(t_word *word);
-
-// words_get.c
 t_word	*get_cur_word(t_words *words);
 t_word	*get_new_word(t_words *words);
 
-// words_mask.c
-void	mask_cur_word(t_words *words, int mask);
-// words_push.c
-void	push_elem_to_cur_word(t_words *words, char *str, int len, int type);
+int		is_matched(t_word *word, char *string);
 
+void	init_word_element_array(t_word *word, int initial_size);
+void	init_words(t_words *words, int initial_size);
+void	free_words(t_words *words);
+
+void	grow_word_array(t_words *words);
+void	grow_word_element_array(t_word *word);
+
+void	mask_cur_word(t_words *words, int mask);
+void	push_elem_to_cur_word(t_words *words, char *str, int len, int type);
 
 #endif
