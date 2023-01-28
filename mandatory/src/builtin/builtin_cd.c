@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:55:14 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:46:47 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:33:54 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	builtin_cd(char	*argv[])
 	char	*cur_dir;
 
 	cur_dir = getcwd(NULL, 0);
-	if (!cur_dir)
-	{
-		handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_CD, "getcwd");
-		return ;
-	}
 	if (!argv[1])
 		cd_no_argument(cur_dir);
 	else if (!ft_strncmp(argv[1], "-", 2))

@@ -6,7 +6,7 @@
 /*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:02:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 19:41:20 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:08:55 by hyeyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	expand_wildcard_to_strings(t_word *word, t_darr *strings)
 	count = 0;
 	while (1)
 	{
-		file_name = get_next_file_name();
+		file_name = get_next_file_name((get_pattern_char(word, 0) == '.'));
 		if (!file_name)
 			break ;
 		if (is_matched(word, file_name))

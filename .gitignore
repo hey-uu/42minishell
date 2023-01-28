@@ -4,6 +4,7 @@
 lexer_test
 minishell
 *_test
+objFlib
 
 # Prerequisites
 *.d
