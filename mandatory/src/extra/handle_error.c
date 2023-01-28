@@ -6,13 +6,12 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 17:36:45 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:43:00 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
-#include "libftprintf.h"
 #include "handle_error.h"
 #include "exit_stat_manager.h"
 
@@ -38,7 +37,6 @@ void	error_print(\
 	}
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
-
 
 void	handle_syntax_error(t_token token)
 {

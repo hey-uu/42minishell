@@ -6,14 +6,13 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:24:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 13:35:38 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:43:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "style.h"
 #include "prompt.h"
-#include "libftprintf.h"
 
 void	print_welcome(void)
 {
@@ -33,6 +32,6 @@ void	print_welcome(void)
 \n    ==============================================================\
 \n                                                         v 1.0.0";
 
-	ft_printf(YELLO "\n%s" RESET, shell_name);
-	ft_printf(ITAL "%s\n" RESET, shell_introduction);
+	printf(YELLO "\n%s" RESET, shell_name);
+	printf(ITAL "%s\n" RESET, shell_introduction);
 }

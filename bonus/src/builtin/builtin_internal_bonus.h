@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:19:32 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:45:33 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 /*--------------- STANDARD HEADERS ---------------*/
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libft.h"
-# include "libftprintf.h"
 # include "constants_bonus.h"
 # include "str_utils_bonus.h"
 # include "handle_error_bonus.h"

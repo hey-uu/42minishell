@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 08:48:27 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:19:32 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:42:11 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libadt.h"
-# include "libftprintf.h"
 # include "constants_bonus.h"
 # include "s_token_bonus.h"
 # include "s_tree_node_bonus.h"

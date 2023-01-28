@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:02 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:17:01 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:40:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	exit_terminate_with_error(char *arg, int errcode)
 
 void	builtin_exit(char *argv[])
 {
-	ft_printf("exit\n");
+	printf("exit\n");
 	if (!argv)
 		exit_program();
 	if (argv[1] && (!is_numeric_argument(argv[1])))

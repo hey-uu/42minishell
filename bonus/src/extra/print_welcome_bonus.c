@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:24:36 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:19:32 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:40:28 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	print_welcome(void)
 \n    ==============================================================\
 \n                                                         v 1.0.0";
 
-	ft_printf(YELLO "\n%s" RESET, shell_name);
-	ft_printf(ITAL "%s\n" RESET, shell_introduction);
+	printf(YELLO "\n%s" RESET, shell_name);
+	printf(ITAL "%s\n" RESET, shell_introduction);
 }
