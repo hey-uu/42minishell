@@ -18,7 +18,8 @@ EXECUTOR_FILE			=		access_command \
 								execute_subshell \
 								executor \
 								pipe_open_close \
-								set_standard_stream
+								set_standard_stream \
+								do_redirecting
 EXTRA_FILE				=		handle_error \
 								handle_signal \
 								print_welcome \

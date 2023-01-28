@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 15:53:06 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:45:59 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	execute_builtin(t_execute_unit *exe_unit);
 
 /* input/output stream  */
 void	set_standard_stream(t_pipeline *pl, t_redir *redir_list, int nth);
+int		do_redirecting(t_redir *redir_list);
 void	open_new_pipe(int new_pipe_fd[2]);
 void	close_pipe_in_parent(int old_pipe_fd[2], int new_pipe_fd[2], \
 														int first, int last);
