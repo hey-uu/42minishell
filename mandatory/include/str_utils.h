@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree_internal.h                                    :+:      :+:    :+:   */
+/*   str_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 12:59:09 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 15:54:46 by yeonhkim         ###   ########.fr       */
+/*   Created: 2023/01/28 15:49:22 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/01/28 15:55:46 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TREE_INTERNAL_H
-# define TREE_INTERNAL_H
+#ifndef STR_UTILS_H
+# define STR_UTILS_H
 
-/*--------------- STANDARD HEADERS ---------------*/
+/*-------------- FUNCTION PROTOTYPES -------------*/
 
-# include <stddef.h>
-
-/*-------------- USER DEFINED HEADERS ------------*/
-
-# include "constants.h"
-# include "s_token.h"
-# include "s_tree_node.h"
-# include "str_utils.h"
+char	*ft_strndup(char *str, int n);
+void	free_str_array(char ***array);
+char	*ft_str3join(char *s1, char *s2, char *s3);
 
 #endif

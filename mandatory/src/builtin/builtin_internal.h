@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 15:39:43 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:51:36 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@
 
 # include "libft.h"
 # include "libftprintf.h"
+# include "constants.h"
+# include "str_utils.h"
 # include "handle_error.h"
 # include "env_manager.h"
 # include "exit_stat_manager.h"
-# include "constants.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -43,8 +44,6 @@
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-void	free_str_array(char ***array);
-char	*ft_strndup(char *str, int n);
 int		is_valid_variable_name_character(char c, int i);
 
 /* utils for cd */

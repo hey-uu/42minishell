@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor_internal.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 00:51:31 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 03:27:35 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/28 15:53:06 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "libft.h"
 # include "constants.h"
+# include "str_utils.h"
 # include "handle_error.h"
 # include "handle_signal.h"
 # include "env_manager.h"

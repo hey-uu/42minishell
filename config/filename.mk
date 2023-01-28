@@ -22,7 +22,7 @@ EXECUTOR_FILE			=		access_command \
 EXTRA_FILE				=		handle_error \
 								handle_signal \
 								print_welcome \
-								utils
+								str_utils
 LEXER_FILE				=		destroy_token_list \
 								extract_token \
 								get_token_type \

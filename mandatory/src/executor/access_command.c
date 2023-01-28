@@ -14,9 +14,6 @@
 #include <dirent.h>
 #include "executor_internal.h"
 
-void	free_str_array(char ***array);
-char	*ft_str3join(char *s1, char *s2, char *s3);
-
 static int	find_reg_file_in_a_dir(char *dir_path, char *look_for_name, \
 																char **found)
 {

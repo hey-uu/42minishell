@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_manager_internal.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 20:53:38 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:33:16 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:55:26 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # include "libft.h"
 # include "s_env_table.h"
+# include "str_utils.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -46,6 +47,5 @@ char		**__env_get_marked_variable_list__(t_env_tab *tab);
 char		**__env_get_defined_variable_list__(t_env_tab *tab);
 
 // string utils
-char		*ft_strndup(char *str, int n);
 
 #endif

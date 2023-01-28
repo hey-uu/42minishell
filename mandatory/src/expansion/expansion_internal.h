@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 00:22:15 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 12:59:26 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:55:16 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "libadt.h"
+# include "str_utils.h"
 # include "s_expansion.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
@@ -91,7 +92,5 @@ void	mask_cur_word(t_words *words, int mask);
 // words_push.c
 void	push_elem_to_cur_word(t_words *words, char *str, int len, int type);
 
-// extra
-char	*ft_strndup(char *str, int n);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_stat_manager_internal.h                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 20:08:58 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:10:10 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:55:37 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 /*-------------- USER DEFINED HEADERS ------------*/
 
 # include "s_env_table.h"
+# include "str_utils.h"
 
 /*------------ DEFINE MACRO CONSTANTS ------------*/
 
@@ -34,8 +35,5 @@ enum	e_exit_status_manager
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
 int		exit_stat_manager(int option, unsigned long new_stat);
-
-// string utils
-char	*ft_strndup(char *str, int n);
 
 #endif

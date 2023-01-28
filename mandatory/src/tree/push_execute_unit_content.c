@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_execute_unit_content.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:49:32 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 20:31:53 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:51:54 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "tree_internal.h"
+
+char	*process_heredoc(char *word);
 
 void	push_arguments(t_queue *q_cmd_argv, t_token *token, int offset)
 {
