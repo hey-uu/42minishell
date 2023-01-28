@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:23:59 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 17:46:50 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:39:43 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	env_terminate(char ***envp, int errcode)
 {
 	if (envp)
-		free_strs_array(envp);
+		free_str_array(envp);
 	if (!errcode)
 		exit_stat_update(0);
 	else if (errcode == ERR_B_TOO_MANY_ARGUMENTS)

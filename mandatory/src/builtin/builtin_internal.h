@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 02:14:55 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 13:35:38 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:39:43 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 
 /*-------------- FUNCTION PROTOTYPES -------------*/
 
-void	free_strs_array(char ***array);
+void	free_str_array(char ***array);
 char	*ft_strndup(char *str, int n);
 int		is_valid_variable_name_character(char c, int i);
 

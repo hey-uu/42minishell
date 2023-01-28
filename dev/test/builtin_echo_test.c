@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo_test.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 21:47:52 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 07:41:00 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:39:43 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 extern char	**environ;
 
 int		builtin_echo(char	*argv[]);
-void	free_strs_array(char ***array);
+void	free_str_array(char ***array);
 
 
 void	leak_check(void)

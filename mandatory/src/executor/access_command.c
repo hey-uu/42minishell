@@ -14,7 +14,7 @@
 #include <dirent.h>
 #include "executor_internal.h"
 
-void	free_strs_array(char ***array);
+void	free_str_array(char ***array);
 char	*ft_str3join(char *s1, char *s2, char *s3);
 
 static int	find_reg_file_in_a_dir(char *dir_path, char *look_for_name, \
@@ -70,7 +70,7 @@ static int	check_given_command_name(char **cmd_name)
 	while (paths[i])
 		if (find_reg_file_in_a_dir(paths[i++], *cmd_name, &found) == SUCCESS)
 			break ;
-	free_strs_array(&paths);
+	free_str_array(&paths);
 	if (check_found_command_path(found, *cmd_name) == SUCCESS)
 	{
 		free(*cmd_name);

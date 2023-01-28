@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeyukim <hyeyukim@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:24:08 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/27 18:54:36 by hyeyukim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:39:43 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void	export_print_marked_variable_list(void)
 		if (ft_printf("declare -x %s\n", variable_list[i]) < 0)
 		{
 			handle_builtin_error(ERR_B_EXECUTE_FAILED, CMD_EXPORT, "printf");
-			free_strs_array(&variable_list);
+			free_str_array(&variable_list);
 			return ;
 		}
 		i++;
 	}
-	free_strs_array(&variable_list);
+	free_str_array(&variable_list);
 	exit_stat_update(0);
 }
 

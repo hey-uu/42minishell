@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:59:09 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 12:59:09 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:41:06 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@
 char			*process_heredoc(char *word);
 
 // utils
-void			free_strs_array(char ***array);
+void			free_str_array(char ***array);
 
 #endif
