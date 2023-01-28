@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:52:11 by hyeyukim          #+#    #+#             */
-/*   Updated: 2023/01/28 13:35:57 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:52:43 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	error_print(\
 		ft_dprintf(STDERR_FILENO, "%s: ", arg1);
 	ft_dprintf(STDERR_FILENO, (char *)msg);
 	if (arg2)
-		ft_dprintf(STDERR_FILENO, "%s: ", arg2);
+		ft_dprintf(STDERR_FILENO, " %s", arg2);
 	ft_dprintf(STDERR_FILENO, "\n");
 }
 
