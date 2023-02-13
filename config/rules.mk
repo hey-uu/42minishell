@@ -144,7 +144,6 @@ $(BON_OBJ_PATH)/$(WRAPPED_DIR)/%.o : $(BON_SRC_PATH)/$(WRAPPED_DIR)/%.c
 	@mkdir -p $(BON_OBJ_PATH)/$(WRAPPED_DIR)
 	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@
 
-
 $(BON_OBJ_PATH)/%.o : $(BON_SRC_PATH)/%.c
 	@mkdir -p $(BON_OBJ_PATH)
 	$(CC) -c $(CFLAGS) $< $(BON_INC_FLAG) -o $@

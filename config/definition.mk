@@ -3,7 +3,7 @@
 # compile
 CC						=		cc
 CFLAGS1					=		-MMD -MP
-CFLAGS2					=		-Wall -Wextra -Werror -g3
+CFLAGS2					=		-Wall -Wextra -Werror
 CFLAGS3					=		-fsanitize=address -g3
 CFLAGS					=		$(CFLAGS1) $(CFLAGS2)
 
