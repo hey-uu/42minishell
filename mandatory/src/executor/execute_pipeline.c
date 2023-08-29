@@ -6,7 +6,7 @@
 /*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:28:06 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/01/28 16:55:13 by yeonhkim         ###   ########.fr       */
+/*   Updated: 2023/08/29 22:06:04 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	wait_childs_of_pipeline(int child_cnt, int last_child_pid, \
 			if (WIFSIGNALED(stat))
 			{
 				*pl_exit_stat = WTERMSIG(stat) + 128;
-				if (WTERMSIG(stat) == SIGINT)
+				if (WTERMSIG(stat) == SIGINT || WTERMSIG(stat) == SIGQUIT)
 					write(1, "\n", 1);
 			}
 			else
